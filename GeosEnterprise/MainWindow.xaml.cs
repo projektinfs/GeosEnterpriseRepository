@@ -22,7 +22,7 @@ namespace GeosEnterprise
     {
         public MainWindow()
         {
-            ///
+            
             InitializeComponent();
         }
     }
