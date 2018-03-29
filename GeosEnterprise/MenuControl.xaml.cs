@@ -16,18 +16,22 @@ using System.Windows.Shapes;
 namespace GeosEnterprise
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MenuControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuControl : UserControl
     {
-        public MainWindow()
+        public MenuControl()
         {
             InitializeComponent();
+            InitializeMenu();
         }
 
-        private void MenuControl_Loaded(object sender, RoutedEventArgs e)
+        public void InitializeMenu()
         {
-
+            // Tu dodajemy kolejne pozycje do menu: wystarczy przekopiować całą linijkę 
+            // i zmienić nazwę, a zawsze fajnie się ponumerują na liście
+            MainMenu.Items.Add($"{MainMenu.Items.Count + 1}. Zgłoszone komputery");
+            
         }
     }
 }

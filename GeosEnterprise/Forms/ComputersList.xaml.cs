@@ -10,24 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GeosEnterprise
+namespace GeosEnterprise.Forms
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ComputersList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ComputersList : Window
     {
-        public MainWindow()
+        public ComputersList()
         {
             InitializeComponent();
-        }
-
-        private void MenuControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
