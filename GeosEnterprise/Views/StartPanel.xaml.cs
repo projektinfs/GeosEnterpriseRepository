@@ -12,28 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GeosEnterprise.ViewModels;
 
-namespace GeosEnterprise
+namespace GeosEnterprise.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for StartPanel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class StartPanel : UserControl
     {
-        public MainWindow()
+        public StartPanel()
         {
             InitializeComponent();
-        }
-
-        private void StartPanelButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new StartPanelViewModel();
-        }
-
-        private void ComputersListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ComputersListViewModel();
         }
     }
 }

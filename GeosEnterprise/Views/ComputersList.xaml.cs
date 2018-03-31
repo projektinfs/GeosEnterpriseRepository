@@ -10,18 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GeosEnterprise.ViewModels;
 
-namespace GeosEnterprise.Forms
+namespace GeosEnterprise.Views
 {
     /// <summary>
     /// Interaction logic for ComputersList.xaml
     /// </summary>
-    public partial class ComputersList : Window
+    public partial class ComputersList : UserControl
     {
         public ComputersList()
         {
             InitializeComponent();
+            this.DataContext = ComputersListViewModel.GetData();
         }
     }
 }
