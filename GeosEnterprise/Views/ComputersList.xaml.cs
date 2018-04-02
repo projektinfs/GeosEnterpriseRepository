@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GeosEnterprise.DBO;
 using GeosEnterprise.ViewModels;
 
 namespace GeosEnterprise.Views
@@ -24,7 +25,9 @@ namespace GeosEnterprise.Views
         public ComputersList()
         {
             InitializeComponent();
-            this.DataContext = ComputersListViewModel.GetData();
+            
         }
+
+        
     }
 }

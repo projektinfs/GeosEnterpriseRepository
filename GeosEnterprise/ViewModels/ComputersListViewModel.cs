@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
 
 namespace GeosEnterprise.ViewModels
@@ -14,9 +16,12 @@ namespace GeosEnterprise.ViewModels
             RepairsRepository.GetAllCurrent();
         }
 
-        public static IList<GeosEnterprise.DBO.Repair> GetData()
+        public List<RepairDTO> Items
         {
-            return RepairsRepository.GetAllCurrent();
+            get
+            {
+                return Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)).ToList();
+            }
         }
     }
 }

@@ -20,6 +20,19 @@ namespace GeosEnterprise.Repositories
                     CreatedBy = "Admin",
                     ID = 1,
                     Description = "Opis",
+                    Computer = new Computer
+                    {
+                        CreatedDate = DateTime.Now,
+                        CreatedBy = "Admin",
+                        SerialNumber = "xxx",
+                        Components = new List<Component>
+                        {
+                            new Component()
+                            {
+                                ID = 1
+                            }
+                        },
+                    }
                 },
                 new Repair
                 {
@@ -27,7 +40,20 @@ namespace GeosEnterprise.Repositories
                     CreatedBy = "Admin",
                     ID = 2,
                     Description = "Opis",
-                    RealizationDate = DateTime.Now
+                    RealizationDate = DateTime.Now,
+                    Computer = new Computer
+                    {
+                        CreatedDate = DateTime.Now.AddDays(-1),
+                        CreatedBy = "Admin",
+                        SerialNumber = "xxx",
+                        Components = new List<Component>
+                        {
+                            new Component()
+                            {
+                                ID = 1
+                            }
+                        },
+                    }
                 }
             };
 

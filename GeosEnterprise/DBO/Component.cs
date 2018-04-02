@@ -16,19 +16,7 @@ namespace GeosEnterprise.DBO
         public decimal? ShoppingPrice { get; set; }
         public decimal? RepairPrice { get; set; }
         public int ComputerID { get; set; }
-        
     }
 
-    public enum ComponentType
-    {
-        MotherBoard = 1,
-        CPU = 2,
-        GPU = 3,
-        RAM = 4,
-        HDD = 5,
-        Monitor = 6,
-        Case = 7,
-        Speakers = 8,
-        Unknown = 99
-    }
+    
 }

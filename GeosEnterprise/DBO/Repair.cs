@@ -9,7 +9,7 @@ namespace GeosEnterprise.DBO
     public class Repair : DBObject<int>
     {
         public int ClientID { get; set; }
-        public Client Client { get; set; }
+        public Computer Computer { get; set; }
         public string Description { get; set; }
         public DateTime? RealizationDate { get; set; }
     }

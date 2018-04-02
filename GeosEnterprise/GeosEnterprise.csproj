@@ -60,8 +60,12 @@
     <Compile Include="DBO\Component.cs" />
     <Compile Include="DBO\Computer.cs" />
     <Compile Include="DBO\DBObject.cs" />
+    <Compile Include="DBO\Enums.cs" />
     <Compile Include="DBO\Photo.cs" />
     <Compile Include="DBO\Repair.cs" />
+    <Compile Include="DTO\ComponentDTO.cs" />
+    <Compile Include="DTO\ComputerDTO.cs" />
+    <Compile Include="DTO\RepairDTO.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
@@ -119,8 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

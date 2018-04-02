@@ -6,7 +6,18 @@
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid Background="LightCoral">
-        <ListBox HorizontalAlignment="Left" Height="100" Margin="256,179,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding}"/>
+        <ListView ItemsSource="{Binding Items}" HorizontalAlignment="Left" Height="390" Margin="10,10,0,0" VerticalAlignment="Top" Width="780">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="20"/>
+                    <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
+                    <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="120"/>
+                    <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="300"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>
