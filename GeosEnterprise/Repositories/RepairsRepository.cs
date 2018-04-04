@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using GeosEnterprise.DBO;
 
+
 namespace GeosEnterprise.Repositories
 {
     public static class RepairsRepository
     {
+        
+
         public static IList<Repair> GetAllCurrent()
         {
             // robimy jakies testowe obiekty
@@ -57,7 +60,20 @@ namespace GeosEnterprise.Repositories
                 }
             };
 
-            return repairs.Where(p => p.RealizationDate == null).ToList();
+            //return repairs.Where(p => p.RealizationDate == null).ToList();
+            return EntitiesContext.DB.Repairs.Where(p => p.RealizationDate == null).ToList();
+        }
+
+        public static Repair Add(Repair repair)
+        {
+            var added = EntitiesContext.DB.Repairs.Add(repair);
+            EntitiesContext.DB.SaveChanges();
+            return added;
+        }
+
+        public static void Delete(Repair repair)
+        {
+            EntitiesContext.DB.Repairs.Remove(repair);
         }
     }
 }

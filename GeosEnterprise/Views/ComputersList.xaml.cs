@@ -28,6 +28,34 @@ namespace GeosEnterprise.Views
             
         }
 
-        
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Repositories.RepairsRepository.Add(new Repair
+            {
+                CreatedDate = DateTime.Now,
+                CreatedBy = "Admin",
+                ID = 1,
+                Description = "Opis",
+                Computer = new Computer
+                {
+                    ID = 1,
+                    CreatedDate = DateTime.Now,
+                    CreatedBy = "Admin",
+                    SerialNumber = "xxx",
+                    Components = new List<Component>
+                        {
+                            new Component()
+                            {
+                                ID = 1
+                            }
+                        },
+                }
+            });
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Repositories.RepairsRepository.Delete((Repair)RepairsList.SelectedItem);
+        }
     }
 }

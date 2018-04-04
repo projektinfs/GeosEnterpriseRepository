@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid Background="LightCoral">
-        <ListView ItemsSource="{Binding Items}" HorizontalAlignment="Left" Height="390" Margin="10,10,0,0" VerticalAlignment="Top" Width="780">
+        <ListView Name="RepairsList" ItemsSource="{Binding Items}" Margin="0,1,-0.302,36.113">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="20"/>
@@ -19,5 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Name="AddButton" Content="Dodaj" Margin="0,432,0,0" Click="AddButton_Click" HorizontalAlignment="Left" Width="50" Height="18"/>
+        <Button Name="DeleteButton" Content="Usuń" Margin="75,432,0,0" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="50" Height="18"/>
     </Grid>
 </UserControl>

@@ -10,6 +10,6 @@ namespace GeosEnterprise.DBO
     {
         public int RepairID { get; set; }
         public string SerialNumber { get; set; }
-        public List<Component> Components { get; set; }
+        public virtual List<Component> Components { get; set; }
     }
 }

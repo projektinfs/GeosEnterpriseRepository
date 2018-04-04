@@ -16,6 +16,7 @@ namespace GeosEnterprise.DTO
 
         public static RepairDTO ToDTO(DBO.Repair entity)
         {
+            entity.Computer = Repositories.ComputersRepository.GetByRepairId(entity.ID, true);
             return new RepairDTO
             {
                 Computer = new ComputerDTO
