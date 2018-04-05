@@ -15,11 +15,11 @@
                     <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
                     <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="120"/>
                     <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="300"/>
-                    
+
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="AddButton" Content="Dodaj" Margin="0,432,0,0" Click="AddButton_Click" HorizontalAlignment="Left" Width="50" Height="18"/>
-        <Button Name="DeleteButton" Content="Usuń" Margin="75,432,0,0" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="50" Height="18"/>
+        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113" Click="AddButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
+        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
     </Grid>
 </UserControl>

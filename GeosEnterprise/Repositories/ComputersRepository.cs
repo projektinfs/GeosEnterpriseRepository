@@ -21,7 +21,8 @@ namespace GeosEnterprise.Repositories
 
         public static Computer GetByRepairId(int repairId, bool withComponents = false)
         {
-            Computer computer = EntitiesContext.DB.Computers.Where(p => p.RepairID == repairId).FirstOrDefault();
+            var repair = Repositories.RepairsRepository.GetById(repairId);
+            Computer computer = EntitiesContext.DB.Computers.Where(p => p.ID == repair.ComputerID).FirstOrDefault();
             if (withComponents)
             {
                 computer.Components = GetComponentsByComputerId(computer.ID);

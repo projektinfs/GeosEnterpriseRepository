@@ -10,6 +10,7 @@ namespace GeosEnterprise.DBO
     {
         public int ClientID { get; set; }
         public virtual Computer Computer { get; set; }
+        public int ComputerID { get; set; }
         public string Description { get; set; }
         public DateTime? RealizationDate { get; set; }
     }

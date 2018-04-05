@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
 using GeosEnterprise.ViewModels;
 
 namespace GeosEnterprise.Views
@@ -25,7 +26,12 @@ namespace GeosEnterprise.Views
         public ComputersList()
         {
             InitializeComponent();
-            
+        }
+
+        private void Refresh()
+        {
+            this.InvalidateVisual();
+            this.UpdateLayout();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -34,28 +40,32 @@ namespace GeosEnterprise.Views
             {
                 CreatedDate = DateTime.Now,
                 CreatedBy = "Admin",
-                ID = 1,
                 Description = "Opis",
                 Computer = new Computer
                 {
-                    ID = 1,
                     CreatedDate = DateTime.Now,
                     CreatedBy = "Admin",
                     SerialNumber = "xxx",
                     Components = new List<Component>
+                    {
+                        new Component()
                         {
-                            new Component()
-                            {
-                                ID = 1
-                            }
-                        },
+                        }
+                    },
                 }
             });
+            Refresh();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            Repositories.RepairsRepository.Delete((Repair)RepairsList.SelectedItem);
+            var repairDTO = RepairsList.SelectedItem as RepairDTO;
+            if (repairDTO != null)
+            {
+                Repositories.RepairsRepository.Delete(repairDTO.ID);
+                Refresh();
+            }
+            
         }
     }
 }

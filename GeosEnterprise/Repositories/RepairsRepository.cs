@@ -10,7 +10,10 @@ namespace GeosEnterprise.Repositories
 {
     public static class RepairsRepository
     {
-        
+        public static Repair GetById(int id)
+        {
+            return EntitiesContext.DB.Repairs.Where(p => p.ID == id).FirstOrDefault();
+        }
 
         public static IList<Repair> GetAllCurrent()
         {
@@ -74,6 +77,13 @@ namespace GeosEnterprise.Repositories
         public static void Delete(Repair repair)
         {
             EntitiesContext.DB.Repairs.Remove(repair);
+            EntitiesContext.DB.SaveChanges();
+        }
+
+        public static void Delete(int id)
+        {
+            EntitiesContext.DB.Repairs.Remove(GetById(id));
+            EntitiesContext.DB.SaveChanges();
         }
     }
 }
