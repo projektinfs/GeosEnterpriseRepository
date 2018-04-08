@@ -24,6 +24,7 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void StartPanelButton_Click(object sender, RoutedEventArgs e)
@@ -34,6 +35,11 @@ namespace GeosEnterprise
         private void ComputersListButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new ComputersListViewModel();
+        }
+
+        private void SingInButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AuthenticationViewModel();
         }
     }
 }

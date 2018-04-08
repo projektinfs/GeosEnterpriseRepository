@@ -16,7 +16,9 @@
         <DataTemplate x:Name="startPanelTemplate" DataType="{x:Type viewmodels:StartPanelViewModel}">
             <views:StartPanel DataContext="{Binding}"></views:StartPanel>
         </DataTemplate>
-                      
+        <DataTemplate x:Name="authenticationPanelTemplate" DataType="{x:Type viewmodels:AuthenticationViewModel}">
+            <views:AuthenticationPanel DataContext="{Binding}"></views:AuthenticationPanel>
+        </DataTemplate>
     </Window.Resources>
     <Grid x:Name="MainGrid" Margin="0,0,3.113,1.755">
         <Grid.ColumnDefinitions>
@@ -40,7 +42,7 @@
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
+                <Button x:Name="SingInButton" Content="Logowanie" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold" Click="SingInButton_Click"></Button>
                 <Button Content="" FontSize="600" Background="WhiteSmoke" BorderThickness="0" BorderBrush="WhiteSmoke" Focusable="False" IsEnabled="False" IsHitTestVisible="False"></Button>
             </StackPanel>
         </DockPanel>
