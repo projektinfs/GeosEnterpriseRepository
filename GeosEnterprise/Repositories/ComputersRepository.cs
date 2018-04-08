@@ -11,7 +11,7 @@ namespace GeosEnterprise.Repositories
     {
         public static Computer GetById(int id, bool withComponents = false)
         {
-            Computer computer = EntitiesContext.DB.Computers.Where(p => p.ID == id).FirstOrDefault();
+            Computer computer = App.DB.Computers.Where(p => p.ID == id).FirstOrDefault();
             if (withComponents)
             {
                 computer.Components = GetComponentsByComputerId(id);
@@ -22,7 +22,7 @@ namespace GeosEnterprise.Repositories
         public static Computer GetByRepairId(int repairId, bool withComponents = false)
         {
             var repair = Repositories.RepairsRepository.GetById(repairId);
-            Computer computer = EntitiesContext.DB.Computers.Where(p => p.ID == repair.ComputerID).FirstOrDefault();
+            Computer computer = App.DB.Computers.Where(p => p.ID == repair.ComputerID).FirstOrDefault();
             if (withComponents)
             {
                 computer.Components = GetComponentsByComputerId(computer.ID);
@@ -32,7 +32,7 @@ namespace GeosEnterprise.Repositories
 
         public static List<Component> GetComponentsByComputerId(int computerId)
         {
-            return EntitiesContext.DB.Components.Where(p => p.ComputerID == computerId).ToList();
+            return App.DB.Components.Where(p => p.ComputerID == computerId).ToList();
         }
     }
 }

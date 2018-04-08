@@ -36,24 +36,12 @@ namespace GeosEnterprise.Views
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Repositories.RepairsRepository.Add(new Repair
+            Window addNewRepairWindow = new ComputersAdd();
+            if (addNewRepairWindow.ShowDialog() == true)
             {
-                CreatedDate = DateTime.Now,
-                CreatedBy = "Admin",
-                Description = "Opis",
-                Computer = new Computer
-                {
-                    CreatedDate = DateTime.Now,
-                    CreatedBy = "Admin",
-                    SerialNumber = "xxx",
-                    Components = new List<Component>
-                    {
-                        new Component()
-                        {
-                        }
-                    },
-                }
-            });
+                MessageBox.Show("Dodano nowe zlecenie!");
+            }
+
             Refresh();
         }
 
@@ -66,6 +54,17 @@ namespace GeosEnterprise.Views
                 Refresh();
             }
             
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            var repairDTO = RepairsList.SelectedItem as RepairDTO;
+            Window addNewRepairWindow = new ComputersAdd(repairDTO.ID);
+
+            if (addNewRepairWindow.ShowDialog() == true)
+            {
+                MessageBox.Show("Edytowano zlecenie!");
+            }
         }
     }
 }

@@ -10,6 +10,12 @@ namespace GeosEnterprise.DBO
 {
     public class DBObject<T>
     {
+        public DBObject()
+        {
+            CreatedBy = "Admin";
+            CreatedDate = DateTime.Now;
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public T ID { get; set; }

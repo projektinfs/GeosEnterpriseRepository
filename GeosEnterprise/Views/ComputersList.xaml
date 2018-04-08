@@ -11,7 +11,7 @@
         <ListView Name="RepairsList" ItemsSource="{Binding Items}" Margin="0,1,-0.302,36.113">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="20"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="40"/>
                     <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
                     <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="120"/>
                     <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="300"/>
@@ -21,5 +21,6 @@
         </ListView>
         <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113" Click="AddButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
         <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
+        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click"/>
     </Grid>
 </UserControl>

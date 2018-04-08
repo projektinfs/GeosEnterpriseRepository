@@ -9,8 +9,6 @@ namespace GeosEnterprise.DBO
 {
     public class EntitiesContext : DbContext
     {
-        public static EntitiesContext DB = new EntitiesContext();
-
         public EntitiesContext() : base("GeosEnterprise.Properties.Settings.GeosEnterpriseDB")
         {
         }

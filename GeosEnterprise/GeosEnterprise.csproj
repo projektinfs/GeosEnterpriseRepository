@@ -84,6 +84,9 @@
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
+    <Compile Include="Views\ComputersAdd.xaml.cs">
+      <DependentUpon>ComputersAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ComputersList.xaml.cs">
       <DependentUpon>ComputersList.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ComputersAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ComputersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,7 +144,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
