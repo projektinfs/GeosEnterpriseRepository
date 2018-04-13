@@ -9,7 +9,7 @@ using GeosEnterprise.Repositories;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class StartPanelViewModel
+    public class SearchPanelViewModel
     {
 
     }

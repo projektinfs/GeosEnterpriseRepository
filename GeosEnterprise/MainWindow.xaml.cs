@@ -35,5 +35,10 @@ namespace GeosEnterprise
         {
             DataContext = new ComputersListViewModel();
         }
+
+        private void SearchPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new SearchPanelViewModel();
+        }
     }
 }

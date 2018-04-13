@@ -15,10 +15,12 @@ using System.Windows.Shapes;
 
 namespace GeosEnterprise.Views
 {
-
-    public partial class StartPanel : UserControl
+    /// <summary>
+    /// Interaction logic for SearchPanel.xaml
+    /// </summary>
+    public partial class SearchPanel : UserControl
     {
-        public StartPanel()
+        public SearchPanel()
         {
             InitializeComponent();
         }
