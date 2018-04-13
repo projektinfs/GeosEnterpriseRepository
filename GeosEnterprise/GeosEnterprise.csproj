@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\SignInCommand.cs" />
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\Component.cs" />
     <Compile Include="DBO\Computer.cs" />

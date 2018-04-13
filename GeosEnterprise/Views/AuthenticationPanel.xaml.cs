@@ -23,30 +23,10 @@ namespace GeosEnterprise.Views
     /// </summary>
     public partial class AuthenticationPanel : UserControl
     {
+
         public AuthenticationPanel()
         {
             InitializeComponent();
-
-            Repositories.EmployeeRepository.Add(new Employee
-            {
-                Email = "TEST",
-                Password = "TEST"
-            });
-        }
-
-        private void pbSingIn_Click(object sender, RoutedEventArgs e)
-        {
-            string Email = txtEmail.Text;
-            string Password = txtPassword.Password.ToString();
-
-            if(Repositories.EmployeeRepository.ValidateData(Email, Password))
-            {
-                MessageBox.Show("Zalogowano !");
-            }
-            else
-            {
-                MessageBox.Show("Nie zalogowano !");
-            }
         }
     }
 }

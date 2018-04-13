@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeosEnterprise.ViewModels;
+using GeosEnterprise.DBO;
 
 namespace GeosEnterprise
 {
@@ -21,10 +22,20 @@ namespace GeosEnterprise
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string name;
+        private Actors role;
+
+
+
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            MenuPanel.IsEnabled = false;
+
+            AuthenticationViewModel authView = new AuthenticationViewModel();
+            DataContext = authView;
+
         }
 
         private void StartPanelButton_Click(object sender, RoutedEventArgs e)
@@ -37,9 +48,5 @@ namespace GeosEnterprise
             DataContext = new ComputersListViewModel();
         }
 
-        private void SingInButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AuthenticationViewModel();
-        }
     }
 }

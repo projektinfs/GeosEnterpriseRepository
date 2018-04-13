@@ -34,7 +34,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel Background="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-            <StackPanel>
+            <StackPanel x:Name="MenuPanel">
                 <Button Name="StartPanelButton" Content="Panel startowy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="StartPanelButton_Click" FontWeight="Bold"/>
                 <Button Name="ComputersListButton" Content="Komputery" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ComputersListButton_Click" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
@@ -42,7 +42,7 @@
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button x:Name="SingInButton" Content="Logowanie" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold" Click="SingInButton_Click"></Button>
+                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
                 <Button Content="" FontSize="600" Background="WhiteSmoke" BorderThickness="0" BorderBrush="WhiteSmoke" Focusable="False" IsEnabled="False" IsHitTestVisible="False"></Button>
             </StackPanel>
         </DockPanel>

@@ -18,4 +18,12 @@ namespace GeosEnterprise.DBO
         Speakers = 8,
         Unknown = 99
     }
+
+    public enum Actors
+    {
+        Serviceman = 1,
+        Salesman = 2,
+        Manager = 3,
+        Accountant = 4
+    }
 }
