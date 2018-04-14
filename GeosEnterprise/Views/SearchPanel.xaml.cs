@@ -12,17 +12,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Drawing;
+using System.Runtime.CompilerServices;
+using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
+using GeosEnterprise.Repositories;
 
 namespace GeosEnterprise.Views
 {
-    /// <summary>
-    /// Interaction logic for SearchPanel.xaml
-    /// </summary>
+
     public partial class SearchPanel : UserControl
     {
+
         public SearchPanel()
         {
             InitializeComponent();
+
+        }
+
+        private void txtNameToSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SearchedList.ItemsSource = RepairsRepository.GetFilteredByDescription(txtNameToSearch.Text);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

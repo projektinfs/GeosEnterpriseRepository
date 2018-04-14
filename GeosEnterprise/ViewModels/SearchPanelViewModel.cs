@@ -11,6 +11,10 @@ namespace GeosEnterprise.ViewModels
 {
     public class SearchPanelViewModel
     {
+        public SearchPanelViewModel()
+        {
+            RepairsRepository.GetAllCurrent();
+        }
 
     }
 }

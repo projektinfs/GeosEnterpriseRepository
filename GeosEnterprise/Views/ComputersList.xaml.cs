@@ -59,6 +59,10 @@ namespace GeosEnterprise.Views
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var repairDTO = RepairsList.SelectedItem as RepairDTO;
+
+            if (repairDTO == null)
+                return;
+
             Window addNewRepairWindow = new ComputersAdd(repairDTO.ID);
 
             if (addNewRepairWindow.ShowDialog() == true)

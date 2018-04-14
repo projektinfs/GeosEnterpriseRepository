@@ -20,6 +20,11 @@ namespace GeosEnterprise.Repositories
             return App.DB.Repairs.Where(p => p.RealizationDate == null).ToList();
         }
 
+        public static IList<Repair> GetFilteredByDescription(string filter)
+        {
+            return App.DB.Repairs.Where(p => p.Description.Contains(filter) || p.Computer.SerialNumber.Contains(filter)).ToList();
+        }
+
         public static Repair Add(Repair repair)
         {
             var added = App.DB.Repairs.Add(repair);
