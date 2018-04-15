@@ -42,14 +42,5 @@ namespace GeosEnterprise
             DataContext = new SearchPanelViewModel();
         }
 
-        private void SingInButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AuthenticationViewModel();
-        }
-
-        private void EmployeesListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new EmployeesListViewModel();
-        }
     }
 }
