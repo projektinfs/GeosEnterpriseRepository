@@ -99,7 +99,7 @@
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
-    <Compile Include="Views\Repairs\ComputersAdd.xaml.cs">
+
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
     </Compile>
