@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
+             
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="860">
 
     <Grid Background="LightCoral" Margin="0,0,0,-0.4">
+        
         <ListView Name="RepairsList" ItemsSource="{Binding Items}" Margin="0,1,-0.302,36.113">
             <ListView.View>
                 <GridView>
@@ -19,16 +21,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.6" Click="AddButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
-        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
-        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click"/>
-        <ComboBox Name="Filters" Text="Filtry" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="450,0,0,0" Width="170" Height="37" FontSize="20" FontWeight="Bold" Background="#FFB7A9A9" BorderBrush="#FFDDDDDD" Foreground="Black">
-            <ComboBoxItem Content="ID"/>
-            <ComboBoxItem Content="Data zgłoszenia"/>
-            <ComboBoxItem Content="Numer seryjny"/>
-            <ComboBoxItem Content="Opis"/>
-        </ComboBox>
-        <TextBox Name="SearchBar" Text="Szukaj..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="620,0,0,1" VerticalAlignment="Bottom" TextWrapping="Wrap" Height="36" FontSize="20" FontWeight="Bold" Background="#FFDDDDDD" TextChanged="SearchBar_TextChanged" GotFocus="SearchBar_GotFocus"/>
-        <Image Margin="763,413,0,0" Source="/GeosEnterprise;component/Images/SearchIcon.JPG" Height="37" Width="37" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Button Name="AddButton" Content="Dodaj" Click="AddButton_Click" HorizontalAlignment="Left" Width="135" Height="36" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold"/>
+        <Button Name="DeleteButton" Content="Usuń" Margin="135,0,0,0" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="135" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="16" FontWeight="Bold"/>
+        <Button Name="EditButton" Content="Edytuj" Margin="270,0,0,0" HorizontalAlignment="Left" Width="135" Height="36" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" Click="EditButton_Click"/>
+        <Button Name="SearchOptions" Content="Opcje wyszukiwania" Margin="405,0,0,0" HorizontalAlignment="Left" Width="178" Height="37" VerticalAlignment="Bottom" FontSize="16" FontWeight="Bold" Click="SearchOptions_Click"/>
+        <TextBox Name="SearchBar" Text="Wpisz numer seryjny lub opis..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="583,0,0,-1" VerticalAlignment="Bottom" TextWrapping="Wrap" Height="37" FontSize="17" FontWeight="Bold" Background="#FFDDDDDD" TextChanged="SearchBar_TextChanged" GotFocus="SearchBar_GotFocus"/>
     </Grid>
 </UserControl>

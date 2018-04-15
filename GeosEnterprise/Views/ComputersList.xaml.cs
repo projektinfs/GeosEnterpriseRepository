@@ -16,6 +16,7 @@ using GeosEnterprise.Repositories;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.ViewModels;
+using Xceed.Wpf.Toolkit;
 
 namespace GeosEnterprise.Views
 {
@@ -40,7 +41,7 @@ namespace GeosEnterprise.Views
             Window addNewRepairWindow = new ComputersAdd();
             if (addNewRepairWindow.ShowDialog() == true)
             {
-                MessageBox.Show("Dodano nowe zlecenie!");
+                System.Windows.MessageBox.Show("Dodano nowe zlecenie!");
             }
 
             Refresh();
@@ -68,15 +69,15 @@ namespace GeosEnterprise.Views
 
             if (addNewRepairWindow.ShowDialog() == true)
             {
-                MessageBox.Show("Edytowano zlecenie!");
+                System.Windows.MessageBox.Show("Edytowano zlecenie!");
             }
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if( SearchBar.Text != "Szukaj...")
+            if( SearchBar.Text != "Wpisz numer seryjny lub opis...")
             {
-                RepairsList.ItemsSource = RepairsRepository.GetFilteredByDescription(SearchBar.Text);
+                RepairsList.ItemsSource = RepairsRepository.GetByDescription(SearchBar.Text);
             }
 
         }
@@ -86,6 +87,16 @@ namespace GeosEnterprise.Views
             TextBox tb = (TextBox)sender;
             tb.Text = string.Empty;
             tb.GotFocus -= SearchBar_GotFocus;
+        }
+
+        private void SearchOptions_Click(object sender, RoutedEventArgs e)
+        {
+            Window addTimePickerWindows = new TimePicker();
+
+            if (addTimePickerWindows.ShowDialog() == true)
+            {
+                System.Windows.MessageBox.Show("Wybrano dodatkowe kryteria wyszukiwania.");
+            }
         }
     }
 }
