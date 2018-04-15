@@ -1,0 +1,20 @@
+﻿<Window x:Class="GeosEnterprise.Views.ComputersAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeosEnterprise.Views"
+        mc:Ignorable="d"
+        Title="ComputersAdd" Height="450" Width="800">
+    <Grid>
+        <TextBox Name="SerialNrTextBox" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Numer seryjny" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
+        <Label Content="ZLECENIE NAPRAWY" Margin="235,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Opis usterki" HorizontalAlignment="Left" Margin="32,103,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="DescriptionTextBox" HorizontalAlignment="Left" Height="23" Margin="118,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="631"/>
+        <Label Content="Komponenty komputera" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top"/>
+        <Button Name="OKButton" Content="Zapisz" HorizontalAlignment="Left" Margin="0,0,0,0.226" VerticalAlignment="Bottom" Width="75" Click="OKButton_Click"/>
+        <Button Name="CancelButton" Content="Powrót" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75" Click="CancelButton_Click"/>
+
+    </Grid>
+</Window>
