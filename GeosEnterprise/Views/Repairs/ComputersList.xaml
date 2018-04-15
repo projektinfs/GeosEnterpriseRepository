@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid Background="LightCoral">
-        <ListView Name="RepairsList" ItemsSource="{Binding Items}" Margin="0,1,-0.302,36.113">
+        <ListView Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"  Margin="0,1,-0.302,36.113">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="40"/>
@@ -19,8 +19,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113" Click="AddButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
-        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
-        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click"/>
+        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113" Command="{Binding AddButtonCommand}" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
+        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
+        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
     </Grid>
 </UserControl>
