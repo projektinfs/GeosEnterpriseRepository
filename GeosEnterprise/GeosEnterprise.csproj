@@ -103,30 +103,53 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DBO\Adress.cs" />
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\Component.cs" />
     <Compile Include="DBO\Computer.cs" />
     <Compile Include="DBO\DBObject.cs" />
+    <Compile Include="DBO\Employee.cs" />
+    <Compile Include="DBO\EmployeeContact.cs" />
     <Compile Include="DBO\EntitiesContext.cs" />
     <Compile Include="DBO\Enums.cs" />
     <Compile Include="DBO\Photo.cs" />
     <Compile Include="DBO\Repair.cs" />
+    <Compile Include="DTO\AdressDTO.cs" />
     <Compile Include="DTO\ComponentDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
+    <Compile Include="DTO\EmployeeContactDTO.cs" />
+    <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />
+    <Compile Include="Repositories\AdressesRepository.cs" />
     <Compile Include="Repositories\ComputersRepository.cs" />
+    <Compile Include="Repositories\EmployeeContactsRepository.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\SearchPanelViewModel.cs" />
     <Compile Include="Views\SearchPanel.xaml.cs">
       <DependentUpon>SearchPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesListViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
+    <Compile Include="Views\AuthenticationPanel.xaml.cs">
+      <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ComputersAdd.xaml.cs">
       <DependentUpon>ComputersAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ComputersList.xaml.cs">
       <DependentUpon>ComputersList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeInfo.xaml.cs">
+      <DependentUpon>EmployeeInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeesAdd.xaml.cs">
+      <DependentUpon>EmployeesAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeesList.xaml.cs">
+      <DependentUpon>EmployeesList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
@@ -144,11 +167,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AuthenticationPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ComputersAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ComputersList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeesAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
