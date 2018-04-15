@@ -69,6 +69,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Authorization.cs" />
+    <Compile Include="Commands\PushButtonCommand.cs" />
     <Compile Include="Commands\SignInCommand.cs" />
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\Component.cs" />
@@ -88,7 +90,9 @@
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
     </Compile>
