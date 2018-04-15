@@ -24,7 +24,7 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
-            
+            App.DB.Computers.FirstOrDefault();
         }
 
         private void StartPanelButton_Click(object sender, RoutedEventArgs e)
