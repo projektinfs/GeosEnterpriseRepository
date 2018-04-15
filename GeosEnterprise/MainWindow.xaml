@@ -10,6 +10,8 @@
         mc:Ignorable="d"
         Title="GeosEnterprise" Height="720" Width="900">
     <Window.Resources>
+        <viewmodels:AuthenticationViewModel x:Key="auth"/>
+
         <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodels:ComputersListViewModel}">
             <views:ComputersList DataContext="{Binding}"></views:ComputersList>
         </DataTemplate>
@@ -34,7 +36,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel Background="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-            <StackPanel x:Name="MenuPanel">
+            <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
                 <Button Name="StartPanelButton" Content="Panel startowy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="StartPanelButton_Click" FontWeight="Bold"/>
                 <Button Name="ComputersListButton" Content="Komputery" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ComputersListButton_Click" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
