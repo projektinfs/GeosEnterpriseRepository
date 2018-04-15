@@ -1,0 +1,19 @@
+Baza MySQL
+
+Z baz¹ danych mo¿na sie po³¹czyæ przy pomocy protoko³u TCP: serwer mysql.agh.edu.pl, port 3306. Po³¹czenia te mo¿liwe s¹ wy³¹cznie z sieci AGH. Mo¿na te¿ skorzystaæ z interfejsu phpMyAdmin.
+
+https://mysql.agh.edu.pl/phpMyAdmin/
+
+
+Login		haslo			nazwa bazy
+
+orlowic1	YjQKgX75TjCAHD22	orlowic1	 
+orlowicz	6PvEsEzHk3zMmm2d	orlowicz
+
+dane 2 baz, glowna niech bedzie z loginem orlowicz a testowa orlowic1.
+
+
+===========================================================================================
+
+Jeœli chcecie przez TCP to trzeba wejsc do panel.agh.edu.pl i skonfigurowaæ VPN AGH. 
+Do konfiguracji trzeba pobrac program np.OpenVPN i tam do katalogu config wkleic dane pobrane z panelu (klucz VPN), a nastêpnie po³¹czyæ na pasku aplikacji. Instalacja i uruchamianie w trybie administratora.
