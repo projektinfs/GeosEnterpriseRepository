@@ -19,6 +19,9 @@
         <DataTemplate x:Name="authenticationPanelTemplate" DataType="{x:Type viewmodels:AuthenticationViewModel}">
             <views:AuthenticationPanel DataContext="{Binding}"></views:AuthenticationPanel>
         </DataTemplate>
+        <DataTemplate x:Name="employeesListTemplate" DataType="{x:Type viewmodels:EmployeesListViewModel}">
+            <views:EmployeesList DataContext="{Binding}"></views:EmployeesList>
+        </DataTemplate>
     </Window.Resources>
     <Grid x:Name="MainGrid" Margin="0,0,3.113,1.755">
         <Grid.ColumnDefinitions>
@@ -37,7 +40,7 @@
             <StackPanel>
                 <Button Name="StartPanelButton" Content="Panel startowy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="StartPanelButton_Click" FontWeight="Bold"/>
                 <Button Name="ComputersListButton" Content="Komputery" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ComputersListButton_Click" FontWeight="Bold"></Button>
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
+                <Button Name="EmployeesListButton" Content="Pracownicy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="EmployeesListButton_Click" FontWeight="Bold"/>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
