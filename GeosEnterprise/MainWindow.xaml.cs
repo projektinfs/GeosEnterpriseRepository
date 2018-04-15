@@ -14,6 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeosEnterprise.ViewModels;
 using GeosEnterprise.DBO;
+using System.Security.Principal;
+using System.Threading;
+using System.Security;
 
 namespace GeosEnterprise
 {
@@ -22,19 +25,11 @@ namespace GeosEnterprise
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string name;
-        private Actors role;
-
-
-
         public MainWindow()
         {
             InitializeComponent();
 
-            MenuPanel.IsEnabled = false;
-
-            AuthenticationViewModel authView = new AuthenticationViewModel();
-            DataContext = authView;
+            DataContext = new AuthenticationViewModel();
 
         }
 
