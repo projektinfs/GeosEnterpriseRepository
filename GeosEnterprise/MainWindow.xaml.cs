@@ -41,5 +41,10 @@ namespace GeosEnterprise
         {
             DataContext = new AuthenticationViewModel();
         }
+
+        private void EmployeesListButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new EmployeesListViewModel();
+        }
     }
 }

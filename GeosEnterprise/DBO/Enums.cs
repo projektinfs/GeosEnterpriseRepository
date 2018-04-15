@@ -17,5 +17,5 @@ namespace GeosEnterprise.DBO
         Case = 7,
         Speakers = 8,
         Unknown = 99
-    }
+    };
 }

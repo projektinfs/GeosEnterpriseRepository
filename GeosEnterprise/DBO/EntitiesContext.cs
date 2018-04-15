@@ -19,5 +19,9 @@ namespace GeosEnterprise.DBO
         public DbSet<Repair> Repairs { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Adress> Adresses { get; set; }
+        public DbSet<EmployeeContact> EmployeeContacts { get; set; }
+
+
     }
 }
