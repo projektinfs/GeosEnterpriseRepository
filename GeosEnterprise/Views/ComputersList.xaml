@@ -22,5 +22,13 @@
         <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.6" Click="AddButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
         <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
         <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click"/>
+        <ComboBox Name="Filters" Text="Filtry" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="450,0,0,0" Width="170" Height="37" FontSize="20" FontWeight="Bold" Background="#FFB7A9A9" BorderBrush="#FFDDDDDD" Foreground="Black">
+            <ComboBoxItem Content="ID"/>
+            <ComboBoxItem Content="Data zgłoszenia"/>
+            <ComboBoxItem Content="Numer seryjny"/>
+            <ComboBoxItem Content="Opis"/>
+        </ComboBox>
+        <TextBox Name="SearchBar" Text="Szukaj..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="620,0,0,1" VerticalAlignment="Bottom" TextWrapping="Wrap" Height="36" FontSize="20" FontWeight="Bold" Background="#FFDDDDDD" TextChanged="SearchBar_TextChanged" GotFocus="SearchBar_GotFocus"/>
+        <Image Margin="763,413,0,0" Source="/GeosEnterprise;component/Images/SearchIcon.JPG" Height="37" Width="37" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

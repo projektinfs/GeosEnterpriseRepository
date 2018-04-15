@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GeosEnterprise.Repositories;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.ViewModels;
@@ -69,6 +70,22 @@ namespace GeosEnterprise.Views
             {
                 MessageBox.Show("Edytowano zlecenie!");
             }
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if( SearchBar.Text != "Szukaj...")
+            {
+                RepairsList.ItemsSource = RepairsRepository.GetFilteredByDescription(SearchBar.Text);
+            }
+
+        }
+
+        private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= SearchBar_GotFocus;
         }
     }
 }
