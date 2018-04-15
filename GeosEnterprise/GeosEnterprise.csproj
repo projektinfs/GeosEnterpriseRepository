@@ -82,18 +82,20 @@
     <Compile Include="DTO\RepairDTO.cs" />
     <Compile Include="Repositories\ComputersRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
-    <Compile Include="ViewModels\ComputersListViewModel.cs" />
+    <Compile Include="ViewModels\CommonThings\RelayCommand.cs" />
+    <Compile Include="ViewModels\Repairs\ComputersAddViewModel.cs" />
+    <Compile Include="ViewModels\Repairs\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
-    <Compile Include="Views\ComputersAdd.xaml.cs">
+    <Compile Include="Views\Repairs\ComputersAdd.xaml.cs">
       <DependentUpon>ComputersAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ComputersList.xaml.cs">
+    <Compile Include="Views\Repairs\ComputersList.xaml.cs">
       <DependentUpon>ComputersList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -102,15 +104,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Config.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ComputersAdd.xaml">
+    <Page Include="Views\Repairs\ComputersAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ComputersList.xaml">
+    <Page Include="Views\Repairs\ComputersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
