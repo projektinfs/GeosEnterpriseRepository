@@ -25,6 +25,7 @@ namespace GeosEnterprise.Views
     {
         public ComputersList()
         {
+            
             InitializeComponent();
         }
 

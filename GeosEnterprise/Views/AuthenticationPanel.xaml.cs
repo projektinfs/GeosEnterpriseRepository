@@ -27,6 +27,7 @@ namespace GeosEnterprise.Views
         public AuthenticationPanel()
         {
             InitializeComponent();
+
         }
     }
 }
