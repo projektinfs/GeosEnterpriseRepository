@@ -120,6 +120,8 @@
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
     <Compile Include="ViewModels\ClientsListViewModel.cs" />
+    <Compile Include="ViewModels\CommonThings\RelayCommand.cs" />
+    <Compile Include="ViewModels\ComputersAddViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />

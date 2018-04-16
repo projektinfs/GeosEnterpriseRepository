@@ -1,4 +1,5 @@
 ﻿using GeosEnterprise.DBO;
+using GeosEnterprise.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,69 +21,16 @@ namespace GeosEnterprise.Views
     /// </summary>
     public partial class ComputersAdd : Window
     {
-        int? repairID { get; set; }
-
         public ComputersAdd(int repairID)
         {
+            DataContext = new ComputersAddViewModel(repairID);
             InitializeComponent();
-            this.repairID = repairID;
-            Repair repair = Repositories.RepairsRepository.GetById(repairID);
-            DescriptionTextBox.Text = repair.Description;
-            SerialNrTextBox.Text = repair.Computer.SerialNumber;
         }
 
         public ComputersAdd()
         {
+            DataContext = new ComputersAddViewModel(null);
             InitializeComponent();
-        }
-
-        private void OKButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-
-            if (this.repairID == null)
-            {
-                Repositories.RepairsRepository.Add(new Repair
-                {
-                    Description = DescriptionTextBox.Text,
-                    Computer = new Computer
-                    {
-                        SerialNumber = SerialNrTextBox.Text,
-                        Components = new List<Component>
-                        {
-                            new Component()
-                            {
-                            }
-                        },
-                    }
-                });
-            }
-            else
-            {
-                Repositories.RepairsRepository.Edit(new Repair
-                {
-                    ID = (int)repairID,
-                    Description = DescriptionTextBox.Text,
-                    Computer = new Computer
-                    {
-                        SerialNumber = SerialNrTextBox.Text,
-                        Components = new List<Component>
-                        {
-                            new Component()
-                            {
-                            }
-                        },
-                    }
-                });
-            }
-
-            this.Close();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = false;
-            return;
         }
     }
 }
