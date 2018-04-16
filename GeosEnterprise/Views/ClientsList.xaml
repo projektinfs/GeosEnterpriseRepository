@@ -12,17 +12,17 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="25"/>
-                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}" Width="100"/>
-                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}" Width="100"/>
-                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding ClientContact.Email}" Width="100"/>
-                    <GridViewColumn Header="Tel." DisplayMemberBinding="{Binding ClientContact.Phone}" Width="100"/>
+                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}" Width="130"/>
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}" Width="130"/>
+                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding ClientContact.Email}" Width="130"/>
+                    <GridViewColumn Header="Tel." DisplayMemberBinding="{Binding ClientContact.Phone}" Width="130"/>
                    
 
 
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
+        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="AddButton_Click"/>
         <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
         <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />
         <Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />
