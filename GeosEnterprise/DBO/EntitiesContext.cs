@@ -14,6 +14,8 @@ namespace GeosEnterprise.DBO
         }
 
         public DbSet<Client> Clients { get; set; }
+        public DbSet<ClientAdress> ClientAdresses { get; set; }
+        public DbSet<ClientContact> ClientContacts { get; set; }
         public DbSet<Component> Components { get; set; }
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Repair> Repairs { get; set; }
