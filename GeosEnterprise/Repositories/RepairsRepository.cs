@@ -20,9 +20,9 @@ namespace GeosEnterprise.Repositories
             return App.DB.Repairs.Where(p => p.RealizationDate == null).ToList();
         }
 
-        public static IList<Repair> GetByTime(DateTime? from, DateTime? to)
+        public static IList<Repair> GetByTime(DateTime? timeFrom, DateTime? timeTo)
         {
-            return App.DB.Repairs.Where(p => p.Computer.CreatedDate > from || p.Computer.CreatedDate < to).ToList();
+            return App.DB.Repairs.Where(p => p.Computer.CreatedDate >= timeFrom && p.Computer.CreatedDate <= timeTo).ToList();
         }
 
         public static IList<Repair> GetByDescription(string filter)

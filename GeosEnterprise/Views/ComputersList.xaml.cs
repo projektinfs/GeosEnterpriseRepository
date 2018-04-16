@@ -95,6 +95,7 @@ namespace GeosEnterprise.Views
 
             if (addTimePickerWindows.ShowDialog() == true)
             {
+                
                 System.Windows.MessageBox.Show("Wybrano dodatkowe kryteria wyszukiwania.");
             }
         }

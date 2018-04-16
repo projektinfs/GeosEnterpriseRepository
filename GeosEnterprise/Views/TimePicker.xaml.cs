@@ -1,4 +1,6 @@
 ﻿using GeosEnterprise.Repositories;
+using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +31,10 @@ namespace GeosEnterprise.Views
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
-            
-            if( TimeFrom.Text != null && TimeTo.Text != null)
+
+            if ( TimeFrom.Text != null && TimeTo.Text != null)
             {
-                RepairsRepository.GetByTime(TimeFrom.Value, TimeFrom.Value);
+                IList<Repair> Items = RepairsRepository.GetByTime(TimeFrom.Value, TimeTo.Value);
             }
 
             this.Close();
