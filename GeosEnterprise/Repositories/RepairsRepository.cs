@@ -20,6 +20,27 @@ namespace GeosEnterprise.Repositories
             return App.DB.Repairs.Where(p => p.RealizationDate == null).ToList();
         }
 
+        public static IList<Repair> GetByTime(DateTime? timeFrom, DateTime? timeTo)
+        {
+            return App.DB.Repairs.Where(p => p.Computer.CreatedDate >= timeFrom && p.Computer.CreatedDate <= timeTo).ToList();
+        }
+
+        public static IList<Repair> GetByDescription(string filter)
+        {
+            return App.DB.Repairs.Where(p => p.Description.Contains(filter)
+            || p.Computer.SerialNumber.Contains(filter)).ToList();
+        }
+
+        public static IList<Repair> GetByTimeAndDescription(string filter, DateTime? timeFrom, DateTime? timeTo)
+        {
+
+            IList <Repair> Repairs = App.DB.Repairs.Where(p => p.Computer.CreatedDate >= timeFrom 
+            && p.Computer.CreatedDate <= timeTo).ToList();
+
+            return Repairs.Where(p => p.Description.Contains(filter)
+            || p.Computer.SerialNumber.Contains(filter)).ToList();
+        }
+
         public static Repair Add(Repair repair)
         {
             var added = App.DB.Repairs.Add(repair);

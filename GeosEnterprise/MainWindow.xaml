@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:GeosEnterprise"
         
         mc:Ignorable="d"
-        Title="GeosEnterprise" Height="720" Width="900">
+        Title="GeosEnterprise" Height="720" Width="1200">
     <Window.Resources>
         <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodels:ComputersListViewModel}">
             <views:ComputersList DataContext="{Binding}"></views:ComputersList>

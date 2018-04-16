@@ -63,6 +63,24 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -71,33 +89,46 @@
     </ApplicationDefinition>
     <Compile Include="DBO\Adress.cs" />
     <Compile Include="DBO\Client.cs" />
+    <Compile Include="DBO\ClientAdress.cs" />
+    <Compile Include="DBO\ClientContact.cs" />
     <Compile Include="DBO\Component.cs" />
     <Compile Include="DBO\Computer.cs" />
     <Compile Include="DBO\DBObject.cs" />
     <Compile Include="DBO\Employee.cs" />
     <Compile Include="DBO\EmployeeContact.cs" />
+    <Compile Include="DBO\Employee_mh.cs" />
     <Compile Include="DBO\EntitiesContext.cs" />
     <Compile Include="DBO\Enums.cs" />
     <Compile Include="DBO\Photo.cs" />
     <Compile Include="DBO\Repair.cs" />
     <Compile Include="DTO\AdressDTO.cs" />
+    <Compile Include="DTO\ClientAdressDTO.cs" />
+    <Compile Include="DTO\ClientContactDTO.cs" />
+    <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\ComponentDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
     <Compile Include="DTO\EmployeeContactDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />
     <Compile Include="Repositories\AdressesRepository.cs" />
+    <Compile Include="Repositories\ClientAdressesRepository.cs" />
+    <Compile Include="Repositories\ClientContactsRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\ComputersRepository.cs" />
     <Compile Include="Repositories\EmployeeContactsRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
+    <Compile Include="ViewModels\ClientsListViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClientsList.xaml.cs">
+      <DependentUpon>ClientsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ComputersAdd.xaml.cs">
       <DependentUpon>ComputersAdd.xaml</DependentUpon>
@@ -133,6 +164,10 @@
     <Page Include="Views\AuthenticationPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClientsList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ComputersAdd.xaml">
       <SubType>Designer</SubType>
