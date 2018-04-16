@@ -32,13 +32,21 @@ namespace GeosEnterprise.Views
             this.UpdateLayout();
         }
 
-        //private void AddButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Window addNewClientWindow = new ClientsAdd();
-        //    addNewClientWindow.ShowDialog();
-           
-        //    Refresh();
-        //}
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window addNewClientWindow = new ClientsAdd();
+         
+            if (addNewClientWindow.ShowDialog() == true)
+            {
+                MessageBox.Show("Dodano nowego klienta!");
+            }
+            else
+                MessageBox.Show("Błąd nowego klienta!");
+
+            Refresh();
+        }
+
+       
 
         //private void DeleteButton_Click(object sender, RoutedEventArgs e)
         //{
