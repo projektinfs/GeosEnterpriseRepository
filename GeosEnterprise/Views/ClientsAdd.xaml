@@ -9,15 +9,15 @@
         mc:Ignorable="d"
         Title="ClientsAdd" Height="450" Width="800">
     <Grid>
-        <Label Content="DANE KLIENTA" Margin="235,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <Label Content="DANE KLIENTA" Margin="303,10,285,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Width="204"/>
         <TextBox Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Imię" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
         <TextBox Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="32,103,0,0" VerticalAlignment="Top"/>
         <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="118,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="32,133,0,0" VerticalAlignment="Top"/>
-        <Label Content="Adres" Margin="235,188,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <TextBox Name="CityTextBox" HorizontalAlignment="Left" Height="23" Margin="88,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <Label Content="Adres" Margin="356,179,372,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBox Name="CityTextBox" HorizontalAlignment="Left" Height="23" Margin="110,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
         <Label Content="Miasto" HorizontalAlignment="Left" Margin="24,231,0,0" VerticalAlignment="Top"/>
         <TextBox Name="DistrictTextBox" HorizontalAlignment="Left" Height="23" Margin="323,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Label Content="Powiat" HorizontalAlignment="Left" Margin="261,231,0,0" VerticalAlignment="Top"/>
@@ -27,17 +27,16 @@
         <Label Content="Kod pocztowy" HorizontalAlignment="Left" Margin="24,259,0,0" VerticalAlignment="Top"/>
         <TextBox Name="StreetTextBox" HorizontalAlignment="Left" Height="23" Margin="323,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
         <Label Content="Ulica" HorizontalAlignment="Left" Margin="261,259,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="BuildingTextBox" HorizontalAlignment="Left" Height="23" Margin="572,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609"/>
+        <TextBox Name="BuildingTextBox" HorizontalAlignment="Left" Height="23" Margin="606,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.667,0.609"/>
         <Label Content="Budynek" HorizontalAlignment="Left" Margin="498,259,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="AppartamentTextBox" HorizontalAlignment="Left" Height="23" Margin="703,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609"/>
-        <Label Content="Mieszkanie" HorizontalAlignment="Left" Margin="620,259,0,0" VerticalAlignment="Top"/>
-        <Label Content="Kontakt" Margin="235,290,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <TextBox Name="PhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="88,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="telefon" HorizontalAlignment="Left" Margin="24,320,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="FaxTextBox" HorizontalAlignment="Left" Height="23" Margin="323,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="fax" HorizontalAlignment="Left" Margin="261,320,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WwwTextBox" HorizontalAlignment="Left" Height="23" Margin="606,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="www" HorizontalAlignment="Left" Margin="498,317,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.444,0.923"/>
+        <TextBox Name="AppartamentTextBox" HorizontalAlignment="Left" Height="23" Margin="711,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.667,0.609"/>
+        <Label Content="Lokal" HorizontalAlignment="Left" Margin="668,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538"/>
+        <TextBox Name="PhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="490,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <Label Content="telefon" HorizontalAlignment="Left" Margin="426,73,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="FaxTextBox" HorizontalAlignment="Left" Height="23" Margin="490,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <Label Content="fax" HorizontalAlignment="Left" Margin="426,104,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="WwwTextBox" HorizontalAlignment="Left" Height="23" Margin="490,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <Label Content="www" HorizontalAlignment="Left" Margin="426,137,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.444,0.923"/>
         <Button Name="OKButton" Content="Zapisz" HorizontalAlignment="Left" Margin="0,0,0,0.226" VerticalAlignment="Bottom" Width="75" Click="OKButton_Click"/>
         <Button Name="CancelButton" Content="Powrót" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75" Click="CancelButton_Click"/>
 

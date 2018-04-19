@@ -23,9 +23,9 @@
             </ListView.View>
         </ListView>
         <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="AddButton_Click"/>
-        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
-        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />
-        <Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />
+        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold" Click="DeleteButton_Click"/>
+        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click" />
+        <!--<Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />-->
 
     </Grid>
 </UserControl>
