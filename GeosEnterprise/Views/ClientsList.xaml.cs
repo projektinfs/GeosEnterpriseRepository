@@ -32,54 +32,57 @@ namespace GeosEnterprise.Views
             this.UpdateLayout();
         }
 
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+
             Window addNewClientWindow = new ClientsAdd();
          
             if (addNewClientWindow.ShowDialog() == true)
             {
                 MessageBox.Show("Dodano nowego klienta!");
             }
-            else
-                MessageBox.Show("Błąd nowego klienta!");
 
             Refresh();
+            
         }
 
        
 
-        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var ClientDTO = AllClientsList.SelectedItem as ClientDTO;
-        //    if (ClientDTO != null)
-        //    {
-        //        Repositories.ClientRepository.Delete(ClientDTO.ID);
-        //        Refresh();
-        //    }
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var ClientDTO = AllClientsList.SelectedItem as ClientDTO;
+            if (ClientDTO != null)
+           {
+                Repositories.ClientRepository.Delete(ClientDTO.ID);
+                Refresh();
+            }
 
-        //}
+        }
 
-        //private void EditButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var clientDTO = AllClientsList.SelectedItem as ClientDTO;
-        //    if (clientDTO != null)
-        //    {
-        //        Window addNewClientWindow = new clientsAdd(clientDTO.ID);
-        //        addNewClientWindow.ShowDialog();
-        //    }
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            var clientDTO = AllClientsList.SelectedItem as ClientDTO;
+            if (clientDTO != null)
+             {
+                 Window addNewClientWindow = new ClientsAdd(clientDTO.ID);
+                 addNewClientWindow.ShowDialog();
+             }
            
-        //}
+         }
 
-        //private void InfoButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var ClientDTO = AllClientsList.SelectedItem as ClientDTO;
-        //    if (ClientDTO != null)
-        //    {
-        //        Window addNewClientWindow = new ClientInfo(ClientDTO.ID);
-        //        addNewClientWindow.ShowDialog();
-        //    }
+        /*
+         private void InfoButton_Click(object sender, RoutedEventArgs e)
+         {
+             var ClientDTO = AllClientsList.SelectedItem as ClientDTO;
+             if (ClientDTO != null)
+             {
+                 Window addNewClientWindow = new ClientInfo(ClientDTO.ID);
+                 addNewClientWindow.ShowDialog();
+             }
 
-        //}
+         }
+         */
     }
 }
 

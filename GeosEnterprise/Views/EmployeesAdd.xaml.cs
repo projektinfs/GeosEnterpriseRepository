@@ -72,9 +72,9 @@ namespace GeosEnterprise.Views
                         City = CityTextBox.Text,
                         Voivodeship = VoivodeshipTextBox.Text,
                         District = DistrictTextBox.Text,
-                        PostCode = int.Parse(PostCodeTextBox.Text),
+                        PostCode = PostCodeTextBox.Text,
                         Street = StreetTextBox.Text,
-                        BuildingNumber = int.Parse(BuildingTextBox.Text),
+                        BuildingNumber = BuildingTextBox.Text,
                         AppartamentNumber = int.Parse(AppartamentTextBox.Text)
                     },
                     EmployeeContact = new EmployeeContact
@@ -102,9 +102,9 @@ namespace GeosEnterprise.Views
                         City = CityTextBox.Text,
                         Voivodeship = VoivodeshipTextBox.Text,
                         District = DistrictTextBox.Text,
-                        PostCode = int.Parse(PostCodeTextBox.Text),
+                        PostCode = PostCodeTextBox.Text,
                         Street = StreetTextBox.Text,
-                        BuildingNumber = int.Parse(BuildingTextBox.Text),
+                        BuildingNumber = BuildingTextBox.Text,
                         AppartamentNumber = int.Parse(AppartamentTextBox.Text)
                     },
                     EmployeeContact = new EmployeeContact

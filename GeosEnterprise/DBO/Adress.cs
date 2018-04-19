@@ -11,9 +11,9 @@ namespace GeosEnterprise.DBO
         public string City { get; set; }
         public string Voivodeship { get; set; }
         public string District { get; set; }
-        public int PostCode { get; set; }
+        public string PostCode { get; set; }
         public string Street { get; set; }
-        public int BuildingNumber { get; set; }
+        public string BuildingNumber { get; set; }
         public int AppartamentNumber { get; set; }
     }
 }
