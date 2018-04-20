@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise
 {
-    class Config
+    public static class Config
     {
+        /// <summary>
+        /// True - jeśli chcemy wciąż trzymać usunięte rekordy w bazie
+        /// </summary>
+        public static bool DoNotDeletePermanently = true;
     }
 }

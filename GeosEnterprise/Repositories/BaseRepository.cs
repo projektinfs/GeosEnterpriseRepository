@@ -14,7 +14,15 @@ namespace GeosEnterprise.Repositories
 
         public static void Delete(TEntity entity)
         {
-            _dbContext.Set<TEntity>().Remove(entity);
+            if (Config.DoNotDeletePermanently)
+            {
+                entity.DeletedBy = "admin";
+                entity.DeletedDate = DateTime.Now;
+            }
+            else
+            {
+                _dbContext.Set<TEntity>().Remove(entity);
+            }
         }
 
         public static IList<TEntity> GetAllCurrent()
@@ -34,7 +42,7 @@ namespace GeosEnterprise.Repositories
 
         public static IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbContext.Set<TEntity>().Where(predicate);
+            return _dbContext.Set<TEntity>().Where(p => p.DeletedDate == null).Where(predicate);
         }
 
         public static TEntity ExecuteQuery(Func<TEntity> function, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
