@@ -10,6 +10,5 @@ namespace GeosEnterprise.DBO
     public class Computer : DBObject<int>
     {
         public string SerialNumber { get; set; }
-        public virtual List<Component> Components { get; set; }
     }
 }

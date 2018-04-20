@@ -91,7 +91,6 @@
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\ClientAdress.cs" />
     <Compile Include="DBO\ClientContact.cs" />
-    <Compile Include="DBO\Component.cs" />
     <Compile Include="DBO\Computer.cs" />
     <Compile Include="DBO\DBObject.cs" />
     <Compile Include="DBO\Employee.cs" />
@@ -105,12 +104,12 @@
     <Compile Include="DTO\ClientAdressDTO.cs" />
     <Compile Include="DTO\ClientContactDTO.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
-    <Compile Include="DTO\ComponentDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
     <Compile Include="DTO\EmployeeContactDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />
     <Compile Include="Repositories\AdressesRepository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\ClientAdressesRepository.cs" />
     <Compile Include="Repositories\ClientContactsRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />

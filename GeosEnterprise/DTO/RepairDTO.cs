@@ -16,12 +16,11 @@ namespace GeosEnterprise.DTO
 
         public static RepairDTO ToDTO(DBO.Repair entity)
         {
-            entity.Computer = Repositories.ComputersRepository.GetByRepairId(entity.ID, true);
+            entity.Computer = Repositories.ComputersRepository.GetByRepairId(entity.ID);
             return new RepairDTO
             {
                 Computer = new ComputerDTO
                 {
-                    Components = entity.Computer.Components.Select(p => ComponentDTO.ToDTO(p)).ToList(),
                     ID = entity.Computer.ID,
                     SerialNumber = entity.Computer.SerialNumber
                 },

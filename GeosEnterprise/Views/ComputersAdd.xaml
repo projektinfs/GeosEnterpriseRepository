@@ -10,10 +10,9 @@
     <Grid>
         <TextBox Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Numer seryjny" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
-        <Label Content="ZLECENIE NAPRAWY" Margin="235,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <Label Content="ZLECENIE NAPRAWY" Margin="0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
         <Label Content="Opis usterki" HorizontalAlignment="Left" Margin="32,103,0,0" VerticalAlignment="Top"/>
         <TextBox Name="DescriptionTextBox" Text="{Binding BindingItem.Description}"  HorizontalAlignment="Left" Height="23" Margin="118,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="631"/>
-        <Label Content="Komponenty komputera" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top"/>
         <Button Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" HorizontalAlignment="Left" Margin="0,0,0,0.226" VerticalAlignment="Bottom" Width="75"/>
         <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75"/>
 

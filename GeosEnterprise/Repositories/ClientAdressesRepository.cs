@@ -8,11 +8,7 @@ using GeosEnterprise.DBO;
 
 namespace GeosEnterprise.Repositories
 {
-    public class ClientAdressesRepository
+    public class ClientAdressesRepository : BaseRepository<ClientAdress>
     {
-        public static ClientAdress GetById(int adressId)
-        {
-            return App.DB.ClientAdresses.Where(p => p.ID == adressId).FirstOrDefault();
-        }
     }
 }

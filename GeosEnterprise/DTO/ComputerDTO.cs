@@ -10,6 +10,5 @@ namespace GeosEnterprise.DTO
     {
         public int ID { get; set; }
         public string SerialNumber { get; set; }
-        public List<ComponentDTO> Components { get; set; }
     }
 }

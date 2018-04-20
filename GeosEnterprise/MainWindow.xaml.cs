@@ -24,6 +24,16 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
+            InitializeDatabase(true);
+        }
+
+        private void InitializeDatabase(bool dropAndCreateWhenModelChanges)
+        {
+            if (!App.DB.Database.CompatibleWithModel(false))
+            {
+                App.DB.Database.Delete();
+                App.DB.Database.Create();
+            }
             App.DB.Computers.Any();
         }
 

@@ -6,16 +6,4 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DBO
 {
-    public enum ComponentType
-    {
-        MotherBoard = 1,
-        CPU = 2,
-        GPU = 3,
-        RAM = 4,
-        HDD = 5,
-        Monitor = 6,
-        Case = 7,
-        Speakers = 8,
-        Unknown = 99
-    };
 }

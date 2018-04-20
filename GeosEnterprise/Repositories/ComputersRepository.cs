@@ -7,32 +7,15 @@ using GeosEnterprise.DBO;
 
 namespace GeosEnterprise.Repositories
 {
-    public static class ComputersRepository
+    public class ComputersRepository : BaseRepository<Computer>
     {
-        public static Computer GetById(int id, bool withComponents = false)
+        public static Computer GetByRepairId(int repairId)
         {
-            Computer computer = App.DB.Computers.Where(p => p.ID == id).FirstOrDefault();
-            if (withComponents)
+            return ExecuteQuery(() =>
             {
-                computer.Components = GetComponentsByComputerId(id);
-            }
-            return computer;
-        }
-
-        public static Computer GetByRepairId(int repairId, bool withComponents = false)
-        {
-            var repair = Repositories.RepairsRepository.GetById(repairId);
-            Computer computer = App.DB.Computers.Where(p => p.ID == repair.ComputerID).FirstOrDefault();
-            if (withComponents)
-            {
-                computer.Components = GetComponentsByComputerId(computer.ID);
-            }
-            return computer;
-        }
-
-        public static List<Component> GetComponentsByComputerId(int computerId)
-        {
-            return App.DB.Components.Where(p => p.ComputerID == computerId).ToList();
+                var repair = Repositories.RepairsRepository.GetById(repairId);
+                return Where(p => p.ID == repair.ComputerID).FirstOrDefault();
+            });
         }
     }
 }

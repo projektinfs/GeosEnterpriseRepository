@@ -25,7 +25,6 @@ namespace GeosEnterprise.ViewModels
             {
                 BindingItem = new RepairDTO();
                 BindingItem.Computer = new ComputerDTO();
-                BindingItem.Computer.Components = new List<ComponentDTO>();
             }
 
 

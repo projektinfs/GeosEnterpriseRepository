@@ -26,7 +26,6 @@ namespace GeosEnterprise.ViewModels
             {
                 BindingItem = new RepairDTO();
                 BindingItem.Computer = new ComputerDTO();
-                BindingItem.Computer.Components = new List<ComponentDTO>();
             }
             OKButtonCommand = new RelayCommand<Window>(OK);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
@@ -43,12 +42,6 @@ namespace GeosEnterprise.ViewModels
                     Computer = new Computer
                     {
                         SerialNumber = BindingItem.Computer.SerialNumber,
-                        Components = new List<Component>
-                        {
-                            new Component()
-                            {
-                            }
-                        },
                     }
                 });
             }
@@ -60,12 +53,6 @@ namespace GeosEnterprise.ViewModels
                     Computer = new Computer
                     {
                         SerialNumber = BindingItem.Computer.SerialNumber,
-                        Components = new List<Component>
-                        {
-                            new Component()
-                            {
-                            }
-                        },
                     }
                 });
             }
