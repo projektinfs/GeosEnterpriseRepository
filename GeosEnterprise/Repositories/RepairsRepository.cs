@@ -14,7 +14,7 @@ namespace GeosEnterprise.Repositories
         {
             return ExecuteQuery(() =>
             {
-                return GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
+                return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
             });
         }
 
