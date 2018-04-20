@@ -60,7 +60,7 @@ namespace GeosEnterprise.Repositories
             return ExecuteQuery(() =>
             {
                 var toEdit = App.DB.Repairs.Where(p => p.ID == repair.ID).FirstOrDefault();
-                toEdit.ModifiedBy = "admin";
+                toEdit.ModifiedBy = Session.Username;
                 toEdit.ModifiedDate = DateTime.Now;
                 toEdit.Description = repair.Description;
                 toEdit.Computer = repair.Computer;

@@ -16,7 +16,7 @@ namespace GeosEnterprise.Repositories
         {
             if (Config.DoNotDeletePermanently)
             {
-                entity.DeletedBy = "admin";
+                entity.DeletedBy = Session.Username;
                 entity.DeletedDate = DateTime.Now;
             }
             else

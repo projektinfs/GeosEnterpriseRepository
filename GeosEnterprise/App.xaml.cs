@@ -16,4 +16,9 @@ namespace GeosEnterprise
     {
         public static EntitiesContext DB = new EntitiesContext();
     }
+
+    public class Session
+    {
+        public static string Username = "admin";
+    }
 }

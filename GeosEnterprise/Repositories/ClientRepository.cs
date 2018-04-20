@@ -31,7 +31,7 @@ namespace GeosEnterprise.Repositories
             return ExecuteQuery(() =>
             {
                 var toEdit = App.DB.Clients.Where(p => p.ID == client.ID).FirstOrDefault();
-                toEdit.ModifiedBy = "admin";
+                toEdit.ModifiedBy = Session.Username;
                 toEdit.ModifiedDate = DateTime.Now;
                 toEdit.Name = client.Name;
                 toEdit.Surname = client.Surname;

@@ -36,7 +36,7 @@ namespace GeosEnterprise.Repositories
             return ExecuteQuery(() =>
             {
                 var toEdit = App.DB.Employees.Where(p => p.ID == employee.ID).FirstOrDefault();
-                toEdit.ModifiedBy = "admin";
+                toEdit.ModifiedBy = Session.Username;
                 toEdit.ModifiedDate = DateTime.Now;
                 toEdit.Email = employee.Email;
                 toEdit.Password = employee.Password;
