@@ -122,6 +122,7 @@
     <Compile Include="ViewModels\ClientsListViewModel.cs" />
     <Compile Include="ViewModels\CommonThings\RelayCommand.cs" />
     <Compile Include="ViewModels\ComputersAddViewModel.cs" />
+    <Compile Include="ViewModels\ComputersInfoViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
@@ -152,6 +153,9 @@
     </Compile>
     <Compile Include="Views\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ComputersInfo.xaml.cs">
+      <DependentUpon>ComputersInfo.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StartPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ComputersInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

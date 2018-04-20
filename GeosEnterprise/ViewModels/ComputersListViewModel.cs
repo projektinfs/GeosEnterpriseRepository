@@ -19,6 +19,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand AddButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
+        public ICommand InfoButtonCommand { get; set; }
         public object SelectedItem { get; set; }
 
         public ComputersListViewModel()
@@ -26,6 +27,7 @@ namespace GeosEnterprise.ViewModels
             AddButtonCommand = new RelayCommand<object>(Add);
             EditButtonCommand = new RelayCommand<object>(Edit);
             DeleteButtonCommand = new RelayCommand<object>(Delete);
+            InfoButtonCommand = new RelayCommand<object>(Info);
         }
 
         public ObservableCollection<RepairDTO> Items
@@ -65,5 +67,14 @@ namespace GeosEnterprise.ViewModels
             }
         }
 
+        public void Info(object obj)
+        {
+            var repairDTO = SelectedItem as RepairDTO;
+            if (repairDTO != null)
+            {
+                Window infoRepairWindow = new ComputersInfo(repairDTO.ID);
+                infoRepairWindow.Show();
+            }
+        }
     }
 }
