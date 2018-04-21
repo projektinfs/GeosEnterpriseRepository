@@ -9,7 +9,7 @@ namespace GeosEnterprise.DBO
     public class EmployeeContact : DBObject<int>
     {
         public string Www { get; set; }
-        public int Phone { get; set; }
-        public int Fax { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
     }
 }

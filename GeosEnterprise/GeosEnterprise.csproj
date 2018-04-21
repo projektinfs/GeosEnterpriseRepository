@@ -125,6 +125,7 @@
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
+    <Compile Include="ViewModels\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>

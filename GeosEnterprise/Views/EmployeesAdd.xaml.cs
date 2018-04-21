@@ -79,8 +79,8 @@ namespace GeosEnterprise.Views
                     },
                     EmployeeContact = new EmployeeContact
                     {
-                        Phone = int.Parse(PhoneTextBox.Text),
-                        Fax = int.Parse(FaxTextBox.Text),
+                        Phone = PhoneTextBox.Text,
+                        Fax = FaxTextBox.Text,
                         Www = WwwTextBox.Text
                     }
                 });
@@ -109,8 +109,8 @@ namespace GeosEnterprise.Views
                     },
                     EmployeeContact = new EmployeeContact
                     {
-                        Phone = int.Parse(PhoneTextBox.Text),
-                        Fax = int.Parse(FaxTextBox.Text),
+                        Phone = PhoneTextBox.Text,
+                        Fax = FaxTextBox.Text,
                         Www = WwwTextBox.Text
                     }
                 });

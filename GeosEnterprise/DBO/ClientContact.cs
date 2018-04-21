@@ -10,7 +10,7 @@ namespace GeosEnterprise.DBO
     {
         public string Email { get; set; }
         public string Www { get; set; }
-        public int Phone { get; set; }
-        public int Fax { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
     }
 }

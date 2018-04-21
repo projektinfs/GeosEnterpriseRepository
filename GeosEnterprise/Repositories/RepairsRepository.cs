@@ -32,6 +32,7 @@ namespace GeosEnterprise.Repositories
             {
                 return Where(p => p.Description.Contains(filter)
             || p.Computer.SerialNumber.Contains(filter)).ToList();
+
             });
         }
 
@@ -45,6 +46,25 @@ namespace GeosEnterprise.Repositories
                 return Repairs.Where(p => p.Description.Contains(filter)
                 || p.Computer.SerialNumber.Contains(filter)).ToList();
             });
+        }
+
+    
+        public static IList<Repair> GetAll(string filter, DateTime? TimeFrom, DateTime? TimeTo)
+        {
+            if (filter == "Wpisz tekst...")
+            {
+                if (TimeFrom.HasValue == false || TimeTo.HasValue == false)
+                    return GetAllCurrent();
+                else
+                    return GetByTime(TimeFrom,TimeTo);
+            }
+            else
+            {
+                if (TimeFrom.HasValue == false || TimeTo.HasValue == false)
+                    return GetByDescription(filter);
+                else
+                    return GetByTimeAndDescription(filter, TimeFrom, TimeTo);
+            }
         }
 
         public static Repair Add(Repair repair)

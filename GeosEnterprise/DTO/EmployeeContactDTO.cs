@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DTO
 {
-   public  class EmployeeContactDTO
+    public class EmployeeContactDTO
     {
         public string Www { get; set; }
-        public int Phone { get; set; }
-        public int? Fax { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
 
         public static EmployeeContactDTO ToDTO(DBO.EmployeeContact entity)
         {

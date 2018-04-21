@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.ComponentModel;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
@@ -14,13 +15,50 @@ using GeosEnterprise.Views;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ComputersListViewModel
+    public class ComputersListViewModel : PropertyChangedBase
     {
         public ICommand AddButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand InfoButtonCommand { get; set; }
+        public ICommand DateTimeNowButtonCommand { get; set; }
+        public ICommand ResetButtonCommand { get; set; }
+
         public object SelectedItem { get; set; }
+
+        private DateTime? timeToBindingItem;
+        public DateTime? TimeToBindingItem
+        {
+            get
+            {
+                return timeToBindingItem;
+            }
+            set
+            {
+                if (timeToBindingItem != value)
+                {
+                    timeToBindingItem = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        private DateTime? timeFromBindingItem;
+        public DateTime? TimeFromBindingItem
+        {
+            get
+            {
+                return timeFromBindingItem;
+            }
+            set
+            {
+                if (timeFromBindingItem != value)
+                {
+                    timeFromBindingItem = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public ComputersListViewModel()
         {
@@ -28,6 +66,8 @@ namespace GeosEnterprise.ViewModels
             EditButtonCommand = new RelayCommand<object>(Edit);
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             InfoButtonCommand = new RelayCommand<object>(Info);
+            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
+            ResetButtonCommand = new RelayCommand<object>(Reset);
         }
 
         public ObservableCollection<RepairDTO> Items
@@ -67,6 +107,7 @@ namespace GeosEnterprise.ViewModels
             }
         }
 
+        
         public void Info(object obj)
         {
             var repairDTO = SelectedItem as RepairDTO;
@@ -76,5 +117,17 @@ namespace GeosEnterprise.ViewModels
                 infoRepairWindow.Show();
             }
         }
+
+        public void Now(object obj)
+        {
+            TimeToBindingItem = DateTime.Now;
+        }
+
+        public void Reset(object obj)
+        {
+            TimeToBindingItem = null;
+            TimeFromBindingItem = null;
+        }
+
     }
 }

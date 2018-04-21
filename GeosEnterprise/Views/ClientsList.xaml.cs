@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.ViewModels;
+using GeosEnterprise.Repositories;
 
 namespace GeosEnterprise.Views
 {
@@ -83,6 +84,18 @@ namespace GeosEnterprise.Views
 
          }
          */
+
+        private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox SearchBar = (TextBox)sender;
+            SearchBar.Text = string.Empty;
+            SearchBar.GotFocus -= SearchBar_GotFocus;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            AllClientsList.ItemsSource = ClientRepository.GetAll(SearchBar.Text, TimeFrom.Value, TimeTo.Value);
+        }
     }
 }
 

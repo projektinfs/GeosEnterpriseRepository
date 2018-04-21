@@ -75,8 +75,8 @@ namespace GeosEnterprise.Views
                     },
                     ClientContact = new ClientContact
                     {
-                        Phone = int.Parse(PhoneTextBox.Text),
-                        Fax = int.Parse(FaxTextBox.Text),
+                        Phone = PhoneTextBox.Text,
+                        Fax = FaxTextBox.Text,
                         Www = WwwTextBox.Text,
                         Email = EmailTextBox.Text,
                     }
@@ -103,8 +103,8 @@ namespace GeosEnterprise.Views
                     },
                     ClientContact = new ClientContact
                     {
-                        Phone = int.Parse(PhoneTextBox.Text),
-                        Fax = int.Parse(FaxTextBox.Text),
+                        Phone = PhoneTextBox.Text,
+                        Fax = FaxTextBox.Text,
                         Www = WwwTextBox.Text,
                         Email = EmailTextBox.Text,
                     }

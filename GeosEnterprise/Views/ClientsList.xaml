@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="900">
 
     <Grid Background="LightCoral">
-        <ListView Name="AllClientsList" ItemsSource="{Binding Items}" Margin="0,1,-0.302,36.113">
+        <ListView Name="AllClientsList" ItemsSource="{Binding Items}" Margin="0,37,0,36.6">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="25"/>
@@ -16,7 +17,7 @@
                     <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}" Width="130"/>
                     <GridViewColumn Header="Email" DisplayMemberBinding="{Binding ClientContact.Email}" Width="130"/>
                     <GridViewColumn Header="Tel." DisplayMemberBinding="{Binding ClientContact.Phone}" Width="130"/>
-                   
+                    <GridViewColumn Header="Data dodania" DisplayMemberBinding="{Binding CreatedDate}" Width="130"/>
 
 
                 </GridView>
@@ -26,6 +27,13 @@
         <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold" Click="DeleteButton_Click"/>
         <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click" />
         <!--<Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />-->
-
+        <Label Content="Od" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="24" Width="28" RenderTransformOrigin="2.35,-0.308"/>
+        <Label Content="Do" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="272,6,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="2.036,0.523"/>
+        <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" HorizontalAlignment="Left" Margin="43,6,0,0" VerticalAlignment="Top" Height="24" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold"/>
+        <xctk:DateTimePicker x:Name="TimeTo" Value="{Binding TimeToBindingItem, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,6,0,0" VerticalAlignment="Top" Height="24" Width="221" FontFamily="DejaVu Sans Condensed" FontSize="10"/>
+        <Button Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,6,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24"/>
+        <Button Name="DateTimeNowButton" Content="Teraz" Command="{Binding DateTimeNowButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="521,6,0,0"  Width="30" Height="24" RenderTransformOrigin="8.891,-2.3" Grid.ColumnSpan="3"/>
+        <Button Name="SearchButton" Content="Szukaj..." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="822,7,0,0"  Width="68" Height="24" Click="SearchButton_Click"/>
+        <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="620,7,0,0" TextWrapping="Wrap" FontSize="17" FontWeight="Bold" Background="#FFDDDDDD" Width="197" GotFocus="SearchBar_GotFocus"/>
     </Grid>
 </UserControl>
