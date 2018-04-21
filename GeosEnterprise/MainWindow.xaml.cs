@@ -29,7 +29,7 @@ namespace GeosEnterprise
 
         private void InitializeDatabase(bool dropAndCreateWhenModelChanges)
         {
-            if (!App.DB.Database.CompatibleWithModel(false))
+            if (!App.DB.Database.CompatibleWithModel(false) && dropAndCreateWhenModelChanges)
             {
                 App.DB.Database.Delete();
                 App.DB.Database.Create();

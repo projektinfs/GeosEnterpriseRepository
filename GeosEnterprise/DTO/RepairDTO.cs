@@ -22,12 +22,13 @@ namespace GeosEnterprise.DTO
                 Computer = new ComputerDTO
                 {
                     ID = entity.Computer.ID,
-                    SerialNumber = entity.Computer.SerialNumber
+                    SerialNumber = entity.Computer.SerialNumber,
+                    Name = entity.Computer.Name
                 },
                 CreatedDate = entity.CreatedDate,
                 Description = entity.Description,
                 ID = entity.ID,
-                RealizationDate = entity.RealizationDate
+                RealizationDate = entity.RealizationDate,
             };
             
         }

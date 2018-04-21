@@ -9,6 +9,7 @@ namespace GeosEnterprise.DBO
 {
     public class Computer : DBObject<int>
     {
+        public string Name { get; set; }
         public string SerialNumber { get; set; }
     }
 }
