@@ -33,9 +33,9 @@
         <Label Content="Do" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="272,6,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="2.036,0.523"/>
         <xctk:DateTimePicker x:Name="TimeFrom" HorizontalAlignment="Left" Margin="43,6,0,0" VerticalAlignment="Top" Height="24" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold"/>
         <xctk:DateTimePicker x:Name="TimeTo" HorizontalAlignment="Left" Margin="300,6,0,0" VerticalAlignment="Top" Height="24" Width="221" FontFamily="DejaVu Sans Condensed" FontSize="10"/>
-        <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="27.547,6,0,0" TextWrapping="Wrap" FontSize="17" FontWeight="Bold" Background="#FFDDDDDD" GotFocus="SearchBar_GotFocus" Width="197" Grid.Column="2" Height="24"/>
+        <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="28,6,80,0" TextWrapping="Wrap" FontSize="17" FontWeight="Bold" Background="#FFDDDDDD" GotFocus="SearchBar_GotFocus" Grid.Column="2" Height="24" MinWidth="197" VerticalAlignment="Top" HorizontalAlignment="Right"/>
         <Button Name="ResetButton" Content="Reset daty" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,6,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Click="ResetButton_Click" Height="24" Grid.ColumnSpan="3"/>
         <Button Name="DateTimeNowButton" Content="Teraz" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="521,6,0,0"  Width="30" Height="24" Click="DateTimeNowButton_Click" RenderTransformOrigin="8.891,-2.3" Grid.ColumnSpan="3"/>
-        <Button Name="SearchButton" Content="Szukaj..." Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="229.547,6,0,0"  Width="68" Height="24" Click="SearchButton_Click"/>
+        <Button Name="SearchButton" Content="Szukaj..." Grid.Column="2" VerticalAlignment="Top" Margin="229.547,6,5,0" Height="24" Click="SearchButton_Click" MinWidth="68" HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

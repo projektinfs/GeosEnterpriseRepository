@@ -23,5 +23,6 @@ namespace GeosEnterprise
     public class Session
     {
         public static string Username = "admin";
+        public static UserRole UserRole = UserRole.Administrator;
     }
 }
