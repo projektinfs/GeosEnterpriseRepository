@@ -16,8 +16,6 @@ namespace GeosEnterprise.DBO
         public string Position { get; set; }
         public virtual Adress Adress { get; set; }
         public virtual EmployeeContact EmployeeContact { get; set; }
-
-
-
+        public UserRole UserRole { get; set; }
     }
 }

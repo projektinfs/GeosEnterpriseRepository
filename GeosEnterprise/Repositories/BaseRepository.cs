@@ -40,6 +40,12 @@ namespace GeosEnterprise.Repositories
             return _dbContext.Set<TEntity>().Add(entity);
         }
 
+        public static void Update(TEntity entity)
+        {
+            var editObject = GetById(entity.ID);
+            _dbContext.Entry(editObject).CurrentValues.SetValues(entity);
+        }
+
         public static IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbContext.Set<TEntity>().Where(p => p.DeletedDate == null).Where(predicate);

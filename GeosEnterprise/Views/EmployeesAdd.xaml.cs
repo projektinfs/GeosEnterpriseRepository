@@ -57,7 +57,7 @@ namespace GeosEnterprise.Views
 
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
-            if(this.employeeID == null)
+            if (this.employeeID == null)
             {
                 Repositories.EmployeeRepository.Add(new Employee
                 {
@@ -66,7 +66,7 @@ namespace GeosEnterprise.Views
                     Name = NameTextBox.Text,
                     Surname = SurnameTextBox.Text,
                     Position = PositionTextBox.Text,
-
+                    UserRole = PositionToUserRole(PositionTextBox.Text),
                     Adress = new Adress
                     {
                         City = CityTextBox.Text,
@@ -96,7 +96,7 @@ namespace GeosEnterprise.Views
                     Name = NameTextBox.Text,
                     Surname = SurnameTextBox.Text,
                     Position = PositionTextBox.Text,
-
+                    UserRole = PositionToUserRole(PositionTextBox.Text),
                     Adress = new Adress
                     {
                         City = CityTextBox.Text,
@@ -116,7 +116,7 @@ namespace GeosEnterprise.Views
                 });
             }
 
-           
+
 
             this.Close();
 
@@ -126,6 +126,23 @@ namespace GeosEnterprise.Views
         {
             this.DialogResult = false;
             return;
+        }
+
+        private UserRole PositionToUserRole(string position)
+        {
+            switch (position)
+            {
+                case "Kierownik":
+                    return UserRole.Manager;
+                case "Księgowy":
+                    return UserRole.Accountant;
+                case "Serwisant":
+                    return UserRole.Serviceman;
+                case "Sprzedawca":
+                    return UserRole.Dealer;
+                default:
+                    return UserRole.Unknown;
+            }
         }
 
     }

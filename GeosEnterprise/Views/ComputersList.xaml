@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GeosEnterprise.Views.ComputersList"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,14 +9,19 @@
              d:DesignHeight="450" d:DesignWidth="900">
 
     <Grid Background="LightCoral">
-        <ListView Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"  Margin="0,36,0,36.6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" Margin="0,37,0,36.6" Grid.ColumnSpan="3">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="40"/>
                     <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
+                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Computer.Name}" Width="120"/>
                     <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="120"/>
-                    <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="300"/>
-
+                    <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="500"/>
                 </GridView>
             </ListView.View>
         </ListView>

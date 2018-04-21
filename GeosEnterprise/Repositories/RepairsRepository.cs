@@ -75,18 +75,11 @@ namespace GeosEnterprise.Repositories
             });
         }
 
-        public static Repair Edit(Repair repair)
+        public static void Edit(Repair repair)
         {
-            return ExecuteQuery(() =>
+            ExecuteQuery(() =>
             {
-                var toEdit = App.DB.Repairs.Where(p => p.ID == repair.ID).FirstOrDefault();
-                toEdit.ModifiedBy = Session.Username;
-                toEdit.ModifiedDate = DateTime.Now;
-                toEdit.Description = repair.Description;
-                toEdit.Computer = repair.Computer;
-                toEdit.ClientID = repair.ClientID;
-                App.DB.SaveChanges();
-                return toEdit;
+                Update(repair);
             });
         }
 

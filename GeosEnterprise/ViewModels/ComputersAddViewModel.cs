@@ -39,9 +39,11 @@ namespace GeosEnterprise.ViewModels
                 {
                     ID = (int)BindingItem.ID,
                     Description = BindingItem.Description,
+                    ComputerID = BindingItem.ComputerID,
                     Computer = new Computer
                     {
                         SerialNumber = BindingItem.Computer.SerialNumber,
+                        Name = BindingItem.Computer.Name
                     }
                 });
             }
@@ -53,6 +55,7 @@ namespace GeosEnterprise.ViewModels
                     Computer = new Computer
                     {
                         SerialNumber = BindingItem.Computer.SerialNumber,
+                        Name = BindingItem.Computer.Name
                     }
                 });
             }

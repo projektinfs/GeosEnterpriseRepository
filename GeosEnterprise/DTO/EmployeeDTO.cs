@@ -17,6 +17,7 @@ namespace GeosEnterprise.DTO
         public string Position { get; set; }
         public AdressDTO Adress { get; set; }
         public EmployeeContactDTO EmployeeContact { get; set; }
+        public UserRole UserRole { get; set;}
 
 
         public static EmployeeDTO ToDTO(DBO.Employee entity)
@@ -48,7 +49,8 @@ namespace GeosEnterprise.DTO
                Password = entity.Password,
                Name  = entity.Name,
                Surname = entity.Surname,
-               Position = entity.Position
+               Position = entity.Position,
+               UserRole = entity.UserRole
             };
         }
     }

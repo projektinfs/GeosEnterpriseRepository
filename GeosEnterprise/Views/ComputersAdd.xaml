@@ -6,15 +6,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
         mc:Ignorable="d"
-        Title="Zlecenie naprawy" Height="450" Width="800">
+        Title="Zlecenie naprawy" Height="325.925" Width="485.736">
     <Grid>
-        <TextBox Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Numer seryjny" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
         <Label Content="ZLECENIE NAPRAWY" Margin="0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-        <Label Content="Opis usterki" HorizontalAlignment="Left" Margin="32,103,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="DescriptionTextBox" Text="{Binding BindingItem.Description}"  HorizontalAlignment="Left" Height="23" Margin="118,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="631"/>
-        <Button Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" HorizontalAlignment="Left" Margin="0,0,0,0.226" VerticalAlignment="Bottom" Width="75"/>
-        <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75"/>
+        <Grid Margin="17,60,63.189,61.151" VerticalAlignment="Center">
+            <Label Content="Numer seryjny" Margin="0,24,0,0" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+            <Label Content="Opis usterki" Margin="14,53,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}" Margin="86,54,0,0" TextWrapping="Wrap" MinWidth="295" MinHeight="105" VerticalAlignment="Top"/>
+            <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="86,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+            <Label Content="Nazwa" Margin="38,0,0,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding BindingItem.Computer.Name}" Margin="86,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+
+        </Grid>
+        <Button Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0" VerticalAlignment="Bottom" Width="150" Height="30" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"/>
+        <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0,0,0.189,0.151" VerticalAlignment="Bottom" Width="150" HorizontalAlignment="Right" Height="30" FontSize="20" FontWeight="Bold"/>
 
     </Grid>
 </Window>
