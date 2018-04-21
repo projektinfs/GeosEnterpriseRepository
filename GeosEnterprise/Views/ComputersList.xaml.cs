@@ -16,7 +16,6 @@ using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
 using GeosEnterprise.ViewModels;
-using GeosEnterprise.Repositories;
 
 namespace GeosEnterprise.Views
 {
