@@ -19,7 +19,7 @@
 
         </Grid>
         <Button Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0" VerticalAlignment="Bottom" Width="150" Height="30" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"/>
-        <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0,0,0.189,0.151" VerticalAlignment="Bottom" Width="150" HorizontalAlignment="Right" Height="30" FontSize="20" FontWeight="Bold"/>
+        <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}"  Margin="0,0,0.189,0.151" VerticalAlignment="Bottom" Width="150" HorizontalAlignment="Right" Height="30" FontSize="20" FontWeight="Bold"/>
 
     </Grid>
 </Window>

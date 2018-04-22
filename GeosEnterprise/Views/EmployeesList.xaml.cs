@@ -25,54 +25,10 @@ namespace GeosEnterprise.Views
         public EmployeesList()
         {
             InitializeComponent();
-        }
-
-        private void Refresh()
-        {
-            this.InvalidateVisual();
-            this.UpdateLayout();
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window addNewEmployeeWindow = new EmployeesAdd();
-            addNewEmployeeWindow.ShowDialog();
-
-            Refresh();
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            var employeeDTO = AllEmployeesList.SelectedItem as EmployeeDTO;
-            if (employeeDTO != null)
-            {
-                Repositories.EmployeeRepository.Delete(employeeDTO.ID);
-                Refresh();
-            }
+            this.DataContext = new EmployeesListViewModel();
 
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            var employeeDTO = AllEmployeesList.SelectedItem as EmployeeDTO;
-            if (employeeDTO != null)
-            {
-                Window addNewEmployeeWindow = new EmployeesAdd(employeeDTO.ID);
-                addNewEmployeeWindow.ShowDialog();
-            }
-
-        }
-
-        private void InfoButton_Click(object sender, RoutedEventArgs e)
-        {
-            var employeeDTO = AllEmployeesList.SelectedItem as EmployeeDTO;
-            if (employeeDTO != null)
-            {
-                Window addNewEmployeeWindow = new EmployeeInfo(employeeDTO.ID);
-                addNewEmployeeWindow.ShowDialog();
-            }
-
-        }
 
         private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
         {
