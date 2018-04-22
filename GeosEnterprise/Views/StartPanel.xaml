@@ -13,8 +13,38 @@
     </UserControl.Resources>
 
     <Grid Background="LightCyan" DataContext="{Binding Source={StaticResource person}}">
-        <TextBlock HorizontalAlignment="Left" Margin="126,98,0,0" TextWrapping="Wrap" Text="{Binding AcctualUser}" VerticalAlignment="Top" Height="19" Width="104"/>
-        <TextBlock HorizontalAlignment="Left" Margin="72,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Witaj"/><LineBreak/><Run/></TextBlock>
-
+        <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="202,30,0,0" TextWrapping="Wrap" Text="{Binding AcctualEmployee.Name}" VerticalAlignment="Top" Height="69" Width="588" FontSize="48"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="125" FontSize="48"><Run Text="Witaj"/><LineBreak/><Run/></TextBlock>
+        <Label Content="Twoje dane:" HorizontalAlignment="Left" Margin="72,104,0,0" VerticalAlignment="Top" Height="43" Width="131" FontSize="24"/>
+        <TextBlock x:Name="NameAndSurname" HorizontalAlignment="Left" Margin="72,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+                <Run Text="{Binding AcctualEmployee.Name}"/>
+                <Run Text=" "/>
+                <Run Text="{Binding AcctualEmployee.Surname}"/>
+        </TextBlock>
+        <TextBlock x:Name="Position" HorizontalAlignment="Left" Margin="72,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+            <Run Text="Stanowisko: "/>
+            <Run Text="{Binding AcctualEmployee.Position}"/>
+        </TextBlock>
+        <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="72,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+            <Run Text="Adres email: "/>
+            <Run Text="{Binding AcctualEmployee.Email}"/>
+        </TextBlock>
+        <TextBlock x:Name="PhoneAndFax" HorizontalAlignment="Left" Margin="72,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+                <Run Text="Numer telefonu: "/>
+                <Run Text="{Binding AcctualEmployee.EmployeeContact.Phone}"/>
+        </TextBlock>
+        <TextBlock x:Name="AdressHeader" HorizontalAlignment="Left" Margin="72,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+            <Run Text="Adres: "/>
+        </TextBlock>
+        <TextBlock x:Name="Adress" HorizontalAlignment="Left" Margin="72,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+            <Run Text="{Binding AcctualEmployee.Adress.City}"/>
+            <Run Text=", "/>
+            <Run Text="{Binding AcctualEmployee.Adress.PostCode}"/>
+        </TextBlock>
+        <TextBlock x:Name="AdressStreet" HorizontalAlignment="Left" Margin="72,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18">
+            <Run Text="{Binding AcctualEmployee.Adress.Street}"/>
+            <Run Text=" "/>
+            <Run Text="{Binding AcctualEmployee.Adress.AppartamentNumber}"/>
+        </TextBlock>
     </Grid>
 </UserControl>
