@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainWindowViewModel
     {
 
         public ICommand StartPanelCommand { get; private set; }
