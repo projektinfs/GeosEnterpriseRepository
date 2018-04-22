@@ -11,8 +11,33 @@ namespace GeosEnterprise
     {
 
         public static string _AcctualUser = "NaN";
-        public static Employee AcctualEmploee;
+        public static Employee _AcctualEmployee = new Employee
+        {
+            Email = "NaN@NaN.pl",
+            Password = "NaN",
+            Name = "NaN",
+            Surname = "NaN",
+            Position = "NaN",
+            Adress = new Adress
+            {
+                City = "NoCity",
+                Voivodeship = "NaN",
+                District = "NaN",
+                PostCode = "NaN:NaN",
+                Street = "NaN",
+                BuildingNumber = "NaN",
+                AppartamentNumber = "NaN"
+            },
+            EmployeeContact = new EmployeeContact
+            {
+                Www = "www.NaN.pl",
+                Phone = "+48NaN",
+                Fax = "+48NaN"
+            },
 
+            UserRole = UserRole.Administrator
+        };
+        
         public static string AcctualUser
         {
             get
@@ -23,6 +48,32 @@ namespace GeosEnterprise
             set
             {
                 _AcctualUser = value;
+            }
+        }
+
+        public static string Name
+        {
+            get
+            {
+                return AcctualEmployee.Name + " " + AcctualEmployee.Surname;
+            }
+
+            set
+            {
+                _AcctualUser = value;
+            }
+        }
+
+        public static Employee AcctualEmployee
+        {
+            get
+            {
+                return _AcctualEmployee;
+            }
+
+            set
+            {
+                _AcctualEmployee = value;
             }
         }
 
