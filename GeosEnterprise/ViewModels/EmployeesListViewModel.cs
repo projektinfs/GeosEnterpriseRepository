@@ -131,7 +131,7 @@ namespace GeosEnterprise.ViewModels
             var employeeDTO = SelectedItem as EmployeeDTO;
             if (employeeDTO != null)
             {
-                Window addNewEmployeeWindow = new EmployeeInfo(employeeDTO.ID);
+                Window addNewEmployeeWindow = new EmployeesInfo(employeeDTO.ID);
                 addNewEmployeeWindow.ShowDialog();
             }
 
