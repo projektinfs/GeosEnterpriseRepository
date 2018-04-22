@@ -28,7 +28,6 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
-<<<<<<< HEAD
             InitializeDatabase(true);
         }
 
@@ -40,11 +39,8 @@ namespace GeosEnterprise
                 App.DB.Database.Create();
             }
             App.DB.Computers.Any();
-=======
 
             DataContext = new AuthenticationViewModel();
-
->>>>>>> AuthBranch
         }
 
         private void StartPanelButton_Click(object sender, RoutedEventArgs e)
@@ -57,12 +53,6 @@ namespace GeosEnterprise
             DataContext = new ComputersListViewModel();
         }
 
-<<<<<<< HEAD
-        private void SingInButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AuthenticationViewModel();
-        }
-
         private void EmployeesListButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new EmployeesListViewModel();
@@ -72,7 +62,6 @@ namespace GeosEnterprise
         {
             DataContext = new ClientsListViewModel();
         }
-=======
->>>>>>> AuthBranch
+
     }
 }
