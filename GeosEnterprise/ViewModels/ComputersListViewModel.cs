@@ -11,11 +11,8 @@ using System.ComponentModel;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
-<<<<<<< HEAD
 using GeosEnterprise.Views;
-=======
 using System.Windows;
->>>>>>> AuthBranch
 
 namespace GeosEnterprise.ViewModels
 {
