@@ -49,18 +49,24 @@
                     <GradientStop Color="#FF002545" Offset="0.136"/>
                 </LinearGradientBrush>
             </DockPanel.Background>
-            <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
-                <Button Name="StartPanelButton" Content="Panel startowy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="StartPanelButton_Click" FontWeight="Bold"/>
-                <Button Name="ComputersListButton" Content="Komputery" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ComputersListButton_Click" FontWeight="Bold"></Button>
-                <Button Name="EmployeesListButton" Content="Pracownicy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="EmployeesListButton_Click" FontWeight="Bold"/>
-                <Button Name="ClientsListButton" Content="Klienci" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ClientsListButton_Click" FontWeight="Bold"/>
 
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
-            </StackPanel>
+            <Border Margin="6,6,6,6" Padding="5" 
+                BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FF031722" Offset="0.657"/>
+                        <GradientStop Color="#FF116BB7" Offset="0.132"/>
+                        <GradientStop Color="#FF002545" Offset="0.374"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
+                    <Button x:Name="StartPanelButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Panel startowy" FontSize="20" BorderThickness="3"  Click="StartPanelButton_Click" FontWeight="Bold"/>
+                    <Button x:Name="ComputersListButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" Click="ComputersListButton_Click" FontWeight="Bold"/>
+                    <Button x:Name="EmployeesListButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Pracownicy" FontSize="20" BorderThickness="3" Click="EmployeesListButton_Click" FontWeight="Bold"/>
+                    <Button x:Name="ClientsListButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Klienci" FontSize="20" BorderThickness="3" Click="ClientsListButton_Click" FontWeight="Bold"/>
+
+                </StackPanel>
+            </Border>
         </DockPanel>
         <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}">
 

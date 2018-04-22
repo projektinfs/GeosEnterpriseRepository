@@ -5,14 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-             
-    <Grid Background="White" Visibility="{Binding IsVisible}">
-        <Button x:Name="pbSingIn" Content="Zaloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="115,196,0,0" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}"/>
-        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Margin="155,166,0,0" Height="25"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Margin="25,166,0,0" Text="{Binding Email}"/>
-        <Label Content="Adres email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,140,0,0" Width="125"/>
-        <Label Content="Hasło" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="155,140,0,0" Width="125"/>
-        <TextBlock Text="{Binding MessageForUser}" Margin="25,221,20,59"/>
+             d:DesignHeight="450" d:DesignWidth="960">
+
+    <Grid Visibility="{Binding IsVisible}">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF002D45" Offset="0.854"/>
+                <GradientStop Color="#FF1060A3" Offset="0.491"/>
+                <GradientStop Color="#FF002545" Offset="0.136"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Button x:Name="pbSingIn" Content="Zaloguj" Margin="427,201,434,229.6" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}" Width="99" Height="19" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <PasswordBox x:Name="txtPassword"  Margin="485,171,310,253.6" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="315,171,480,253.6" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label Content="Adres email" Margin="315,140,571,283.6" Foreground="#FFFFFBFB"  Width="74" Height="26" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Label Content="Hasło" Margin="486,140,434,283.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+        <TextBlock Text="{Binding MessageForUser}" Margin="10,240,10,9.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+        <TextBlock Margin="309,72,302,309.6" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="349"><Run Text="Panel logowania"/><LineBreak/><Run/></TextBlock>
     </Grid>
 </UserControl>
