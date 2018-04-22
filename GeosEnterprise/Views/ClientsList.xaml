@@ -6,34 +6,78 @@
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="900">
+             d:DesignHeight="450" d:DesignWidth="960">
 
-    <Grid Background="LightCoral">
-        <ListView Name="AllClientsList" ItemsSource="{Binding Items}" Margin="0,37,0,36.6">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="25"/>
-                    <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}" Width="130"/>
-                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}" Width="130"/>
-                    <GridViewColumn Header="Email" DisplayMemberBinding="{Binding ClientContact.Email}" Width="130"/>
-                    <GridViewColumn Header="Tel." DisplayMemberBinding="{Binding ClientContact.Phone}" Width="130"/>
-                    <GridViewColumn Header="Data dodania" DisplayMemberBinding="{Binding CreatedDate}" Width="130"/>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF002D45" Offset="0.854"/>
+                <GradientStop Color="#FF1060A3" Offset="0.491"/>
+                <GradientStop Color="#FF002545" Offset="0.136"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
+        <Border Margin="10,55,10,71.6" Padding="3" Background="White" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4">
+            <StackPanel >
+                <ListView Name="AllClientsList" ItemsSource="{Binding Items}" Margin="0,0,0,36.6">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="25"/>
+                            <GridViewColumn Header="Imię" DisplayMemberBinding="{Binding Name}" Width="130"/>
+                            <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding Surname}" Width="130"/>
+                            <GridViewColumn Header="Email" DisplayMemberBinding="{Binding ClientContact.Email}" Width="130"/>
+                            <GridViewColumn Header="Tel." DisplayMemberBinding="{Binding ClientContact.Phone}" Width="130"/>
+                            <GridViewColumn Header="Data dodania" DisplayMemberBinding="{Binding CreatedDate}" Width="130"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Border>
 
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="AddButton_Click"/>
-        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold" Click="DeleteButton_Click"/>
-        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click" />
-        <!--<Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" />-->
-        <Label Content="Od" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="24" Width="28" RenderTransformOrigin="2.35,-0.308"/>
-        <Label Content="Do" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="272,6,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="2.036,0.523"/>
-        <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" HorizontalAlignment="Left" Margin="43,6,0,0" VerticalAlignment="Top" Height="24" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold"/>
-        <xctk:DateTimePicker x:Name="TimeTo" Value="{Binding TimeToBindingItem, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,6,0,0" VerticalAlignment="Top" Height="24" Width="221" FontFamily="DejaVu Sans Condensed" FontSize="10"/>
-        <Button Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,6,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24"/>
-        <Button Name="DateTimeNowButton" Content="Teraz" Command="{Binding DateTimeNowButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="521,6,0,0"  Width="30" Height="24" RenderTransformOrigin="8.891,-2.3" Grid.ColumnSpan="3"/>
-        <Button Name="SearchButton" Content="Szukaj..." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="822,7,0,0"  Width="68" Height="24" Click="SearchButton_Click"/>
-        <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="620,7,0,0" TextWrapping="Wrap" FontSize="17" FontWeight="Bold" Background="#FFDDDDDD" Width="197" GotFocus="SearchBar_GotFocus"/>
+        <Border Margin="10,0,10,6.6" Padding="3" Background="#FF002D51" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
+            <StackPanel >
+                <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Click="AddButton_Click" Background="White" />
+                <Button Name="DeleteButton" Content="Usuń" Margin="153,-43,0,0.6"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Click="DeleteButton_Click" Background="White"/>
+                <Button Name="EditButton" Content="Edytuj" Margin="306,-44,0,0.6" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Click="EditButton_Click" Background="White"/>
+                <!--<Button Name="InfoButton" Content="Szczegóły" Margin="458,-44,0,0.113" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="Snow" />-->
+            </StackPanel>
+        </Border>
+        
+        <Border Margin="10,10,0,0" Padding="3" Background="LightGray" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="267">
+            <StackPanel >
+                <Label Content="Od:" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" FontWeight="Bold" Margin="0,0,211.4,0"/>
+                <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" Margin="30,-25,0,0"  Height="22" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
+            </StackPanel>
+        </Border>
+
+        <Border Margin="282,10,0,0" Padding="3" Background="LightGray" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="333">
+            <StackPanel >
+                <Label Content="Do:" FontFamily="Microsoft Sans Serif" Margin="-65,0,219.4,0" Width="32" RenderTransformOrigin="2.036,0.523" Height="23" FontSize="14" FontWeight="Bold"/>
+                <xctk:DateTimePicker x:Name="TimeTo" Value="{Binding TimeToBindingItem, Mode=TwoWay}" Margin="30,-22,67.6,0" Height="22" FontFamily="DejaVu Sans Condensed" FontSize="10" RenderTransformOrigin="-0.596,-0.175"/>
+                <Button x:Name="DateTimeNowButton" Content="Akt. czas" Command="{Binding DateTimeNowButtonCommand}" Margin="250,-22,0,0"  Width="56" Height="22" RenderTransformOrigin="8.891,-2.3" Background="White" FontWeight="Bold"/>
+            </StackPanel>
+        </Border>
+
+        <Border Margin="620,10,0,0" Padding="3" Background="LightGray" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="75">
+            <StackPanel >
+                <Button Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}"  Margin="0,0,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24" Background="White" FontWeight="Bold" FontSize="11"/>
+            </StackPanel>
+        </Border>
+
+        <Border Margin="700,10,10,0" Padding="3" Background="LightGray" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40">
+            <StackPanel >
+                <TextBox x:Name="SearchBar" Text="Wpisz tekst..."  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" GotFocus="SearchBar_GotFocus" FontStyle="Italic" HorizontalAlignment="Left" Width="184"/>
+                <Button Name="SearchButton" Content="Szukaj..."  Margin="186,-22,0.4,0" Height="22" Click="SearchButton_Click" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>
