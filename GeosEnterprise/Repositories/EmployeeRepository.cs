@@ -79,30 +79,11 @@ namespace GeosEnterprise.Repositories
             });
         }
 
-        public static Employee Edit(Employee employee)
+        public static void Edit(Employee employee)
         {
-            return ExecuteQuery(() =>
+             ExecuteQuery(() =>
             {
-                var toEdit = App.DB.Employees.Where(p => p.ID == employee.ID).FirstOrDefault();
-                toEdit.ModifiedBy = Session.Username;
-                toEdit.ModifiedDate = DateTime.Now;
-                toEdit.Email = employee.Email;
-                toEdit.Password = employee.Password;
-                toEdit.Name = employee.Name;
-                toEdit.Surname = employee.Surname;
-                toEdit.Position = employee.Position;
-                toEdit.Adress.City = employee.Adress.City;
-                toEdit.Adress.Voivodeship = employee.Adress.Voivodeship;
-                toEdit.Adress.District = employee.Adress.District;
-                toEdit.Adress.PostCode = employee.Adress.PostCode;
-                toEdit.Adress.Street = employee.Adress.Street;
-                toEdit.Adress.BuildingNumber = employee.Adress.BuildingNumber;
-                toEdit.Adress.AppartamentNumber = employee.Adress.AppartamentNumber;
-                toEdit.EmployeeContact.Phone = employee.EmployeeContact.Phone;
-                toEdit.EmployeeContact.Fax = employee.EmployeeContact.Fax;
-                toEdit.EmployeeContact.Www = employee.EmployeeContact.Www;
-                App.DB.SaveChanges();
-                return toEdit;
+                Update(employee);
             });
         }
 

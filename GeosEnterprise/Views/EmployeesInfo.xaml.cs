@@ -1,6 +1,4 @@
-﻿using GeosEnterprise.DBO;
-using GeosEnterprise.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,28 +11,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GeosEnterprise.DBO;
+using GeosEnterprise.ViewModels;
+
+
 
 namespace GeosEnterprise.Views
 {
-    /// <summary>
-    /// Interaction logic for EmployeesAdd.xaml
-    /// </summary>
-    public partial class EmployeesAdd : Window
+
+    public partial class EmployeesInfo : Window
     {
+        public EmployeesInfo()
+        {
+            InitializeComponent();
+        }
 
         int? employeeID { get; set; }
 
-        public EmployeesAdd()
+
+        public EmployeesInfo(int employeeID)
         {
-            DataContext = new EmployeesAddViewModel(null);
+            DataContext = new EmployeesInfoViewModel(employeeID);
             InitializeComponent();
         }
-
-        public EmployeesAdd(int employeeID)
-        {
-            DataContext = new EmployeesAddViewModel(employeeID);
-            InitializeComponent();
-        }
-
     }
 }

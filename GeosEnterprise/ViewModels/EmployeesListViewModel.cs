@@ -19,6 +19,16 @@ namespace GeosEnterprise.ViewModels
     {
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
+        public ICommand AddButtonCommand { get; set; }
+        public ICommand DeleteButtonCommand { get; set; }
+        public ICommand EditButtonCommand { get; set; }
+        public ICommand InfoButtonCommand { get; set; }
+
+
+
+        public object SelectedItem { get; set; }
+
+
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -58,13 +68,20 @@ namespace GeosEnterprise.ViewModels
         {
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
+            AddButtonCommand = new RelayCommand<object>(Add);
+            DeleteButtonCommand = new RelayCommand<object>(Delete);
+            EditButtonCommand = new RelayCommand<object>(Edit);
+            InfoButtonCommand = new RelayCommand<object>(Info);
+
+
         }
 
-        public List<EmployeeDTO> Items
+
+        public ObservableCollection<EmployeeDTO> Items
         {
             get
             {
-                return Repositories.EmployeeRepository.GetAllCurrent().Select(p => DTO.EmployeeDTO.ToDTO(p)).ToList();
+                return new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => DTO.EmployeeDTO.ToDTO(p)));
             }
         }
 
@@ -77,6 +94,47 @@ namespace GeosEnterprise.ViewModels
         {
             TimeToBindingItem = null;
             TimeFromBindingItem = null;
+        }
+
+        private void Add(object obj)
+        {
+            Window addNewEmployeeWindow = new EmployeesAdd();
+            addNewEmployeeWindow.Show();
+
+
+        }
+
+        private void Delete(object obj)
+        {
+            var employeeDTO = SelectedItem as EmployeeDTO;
+            if (employeeDTO != null)
+            {
+                Repositories.EmployeeRepository.Delete(employeeDTO.ID);
+            }
+
+        }
+
+        private void Edit(object obj)
+        {
+            var employeeDTO = SelectedItem as EmployeeDTO;
+            if (employeeDTO != null)
+            {
+                Window addNewEmployeeWindow = new EmployeesAdd(employeeDTO.ID);
+                addNewEmployeeWindow.Show();
+
+            }
+
+        }
+
+        private void Info(object obj)
+        {
+            var employeeDTO = SelectedItem as EmployeeDTO;
+            if (employeeDTO != null)
+            {
+                Window addNewEmployeeWindow = new EmployeesInfo(employeeDTO.ID);
+                addNewEmployeeWindow.ShowDialog();
+            }
+
         }
     }
 }

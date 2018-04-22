@@ -26,10 +26,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113" Click="AddButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
-        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Click="DeleteButton_Click" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
-        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="EditButton_Click"/>
-        <Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Click="InfoButton_Click"/>
+        <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113" Command="{Binding AddButtonCommand}" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold"/>
+        <Button Name="DeleteButton" Content="Usuń" Margin="150,0,0,0.113" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" RenderTransformOrigin="0.424,0.275" FontSize="20" FontWeight="Bold"/>
+        <Button Name="EditButton" Content="Edytuj" Margin="300,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Command="{Binding EditButtonCommand}"/>
+        <Button Name="InfoButton" Content="Szczegóły" Margin="450,0,0,0.113" HorizontalAlignment="Left" Width="150" Height="36" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Command="{Binding InfoButtonCommand}"/>
         <Label Content="Od" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top" Height="24" Width="28" RenderTransformOrigin="2.35,-0.308"/>
         <Label Content="Do" FontFamily="Microsoft Sans Serif" HorizontalAlignment="Left" Margin="272,6,0,0" VerticalAlignment="Top" Width="28" RenderTransformOrigin="2.036,0.523"/>
         <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" HorizontalAlignment="Left" Margin="43,6,0,0" VerticalAlignment="Top" Height="24" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold"/>
