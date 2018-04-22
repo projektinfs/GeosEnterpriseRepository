@@ -26,6 +26,7 @@ namespace GeosEnterprise.Views
     {
         public ComputersList()
         {
+            
             InitializeComponent();
             this.DataContext = new ComputersListViewModel();
         }

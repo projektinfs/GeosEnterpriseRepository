@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeosEnterprise.ViewModels;
+using GeosEnterprise.DBO;
+using System.Security.Principal;
+using System.Threading;
+using System.Security;
 
 namespace GeosEnterprise
 {
@@ -24,6 +28,7 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
+<<<<<<< HEAD
             InitializeDatabase(true);
         }
 
@@ -35,6 +40,11 @@ namespace GeosEnterprise
                 App.DB.Database.Create();
             }
             App.DB.Computers.Any();
+=======
+
+            DataContext = new AuthenticationViewModel();
+
+>>>>>>> AuthBranch
         }
 
         private void StartPanelButton_Click(object sender, RoutedEventArgs e)
@@ -47,6 +57,7 @@ namespace GeosEnterprise
             DataContext = new ComputersListViewModel();
         }
 
+<<<<<<< HEAD
         private void SingInButton_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new AuthenticationViewModel();
@@ -61,5 +72,7 @@ namespace GeosEnterprise
         {
             DataContext = new ClientsListViewModel();
         }
+=======
+>>>>>>> AuthBranch
     }
 }

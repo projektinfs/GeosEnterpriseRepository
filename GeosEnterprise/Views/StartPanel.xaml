@@ -4,9 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
+             xmlns:config="clr-namespace:GeosEnterprise"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="LightCyan">
-            
+
+    <UserControl.Resources>
+        <config:Authorization x:Key="person"/>
+    </UserControl.Resources>
+
+    <Grid Background="LightCyan" DataContext="{Binding Source={StaticResource person}}">
+        <TextBlock HorizontalAlignment="Left" Margin="126,98,0,0" TextWrapping="Wrap" Text="{Binding AcctualUser}" VerticalAlignment="Top" Height="19" Width="104"/>
+        <TextBlock HorizontalAlignment="Left" Margin="72,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Witaj"/><LineBreak/><Run/></TextBlock>
+
     </Grid>
 </UserControl>

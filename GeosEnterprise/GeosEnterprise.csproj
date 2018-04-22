@@ -87,7 +87,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
     <Compile Include="DBO\Adress.cs" />
+=======
+    <Compile Include="Authorization.cs" />
+    <Compile Include="Commands\PushButtonCommand.cs" />
+    <Compile Include="Commands\SignInCommand.cs" />
+>>>>>>> AuthBranch
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\ClientAdress.cs" />
     <Compile Include="DBO\ClientContact.cs" />
@@ -123,10 +129,15 @@
     <Compile Include="ViewModels\ComputersAddViewModel.cs" />
     <Compile Include="ViewModels\ComputersInfoViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
+<<<<<<< HEAD
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
+=======
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+>>>>>>> AuthBranch
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
     </Compile>
