@@ -94,7 +94,7 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                MessageForUser = "Błędy login lub hasło !";
+                MessageForUser = "Błędny login lub hasło !";
             }
         }
 

@@ -22,7 +22,7 @@ namespace GeosEnterprise
     /// </summary>
     public class Session
     {
-        public static string Username = "admin";
-        public static UserRole UserRole = UserRole.Administrator;
+        public static string Username = Authorization.AcctualUser;
+        public static UserRole UserRole = Authorization.AcctualEmployee.UserRole;
     }
 }
