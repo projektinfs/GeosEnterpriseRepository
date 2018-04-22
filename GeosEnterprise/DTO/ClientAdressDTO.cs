@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DTO
 {
-    public class ClientAdressDTO
+    public class ClientAdressDTO : DTOObject<int>
     {
         public string City { get; set; }
         public string Voivodeship { get; set; }
@@ -21,6 +21,7 @@ namespace GeosEnterprise.DTO
         {
             return new ClientAdressDTO
             {
+                ID = entity.ID,
                 City = entity.City,
                 Voivodeship = entity.Voivodeship,
                 District = entity.District,

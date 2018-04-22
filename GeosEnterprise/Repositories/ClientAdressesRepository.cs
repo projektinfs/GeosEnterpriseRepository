@@ -10,5 +10,6 @@ namespace GeosEnterprise.Repositories
 {
     public class ClientAdressesRepository : BaseRepository<ClientAdress>
     {
+
     }
 }

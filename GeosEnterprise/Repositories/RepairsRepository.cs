@@ -4,18 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GeosEnterprise.DBO;
-
+using GeosEnterprise.DTO;
 
 namespace GeosEnterprise.Repositories
 {
-    public class RepairsRepository : BaseRepository<Repair>
+    public class RepairsRepository : BaseRepository<Repair, RepairDTO>
     {
         public new static IList<Repair> GetAllCurrent()
         {
-            return ExecuteQuery(() =>
-            {
-                return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
-            });
+            return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
         }
 
         public static IList<Repair> GetByTime(DateTime? timeFrom, DateTime? timeTo)
@@ -48,7 +45,7 @@ namespace GeosEnterprise.Repositories
             });
         }
 
-    
+
         public static IList<Repair> GetAll(string filter, DateTime? TimeFrom, DateTime? TimeTo)
         {
             if (filter == "Wpisz tekst...")
@@ -56,7 +53,7 @@ namespace GeosEnterprise.Repositories
                 if (TimeFrom.HasValue == false || TimeTo.HasValue == false)
                     return GetAllCurrent();
                 else
-                    return GetByTime(TimeFrom,TimeTo);
+                    return GetByTime(TimeFrom, TimeTo);
             }
             else
             {
@@ -76,6 +73,14 @@ namespace GeosEnterprise.Repositories
         }
 
         public static void Edit(Repair repair)
+        {
+            ExecuteQuery(() =>
+            {
+                Update(repair);
+            });
+        }
+
+        public static void Edit(RepairDTO repair)
         {
             ExecuteQuery(() =>
             {

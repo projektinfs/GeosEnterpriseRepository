@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DTO
 {
-    public class RepairDTO
+    public class RepairDTO : DTOObject<int>
     {
-        public int ID { get; set; }
         public ComputerDTO Computer { get; set; }
         public int ComputerID { get; set; }
         public string Description { get; set; }

@@ -105,6 +105,7 @@
     <Compile Include="DTO\ClientContactDTO.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
+    <Compile Include="DTO\DTOObject.cs" />
     <Compile Include="DTO\EmployeeContactDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />

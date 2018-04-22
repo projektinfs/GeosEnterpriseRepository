@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.Repositories
 {
-    public class BaseRepository<TEntity> where TEntity : DBO.DBObject<int>
+    public abstract class BaseRepository<TEntity> where TEntity : DBO.DBObject<int>
     {
-        private static readonly DbContext _dbContext = App.DB;
+        internal static readonly DbContext _dbContext = App.DB;
 
-        public static void Delete(TEntity entity)
+        protected static void Delete(TEntity entity)
         {
             if (Config.DoNotDeletePermanently)
             {
@@ -35,23 +35,27 @@ namespace GeosEnterprise.Repositories
             return _dbContext.Set<TEntity>().Find(id);
         }
 
-        public static TEntity Insert(TEntity entity)
+        protected static TEntity Insert(TEntity entity)
         {
+            entity.CreatedBy = Session.Username;
+            entity.CreatedDate = DateTime.Now;
             return _dbContext.Set<TEntity>().Add(entity);
         }
 
-        public static void Update(TEntity entity)
+        protected static void Update(TEntity entity)
         {
+            entity.ModifiedBy = Session.Username;
+            entity.ModifiedDate = DateTime.Now;
             var editObject = GetById(entity.ID);
             _dbContext.Entry(editObject).CurrentValues.SetValues(entity);
         }
 
-        public static IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        protected static IQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
         {
             return _dbContext.Set<TEntity>().Where(p => p.DeletedDate == null).Where(predicate);
         }
 
-        public static TEntity ExecuteQuery(Func<TEntity> function, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
+        protected static TEntity ExecuteQuery(Func<TEntity> function, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
         {
             TEntity result = null;
             using (DbContextTransaction transaction = _dbContext.Database.BeginTransaction(isolationLevel))
@@ -70,7 +74,7 @@ namespace GeosEnterprise.Repositories
             return result;
         }
 
-        public static IList<TEntity> ExecuteQuery(Func<IList<TEntity>> function, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
+        protected static IList<TEntity> ExecuteQuery(Func<IList<TEntity>> function, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
         {
             IList<TEntity> result = null;
             using (DbContextTransaction transaction = _dbContext.Database.BeginTransaction(isolationLevel))
@@ -89,7 +93,7 @@ namespace GeosEnterprise.Repositories
             return result;
         }
 
-        public static void ExecuteQuery(Action action, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
+        protected static void ExecuteQuery(Action action, System.Data.IsolationLevel isolationLevel = System.Data.IsolationLevel.RepeatableRead)
         {
             using (DbContextTransaction transaction = _dbContext.Database.BeginTransaction(isolationLevel))
             {
@@ -104,6 +108,31 @@ namespace GeosEnterprise.Repositories
                 }
             }
             _dbContext.SaveChanges();
+        }
+    }
+
+    public abstract class BaseRepository<TEntity, DTOEntity> : BaseRepository<TEntity> where TEntity : DBO.DBObject<int> where DTOEntity : DTO.DTOObject<int>
+    {
+        protected static void Delete(DTOEntity entity)
+        {
+            var deleteEntity = GetById(entity.ID);
+            if (Config.DoNotDeletePermanently)
+            {
+                deleteEntity.DeletedBy = Session.Username;
+                deleteEntity.DeletedDate = DateTime.Now;
+            }
+            else
+            {
+                _dbContext.Set<TEntity>().Remove(deleteEntity);
+            }
+        }
+
+        protected static void Update(DTOEntity entity)
+        {
+            var editObject = GetById(entity.ID);
+            editObject.ModifiedBy = Session.Username;
+            editObject.ModifiedDate = DateTime.Now;
+            _dbContext.Entry(editObject).CurrentValues.SetValues(entity);
         }
     }
 }
