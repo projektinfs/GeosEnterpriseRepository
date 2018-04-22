@@ -87,6 +87,7 @@ namespace GeosEnterprise.ViewModels
             if (EmployeeRepository.ValidateData(Email, Password) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Password))
             {
                 Authorization.AcctualUser = Email;
+                Authorization.AcctualEmployee = EmployeeRepository.GetByEmail(Email);
                 IsAuthenticated = true;
                 MessageForUser = "";
                 IsVisible = "Hidden";
