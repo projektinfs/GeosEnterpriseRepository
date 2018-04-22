@@ -8,8 +8,10 @@
         xmlns:local="clr-namespace:GeosEnterprise"
         
         mc:Ignorable="d"
-        Title="GeosEnterprise" Height="720" Width="1200">
+        Title="GeosEnterprise" Height="720" Width="1280">
     <Window.Resources>
+        <viewmodels:AuthenticationViewModel x:Key="auth"/>
+
         <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodels:ComputersListViewModel}">
             <views:ComputersList DataContext="{Binding}"></views:ComputersList>
         </DataTemplate>
@@ -40,7 +42,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel Background="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-            <StackPanel>
+            <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
                 <Button Name="StartPanelButton" Content="Panel startowy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="StartPanelButton_Click" FontWeight="Bold"/>
                 <Button Name="ComputersListButton" Content="Komputery" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ComputersListButton_Click" FontWeight="Bold"></Button>
                 <Button Name="EmployeesListButton" Content="Pracownicy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="EmployeesListButton_Click" FontWeight="Bold"/>
@@ -50,12 +52,12 @@
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
-                <Button x:Name="SingInButton" Content="Logowanie" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold" Click="SingInButton_Click"></Button>
+                <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
                 <Button Content="" FontSize="600" Background="WhiteSmoke" BorderThickness="0" BorderBrush="WhiteSmoke" Focusable="False" IsEnabled="False" IsHitTestVisible="False"></Button>
             </StackPanel>
         </DockPanel>
         <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}">
-            
+
         </ContentControl>
         <!--<local:MenuControl HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="190"/>-->
     </Grid>

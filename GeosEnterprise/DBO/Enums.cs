@@ -22,4 +22,12 @@ namespace GeosEnterprise.DBO
         [Description("Nieznany")]
         Unknown = 50
     }
+
+    public enum Actors
+    {
+        Serviceman = 1,
+        Salesman = 2,
+        Manager = 3,
+        Accountant = 4
+    }
 }
