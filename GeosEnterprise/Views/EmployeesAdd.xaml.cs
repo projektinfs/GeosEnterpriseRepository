@@ -36,5 +36,11 @@ namespace GeosEnterprise.Views
             InitializeComponent();
         }
 
+        public EmployeesAdd(int employeeID, bool IsAdminMode)
+        {
+            DataContext = new EmployeesAddViewModel(employeeID, IsAdminMode);
+            InitializeComponent();
+        }
+
     }
 }

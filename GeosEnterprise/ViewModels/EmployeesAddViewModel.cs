@@ -18,6 +18,8 @@ namespace GeosEnterprise.ViewModels
         public ICommand CancelButtonCommand { get; set; }
         public EmployeeDTO BindingItem { get; set; }
 
+        public bool IsAdminMode { get; set; }
+
         public EmployeesAddViewModel(int? employeeID)
         {
             if (employeeID != null)
@@ -32,6 +34,15 @@ namespace GeosEnterprise.ViewModels
             }
             OKButtonCommand = new RelayCommand<Window>(Save);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
+            IsAdminMode = true;
+        }
+
+        public EmployeesAddViewModel(int employeeID, bool IsAdminMode)
+        {
+            BindingItem = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)employeeID));
+            OKButtonCommand = new RelayCommand<Window>(Save);
+            CancelButtonCommand = new RelayCommand<Window>(Cancel);
+            this.IsAdminMode = IsAdminMode;
         }
 
         public void Save(Window window)

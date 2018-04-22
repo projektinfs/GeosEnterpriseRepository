@@ -41,7 +41,14 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DockPanel Background="Black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FF002D45" Offset="0.854"/>
+                    <GradientStop Color="#FF1060A3" Offset="0.491"/>
+                    <GradientStop Color="#FF002545" Offset="0.136"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
             <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
                 <Button Name="StartPanelButton" Content="Panel startowy" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="StartPanelButton_Click" FontWeight="Bold"/>
                 <Button Name="ComputersListButton" Content="Komputery" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" Click="ComputersListButton_Click" FontWeight="Bold"></Button>
@@ -53,7 +60,6 @@
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"></Button>
                 <Button Content="" FontSize="20" Background="GhostWhite" BorderThickness="3" BorderBrush="WhiteSmoke" FontWeight="Bold"/>
-                <Button Content="" FontSize="600" Background="WhiteSmoke" BorderThickness="0" BorderBrush="WhiteSmoke" Focusable="False" IsEnabled="False" IsHitTestVisible="False"></Button>
             </StackPanel>
         </DockPanel>
         <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}">

@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using GeosEnterprise.Commands;
 using System.ComponentModel;
-
+using System.Windows.Controls;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -76,6 +76,7 @@ namespace GeosEnterprise.ViewModels
                 SignIn,
                 (object parameters) => true
             );
+
         }
 
         private void SignIn(object parameter)
