@@ -7,7 +7,7 @@ using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using System.Windows;
 using System.Windows.Input;
-
+using System.ComponentModel;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -79,7 +79,7 @@ namespace GeosEnterprise.ViewModels
 
             else
             {
-                Repositories.EmployeeRepository.Edit(new Employee
+                Employee updatedEmployee = new Employee
                 {
                     ID = (int)BindingItem.ID,
                     Email = BindingItem.Email,
@@ -104,7 +104,13 @@ namespace GeosEnterprise.ViewModels
                         Fax = BindingItem.EmployeeContact.Fax,
                         Www = BindingItem.EmployeeContact.Www
                     }
-                });
+                };
+                Repositories.EmployeeRepository.Edit( updatedEmployee );
+
+                if(BindingItem.ID == Authorization.AcctualEmployee.ID)
+                {
+                    Authorization.AcctualEmployee = updatedEmployee;
+                }
             }
 
             window?.Close();
