@@ -19,7 +19,7 @@
         <Label Content="Email" HorizontalAlignment="Left" Margin="32,133,0,0" VerticalAlignment="Top"/>
         <TextBox Name="PasswordTextBox" Text="{Binding BindingItem.Password}" HorizontalAlignment="Left" Height="23" Margin="460,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="400,133,0,0" VerticalAlignment="Top"/>
-        <ComboBox SelectedIndex="0" Name="PositionTextBox" Text="{Binding BindingItem.Position}" HorizontalAlignment="Left" Height="23" Margin="118,160,0,0"  VerticalAlignment="Top" Width="200">
+        <ComboBox SelectedIndex="0" IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" HorizontalAlignment="Left" Height="23" Margin="118,160,0,0"  VerticalAlignment="Top" Width="200">
             <ComboBoxItem>Kierownik</ComboBoxItem>
             <ComboBoxItem>Księgowy</ComboBoxItem>
             <ComboBoxItem>Serwisant</ComboBoxItem>

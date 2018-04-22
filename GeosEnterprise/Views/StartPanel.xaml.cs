@@ -25,8 +25,6 @@ namespace GeosEnterprise.Views
         public StartPanel()
         {
             InitializeComponent();
-
-            
         }
     }
 }

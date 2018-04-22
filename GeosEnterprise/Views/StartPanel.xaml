@@ -5,11 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              xmlns:config="clr-namespace:GeosEnterprise"
+             xmlns:data="clr-namespace:GeosEnterprise.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
         <config:Authorization x:Key="person"/>
+        <data:StartPanelViewModel x:Key="data"/>
     </UserControl.Resources>
 
     <Grid Background="LightCyan" DataContext="{Binding Source={StaticResource person}}">
@@ -46,5 +48,7 @@
             <Run Text=" "/>
             <Run Text="{Binding AcctualEmployee.Adress.AppartamentNumber}"/>
         </TextBlock>
+        <Button x:Name="ChangePreferences" DataContext="{Binding Source={StaticResource data}}" Command="{Binding ChangePreferences}" Content="Zmień dane" HorizontalAlignment="Left" Margin="72,345,0,0" VerticalAlignment="Top" Width="191" Height="36"/>
     </Grid>
+
 </UserControl>

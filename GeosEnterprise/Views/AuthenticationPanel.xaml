@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-
+             
     <Grid Background="White" Visibility="{Binding IsVisible}">
         <Button x:Name="pbSingIn" Content="Zaloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="115,196,0,0" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}"/>
         <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Margin="155,166,0,0" Height="25"/>
