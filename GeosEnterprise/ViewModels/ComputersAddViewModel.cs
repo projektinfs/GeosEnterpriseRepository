@@ -35,17 +35,7 @@ namespace GeosEnterprise.ViewModels
         {
             if (BindingItem.ID > 0)
             {
-                Repositories.RepairsRepository.Edit(new Repair
-                {
-                    ID = (int)BindingItem.ID,
-                    Description = BindingItem.Description,
-                    ComputerID = BindingItem.ComputerID,
-                    Computer = new Computer
-                    {
-                        SerialNumber = BindingItem.Computer.SerialNumber,
-                        Name = BindingItem.Computer.Name
-                    }
-                });
+                Repositories.RepairsRepository.Edit(BindingItem);
             }
             else
             {

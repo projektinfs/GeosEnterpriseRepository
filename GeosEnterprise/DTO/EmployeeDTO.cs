@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DTO
 {
-    public class EmployeeDTO
+    public class EmployeeDTO : DTOObject<int>
     {
-        public int ID { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }

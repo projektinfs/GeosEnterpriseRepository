@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DTO
 {
-   public  class ClientContactDTO
+    public class ClientContactDTO : DTOObject<int>
     {
         public string Email { get; set; }
         public string Www { get; set; }
@@ -17,10 +17,11 @@ namespace GeosEnterprise.DTO
         {
             return new ClientContactDTO
             {
-               Email = entity.Email,
-               Www = entity.Www,
-               Phone = entity.Phone,
-               Fax = entity.Fax,
+                ID = entity.ID,
+                Email = entity.Email,
+                Www = entity.Www,
+                Phone = entity.Phone,
+                Fax = entity.Fax,
             };
         }
     }

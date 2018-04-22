@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.DBO
 {
-    public class DBObject<T>
+    public abstract class DBObject<T>
     {
         public DBObject()
         {

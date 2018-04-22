@@ -88,6 +88,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DBO\Adress.cs" />
+    <Compile Include="Authorization.cs" />
+    <Compile Include="Commands\PushButtonCommand.cs" />
+    <Compile Include="Commands\SignInCommand.cs" />
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\ClientAdress.cs" />
     <Compile Include="DBO\ClientContact.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="DTO\ClientContactDTO.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
+    <Compile Include="DTO\DTOObject.cs" />
     <Compile Include="DTO\EmployeeContactDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />
@@ -127,6 +131,7 @@
     <Compile Include="ViewModels\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
