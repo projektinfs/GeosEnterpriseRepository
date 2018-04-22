@@ -57,6 +57,19 @@ namespace GeosEnterprise.ViewModels
 
         public AuthenticationViewModel()
         {
+            if (EmployeeRepository.GetByEmail("admin@admin.pl") == null)
+            {
+
+                Employee employee = new Employee
+                {
+                    Email = "admin@admin.pl",
+                    Password = "admin123",
+                    Position = "Administrator"
+                };
+
+                EmployeeRepository.Add(employee);
+            }
+
             IsVisible = "Visible";
             IsAuthenticated = false;
             SignInCommand = new SignInCommand(
