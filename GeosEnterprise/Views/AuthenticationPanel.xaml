@@ -6,12 +6,13 @@
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="White">
-        <Button x:Name="pbSingIn" Content="Zaloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="115,196,0,0" Click="pbSingIn_Click"/>
+
+    <Grid Background="White" Visibility="{Binding IsVisible}">
+        <Button x:Name="pbSingIn" Content="Zaloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="115,196,0,0" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}"/>
         <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Margin="155,166,0,0" Height="25"/>
-        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Margin="25,166,0,0"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Margin="25,166,0,0" Text="{Binding Email}"/>
         <Label Content="Adres email" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,140,0,0" Width="125"/>
         <Label Content="Hasło" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="155,140,0,0" Width="125"/>
-
+        <TextBlock Text="{Binding MessageForUser}" Margin="25,221,20,59"/>
     </Grid>
 </UserControl>
