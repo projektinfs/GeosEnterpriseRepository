@@ -7,11 +7,8 @@ using System.Windows;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class StartPanelViewModel : ViewModel
+    public class StartPanelViewModel
     {
-
-        
-
         public StartPanelViewModel()
         {
             MessageBox.Show(Authorization.AcctualUser);
