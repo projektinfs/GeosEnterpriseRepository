@@ -8,6 +8,7 @@ using GeosEnterprise.DTO;
 using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
+using GeosEnterprise.Commands;
 
 namespace GeosEnterprise.ViewModels
 {

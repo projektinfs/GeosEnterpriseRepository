@@ -10,6 +10,13 @@ namespace GeosEnterprise.Repositories
 {
     public class RepairsRepository : BaseRepository<Repair, RepairDTO>
     {
+        public new static void Update(RepairDTO repair)
+        {
+            BaseRepository<Client, ClientDTO>.Update(repair.Client);
+            BaseRepository<Computer, ComputerDTO>.Update(repair.Computer);
+            BaseRepository<Repair, RepairDTO>.Update(repair);
+        }
+
         public new static IList<Repair> GetAllCurrent()
         {
             return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();

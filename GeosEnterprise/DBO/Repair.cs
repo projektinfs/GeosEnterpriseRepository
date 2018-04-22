@@ -9,6 +9,7 @@ namespace GeosEnterprise.DBO
     public class Repair : DBObject<int>
     {
         public int ClientID { get; set; }
+        public virtual Client Client { get; set; }
         public virtual Computer Computer { get; set; }
         public int ComputerID { get; set; }
         public string Description { get; set; }

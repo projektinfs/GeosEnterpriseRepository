@@ -6,16 +6,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
         mc:Ignorable="d"
-        Title="Zlecenie naprawy" Height="325.925" Width="485.736">
+        Title="Zlecenie naprawy" Height="440.038" Width="604.378">
     <Grid>
         <Label Content="ZLECENIE NAPRAWY" Margin="0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-        <Grid Margin="17,60,63.189,61.151" VerticalAlignment="Center">
-            <Label Content="Numer seryjny" Margin="0,24,0,0" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
-            <Label Content="Opis usterki" Margin="14,53,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}" Margin="86,54,0,0" TextWrapping="Wrap" MinWidth="295" MinHeight="105" VerticalAlignment="Top"/>
-            <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="86,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
-            <Label Content="Nazwa" Margin="38,0,0,0" VerticalAlignment="Top"/>
-            <TextBox Text="{Binding BindingItem.Computer.Name}" Margin="86,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+        <Grid Margin="47,102,51.83,103.264" Height="205">
+            <Label Content="Numer seryjny" Margin="0,59,0.641,0" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+            <Label Content="Opis usterki" Margin="14,88,0.641,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}" Margin="86,90,-0.359,0" TextWrapping="Wrap" MinWidth="295" MinHeight="105" VerticalAlignment="Top"/>
+            <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="86,62,-0.359,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+            <Label Content="Nazwa" Margin="38,35,0.641,0" VerticalAlignment="Top"/>
+            <TextBox Text="{Binding BindingItem.Computer.Name}" Margin="86,35,-0.359,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23"/>
+            <Label Content="Klient" Margin="47,0,0,0" VerticalAlignment="Top"/>
+            <Button Name="NewClientButton" Command="{Binding NewClientButtonCommand}" Content="Nowy klient" Margin="320,0,0,0" VerticalAlignment="Top" MinWidth="150" MinHeight="23" HorizontalAlignment="Right"/>
+            <ComboBox Margin="86,0,160,0" ItemsSource="{Binding Clients}" DisplayMemberPath="Name" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" Text="{Binding BindingItem.Client.Name}" VerticalAlignment="Top" MinWidth="70" MinHeight="23"/>
 
         </Grid>
         <Button Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0" VerticalAlignment="Bottom" Width="150" Height="30" HorizontalAlignment="Left" FontWeight="Bold" FontSize="20"/>

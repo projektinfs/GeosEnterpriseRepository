@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -31,7 +33,7 @@ namespace GeosEnterprise.Repositories
             return _dbContext.Set<TEntity>().Where(p => p.DeletedDate == null).ToList();
         }
 
-        public static TEntity GetById(int id)
+        public static TEntity GetById(int id, bool withChildren = true)
         {
             return _dbContext.Set<TEntity>().Find(id);
         }

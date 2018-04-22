@@ -89,8 +89,8 @@
     </ApplicationDefinition>
     <Compile Include="DBO\Adress.cs" />
     <Compile Include="Authorization.cs" />
-    <Compile Include="Commands\PushButtonCommand.cs" />
-    <Compile Include="Commands\SignInCommand.cs" />
+    <Compile Include="CommonThings\Commands\PushButtonCommand.cs" />
+    <Compile Include="CommonThings\Commands\SignInCommand.cs" />
     <Compile Include="DBO\Client.cs" />
     <Compile Include="DBO\ClientAdress.cs" />
     <Compile Include="DBO\ClientContact.cs" />
@@ -123,7 +123,7 @@
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />
     <Compile Include="ViewModels\ClientsListViewModel.cs" />
-    <Compile Include="ViewModels\CommonThings\RelayCommand.cs" />
+    <Compile Include="CommonThings\Commands\RelayCommand.cs" />
     <Compile Include="ViewModels\ComputersAddViewModel.cs" />
     <Compile Include="ViewModels\ComputersInfoViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />

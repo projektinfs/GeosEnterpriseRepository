@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using GeosEnterprise.Commands;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -14,7 +15,16 @@ namespace GeosEnterprise.ViewModels
     {
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
+        public ICommand NewClientButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
+
+        public IList<ClientDTO> Clients
+        {
+            get
+            {
+                return Repositories.ClientRepository.GetAllCurrent().Select(p => ClientDTO.ToDTO(p)).ToList();
+            }
+        }
 
         public ComputersAddViewModel(int? repairID)
         {
@@ -26,9 +36,11 @@ namespace GeosEnterprise.ViewModels
             {
                 BindingItem = new RepairDTO();
                 BindingItem.Computer = new ComputerDTO();
+                BindingItem.Client = new ClientDTO();
             }
             OKButtonCommand = new RelayCommand<Window>(OK);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
+            NewClientButtonCommand = new RelayCommand<Window>(NewClient);
         }
 
         public void OK(Window window)
@@ -56,6 +68,12 @@ namespace GeosEnterprise.ViewModels
         public void Cancel(Window window)
         {
             window?.Close();
+        }
+
+        public void NewClient(Window window)
+        {
+            var newClientAdd = new Views.ClientsAdd();
+            newClientAdd.Show();
         }
     }
 }

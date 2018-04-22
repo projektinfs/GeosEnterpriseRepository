@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.Commands
 {
     public class RelayCommand<T> : ICommand
     {

@@ -83,7 +83,15 @@ namespace GeosEnterprise.ViewModels
         {
             var passwordBox = parameter as System.Windows.Controls.PasswordBox;
             Password = passwordBox.Password;
-           
+
+            if (System.Diagnostics.Debugger.IsAttached && Config.IgnoreAuthentication)
+            {
+                Authorization.AcctualEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+                Authorization.AcctualUser = "admin@admin.pl";
+                IsAuthenticated = true;
+                IsVisible = "Hidden";
+                return;
+            }
 
             if (EmployeeRepository.ValidateData(Email, Password) && !String.IsNullOrEmpty(Email) && !String.IsNullOrEmpty(Password))
             {
