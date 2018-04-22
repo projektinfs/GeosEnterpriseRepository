@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:GeosEnterprise"
         
         mc:Ignorable="d"
-        Title="GeosEnterprise" Height="720" Width="1200">
+        Title="GeosEnterprise" Height="720" Width="1280">
     <Window.Resources>
         <viewmodels:AuthenticationViewModel x:Key="auth"/>
 
@@ -57,7 +57,7 @@
             </StackPanel>
         </DockPanel>
         <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}">
-            
+
         </ContentControl>
         <!--<local:MenuControl HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="190"/>-->
     </Grid>

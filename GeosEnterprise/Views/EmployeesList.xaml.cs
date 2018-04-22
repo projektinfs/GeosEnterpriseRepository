@@ -29,7 +29,6 @@ namespace GeosEnterprise.Views
 
         }
 
-
         private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox SearchBar = (TextBox)sender;
