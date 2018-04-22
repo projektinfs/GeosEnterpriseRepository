@@ -57,8 +57,8 @@
         <Border Margin="700,10,10,0" Padding="3" Background="LightGray" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40">
             <StackPanel >
-                <TextBox x:Name="SearchBar" Text="Wpisz tekst..."  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" GotFocus="SearchBar_GotFocus" FontStyle="Italic" HorizontalAlignment="Left" Width="184"/>
-                <Button Name="SearchButton" Content="Szukaj..."  Margin="185,-22,0.6,0" Height="22" Click="SearchButton_Click" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
+                <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" GotFocus="SearchBar_GotFocus" FontStyle="Italic" Margin="0,0,48.6,0"/>
+                <Button Name="SearchButton" Content="Szukaj..."   HorizontalAlignment="Right"  Margin="185,-22,0.6,0" Height="22" Click="SearchButton_Click" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
             </StackPanel>
         </Border>
 

@@ -44,7 +44,7 @@
                 <!--<Button Name="InfoButton" Content="Szczegóły" Margin="458,-44,0,0.113" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="Snow" />-->
             </StackPanel>
         </Border>
-        
+
         <Border Margin="10,10,0,0" Padding="3" Background="LightGray" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="267">
@@ -75,8 +75,8 @@
         <Border Margin="700,10,10,0" Padding="3" Background="LightGray" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40">
             <StackPanel >
-                <TextBox x:Name="SearchBar" Text="Wpisz tekst..."  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" GotFocus="SearchBar_GotFocus" FontStyle="Italic" HorizontalAlignment="Left" Width="184"/>
-                <Button Name="SearchButton" Content="Szukaj..."  Margin="186,-22,0.4,0" Height="22" Click="SearchButton_Click" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
+                <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" GotFocus="SearchBar_GotFocus" FontStyle="Italic" Margin="0,0,46.6,0"/>
+                <Button Name="SearchButton" Content="Szukaj..."  HorizontalAlignment="Right" Margin="186,-22,0.4,0" Height="22" Click="SearchButton_Click" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
             </StackPanel>
         </Border>
     </Grid>

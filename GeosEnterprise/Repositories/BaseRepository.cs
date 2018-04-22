@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.Repositories
 {
-    public abstract class BaseRepository<TEntity> where TEntity : DBO.DBObject<int>
+    public abstract class BaseRepository<TEntity> 
+        where TEntity : DBO.DBObject<int>
     {
         internal static readonly DbContext _dbContext = App.DB;
 
@@ -111,7 +112,9 @@ namespace GeosEnterprise.Repositories
         }
     }
 
-    public abstract class BaseRepository<TEntity, DTOEntity> : BaseRepository<TEntity> where TEntity : DBO.DBObject<int> where DTOEntity : DTO.DTOObject<int>
+    public abstract class BaseRepository<TEntity, DTOEntity> : BaseRepository<TEntity> 
+        where TEntity : DBO.DBObject<int> 
+        where DTOEntity : DTO.DTOObject<int>
     {
         protected static void Delete(DTOEntity entity)
         {

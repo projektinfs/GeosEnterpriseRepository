@@ -9,6 +9,7 @@ namespace GeosEnterprise.DBO
 {
     public enum UserRole
     {
+        [Description("Administrator")]
         Administrator = 1,
         [Description("Kierownik")]
         Manager = 2,
