@@ -51,6 +51,16 @@ namespace GeosEnterprise.ViewModels
                 NotifyPropertyChanged("IsVisible");
             }
         }
+        private static bool _IsAdmin;
+        public bool IsAdmin
+        {
+            get { return _IsAdmin; }
+            set
+            {
+                _IsAdmin = value;
+                NotifyPropertyChanged("IsAdmin");
+            }
+        }
 
         public string Email { get; set; }
         public string Password { get; set; }
@@ -64,7 +74,26 @@ namespace GeosEnterprise.ViewModels
                 {
                     Email = "admin@admin.pl",
                     Password = "admin123",
-                    Position = "Administrator"
+                    Position = "Administrator",
+                    Name = "admin",
+                    Surname = "admin",
+                    Adress = new Adress
+                    {
+                        City = "admin",
+                        Voivodeship = "admin",
+                        District = "admin",
+                        PostCode = "admin",
+                        Street = "admin",
+                        BuildingNumber = "admin",
+                        AppartamentNumber = "admin",
+                    },
+                    EmployeeContact = new EmployeeContact
+                    {
+                        Phone = "admin",
+                        Fax = "admin",
+                        Www = "admin",
+                    }
+
                 };
 
                 EmployeeRepository.Add(employee);
@@ -98,6 +127,7 @@ namespace GeosEnterprise.ViewModels
                 Authorization.AcctualUser = Email;
                 Authorization.AcctualEmployee = EmployeeRepository.GetByEmail(Email);
                 IsAuthenticated = true;
+                if (Authorization.AcctualEmployee.Position == "Administrator") IsAdmin = true; else IsAdmin = false;
                 MessageForUser = "";
                 IsVisible = "Hidden";
             }
