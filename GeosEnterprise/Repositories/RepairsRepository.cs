@@ -12,7 +12,7 @@ namespace GeosEnterprise.Repositories
     {
         public new static void Update(RepairDTO repair)
         {
-            //BaseRepository<Client, ClientDTO>.Update(repair.Client);
+            BaseRepository<Client, ClientDTO>.Update(repair.Client);
             BaseRepository<Computer, ComputerDTO>.Update(repair.Computer);
             BaseRepository<Repair, RepairDTO>.Update(repair);
         }
@@ -75,6 +75,7 @@ namespace GeosEnterprise.Repositories
         {
             return ExecuteQuery(() =>
             {
+                repair.Client = null;
                 return Insert(repair);
             });
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeosEnterprise.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,25 @@ namespace GeosEnterprise.DTO
     {
         public string Name { get; set; }
         public string SerialNumber { get; set; }
+
+        public static ComputerDTO ToDTO(DBO.Computer entity)
+        {
+            return new ComputerDTO
+            {
+                ID = entity.ID,
+                Name = entity.Name,
+                SerialNumber = entity.SerialNumber
+            };
+        }
+
+        public static Computer FromDTO(ComputerDTO entity)
+        {
+            return new Computer
+            {
+                ID = entity.ID,
+                Name = entity.Name,
+                SerialNumber = entity.SerialNumber
+            };
+        }
     }
 }

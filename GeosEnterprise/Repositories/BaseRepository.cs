@@ -33,7 +33,7 @@ namespace GeosEnterprise.Repositories
             return _dbContext.Set<TEntity>().Where(p => p.DeletedDate == null).ToList();
         }
 
-        public static TEntity GetById(int id, bool withChildren = true)
+        public static TEntity GetById(int id)
         {
             return _dbContext.Set<TEntity>().Find(id);
         }

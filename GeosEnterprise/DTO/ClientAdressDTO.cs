@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeosEnterprise.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,20 @@ namespace GeosEnterprise.DTO
                 Street = entity.Street,
                 BuildingNumber = entity.BuildingNumber,
                 AppartamentNumber = entity.AppartamentNumber,
+            };
+        }
+
+        public static ClientAdress FromDTO(ClientAdressDTO entity)
+        {
+            return new ClientAdress
+            {
+                AppartamentNumber = (int)entity.AppartamentNumber,
+                BuildingNumber = entity.BuildingNumber,
+                City = entity.City,
+                District = entity.District,
+                PostCode = entity.PostCode,
+                Street = entity.Street,
+                Voivodeship = entity.Voivodeship
             };
         }
     }

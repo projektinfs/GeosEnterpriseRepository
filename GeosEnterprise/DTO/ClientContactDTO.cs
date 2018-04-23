@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeosEnterprise.DBO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,17 @@ namespace GeosEnterprise.DTO
                 Www = entity.Www,
                 Phone = entity.Phone,
                 Fax = entity.Fax,
+            };
+        }
+
+        public static ClientContact FromDTO(DTO.ClientContactDTO entity)
+        {
+            return new ClientContact
+            {
+                Email = entity.Email,
+                Www = entity.Www,
+                Phone = entity.Phone,
+                Fax = entity.Fax
             };
         }
     }

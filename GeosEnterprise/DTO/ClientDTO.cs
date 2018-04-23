@@ -41,8 +41,20 @@ namespace GeosEnterprise.DTO
                     Email = entity.ClientContact.Email,
                 },
                 ID = entity.ID,
-                Name  = entity.Name,
+                Name = entity.Name,
                 Surname = entity.Surname,
+            };
+        }
+
+        public static Client FromDTO(ClientDTO entity)
+        {
+            return new Client
+            {
+                ID = entity.ID,
+                ClientAdress = ClientAdressDTO.FromDTO(entity.ClientAdress),
+                ClientContact = ClientContactDTO.FromDTO(entity.ClientContact),
+                Name = entity.Name,
+                Surname = entity.Surname
             };
         }
     }
