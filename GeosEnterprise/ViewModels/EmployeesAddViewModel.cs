@@ -12,7 +12,7 @@ using GeosEnterprise.Commands;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class EmployeesAddViewModel
+    public class EmployeesAddViewModel : INotifyPropertyChanged
     {
 
         public ICommand OKButtonCommand { get; set; }
@@ -30,6 +30,7 @@ namespace GeosEnterprise.ViewModels
             else
             {
                 BindingItem = new EmployeeDTO();
+                BindingItem.Password = NewPassword(20);
                 BindingItem.Adress = new AdressDTO();
                 BindingItem.EmployeeContact = new EmployeeContactDTO();
             }
@@ -46,12 +47,27 @@ namespace GeosEnterprise.ViewModels
             this.IsAdminMode = IsAdminMode;
         }
 
+        private string _EmailTaken;
+        public string EmailTaken
+        {
+            get { return _EmailTaken; }
+            set
+            {
+                _EmailTaken = value;
+                NotifyPropertyChanged("EmailTaken");
+            }
+        }
+
         public void Save(Window window)
         {
             if (BindingItem.ID <=0)
             {
+                if (Repositories.EmployeeRepository.GetByEmail(BindingItem.Email.ToString())!=null){
+                    EmailTaken = "Podany email jest już zajęty!";
+                    return;
+                }
                 Repositories.EmployeeRepository.Add(new Employee
-                {
+                {  
                     Email = BindingItem.Email,
                     Password = BindingItem.Password,
                     Name = BindingItem.Name,
@@ -141,5 +157,24 @@ namespace GeosEnterprise.ViewModels
             }
         }
 
+
+        private static string NewPassword(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var random = new Random();
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+
+
+        #region INotifyPropertyChanged Members
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }
