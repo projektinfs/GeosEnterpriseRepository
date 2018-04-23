@@ -11,6 +11,7 @@ namespace GeosEnterprise
     {
 
         public static string _AcctualUser = "NaN";
+        public static bool _IsAdmin = false;
         public static Employee _AcctualEmployee = new Employee
         {
             Email = "NaN@NaN.pl",
@@ -48,6 +49,17 @@ namespace GeosEnterprise
             set
             {
                 _AcctualUser = value;
+            }
+        }
+        public static bool IsAdmin
+        {
+            get
+            {
+                return _IsAdmin;
+            }
+            set
+            {
+                _IsAdmin = value;
             }
         }
 

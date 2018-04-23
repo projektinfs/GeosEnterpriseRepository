@@ -51,16 +51,7 @@ namespace GeosEnterprise.ViewModels
                 NotifyPropertyChanged("IsVisible");
             }
         }
-        private static bool _IsAdmin;
-        public bool IsAdmin
-        {
-            get { return _IsAdmin; }
-            set
-            {
-                _IsAdmin = value;
-                NotifyPropertyChanged("IsAdmin");
-            }
-        }
+        
 
         public string Email { get; set; }
         public string Password { get; set; }
@@ -101,6 +92,7 @@ namespace GeosEnterprise.ViewModels
 
             IsVisible = "Visible";
             IsAuthenticated = false;
+            Authorization.IsAdmin = false;
             SignInCommand = new SignInCommand(
                 SignIn,
                 (object parameters) => true
@@ -127,7 +119,7 @@ namespace GeosEnterprise.ViewModels
                 Authorization.AcctualUser = Email;
                 Authorization.AcctualEmployee = EmployeeRepository.GetByEmail(Email);
                 IsAuthenticated = true;
-                if (Authorization.AcctualEmployee.Position == "Administrator") IsAdmin = true; else IsAdmin = false;
+                if (Authorization.AcctualEmployee.Position == "Administrator") Authorization.IsAdmin = true; else Authorization.IsAdmin = false;
                 MessageForUser = "";
                 IsVisible = "Hidden";
             }
