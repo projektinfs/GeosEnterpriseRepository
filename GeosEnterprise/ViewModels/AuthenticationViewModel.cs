@@ -64,7 +64,17 @@ namespace GeosEnterprise.ViewModels
                 {
                     Email = "admin@admin.pl",
                     Password = "admin123",
-                    Position = "Administrator"
+                    Position = "Administrator",
+                    Adress = new Adress
+                    {
+                        PostCode = "00:000",
+
+                    },
+                    EmployeeContact = new EmployeeContact
+                    {
+                        Www = "www.notexist.pl",
+                    }
+                                       
                 };
 
                 EmployeeRepository.Add(employee);

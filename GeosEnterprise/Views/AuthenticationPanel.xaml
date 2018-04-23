@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="960">
 
-    <Grid Visibility="{Binding IsVisible}">
+    <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF002D45" Offset="0.854"/>
@@ -16,12 +16,18 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <Button x:Name="pbSingIn" Content="Zaloguj" Margin="427,201,434,229.6" Command="{Binding SignInCommand}" CommandParameter="{Binding ElementName=txtPassword}" Width="99" Height="19" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <PasswordBox x:Name="txtPassword"  Margin="485,171,310,253.6" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="315,171,480,253.6" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <Label Content="Adres email" Margin="315,140,571,283.6" Foreground="#FFFFFBFB"  Width="74" Height="26" VerticalAlignment="Center" HorizontalAlignment="Center" />
-        <Label Content="Hasło" Margin="486,140,434,283.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
-        <TextBlock Text="{Binding MessageForUser}" Margin="10,240,10,9.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
-        <TextBlock Margin="309,72,302,309.6" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="349"><Run Text="Panel logowania"/><LineBreak/><Run/></TextBlock>
+        <Grid Visibility="{Binding IsVisible}">
+            <Border Margin="413,201,407,216.6" Padding="3" Background="White" BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="0" Height="32" Width="140" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel>
+                    <Button x:Name="pbSingIn" Content="Zaloguj" Margin="-8,0,-8,5" Command="{Binding SignInCommand}" Background="White" BorderBrush="White" CommandParameter="{Binding ElementName=txtPassword}" Height="19" VerticalAlignment="Center" RenderTransformOrigin="0.622,-8.537"/>
+                </StackPanel>
+            </Border>
+            <PasswordBox x:Name="txtPassword"  Margin="485,171,310,253.6" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="315,171,480,253.6" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Label Content="Adres email" Margin="315,140,571,283.6" Foreground="#FFFFFBFB"  Width="74" Height="26" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Label Content="Hasło" Margin="486,140,434,283.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+            <TextBlock Text="{Binding MessageForUser}" Margin="10,240,10,9.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+            <TextBlock Margin="309,72,302,309.6" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="349"><Run Text="Panel logowania"/><LineBreak/><Run/></TextBlock>
+        </Grid>
     </Grid>
 </UserControl>
