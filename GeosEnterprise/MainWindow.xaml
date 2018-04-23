@@ -54,9 +54,10 @@
                 BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" >
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="#FF031722" Offset="0.657"/>
-                        <GradientStop Color="#FF116BB7" Offset="0.132"/>
-                        <GradientStop Color="#FF002545" Offset="0.374"/>
+                        <GradientStop Color="#FF031722" Offset="0.645"/>
+                        <GradientStop Color="#FF116BB7" Offset="0.079"/>
+                        <GradientStop Color="#FF002545" Offset="0.35"/>
+                        <GradientStop Color="#FF00425F" Offset="0.963"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">

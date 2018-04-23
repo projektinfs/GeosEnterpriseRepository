@@ -36,7 +36,7 @@ namespace GeosEnterprise.ViewModels
             {
                 BindingItem = new RepairDTO();
                 BindingItem.Computer = new ComputerDTO();
-                BindingItem.Client = new ClientDTO();
+                //BindingItem.Client = new ClientDTO();
             }
             OKButtonCommand = new RelayCommand<Window>(OK);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
@@ -59,6 +59,7 @@ namespace GeosEnterprise.ViewModels
                         SerialNumber = BindingItem.Computer.SerialNumber,
                         Name = BindingItem.Computer.Name
                     }
+                    
                 });
             }
 

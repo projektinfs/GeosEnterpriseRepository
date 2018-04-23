@@ -8,7 +8,7 @@ namespace GeosEnterprise.DTO
 {
     public class RepairDTO : DTOObject<int>
     {
-        public ClientDTO Client { get; set; }
+        //public ClientDTO Client { get; set; }
         public ComputerDTO Computer { get; set; }
         public int ComputerID { get; set; }
         public string Description { get; set; }
