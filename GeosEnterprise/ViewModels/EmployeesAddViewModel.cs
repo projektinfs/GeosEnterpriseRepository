@@ -60,38 +60,42 @@ namespace GeosEnterprise.ViewModels
 
         public void Save(Window window)
         {
-            if (BindingItem.ID <=0)
+            if (BindingItem.ID <= 0)
             {
-                if (Repositories.EmployeeRepository.GetByEmail(BindingItem.Email.ToString())!=null){
+                if (Repositories.EmployeeRepository.GetByEmail(BindingItem.Email.ToString()) != null)
+                {
                     EmailTaken = "Podany email jest już zajęty!";
                     return;
                 }
-                Repositories.EmployeeRepository.Add(new Employee
-                {  
-                    Email = BindingItem.Email,
-                    Password = BindingItem.Password,
-                    Name = BindingItem.Name,
-                    Surname = BindingItem.Surname,
-                    Position = BindingItem.Position,
-                    UserRole = PositionToUserRole(BindingItem.Position.ToString()),
-                    Adress = new Adress
+                else
+                {
+                    Repositories.EmployeeRepository.Add(new Employee
                     {
-                        City = BindingItem.Adress.City,
-                        Voivodeship = BindingItem.Adress.Voivodeship,
-                        District = BindingItem.Adress.District,
-                        PostCode = BindingItem.Adress.PostCode,
-                        Street = BindingItem.Adress.Street,
-                        BuildingNumber = BindingItem.Adress.BuildingNumber,
-                        AppartamentNumber = BindingItem.Adress.AppartamentNumber
-                    },
-                    EmployeeContact = new EmployeeContact
-                    {
-                        Phone = BindingItem.EmployeeContact.Phone,
-                        Fax = BindingItem.EmployeeContact.Fax,
-                        Www = BindingItem.EmployeeContact.Www
-                    }
-                });
+                        Email = BindingItem.Email,
+                        Password = BindingItem.Password,
+                        Name = BindingItem.Name,
+                        Surname = BindingItem.Surname,
+                        Position = BindingItem.Position,
+                        UserRole = PositionToUserRole(BindingItem.Position.ToString()),
+                        Adress = new Adress
+                        {
+                            City = BindingItem.Adress.City,
+                            Voivodeship = BindingItem.Adress.Voivodeship,
+                            District = BindingItem.Adress.District,
+                            PostCode = BindingItem.Adress.PostCode,
+                            Street = BindingItem.Adress.Street,
+                            BuildingNumber = BindingItem.Adress.BuildingNumber,
+                            AppartamentNumber = BindingItem.Adress.AppartamentNumber
+                        },
+                        EmployeeContact = new EmployeeContact
+                        {
+                            Phone = BindingItem.EmployeeContact.Phone,
+                            Fax = BindingItem.EmployeeContact.Fax,
+                            Www = BindingItem.EmployeeContact.Www
+                        }
+                    });
 
+                }
             }
 
             else
@@ -122,13 +126,14 @@ namespace GeosEnterprise.ViewModels
                         Www = BindingItem.EmployeeContact.Www
                     }
                 };
-                Repositories.EmployeeRepository.Edit( updatedEmployee );
+                Repositories.EmployeeRepository.Edit(updatedEmployee);
 
-                if(BindingItem.ID == Authorization.AcctualEmployee.ID)
+                if (BindingItem.ID == Authorization.AcctualEmployee.ID)
                 {
                     Authorization.AcctualEmployee = updatedEmployee;
                 }
             }
+            
 
             window?.Close();
 
