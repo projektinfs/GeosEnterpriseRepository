@@ -17,6 +17,14 @@ namespace GeosEnterprise.DTO
         public DateTime? CreatedDate { get; set; }
         public DateTime? RealizationDate { get; set; }
 
+        public string OrderNumber
+        {
+            get
+            {
+                return $"{ID}/{CreatedDate.Value.Year}/{CreatedDate.Value.Month}";
+            }
+        }
+
         public static RepairDTO ToDTO(DBO.Repair entity)
         {
             return new RepairDTO

@@ -65,14 +65,15 @@
         <Border Margin="10,55,10,71.6" Padding="3" Background="White" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4">
             <StackPanel >
-                <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" Margin="0,0,-1,36.6" Grid.ColumnSpan="2">
+                <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" Margin="0,0,-1,36.6" Grid.ColumnSpan="2" VerticalContentAlignment="Top" UseLayoutRounding="False">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" Width="40"/>
+                            <GridViewColumn Header="Numer zgłoszenia" DisplayMemberBinding="{Binding OrderNumber}" Width="100"/>
                             <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
-                            <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Computer.Name}" Width="120"/>
-                            <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="120"/>
-                            <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="500"/>
+                            <GridViewColumn Header="Klient" DisplayMemberBinding="{Binding Client.FullName}" Width="200"/>
+                            <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Computer.Name}" Width="200"/>
+                            <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="150"/>
+                            <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="150"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

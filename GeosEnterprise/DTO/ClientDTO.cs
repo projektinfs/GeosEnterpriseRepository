@@ -14,6 +14,13 @@ namespace GeosEnterprise.DTO
         public ClientAdressDTO ClientAdress { get; set; }
         public ClientContactDTO ClientContact { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return $"{Name} {Surname}";
+            }
+        }
 
         public static ClientDTO ToDTO(DBO.Client entity)
         {

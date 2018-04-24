@@ -14,5 +14,13 @@ namespace GeosEnterprise.DBO
         public int ComputerID { get; set; }
         public string Description { get; set; }
         public DateTime? RealizationDate { get; set; }
+
+        public string OrderNumber
+        {
+            get
+            {
+                return $"{ID}/{CreatedDate.Value.Year}/{CreatedDate.Value.Month}";
+            }
+        }
     }
 }
