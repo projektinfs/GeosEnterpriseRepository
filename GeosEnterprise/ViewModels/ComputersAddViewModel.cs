@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using GeosEnterprise.Commands;
+using GeosEnterprise.Validators;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -45,15 +48,24 @@ namespace GeosEnterprise.ViewModels
 
         public void OK(Window window)
         {
-            if (BindingItem.ID > 0)
+            string errors = DoValidation();
+            if (string.IsNullOrEmpty(errors))
             {
-                Repositories.RepairsRepository.Edit(BindingItem);
+                if (BindingItem.ID > 0)
+                {
+                    Repositories.RepairsRepository.Edit(BindingItem);
+                }
+                else
+                {
+                    Repositories.RepairsRepository.Add(RepairDTO.FromDTO(BindingItem));
+                }
             }
             else
             {
-                Repositories.RepairsRepository.Add(RepairDTO.FromDTO(BindingItem));
+                Config.MsgBoxValidationMessage(errors);
+                return;
             }
-
+           
             window?.Close();
         }
 
@@ -66,6 +78,21 @@ namespace GeosEnterprise.ViewModels
         {
             var newClientAdd = new Views.ClientsAdd();
             newClientAdd.Show();
+        }
+
+        private string DoValidation()
+        {
+            var validationErrors1 = ValidatorTools.DoValidation(BindingItem.Computer, new ComputerValidator());
+            var validationErrors2 = ValidatorTools.DoValidation(BindingItem, new RepairValidator());
+
+            if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(validationErrors2))
+            {
+                return String.Empty;
+            }
+            else
+            {
+                return validationErrors1 + "\r\n" + validationErrors2;
+            }
         }
     }
 }

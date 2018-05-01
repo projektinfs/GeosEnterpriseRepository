@@ -1,6 +1,7 @@
 ﻿using GeosEnterprise.DBO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,10 @@ namespace GeosEnterprise.DTO
 {
     public class ComputerDTO : DTOObject<int>
     {
+        [Description("Nazwa")]
         public string Name { get; set; }
+
+        [Description("Numer seryjny")]
         public string SerialNumber { get; set; }
 
         public static ComputerDTO ToDTO(DBO.Computer entity)

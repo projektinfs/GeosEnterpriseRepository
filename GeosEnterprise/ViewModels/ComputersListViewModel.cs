@@ -82,7 +82,10 @@ namespace GeosEnterprise.ViewModels
         public void Add(object obj)
         {
             Window addNewRepairWindow = new ComputersAdd();
-            addNewRepairWindow.Show();
+            if (addNewRepairWindow.ShowDialog() == true)
+            {
+                OnPropertyChanged();
+            }
         }
 
         public void Edit(object obj)
@@ -91,7 +94,10 @@ namespace GeosEnterprise.ViewModels
             if (repairDTO != null)
             {
                 Window editRepairWindow = new ComputersAdd(repairDTO.ID);
-                editRepairWindow.Show();
+                if (editRepairWindow.ShowDialog() == true)
+                {
+                    OnPropertyChanged();
+                }
             }
         }
 
@@ -104,6 +110,7 @@ namespace GeosEnterprise.ViewModels
                     "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.RepairsRepository.Delete(repairDTO.ID);
+                    OnPropertyChanged();
                 }
             }
         }

@@ -1,6 +1,7 @@
 ﻿using GeosEnterprise.DBO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +12,33 @@ namespace GeosEnterprise.DTO
     {
         public ClientDTO Client { get; set; }
         public int ClientID { get; set; }
+
+        [Description("Komputer")]
         public ComputerDTO Computer { get; set; }
         public int ComputerID { get; set; }
+
+        [Description("Opis")]
         public string Description { get; set; }
+
+        [Description("Data utworzenia zlecenia")]
         public DateTime? CreatedDate { get; set; }
+
+        [Description("Data zamknięcia zlecenia")]
         public DateTime? RealizationDate { get; set; }
 
+        [Description("Numer zamówienia")]
         public string OrderNumber
         {
             get
             {
-                return $"{ID}/{CreatedDate.Value.Year}/{CreatedDate.Value.Month}";
+                if (CreatedDate != null)
+                {
+                    return $"{ID}/{CreatedDate.Value.Year}/{CreatedDate.Value.Month}";
+                }
+                else
+                {
+                    return $"{ID}";
+                }
             }
         }
 
