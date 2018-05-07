@@ -102,7 +102,6 @@ namespace GeosEnterprise.ViewModels
             Window addNewEmployeeWindow = new EmployeesAdd();
             addNewEmployeeWindow.Show();
 
-
         }
 
         private void Delete(object obj)
@@ -111,6 +110,10 @@ namespace GeosEnterprise.ViewModels
             if (employeeDTO != null)
             {
                 Repositories.EmployeeRepository.Delete(employeeDTO.ID);
+            }
+            else
+            {
+                MessageBox.Show($"Nic nie zaznaczono!");
             }
 
         }
@@ -124,7 +127,10 @@ namespace GeosEnterprise.ViewModels
                 addNewEmployeeWindow.Show();
 
             }
-
+            else
+            {
+                MessageBox.Show($"Nic nie zaznaczono!");
+            }
         }
 
         private void Info(object obj)
@@ -135,7 +141,10 @@ namespace GeosEnterprise.ViewModels
                 Window addNewEmployeeWindow = new EmployeesInfo(employeeDTO.ID);
                 addNewEmployeeWindow.ShowDialog();
             }
-
+            else
+            {
+                MessageBox.Show($"Nic nie zaznaczono!");
+            }
         }
     }
 }

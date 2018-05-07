@@ -70,7 +70,7 @@
                         <GridView>
                             <GridViewColumn Header="Numer zgłoszenia" DisplayMemberBinding="{Binding OrderNumber}" Width="100"/>
                             <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
-                            <GridViewColumn Header="Klient" DisplayMemberBinding="{Binding Client.FullName}" Width="200"/>
+                            <GridViewColumn Header="Klient" DisplayMemberBinding="{Binding Client.Name}" Width="200"/>
                             <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Computer.Name}" Width="200"/>
                             <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="150"/>
                             <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="150"/>

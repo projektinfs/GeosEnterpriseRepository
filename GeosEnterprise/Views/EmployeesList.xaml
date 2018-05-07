@@ -30,8 +30,6 @@
                             <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="100"/>
                             <GridViewColumn Header="Tel." DisplayMemberBinding="{Binding EmployeeContact.Phone}" Width="100"/>
                             <GridViewColumn Header="Rola" DisplayMemberBinding="{Binding UserRole}" Width="100"/>
-
-
                             <GridViewColumn Header="Data zatrudnienia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
 
                         </GridView>

@@ -39,7 +39,10 @@ namespace GeosEnterprise.Repositories
             return ExecuteQuery(() =>
             {
                 return Where(p => p.Name.Contains(filter)
-                || p.Surname.Contains(filter) || p.Email.Contains(filter) || p.EmployeeContact.Phone.Contains(filter)).ToList();
+                || p.Surname.Contains(filter) 
+                || p.Email.Contains(filter) 
+                || p.EmployeeContact.Phone.Contains(filter)
+                || p.Position.Contains(filter)).ToList();
             });
         }
 
@@ -51,7 +54,10 @@ namespace GeosEnterprise.Repositories
                     && p.CreatedDate <= timeTo).ToList();
 
                 return employees.Where(p => p.Name.Contains(filter)
-                || p.Surname.Contains(filter) || p.Email.Contains(filter) || p.EmployeeContact.Phone.Contains(filter)).ToList();
+                || p.Surname.Contains(filter)
+                || p.Email.Contains(filter)
+                || p.EmployeeContact.Phone.Contains(filter)
+                || p.Position.Contains(filter)).ToList();
             });
         }
 

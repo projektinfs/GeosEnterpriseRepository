@@ -99,6 +99,10 @@ namespace GeosEnterprise.ViewModels
                     OnPropertyChanged();
                 }
             }
+            else
+            {
+                MessageBox.Show($"Nic nie zaznaczono!");
+            }
         }
 
         public void Delete(object obj)
@@ -113,7 +117,11 @@ namespace GeosEnterprise.ViewModels
                     OnPropertyChanged();
                 }
             }
-        }
+            else
+            {
+                MessageBox.Show($"Nic nie zaznaczono!");
+            }
+}
 
         
         public void Info(object obj)
@@ -124,7 +132,11 @@ namespace GeosEnterprise.ViewModels
                 Window infoRepairWindow = new ComputersInfo(repairDTO.ID);
                 infoRepairWindow.Show();
             }
-        }
+            else
+            {
+                MessageBox.Show($"Nic nie zaznaczono!");
+            }
+}
 
         public void Now(object obj)
         {

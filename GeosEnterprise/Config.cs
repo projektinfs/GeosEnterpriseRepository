@@ -16,7 +16,7 @@ namespace GeosEnterprise
         /// <summary>
         /// True - jeżeli w trybie debugowania proces autentykacji ma zostać pominięty
         /// </summary>
-        public static bool IgnoreAuthentication = true;
+        public static bool IgnoreAuthentication = false;
 
         public static void MsgBoxValidationMessage(string errors)
         {
