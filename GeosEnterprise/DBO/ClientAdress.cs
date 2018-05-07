@@ -14,6 +14,6 @@ namespace GeosEnterprise.DBO
         public string PostCode { get; set; }
         public string Street { get; set; }
         public string BuildingNumber { get; set; }
-        public int AppartamentNumber { get; set; }
+        public string AppartamentNumber { get; set; }
     }
 }

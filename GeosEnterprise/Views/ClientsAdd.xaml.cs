@@ -71,7 +71,7 @@ namespace GeosEnterprise.Views
                         PostCode = PostCodeTextBox.Text,
                         Street = StreetTextBox.Text,
                         BuildingNumber = BuildingTextBox.Text,
-                        AppartamentNumber = int.Parse(AppartamentTextBox.Text)
+                        AppartamentNumber = AppartamentTextBox.Text,
                     },
                     ClientContact = new ClientContact
                     {
@@ -99,7 +99,7 @@ namespace GeosEnterprise.Views
                         PostCode = PostCodeTextBox.Text,
                         Street = StreetTextBox.Text,
                         BuildingNumber = BuildingTextBox.Text,
-                        AppartamentNumber = int.Parse(AppartamentTextBox.Text)
+                        AppartamentNumber = AppartamentTextBox.Text,
                     },
                     ClientContact = new ClientContact
                     {

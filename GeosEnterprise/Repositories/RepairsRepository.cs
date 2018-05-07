@@ -35,7 +35,7 @@ namespace GeosEnterprise.Repositories
             return ExecuteQuery(() =>
             {
                 return Where(p => p.Description.Contains(filter)
-            || p.Computer.SerialNumber.Contains(filter)).ToList();
+            || p.Computer.SerialNumber.Contains(filter) || p.Computer.Name.Contains(filter)).ToList();
 
             });
         }

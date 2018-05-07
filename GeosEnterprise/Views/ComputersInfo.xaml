@@ -15,12 +15,30 @@
                 <GradientStop Color="#FF002545" Offset="0.136"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBox Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <Label Content="Numer seryjny" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
-        <Label Content="INFORMACJE O KOMPUTERZE" Margin="235,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
-        <Label Content="Opis usterki" HorizontalAlignment="Left" Margin="32,103,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="DescriptionTextBox" Text="{Binding BindingItem.Description}"  HorizontalAlignment="Left" Height="23" Margin="118,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="631" IsReadOnly="True"/>
-        <Label Content="Komponenty komputera" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top"/>
-        <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputerInfo}" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75"/>
+
+        <TextBlock TextWrapping="Wrap" FontSize="48" Foreground="White" HorizontalAlignment="Center" Width="538" Margin="127,0,128.6,0"><Run Text="Informacje o komputerze"/><LineBreak/><Run/></TextBlock>
+
+        <Border Margin="32,82,37.6,0" Padding="3" Background="LightGray" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" HorizontalAlignment="Center" Width="724" Height="263" VerticalAlignment="Top">
+            <StackPanel>
+                <Label Content="Numer seryjny" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black" Height="32" FontWeight="Bold" Width="136"/>
+                <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" TextWrapping="Wrap" Width="704" IsReadOnly="True" RenderTransformOrigin="0.5,0.47"/>
+
+                <Label Content="Opis usterki" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black" Height="34" FontWeight="Bold"/>
+                <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="85" TextWrapping="Wrap" Width="704" IsReadOnly="True" Margin="2,0"/>
+
+                <Label Content="Komponenty komputera" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="Black" Height="34" FontWeight="Bold"/>
+            </StackPanel>
+        </Border>
+
+        <Border Margin="315,350,315.6,0" Padding="3" Background="#FF002D51" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Top" HorizontalAlignment="Center" Width="163">
+            <StackPanel >
+                <Button Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputerInfo}" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
+            </StackPanel>
+        </Border>
+
+
+
     </Grid>
 </Window>

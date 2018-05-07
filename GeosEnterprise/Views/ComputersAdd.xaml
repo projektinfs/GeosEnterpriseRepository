@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
         mc:Ignorable="d"
-        Title="Zlecenie naprawy" Height="480.0" Width="640">
+        Title="Zlecenie naprawy" Height="500" Width="680">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -15,7 +15,7 @@
                 <GradientStop Color="#FD081826" Offset="0.136"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBlock Margin="60,10,61.6,372.4" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="512"><Run Text="Dodaj zlecenie naprawy"/><LineBreak/><Run/></TextBlock>
+        <TextBlock Margin="155,20,135.6,382.4" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="383"><Run Text="Zlecenie naprawy"/><LineBreak/><Run/></TextBlock>
 
         <Border Margin="24,98,29.6,247.4" Padding="3" Background="LightGray" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"

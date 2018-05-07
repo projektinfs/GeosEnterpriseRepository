@@ -15,7 +15,7 @@ namespace GeosEnterprise.DTO
         public string PostCode { get; set; }
         public string Street { get; set; }
         public string BuildingNumber { get; set; }
-        public int? AppartamentNumber { get; set; }
+        public string AppartamentNumber { get; set; }
 
 
         public static ClientAdressDTO ToDTO(DBO.ClientAdress entity)
@@ -37,7 +37,7 @@ namespace GeosEnterprise.DTO
         {
             return new ClientAdress
             {
-                AppartamentNumber = (int)entity.AppartamentNumber,
+                AppartamentNumber = entity.AppartamentNumber,
                 BuildingNumber = entity.BuildingNumber,
                 City = entity.City,
                 District = entity.District,
