@@ -100,7 +100,7 @@ namespace GeosEnterprise.ViewModels
 
             else
             {
-                Employee updatedEmployee = new Employee
+               Employee updatedEmployee = new Employee
                 {
                     ID = (int)BindingItem.ID,
                     Email = BindingItem.Email,
@@ -111,6 +111,7 @@ namespace GeosEnterprise.ViewModels
                     UserRole = PositionToUserRole(BindingItem.Position.ToString()),
                     Adress = new Adress
                     {
+                        ID = (int)BindingItem.Adress.ID,
                         City = BindingItem.Adress.City,
                         Voivodeship = BindingItem.Adress.Voivodeship,
                         District = BindingItem.Adress.District,
@@ -121,6 +122,7 @@ namespace GeosEnterprise.ViewModels
                     },
                     EmployeeContact = new EmployeeContact
                     {
+                        ID = (int)BindingItem.EmployeeContact.ID,
                         Phone = BindingItem.EmployeeContact.Phone,
                         Fax = BindingItem.EmployeeContact.Fax,
                         Www = BindingItem.EmployeeContact.Www
@@ -128,9 +130,10 @@ namespace GeosEnterprise.ViewModels
                 };
                 Repositories.EmployeeRepository.Edit(updatedEmployee);
 
+
                 if (BindingItem.ID == Authorization.AcctualEmployee.ID)
                 {
-                    Authorization.AcctualEmployee = updatedEmployee;
+                   Authorization.AcctualEmployee = updatedEmployee;
                 }
             }
             

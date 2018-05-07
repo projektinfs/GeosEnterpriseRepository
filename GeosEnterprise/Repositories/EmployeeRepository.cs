@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
+
 
 namespace GeosEnterprise.Repositories
 {
-    public class EmployeeRepository : BaseRepository<Employee>
+    public class EmployeeRepository : BaseRepository<Employee, EmployeeDTO>
     {
         public static Employee GetByEmail(string Email)
         {
@@ -79,12 +81,36 @@ namespace GeosEnterprise.Repositories
             });
         }
 
+        //public new static void Update(Employee employee)
+        //{
+        //    BaseRepository<Adress, AdressDTO>.Update(employee.Adress);
+        //    BaseRepository<EmployeeContact, EmployeeContactDTO>.Update(employee.EmployeeContact);
+        //    BaseRepository<Employee, EmployeeDTO>.Update(employee);
+        //}
+
         public static void Edit(Employee employee)
         {
-             ExecuteQuery(() =>
+            ExecuteQuery(() =>
             {
-                Update(employee);
+                //Update(employee);
+                var toEdit = App.DB.Employees.Where(p => p.ID == employee.ID).FirstOrDefault();
+                toEdit.ModifiedBy = Session.Username;
+                toEdit.ModifiedDate = DateTime.Now;
+                toEdit.Name = employee.Name;
+                toEdit.Surname = employee.Surname;
+                toEdit.Adress.City = employee.Adress.City;
+                toEdit.Adress.Voivodeship = employee.Adress.Voivodeship;
+                toEdit.Adress.District = employee.Adress.District;
+                toEdit.Adress.PostCode = employee.Adress.PostCode;
+                toEdit.Adress.Street = employee.Adress.Street;
+                toEdit.Adress.BuildingNumber = employee.Adress.BuildingNumber;
+                toEdit.Adress.AppartamentNumber = employee.Adress.AppartamentNumber;
+                toEdit.EmployeeContact.Phone = employee.EmployeeContact.Phone;
+                toEdit.EmployeeContact.Fax = employee.EmployeeContact.Fax;
+                toEdit.EmployeeContact.Www = employee.EmployeeContact.Www;
+                return toEdit;
             });
+
         }
 
         public static void Delete(int id)
