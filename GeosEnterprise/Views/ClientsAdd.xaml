@@ -9,36 +9,53 @@
         mc:Ignorable="d"
         Title="ClientsAdd" Height="450" Width="800">
     <Grid>
-        <Label Content="DANE KLIENTA" Margin="303,10,285,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" Width="204"/>
-        <TextBox Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Imię" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="32,103,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="118,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="32,133,0,0" VerticalAlignment="Top"/>
-        <Label Content="Adres" Margin="356,179,372,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <TextBox Name="CityTextBox" HorizontalAlignment="Left" Height="23" Margin="110,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
-        <Label Content="Miasto" HorizontalAlignment="Left" Margin="24,231,0,0" VerticalAlignment="Top"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF0D5074" Offset="0.861"/>
+                <GradientStop Color="#FF0C3659" Offset="0.491"/>
+                <GradientStop Color="#FD081826" Offset="0.136"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock Margin="261,3,260.6,349" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="272"><Run Text="Dane klienta"/><LineBreak/><Run/></TextBlock>
+        <TextBox Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Imię" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="16" Foreground="White" Height="41" Width="51"/>
+        <TextBox Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="118,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="32,97,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="16" Foreground="White"/>
+        <TextBox Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="118,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="32,131,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="16" Foreground="White"/>
+        <TextBlock Margin="323,158,342.6,194" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="128" RenderTransformOrigin="0.637,0.381"><Run Text="Adres"/><LineBreak/><Run/></TextBlock>
+        <TextBox Name="CityTextBox" HorizontalAlignment="Left" Height="23" Margin="136,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <Label Content="Miasto" HorizontalAlignment="Left" Margin="32,225,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White"/>
         <TextBox Name="DistrictTextBox" HorizontalAlignment="Left" Height="23" Margin="323,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Powiat" HorizontalAlignment="Left" Margin="261,231,0,0" VerticalAlignment="Top"/>
+        <Label Content="Powiat" HorizontalAlignment="Left" Margin="261,231,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White"/>
         <TextBox Name="VoivodeshipTextBox" HorizontalAlignment="Left" Height="23" Margin="606,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Województwo" HorizontalAlignment="Left" Margin="498,231,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="PostCodeTextBox" HorizontalAlignment="Left" Height="23" Margin="110,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.13"/>
-        <Label Content="Kod pocztowy" HorizontalAlignment="Left" Margin="24,259,0,0" VerticalAlignment="Top"/>
+        <Label Content="Województwo" HorizontalAlignment="Left" Margin="490,228,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White" Height="31"/>
+        <TextBox Name="PostCodeTextBox" HorizontalAlignment="Left" Height="23" Margin="136,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.13"/>
+        <Label Content="Kod pocztowy" HorizontalAlignment="Left" Margin="32,253,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White" Width="119"/>
         <TextBox Name="StreetTextBox" HorizontalAlignment="Left" Height="23" Margin="323,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Ulica" HorizontalAlignment="Left" Margin="261,259,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ulica" HorizontalAlignment="Left" Margin="261,259,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White"/>
         <TextBox Name="BuildingTextBox" HorizontalAlignment="Left" Height="23" Margin="606,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.667,0.609"/>
-        <Label Content="Budynek" HorizontalAlignment="Left" Margin="498,259,0,0" VerticalAlignment="Top"/>
+        <Label Content="Budynek" HorizontalAlignment="Left" Margin="490,259,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White"/>
         <TextBox Name="AppartamentTextBox" HorizontalAlignment="Left" Height="23" Margin="711,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.667,0.609"/>
-        <Label Content="Lokal" HorizontalAlignment="Left" Margin="668,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538"/>
-        <TextBox Name="PhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="490,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
-        <Label Content="telefon" HorizontalAlignment="Left" Margin="426,73,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="FaxTextBox" HorizontalAlignment="Left" Height="23" Margin="490,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
-        <Label Content="fax" HorizontalAlignment="Left" Margin="426,104,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="WwwTextBox" HorizontalAlignment="Left" Height="23" Margin="490,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
-        <Label Content="www" HorizontalAlignment="Left" Margin="426,137,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.444,0.923"/>
-        <Button Name="OKButton" Content="Zapisz" HorizontalAlignment="Left" Margin="0,0,0,0.226" VerticalAlignment="Bottom" Width="75" Click="OKButton_Click"/>
-        <Button Name="CancelButton" Content="Powrót" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75" Click="CancelButton_Click"/>
+        <Label Content="Lokal" HorizontalAlignment="Left" Margin="661,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538" FontWeight="Bold" FontSize="16" Foreground="White"/>
+        <TextBox Name="PhoneTextBox" HorizontalAlignment="Left" Height="23" Margin="490,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <Label Content="Telefon" HorizontalAlignment="Left" Margin="418,71,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="16" Foreground="White" RenderTransformOrigin="0.303,0.476" Height="29"/>
+        <TextBox Name="FaxTextBox" HorizontalAlignment="Left" Height="23" Margin="490,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <Label Content="Fax" HorizontalAlignment="Left" Margin="421,103,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Foreground="White" Width="59" Height="29"/>
+        <TextBox Name="WwwTextBox" HorizontalAlignment="Left" Height="23" Margin="490,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <Label Content="WWW" HorizontalAlignment="Left" Margin="421,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.444,0.923" FontWeight="Bold" FontSize="16" Foreground="White"/>
+
+
+        <Border Margin="240,0,240,6.4" Padding="3" Background="#FF002D51" 
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
+            <StackPanel>
+                <Button x:Name="OKButton" Content="Zapisz" Click="OKButton_Click" Margin="0,0,0,0.151" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="CancelButton" Content="Powrót" Click="CancelButton_Click"  Margin="150,-43,0,0.151" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
+            </StackPanel>
+        </Border>
 
     </Grid>
+
+
+
 </Window>

@@ -8,6 +8,13 @@
         mc:Ignorable="d"
         Title="Informacje o komputerze" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF002D45" Offset="0.854"/>
+                <GradientStop Color="#FF1060A3" Offset="0.491"/>
+                <GradientStop Color="#FF002545" Offset="0.136"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <TextBox Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <Label Content="Numer seryjny" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top"/>
         <Label Content="INFORMACJE O KOMPUTERZE" Margin="235,10,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
