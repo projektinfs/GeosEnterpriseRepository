@@ -101,7 +101,7 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                MessageBox.Show($"Nic nie zaznaczono!");
+                Config.MsgBoxNothingSelectedMessage();
             }
         }
 
@@ -119,7 +119,7 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                MessageBox.Show($"Nic nie zaznaczono!");
+                Config.MsgBoxNothingSelectedMessage();
             }
 }
 
@@ -134,7 +134,7 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                MessageBox.Show($"Nic nie zaznaczono!");
+                Config.MsgBoxNothingSelectedMessage();
             }
 }
 

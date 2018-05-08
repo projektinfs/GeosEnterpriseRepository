@@ -13,7 +13,7 @@ namespace GeosEnterprise.Validators
         public ComputerValidator()
         {
             RuleFor(p => p.Name).NotEmpty().WithMessage("Proszę podać nazwę komputera.");
-            RuleFor(p => p.SerialNumber).NotEmpty().WithMessage("Proszę podać numer seryjny komputera");
+            RuleFor(p => p.SerialNumber).NotEmpty().WithMessage("Proszę podać numer seryjny komputera.");
         }
     }
 }

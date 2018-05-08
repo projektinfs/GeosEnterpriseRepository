@@ -12,7 +12,7 @@ namespace GeosEnterprise.Validators
     {
         public RepairValidator()
         {
-            RuleFor(p => p.Computer).NotNull().WithMessage("Brak przypisanego komputera");
+            RuleFor(p => p.Computer).NotNull().WithMessage("Brak przypisanego komputera.");
             RuleFor(p => p.OrderNumber).NotEmpty().WithMessage("Brak numeru zamówienia.");
             RuleFor(p => p.Client.FullName).NotEmpty().WithMessage("Proszę wybrać klienta.");
         }

@@ -18,7 +18,7 @@ namespace GeosEnterprise.DTO
         {
             get
             {
-                return $"{Name} {Surname}";
+                return $"{Name} {Surname} ({ClientAdress?.City})";
             }
         }
 
