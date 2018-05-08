@@ -21,7 +21,7 @@ namespace GeosEnterprise
         public static void MsgBoxValidationMessage(string errors)
         {
             MessageBox.Show($"Nie wszystkie dane zostały uzupełnione.\r\n" +
-                $"Proszę poprawić następujące błędy\r\n\r\n{errors}","Błąd walidacji danych", MessageBoxButtons.OK);
+                $"Proszę poprawić następujące błędy:\r\n\r\n{errors}","Błąd walidacji danych", MessageBoxButtons.OK);
         }
 
         public static void MsgBoxNothingSelectedMessage()

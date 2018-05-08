@@ -65,12 +65,14 @@ namespace GeosEnterprise.ViewModels
                 Config.MsgBoxValidationMessage(errors);
                 return;
             }
-           
+
+            window.DialogResult = true;
             window?.Close();
         }
 
         public void Cancel(Window window)
         {
+            window.DialogResult = false;
             window?.Close();
         }
 
@@ -83,7 +85,12 @@ namespace GeosEnterprise.ViewModels
         private string DoValidation()
         {
             var validationErrors1 = ValidatorTools.DoValidation(BindingItem.Computer, new ComputerValidator());
-            var validationErrors2 = ValidatorTools.DoValidation(BindingItem, new RepairValidator());
+            string validationErrors2 = String.Empty;
+
+            if (BindingItem.Client.ID == 0)
+            {
+                validationErrors2 = "Nie wybrano klienta.";
+            }
 
             if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(validationErrors2))
             {
@@ -91,7 +98,8 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                return validationErrors1 + "\r\n" + validationErrors2;
+                string returnString = $"{validationErrors1}\r\n{validationErrors2}".Trim();
+                return returnString;
             }
         }
     }

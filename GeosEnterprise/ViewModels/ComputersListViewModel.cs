@@ -16,7 +16,7 @@ using GeosEnterprise.Commands;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ComputersListViewModel : PropertyChangedBase
+    public class ComputersListViewModel : INotifyPropertyChanged
     {
         public ICommand AddButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
@@ -26,6 +26,21 @@ namespace GeosEnterprise.ViewModels
         public ICommand ResetButtonCommand { get; set; }
 
         public object SelectedItem { get; set; }
+
+        public ObservableCollection<RepairDTO> Items
+        {
+            get
+            {
+                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+            }
+            
+        }
+
+        //public void RefreshItemsForListView()
+        //{
+        //    Items = null;
+        //    Items = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+        //}
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -39,12 +54,15 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Items");
                 }
             }
         }
 
         private DateTime? timeFromBindingItem;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DateTime? TimeFromBindingItem
         {
             get
@@ -56,7 +74,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("Items");
                 }
             }
         }
@@ -71,20 +89,14 @@ namespace GeosEnterprise.ViewModels
             ResetButtonCommand = new RelayCommand<object>(Reset);
         }
 
-        public ObservableCollection<RepairDTO> Items
-        {
-            get
-            {
-                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
-            }
-        }
+        
 
         public void Add(object obj)
         {
             Window addNewRepairWindow = new ComputersAdd();
             if (addNewRepairWindow.ShowDialog() == true)
             {
-                OnPropertyChanged();
+                OnPropertyChanged("Items");
             }
         }
 
@@ -96,7 +108,7 @@ namespace GeosEnterprise.ViewModels
                 Window editRepairWindow = new ComputersAdd(repairDTO.ID);
                 if (editRepairWindow.ShowDialog() == true)
                 {
-                    OnPropertyChanged();
+                    OnPropertyChanged("Items");
                 }
             }
             else
@@ -110,11 +122,11 @@ namespace GeosEnterprise.ViewModels
             var repairDTO = SelectedItem as RepairDTO;
             if (repairDTO != null)
             {
-                if (MessageBox.Show($"Czy na pewno chcesz usunąć zlecenie naprawy\r\n(nr seryjny komputera: {repairDTO.Computer.SerialNumber})",
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć zlecenie naprawy\r\n(Nazwa komputera: {repairDTO.Computer.Name})",
                     "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.RepairsRepository.Delete(repairDTO.ID);
-                    OnPropertyChanged();
+                    OnPropertyChanged("Items");
                 }
             }
             else
@@ -147,6 +159,11 @@ namespace GeosEnterprise.ViewModels
         {
             TimeToBindingItem = null;
             TimeFromBindingItem = null;
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
     }
