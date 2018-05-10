@@ -20,6 +20,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand CancelButtonCommand { get; set; }
         public ICommand NewClientButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
+        public int SelectedClientIndex { get; set; }
 
         public IList<ClientDTO> Clients
         {
@@ -34,6 +35,7 @@ namespace GeosEnterprise.ViewModels
             if (repairID != null)
             {
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
+                SelectedClientIndex = Clients.ToList().FindIndex(p => p.ID == BindingItem.Client.ID);
             }
             else
             {

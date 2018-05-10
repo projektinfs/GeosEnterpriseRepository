@@ -12,6 +12,8 @@ namespace GeosEnterprise.Repositories
     {
         public new static void Update(RepairDTO repair)
         {
+            repair.ClientID = repair.Client.ID;
+            repair.ComputerID = repair.Computer.ID;
             BaseRepository<Client, ClientDTO>.Update(repair.Client);
             BaseRepository<Computer, ComputerDTO>.Update(repair.Computer);
             BaseRepository<Repair, RepairDTO>.Update(repair);
