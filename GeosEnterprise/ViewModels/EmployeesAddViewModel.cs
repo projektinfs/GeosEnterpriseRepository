@@ -9,6 +9,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.ComponentModel;
 using GeosEnterprise.Commands;
+using GeosEnterprise.Validators;
+using FluentValidation;
+using FluentValidation.Results;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -60,17 +63,54 @@ namespace GeosEnterprise.ViewModels
 
         public void Save(Window window)
         {
-            if (BindingItem.ID <= 0)
+            string errors = DoValidation();
+
+            if (string.IsNullOrEmpty(errors))
             {
-                if (Repositories.EmployeeRepository.GetByEmail(BindingItem.Email.ToString()) != null)
+                if (BindingItem.ID <= 0)
                 {
-                    EmailTaken = "Podany email jest już zajęty!";
-                    return;
+                    if (Repositories.EmployeeRepository.GetByEmail(BindingItem.Email.ToString()) != null)
+                    {
+                        EmailTaken = "Podany email jest już zajęty!";
+                        return;
+                    }
+                    else
+                    {
+
+                        Repositories.EmployeeRepository.Add(new Employee
+                        {
+                            Email = BindingItem.Email,
+                            Password = BindingItem.Password,
+                            Name = BindingItem.Name,
+                            Surname = BindingItem.Surname,
+                            Position = BindingItem.Position,
+                            UserRole = PositionToUserRole(BindingItem.Position.ToString()),
+                            Adress = new Adress
+                            {
+                                City = BindingItem.Adress.City,
+                                Voivodeship = BindingItem.Adress.Voivodeship,
+                                District = BindingItem.Adress.District,
+                                PostCode = BindingItem.Adress.PostCode,
+                                Street = BindingItem.Adress.Street,
+                                BuildingNumber = BindingItem.Adress.BuildingNumber,
+                                AppartamentNumber = BindingItem.Adress.AppartamentNumber
+                            },
+                            EmployeeContact = new EmployeeContact
+                            {
+                                Phone = BindingItem.EmployeeContact.Phone,
+                                Fax = BindingItem.EmployeeContact.Fax,
+                                Www = BindingItem.EmployeeContact.Www
+                            }
+                        });
+
+                    }
                 }
+
                 else
                 {
-                    Repositories.EmployeeRepository.Add(new Employee
+                    Employee updatedEmployee = new Employee
                     {
+                        ID = (int)BindingItem.ID,
                         Email = BindingItem.Email,
                         Password = BindingItem.Password,
                         Name = BindingItem.Name,
@@ -79,6 +119,7 @@ namespace GeosEnterprise.ViewModels
                         UserRole = PositionToUserRole(BindingItem.Position.ToString()),
                         Adress = new Adress
                         {
+                            ID = (int)BindingItem.Adress.ID,
                             City = BindingItem.Adress.City,
                             Voivodeship = BindingItem.Adress.Voivodeship,
                             District = BindingItem.Adress.District,
@@ -89,55 +130,28 @@ namespace GeosEnterprise.ViewModels
                         },
                         EmployeeContact = new EmployeeContact
                         {
+                            ID = (int)BindingItem.EmployeeContact.ID,
                             Phone = BindingItem.EmployeeContact.Phone,
                             Fax = BindingItem.EmployeeContact.Fax,
                             Www = BindingItem.EmployeeContact.Www
                         }
-                    });
+                    };
+                    Repositories.EmployeeRepository.Edit(updatedEmployee);
 
+
+                    if (BindingItem.ID == Authorization.AcctualEmployee.ID)
+                    {
+                        Authorization.AcctualEmployee = updatedEmployee;
+                    }
                 }
             }
-
             else
             {
-               Employee updatedEmployee = new Employee
-                {
-                    ID = (int)BindingItem.ID,
-                    Email = BindingItem.Email,
-                    Password = BindingItem.Password,
-                    Name = BindingItem.Name,
-                    Surname = BindingItem.Surname,
-                    Position = BindingItem.Position,
-                    UserRole = PositionToUserRole(BindingItem.Position.ToString()),
-                    Adress = new Adress
-                    {
-                        ID = (int)BindingItem.Adress.ID,
-                        City = BindingItem.Adress.City,
-                        Voivodeship = BindingItem.Adress.Voivodeship,
-                        District = BindingItem.Adress.District,
-                        PostCode = BindingItem.Adress.PostCode,
-                        Street = BindingItem.Adress.Street,
-                        BuildingNumber = BindingItem.Adress.BuildingNumber,
-                        AppartamentNumber = BindingItem.Adress.AppartamentNumber
-                    },
-                    EmployeeContact = new EmployeeContact
-                    {
-                        ID = (int)BindingItem.EmployeeContact.ID,
-                        Phone = BindingItem.EmployeeContact.Phone,
-                        Fax = BindingItem.EmployeeContact.Fax,
-                        Www = BindingItem.EmployeeContact.Www
-                    }
-                };
-                Repositories.EmployeeRepository.Edit(updatedEmployee);
-
-
-                if (BindingItem.ID == Authorization.AcctualEmployee.ID)
-                {
-                   Authorization.AcctualEmployee = updatedEmployee;
-                }
+                Config.MsgBoxValidationMessage(errors);
+                return;
             }
-            
 
+            window.DialogResult = true;
             window?.Close();
 
         }
@@ -173,7 +187,21 @@ namespace GeosEnterprise.ViewModels
             return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        private string DoValidation()
+        {
+            var validationErrors1 = ValidatorTools.DoValidation(BindingItem, new EmployeeValidator());
+           
+            if (string.IsNullOrEmpty(validationErrors1))
+            {
+                return String.Empty;
+            }
+            else
+            {
 
+                string returnString = $"{validationErrors1}\r\n".Trim();
+                return returnString;
+            }
+        }
 
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;

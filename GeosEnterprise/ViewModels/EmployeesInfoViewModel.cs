@@ -38,5 +38,23 @@ namespace GeosEnterprise.ViewModels
         {
             window?.Close();
         }
+
+        public int PositionId()
+        {
+           
+            switch (BindingItem.Position)
+            {
+                case "Kierownik":
+                    return 0;
+                case "Księgowy":
+                    return 1;
+                case "Serwisant":
+                    return 2;
+                case "Sprzedawca":
+                    return 3;
+                default:
+                    return -1;
+            }
+        }
     }
 }

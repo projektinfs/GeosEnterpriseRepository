@@ -100,7 +100,10 @@ namespace GeosEnterprise.ViewModels
         private void Add(object obj)
         {
             Window addNewEmployeeWindow = new EmployeesAdd();
-            addNewEmployeeWindow.Show();
+            if (addNewEmployeeWindow.ShowDialog() == true)
+            {
+                OnPropertyChanged("Items");
+            }
 
         }
 
@@ -109,12 +112,20 @@ namespace GeosEnterprise.ViewModels
             var employeeDTO = SelectedItem as EmployeeDTO;
             if (employeeDTO != null)
             {
-                Repositories.EmployeeRepository.Delete(employeeDTO.ID);
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć pracownika\r\n{employeeDTO.Name} {employeeDTO.Surname}",
+                    "Usunięcie pracownika", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    Repositories.EmployeeRepository.Delete(employeeDTO.ID);
+                    OnPropertyChanged("Items");
+                }
+                              
             }
-            else
-            {
-                MessageBox.Show($"Nic nie zaznaczono!");
-            }
+          
+             else
+             {
+                    Config.MsgBoxNothingSelectedMessage();
+             }
+            
 
         }
 
@@ -124,12 +135,15 @@ namespace GeosEnterprise.ViewModels
             if (employeeDTO != null)
             {
                 Window addNewEmployeeWindow = new EmployeesAdd(employeeDTO.ID);
-                addNewEmployeeWindow.Show();
+                if (addNewEmployeeWindow.ShowDialog() == true)
+                {
+                    OnPropertyChanged("Items");
+                }
 
             }
             else
             {
-                MessageBox.Show($"Nic nie zaznaczono!");
+                Config.MsgBoxNothingSelectedMessage();
             }
         }
 
@@ -143,7 +157,7 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                MessageBox.Show($"Nic nie zaznaczono!");
+                Config.MsgBoxNothingSelectedMessage();
             }
         }
     }

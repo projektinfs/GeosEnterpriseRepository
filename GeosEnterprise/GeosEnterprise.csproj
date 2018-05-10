@@ -131,6 +131,7 @@
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="Validators\ComputerValidator.cs" />
+    <Compile Include="Validators\EmployeeValidator.cs" />
     <Compile Include="Validators\RepairValidator.cs" />
     <Compile Include="Validators\ValidatorTools.cs" />
     <Compile Include="ViewModels\AuthenticationViewModel.cs" />

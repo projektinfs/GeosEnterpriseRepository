@@ -27,7 +27,8 @@
         <TextBlock Text="{Binding EmailTaken}" HorizontalAlignment="Left" Margin="347,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5"/>
         <TextBox Name="PasswordTextBox" Text="{Binding BindingItem.Password}" HorizontalAlignment="Left" Height="23" Margin="502,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="439,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <ComboBox SelectedIndex="0" IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" HorizontalAlignment="Left" Height="23" Margin="185,164,0,0"  VerticalAlignment="Top" Width="200">
+
+        <ComboBox SelectedIndex="-1" IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" HorizontalAlignment="Left" Height="23" Margin="185,164,0,0"  VerticalAlignment="Top" Width="200">
             <ComboBoxItem>Kierownik</ComboBoxItem>
             <ComboBoxItem>Księgowy</ComboBoxItem>
             <ComboBoxItem>Serwisant</ComboBoxItem>
