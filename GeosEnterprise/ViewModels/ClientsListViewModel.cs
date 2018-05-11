@@ -20,6 +20,12 @@ namespace GeosEnterprise.ViewModels
     {
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
+        public ICommand AddButtonCommand { get; set; }
+        public ICommand DeleteButtonCommand { get; set; }
+        public ICommand EditButtonCommand { get; set; }
+
+        public object SelectedItem { get; set; }
+
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -59,13 +65,24 @@ namespace GeosEnterprise.ViewModels
         {
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
+            AddButtonCommand = new RelayCommand<object>(Add);
+            DeleteButtonCommand = new RelayCommand<object>(Delete);
+            EditButtonCommand = new RelayCommand<object>(Edit);
         }
 
-        public List<ClientDTO> Items
+        //public List<ClientDTO> Items
+        //{
+        //    get
+        //    {
+        //        return Repositories.ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)).ToList();
+        //    }
+        //}
+
+        public ObservableCollection<ClientDTO> Items
         {
             get
             {
-                return Repositories.ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)).ToList();
+                return new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)));
             }
         }
 
@@ -79,6 +96,58 @@ namespace GeosEnterprise.ViewModels
             TimeToBindingItem = null;
             TimeFromBindingItem = null;
         }
+
+        //from ClientsList
+
+        private void Add(object obj)
+        {
+            Window addNewClientWindow = new ClientsAdd();
+            if (addNewClientWindow.ShowDialog() == true)
+            {
+                OnPropertyChanged("Items");
+            }
+        }
+
+        private void Delete(object obj)
+        {
+            var clientDTO = SelectedItem as ClientDTO;
+            if (clientDTO != null)
+            {
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć klienta\r\n{clientDTO.Name} {clientDTO.Surname}",
+                    "Usunięcie klienta", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    Repositories.ClientRepository.Delete(clientDTO.ID);
+                    OnPropertyChanged("Items");
+                }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
+        }
+
+        private void Edit(object obj)
+        {
+            var clientDTO = SelectedItem as ClientDTO;
+            if (clientDTO != null)
+            {
+                Window addNewClientWindow = new ClientsAdd(clientDTO.ID);
+                if (addNewClientWindow.ShowDialog() == true)
+                {
+                    OnPropertyChanged("Items");
+                }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
+        }
+
+
+
+
+
+
     }
 }
 

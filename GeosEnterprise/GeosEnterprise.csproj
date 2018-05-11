@@ -131,6 +131,7 @@
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="Validators\ComputerValidator.cs" />
+    <Compile Include="Validators\ClientValidator.cs" />
     <Compile Include="Validators\EmployeeValidator.cs" />
     <Compile Include="Validators\RepairValidator.cs" />
     <Compile Include="Validators\ValidatorTools.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="ViewModels\ComputersAddViewModel.cs" />
     <Compile Include="ViewModels\ComputersInfoViewModel.cs" />
     <Compile Include="ViewModels\ComputersListViewModel.cs" />
+    <Compile Include="ViewModels\ClientsAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModels\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
