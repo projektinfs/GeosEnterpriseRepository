@@ -21,14 +21,15 @@ namespace GeosEnterprise.ViewModels
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
         public EmployeeDTO BindingItem { get; set; }
-
         public bool IsAdminMode { get; set; }
+        public int PositionIndex {get; set; }
 
         public EmployeesAddViewModel(int? employeeID)
         {
             if (employeeID != null)
             {
                 BindingItem = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)employeeID));
+                PositionIndex = Position(BindingItem.Position);
             }
             else
             {
@@ -36,6 +37,7 @@ namespace GeosEnterprise.ViewModels
                 BindingItem.Password = NewPassword(20);
                 BindingItem.Adress = new AdressDTO();
                 BindingItem.EmployeeContact = new EmployeeContactDTO();
+                PositionIndex = -1;
             }
             OKButtonCommand = new RelayCommand<Window>(Save);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
@@ -176,6 +178,24 @@ namespace GeosEnterprise.ViewModels
                     return UserRole.Dealer;
                 default:
                     return UserRole.Unknown;
+            }
+        }
+
+        private int Position(string position)
+        {
+
+            switch (position)
+            {
+                case "Kierownik":
+                    return 0;
+                case "Księgowy":
+                    return 1;
+                case "Serwisant":
+                    return 2;
+                case "Sprzedawca":
+                    return 3;
+                default:
+                    return -1;
             }
         }
 

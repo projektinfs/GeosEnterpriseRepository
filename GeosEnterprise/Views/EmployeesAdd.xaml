@@ -28,13 +28,13 @@
         <TextBox Name="PasswordTextBox" Text="{Binding BindingItem.Password}" HorizontalAlignment="Left" Height="23" Margin="502,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="439,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
 
-        <ComboBox SelectedIndex="-1" IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" HorizontalAlignment="Left" Height="23" Margin="185,164,0,0"  VerticalAlignment="Top" Width="200">
+        <ComboBox  IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" SelectedIndex="{Binding PositionIndex}" HorizontalAlignment="Left" Height="23" Margin="185,164,0,0"  VerticalAlignment="Top" Width="200">
             <ComboBoxItem>Kierownik</ComboBoxItem>
             <ComboBoxItem>Księgowy</ComboBoxItem>
             <ComboBoxItem>Serwisant</ComboBoxItem>
             <ComboBoxItem>Sprzedawca</ComboBoxItem>
-
         </ComboBox>
+        
         <Label Content="Stanowisko" HorizontalAlignment="Left" Margin="65,167,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
         <TextBlock  TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="129" RenderTransformOrigin="0.637,0.381" Margin="347,189,317.6,-5"><Run Text="Adres"/><LineBreak/><Run/></TextBlock>
         <TextBox Name="CityTextBox" Text="{Binding BindingItem.Adress.City}" HorizontalAlignment="Left" Height="23" Margin="106,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
