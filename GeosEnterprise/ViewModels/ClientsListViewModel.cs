@@ -70,14 +70,6 @@ namespace GeosEnterprise.ViewModels
             EditButtonCommand = new RelayCommand<object>(Edit);
         }
 
-        //public List<ClientDTO> Items
-        //{
-        //    get
-        //    {
-        //        return Repositories.ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)).ToList();
-        //    }
-        //}
-
         public ObservableCollection<ClientDTO> Items
         {
             get

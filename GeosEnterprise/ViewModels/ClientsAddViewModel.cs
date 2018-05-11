@@ -75,7 +75,6 @@ namespace GeosEnterprise.ViewModels
                     }
                     else
                     {
-
                         Repositories.ClientRepository.Add(new Client
                         {
                             Name = BindingItem.Name,
@@ -98,10 +97,8 @@ namespace GeosEnterprise.ViewModels
                                 Email = BindingItem.ClientContact.Email
                             }
                         });
-
                     }
                 }
-
                 else
                 {
                     Client updatedClient = new Client
@@ -130,11 +127,6 @@ namespace GeosEnterprise.ViewModels
                         }
                     };
                     Repositories.ClientRepository.Edit(updatedClient);
-
-                    //if (BindingItem.ID == Authorization.AcctualEmployee.ID)
-                    //{
-                    //    Authorization.AcctualEmployee = updatedEmployee;
-                    //}
                 }
             }
             else
@@ -149,9 +141,7 @@ namespace GeosEnterprise.ViewModels
         public void Cancel(Window window)
         {
             window?.Close();
-            
         }
-
 
         private string DoValidation()
         {
@@ -163,12 +153,10 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-
                 string returnString = $"{validationErrors1}\r\n".Trim();
                 return returnString;
             }
         }
-
         #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
 
