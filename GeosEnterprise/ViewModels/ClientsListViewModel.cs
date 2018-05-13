@@ -1,33 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.ComponentModel;
+using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
+using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
-using System.Windows.Data;
-using System.Runtime.CompilerServices;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ClientsListViewModel : INotifyPropertyChanged
+    public class ClientsListViewModel : PropertyChangedBase
     {
-        public ClientsListViewModel()
-        {
-            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
-            ResetButtonCommand = new RelayCommand<object>(Reset);
-            SearchButtonCommand = new RelayCommand<object>(OnSearch);
-            _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)));
-        }
-
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
-        public ICommand SearchButtonCommand { get; private set; }
-
-        public ObservableCollection<ClientDTO> _myDataSource = new ObservableCollection<ClientDTO>();
+        public ICommand AddButtonCommand { get; set; }
+        public ICommand DeleteButtonCommand { get; set; }
+        public ICommand EditButtonCommand { get; set; }
 
         public object SelectedItem { get; set; }
+
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -41,7 +39,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged("TimeToBindingItem");
+                    OnPropertyChanged();
                 }
             }
         }
@@ -58,24 +56,27 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged("TimeFromBindingItem");
+                    OnPropertyChanged();
                 }
             }
         }
 
-        private string _searchString;
-        public string SearchString
+        public ClientsListViewModel()
         {
-            get { return _searchString; }
-            set { _searchString = value; OnPropertyChanged("SearchString"); }
+            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
+            ResetButtonCommand = new RelayCommand<object>(Reset);
+            AddButtonCommand = new RelayCommand<object>(Add);
+            DeleteButtonCommand = new RelayCommand<object>(Delete);
+            EditButtonCommand = new RelayCommand<object>(Edit);
         }
 
-        private ICollectionView _items;
-        public ICollectionView Items
+        public ObservableCollection<ClientDTO> Items
         {
-            get { return CollectionViewSource.GetDefaultView(_myDataSource); }
+            get
+            {
+                return new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)));
+            }
         }
-
 
         public void Now(object obj)
         {
@@ -88,56 +89,51 @@ namespace GeosEnterprise.ViewModels
             TimeFromBindingItem = null;
         }
 
-        private void OnSearch(object obj)
-        {
-            if (!string.IsNullOrEmpty(SearchString))
-            {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
-                {
-                    Items.Filter = (item) => {
-                        return ((item as ClientDTO).Name.Contains(SearchString)
-                            || (item as ClientDTO).Surname.Contains(SearchString)
-                            || (item as ClientDTO).ClientContact.Email.Contains(SearchString)
-                            || (item as ClientDTO).ClientContact.Phone.Contains(SearchString));
-                    };
-                }
-                else
-                {
-                    Items.Filter = (item) => {
+        //from ClientsList
 
-                        return ((item as ClientDTO).Name.Contains(SearchString)
-                            || (item as ClientDTO).Surname.Contains(SearchString)
-                            || (item as ClientDTO).ClientContact.Email.Contains(SearchString)
-                            || (item as ClientDTO).ClientContact.Phone.Contains(SearchString))
-                            && ((item as ClientDTO).CreatedDate >= timeFromBindingItem.Value)
-                            && ((item as ClientDTO).CreatedDate <= timeToBindingItem.Value);
-                    };
+        private void Add(object obj)
+        {
+            Window addNewClientWindow = new ClientsAdd();
+            if (addNewClientWindow.ShowDialog() == true)
+            {
+                OnPropertyChanged("Items");
+            }
+        }
+
+        private void Delete(object obj)
+        {
+            var clientDTO = SelectedItem as ClientDTO;
+            if (clientDTO != null)
+            {
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć klienta\r\n{clientDTO.Name} {clientDTO.Surname}",
+                    "Usunięcie klienta", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    Repositories.ClientRepository.Delete(clientDTO.ID);
+                    OnPropertyChanged("Items");
                 }
             }
             else
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
-                {
-                    Items.Filter = (item) => {
-                        return (item as ClientDTO).DeletedDate == null;
-                    };
-                }
-                else
-                {
-                    Items.Filter = (item) => {
-                        return ((item as ClientDTO).CreatedDate >= timeFromBindingItem.Value)
-                            && ((item as ClientDTO).CreatedDate <= timeToBindingItem.Value);
-                    };
-                }
+                Config.MsgBoxNothingSelectedMessage();
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        private void Edit(object obj)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            var clientDTO = SelectedItem as ClientDTO;
+            if (clientDTO != null)
+            {
+                Window addNewClientWindow = new ClientsAdd(clientDTO.ID);
+                if (addNewClientWindow.ShowDialog() == true)
+                {
+                    OnPropertyChanged("Items");
+                }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
         }
+
     }
 }
-

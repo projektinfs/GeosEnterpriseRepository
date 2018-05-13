@@ -121,10 +121,9 @@
         <Border Margin="10,0,10,6.6" Padding="3" Background="#FF002D51" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
             <StackPanel >
-                <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Click="AddButton_Click" Background="White" />
-                <Button Name="DeleteButton" Content="Usuń" Margin="153,-43,0,0.6"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Click="DeleteButton_Click" Background="White"/>
-                <Button Name="EditButton" Content="Edytuj" Margin="306,-44,0,0.6" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Click="EditButton_Click" Background="White"/>
-                <!--<Button Name="InfoButton" Content="Szczegóły" Margin="458,-44,0,0.113" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="Snow" />-->
+                <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  Command="{Binding AddButtonCommand}"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White" />
+                <Button Name="DeleteButton" Content="Usuń" Margin="153,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White"/>
+                <Button Name="EditButton" Content="Edytuj" Margin="306,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White"/>
             </StackPanel>
         </Border>
 
