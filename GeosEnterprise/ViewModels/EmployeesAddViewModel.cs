@@ -148,9 +148,7 @@ namespace GeosEnterprise.ViewModels
                 return;
             }
 
-            window.DialogResult = true;
             window?.Close();
-
         }
 
         public void Cancel(Window window)
