@@ -91,6 +91,7 @@ namespace GeosEnterprise.ViewModels
             Window addNewRepairWindow = new ComputersAdd();
             if (addNewRepairWindow.ShowDialog() == true)
             {
+                _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
                 OnPropertyChanged("Items");
             }
         }
@@ -104,6 +105,7 @@ namespace GeosEnterprise.ViewModels
                 Window editRepairWindow = new ComputersAdd(repairDTO.ID);
                 if (editRepairWindow.ShowDialog() == true)
                 {
+                    _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
                     OnPropertyChanged("Items");
                 }
             }
@@ -122,6 +124,7 @@ namespace GeosEnterprise.ViewModels
                     "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.RepairsRepository.Delete(repairDTO.ID);
+                    _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
                     OnPropertyChanged("Items");
                 }
             }
