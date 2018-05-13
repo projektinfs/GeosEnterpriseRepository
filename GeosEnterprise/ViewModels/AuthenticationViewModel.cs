@@ -11,6 +11,7 @@ using System.Windows.Input;
 using GeosEnterprise.Commands;
 using System.ComponentModel;
 using System.Windows.Controls;
+using System.Security.Cryptography;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -59,11 +60,15 @@ namespace GeosEnterprise.ViewModels
         {
             if (EmployeeRepository.GetByEmail("admin@admin.pl") == null)
             {
+                SHA256 SHA256 = SHA256Managed.Create();
+
+                Byte[] InBytePassword = Encoding.UTF8.GetBytes("admin123");
+                Byte[] HasedPassword = SHA256.ComputeHash(InBytePassword);
 
                 Employee employee = new Employee
                 {
                     Email = "admin@admin.pl",
-                    Password = "admin123",
+                    Password = HasedPassword,
                     Position = "Administrator",
                     Adress = new Adress
                     {

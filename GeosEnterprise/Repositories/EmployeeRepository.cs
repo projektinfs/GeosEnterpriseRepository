@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
-
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows;
+using System.Collections;
 
 namespace GeosEnterprise.Repositories
 {
@@ -19,7 +21,15 @@ namespace GeosEnterprise.Repositories
         {
             Employee employee = GetByEmail(Email);
             if (employee != null)
-                return employee.Password == Password;
+            {
+                SHA256 SHA256 = SHA256Managed.Create();
+                Byte[] HasedEmpolyeePassword = employee.Password;
+
+                Byte[] InBytePassword = Encoding.UTF8.GetBytes(Password);
+                Byte[] HasedPassword = SHA256.ComputeHash(InBytePassword);
+
+                return StructuralComparisons.StructuralEqualityComparer.Equals(HasedEmpolyeePassword, HasedPassword);
+            }
 
             return false;
         }
@@ -40,6 +50,8 @@ namespace GeosEnterprise.Repositories
                 var toEdit = App.DB.Employees.Where(p => p.ID == employee.ID).FirstOrDefault();
                 toEdit.ModifiedBy = Session.Username;
                 toEdit.ModifiedDate = DateTime.Now;
+                toEdit.Email = employee.Email;
+                toEdit.Password = employee.Password;
                 toEdit.Name = employee.Name;
                 toEdit.Surname = employee.Surname;
                 toEdit.Position = employee.Position;

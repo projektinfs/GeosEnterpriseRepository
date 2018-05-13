@@ -14,7 +14,7 @@ namespace GeosEnterprise
         public static Employee _AcctualEmployee = new Employee
         {
             Email = "NaN@NaN.pl",
-            Password = "NaN",
+            Password = { },
             Name = "NaN",
             Surname = "NaN",
             Position = "NaN",

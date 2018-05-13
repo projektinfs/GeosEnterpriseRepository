@@ -10,7 +10,7 @@ namespace GeosEnterprise.DBO
     public class Employee : DBObject<int>
     {
         public string Email { get; set; }
-        public string Password { get; set; }
+        public Byte[] Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Position { get; set; }

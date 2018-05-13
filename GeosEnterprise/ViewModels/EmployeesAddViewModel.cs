@@ -7,6 +7,8 @@ using System.Windows.Input;
 using System.ComponentModel;
 using GeosEnterprise.Commands;
 using GeosEnterprise.Validators;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -18,6 +20,7 @@ namespace GeosEnterprise.ViewModels
         public EmployeeDTO BindingItem { get; set; }
         public bool IsAdminMode { get; set; }
         public int PositionIndex {get; set; }
+        public string Password { get; set; }
 
         public EmployeesAddViewModel(int? employeeID)
         {
@@ -29,7 +32,7 @@ namespace GeosEnterprise.ViewModels
             else
             {
                 BindingItem = new EmployeeDTO();
-                BindingItem.Password = NewPassword(20);
+                Password = NewPassword(20);
                 BindingItem.Adress = new AdressDTO();
                 BindingItem.EmployeeContact = new EmployeeContactDTO();
                 PositionIndex = -1;
@@ -73,11 +76,22 @@ namespace GeosEnterprise.ViewModels
                     }
                     else
                     {
+                        SHA256 SHA256 = SHA256Managed.Create();
+                        Byte[] HasedPassword;
+                        if (string.IsNullOrEmpty(Password))
+                        {
+                            HasedPassword = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)BindingItem.ID)).Password;
+                        }
+                        else
+                        {
+                            Byte[] InBytePassword = Encoding.UTF8.GetBytes(Password);
+                            HasedPassword = SHA256.ComputeHash(InBytePassword);
+                        }
 
                         Repositories.EmployeeRepository.Add(new Employee
                         {
                             Email = BindingItem.Email,
-                            Password = BindingItem.Password,
+                            Password = HasedPassword,
                             Name = BindingItem.Name,
                             Surname = BindingItem.Surname,
                             Position = BindingItem.Position,
@@ -105,11 +119,24 @@ namespace GeosEnterprise.ViewModels
 
                 else
                 {
+
+                    SHA256 SHA256 = SHA256Managed.Create();
+                    Byte[] HasedPassword;
+                    if (string.IsNullOrEmpty(Password))
+                    {
+                        HasedPassword = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)BindingItem.ID)).Password;
+                    }
+                    else
+                    {
+                        Byte[] InBytePassword = Encoding.UTF8.GetBytes(Password);
+                        HasedPassword = SHA256.ComputeHash(InBytePassword);
+                    }
+
                     Employee updatedEmployee = new Employee
                     {
                         ID = (int)BindingItem.ID,
                         Email = BindingItem.Email,
-                        Password = BindingItem.Password,
+                        Password = HasedPassword,
                         Name = BindingItem.Name,
                         Surname = BindingItem.Surname,
                         Position = BindingItem.Position,
@@ -204,14 +231,23 @@ namespace GeosEnterprise.ViewModels
         {
             var validationErrors1 = ValidatorTools.DoValidation(BindingItem, new EmployeeValidator());
            
-            if (string.IsNullOrEmpty(validationErrors1))
+            if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(Password))
             {
                 return String.Empty;
             }
             else
             {
+                if (Password.Length >= 6)
+                    return String.Empty;
 
-                string returnString = $"{validationErrors1}\r\n".Trim();
+                string returnString = $"{validationErrors1}\r\n";
+                if (Password.Length < 6)
+                {
+                    returnString += $"Haslo powinno posiadać co najmniej 6 znaków !";
+                }
+
+                returnString += "\r\n".Trim();
+
                 return returnString;
             }
         }

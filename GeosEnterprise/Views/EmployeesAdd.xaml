@@ -30,7 +30,7 @@
         <TextBox Name="EmailTextBox" Text="{Binding BindingItem.Email}" HorizontalAlignment="Left" Height="23" Margin="85,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="65,139,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
         <TextBlock Text="{Binding EmailTaken}" HorizontalAlignment="Left" Margin="247,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5" Grid.Column="2"/>
-        <TextBox Name="PasswordTextBox" Text="{Binding BindingItem.Password}" HorizontalAlignment="Left" Height="23" Margin="402,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
+        <TextBox Name="PasswordTextBox" Text="{Binding Password}" HorizontalAlignment="Left" Height="23" Margin="402,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
         <Label Content="Hasło" HorizontalAlignment="Left" Margin="339,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
 
         <ComboBox  IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" SelectedIndex="{Binding PositionIndex}" HorizontalAlignment="Left" Height="23" Margin="85,164,0,0"  VerticalAlignment="Top" Width="200" Grid.Column="2">

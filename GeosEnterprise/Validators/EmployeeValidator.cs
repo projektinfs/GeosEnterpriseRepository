@@ -17,7 +17,6 @@ namespace GeosEnterprise.Validators
             RuleFor(employee => employee.Surname).NotEmpty().WithMessage("Pole Nazwisko nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowe nazwisko");
             RuleFor(employee => employee.Position).NotEmpty().WithMessage("Pole Stanowisko nie może być puste");
             RuleFor(employee => employee.Email).NotEmpty().WithMessage("Pole Email nie może być puste").EmailAddress().WithMessage("Nieprawidłowy adres email!");
-            RuleFor(employee => employee.Password).NotEmpty().Must(GoodPassword).WithMessage("Hasło musi zawierć prznajmniej 6 znaków!");
             RuleFor(employee => employee.Adress.City).NotEmpty().WithMessage("Pole Miasto nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowe miasto");
             RuleFor(employee => employee.Adress.District).Must(OnlyLetters).WithMessage("Nieprawidłowy powiat");
             RuleFor(employee => employee.Adress.Voivodeship).Must(OnlyLetters).WithMessage("Nieprawidłowe województwo");
@@ -32,11 +31,6 @@ namespace GeosEnterprise.Validators
 
         }
 
-
-        public bool GoodPassword(string password)
-        {
-            return (password.Length >=6) ;
-        }
 
         public bool GoodPostCode(string postcode)
         {
