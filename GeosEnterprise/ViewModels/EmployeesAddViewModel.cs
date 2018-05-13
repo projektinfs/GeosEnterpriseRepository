@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using System.Windows;
@@ -10,8 +7,6 @@ using System.Windows.Input;
 using System.ComponentModel;
 using GeosEnterprise.Commands;
 using GeosEnterprise.Validators;
-using FluentValidation;
-using FluentValidation.Results;
 
 namespace GeosEnterprise.ViewModels
 {

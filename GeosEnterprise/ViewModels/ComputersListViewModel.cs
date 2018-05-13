@@ -7,14 +7,11 @@ using GeosEnterprise.DTO;
 using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
 using System.Windows.Data;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
 using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ComputersListViewModel : NotificationObject,INotifyPropertyChanged
+    public class ComputersListViewModel : INotifyPropertyChanged
     {
         public ComputersListViewModel()
         {
@@ -24,13 +21,13 @@ namespace GeosEnterprise.ViewModels
             InfoButtonCommand = new RelayCommand<object>(Info);
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
-            SearchButtonCommand = new DelegateCommand(OnSearch);
+            SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
 
         }
 
-        public ICommand AddButtonCommand { get; set; }
-        public ICommand EditButtonCommand { get; set; }
+        public ICommand AddButtonCommand { get; private set; }
+        public ICommand EditButtonCommand { get; private set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand InfoButtonCommand { get; set; }
         public ICommand DateTimeNowButtonCommand { get; set; }
@@ -80,7 +77,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; RaisePropertyChanged(() => SearchButtonCommand); }
+            set { _searchString = value; OnPropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -160,7 +157,7 @@ namespace GeosEnterprise.ViewModels
             TimeFromBindingItem = null;
         }
 
-        private void OnSearch()
+        private void OnSearch(object obj)
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
@@ -206,7 +203,7 @@ namespace GeosEnterprise.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

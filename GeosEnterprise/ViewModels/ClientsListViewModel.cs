@@ -6,20 +6,18 @@ using System.ComponentModel;
 using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
 using GeosEnterprise.Commands;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
 using System.Windows.Data;
 using System.Runtime.CompilerServices;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ClientsListViewModel : NotificationObject, INotifyPropertyChanged
+    public class ClientsListViewModel : INotifyPropertyChanged
     {
         public ClientsListViewModel()
         {
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
-            SearchButtonCommand = new DelegateCommand(OnSearch);
+            SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)));
         }
 
@@ -69,7 +67,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; RaisePropertyChanged(() => SearchButtonCommand); }
+            set { _searchString = value; OnPropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -90,7 +88,7 @@ namespace GeosEnterprise.ViewModels
             TimeFromBindingItem = null;
         }
 
-        private void OnSearch()
+        private void OnSearch(object obj)
         {
             if (!string.IsNullOrEmpty(SearchString))
             {

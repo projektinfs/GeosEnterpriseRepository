@@ -8,14 +8,12 @@ using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
 using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
-using Microsoft.Practices.Prism.ViewModel;
-using Microsoft.Practices.Prism.Commands;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class EmployeesListViewModel : NotificationObject, INotifyPropertyChanged
+    public class EmployeesListViewModel : INotifyPropertyChanged
     {
         public EmployeesListViewModel()
         {
@@ -25,7 +23,7 @@ namespace GeosEnterprise.ViewModels
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             EditButtonCommand = new RelayCommand<object>(Edit);
             InfoButtonCommand = new RelayCommand<object>(Info);
-            SearchButtonCommand = new DelegateCommand(OnSearch);
+            SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
         }
 
@@ -79,7 +77,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; RaisePropertyChanged(() => SearchButtonCommand); }
+            set { _searchString = value; OnPropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -162,7 +160,7 @@ namespace GeosEnterprise.ViewModels
             }
         }
 
-        private void OnSearch()
+        private void OnSearch(object obj)
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
