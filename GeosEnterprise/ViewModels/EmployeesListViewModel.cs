@@ -51,7 +51,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged("TimeToBindingItem");
+                    NotifyPropertyChanged("TimeToBindingItem");
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged("TimeFromBindingItem");
+                    NotifyPropertyChanged("TimeFromBindingItem");
                 }
             }
         }
@@ -77,7 +77,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; OnPropertyChanged("SearchString"); }
+            set { _searchString = value; NotifyPropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -100,11 +100,18 @@ namespace GeosEnterprise.ViewModels
         private void Add(object obj)
         {
             Window addNewEmployeeWindow = new EmployeesAdd();
+            addNewEmployeeWindow.Closed += AddNewEmployeeWindowClosed;
             if (addNewEmployeeWindow.ShowDialog() == true)
             {
-                OnPropertyChanged("Items");
+                NotifyPropertyChanged("Items");
             }
 
+        }
+
+        private void AddNewEmployeeWindowClosed(object sender, EventArgs e)
+        {
+            _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
+            NotifyPropertyChanged("Items");
         }
 
         private void Delete(object obj)
@@ -116,7 +123,8 @@ namespace GeosEnterprise.ViewModels
                     "Usunięcie pracownika", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.EmployeeRepository.Delete(employeeDTO.ID);
-                    OnPropertyChanged("Items");
+                    _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
+                    NotifyPropertyChanged("Items");
                 }
                               
             }
@@ -124,8 +132,6 @@ namespace GeosEnterprise.ViewModels
             {
                    Config.MsgBoxNothingSelectedMessage();
             }
-            
-
         }
 
         private void Edit(object obj)
@@ -134,9 +140,10 @@ namespace GeosEnterprise.ViewModels
             if (employeeDTO != null)
             {
                 Window addNewEmployeeWindow = new EmployeesAdd(employeeDTO.ID);
+                addNewEmployeeWindow.Closed += EditEmployeeWindowClosed;
                 if (addNewEmployeeWindow.ShowDialog() == true)
                 {
-                    OnPropertyChanged("Items");
+                    NotifyPropertyChanged("Items");
                 }
 
             }
@@ -144,6 +151,12 @@ namespace GeosEnterprise.ViewModels
             {
                 Config.MsgBoxNothingSelectedMessage();
             }
+        }
+
+        private void EditEmployeeWindowClosed(object sender, EventArgs e)
+        {
+            _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
+            NotifyPropertyChanged("Items");
         }
 
         private void Info(object obj)
@@ -206,12 +219,22 @@ namespace GeosEnterprise.ViewModels
             }
         }
 
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        #region INotifyPropertyChanged Members
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        private void NotifyPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
     }
 }
 
