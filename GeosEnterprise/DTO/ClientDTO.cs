@@ -1,9 +1,6 @@
 ﻿using GeosEnterprise.DBO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace GeosEnterprise.DTO
 {
@@ -13,6 +10,12 @@ namespace GeosEnterprise.DTO
         public string Surname { get; set; }
         public ClientAdressDTO ClientAdress { get; set; }
         public ClientContactDTO ClientContact { get; set; }
+
+        [Description("Data utworzenia")]
+        public DateTime? CreatedDate { get; set; }
+
+        [Description("Data skasowania")]
+        public DateTime? DeletedDate { get; set; }
 
         public string FullName
         {
@@ -47,9 +50,12 @@ namespace GeosEnterprise.DTO
                     Fax = entity.ClientContact.Fax,
                     Email = entity.ClientContact.Email,
                 },
+
                 ID = entity.ID,
                 Name = entity.Name,
                 Surname = entity.Surname,
+                CreatedDate = entity.CreatedDate,
+                DeletedDate = entity.DeletedDate
             };
         }
 
@@ -61,7 +67,9 @@ namespace GeosEnterprise.DTO
                 ClientAdress = ClientAdressDTO.FromDTO(entity.ClientAdress),
                 ClientContact = ClientContactDTO.FromDTO(entity.ClientContact),
                 Name = entity.Name,
-                Surname = entity.Surname
+                Surname = entity.Surname,
+                CreatedDate = entity.CreatedDate,
+                DeletedDate = entity.DeletedDate
             };
         }
     }

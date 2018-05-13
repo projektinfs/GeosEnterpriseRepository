@@ -1,6 +1,7 @@
 ﻿using GeosEnterprise.DBO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace GeosEnterprise.DTO
         public EmployeeContactDTO EmployeeContact { get; set; }
         public UserRole UserRole { get; set;}
 
+        [Description("Data utworzenia")]
+        public DateTime? CreatedDate { get; set; }
+
+        [Description("Data skasowania")]
+        public DateTime? DeletedDate { get; set; }
 
         public static EmployeeDTO ToDTO(DBO.Employee entity)
         {
@@ -43,13 +49,16 @@ namespace GeosEnterprise.DTO
                     Phone = entity.EmployeeContact.Phone,
                     Fax = entity.EmployeeContact.Fax,
                 },
-                ID = entity.ID,
+
+               ID = entity.ID,
                Email = entity.Email,
                Password = entity.Password,
                Name  = entity.Name,
                Surname = entity.Surname,
                Position = entity.Position,
-               UserRole = entity.UserRole
+               UserRole = entity.UserRole,
+               CreatedDate = entity.CreatedDate,
+               DeletedDate = entity.DeletedDate
             };
         }
     }

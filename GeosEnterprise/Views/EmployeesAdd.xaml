@@ -8,8 +8,13 @@
         xmlns:viewmodels="clr-namespace:GeosEnterprise.ViewModels"
 
         mc:Ignorable="d"
-        Title="EmployeesAdd" Height="450" Width="800">
+        Title="Dodaj/edytuj pracownika" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="694*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF0D5074" Offset="0.861"/>
@@ -17,49 +22,49 @@
                 <GradientStop Color="#FD081826" Offset="0.136"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBlock TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="340" Margin="261,5,192.6,-5"><Run Text="Dane pracownika"/><LineBreak/><Run/></TextBlock>
-        <TextBox Name="NameTextBox" Text="{Binding BindingItem.Name}" HorizontalAlignment="Left" Height="23" Margin="185,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Imię" HorizontalAlignment="Left" Margin="65,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="SurnameTextBox" Text="{Binding BindingItem.Surname}" HorizontalAlignment="Left" Height="23" Margin="185,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="65,109,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="EmailTextBox" Text="{Binding BindingItem.Email}" HorizontalAlignment="Left" Height="23" Margin="185,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="65,139,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBlock Text="{Binding EmailTaken}" HorizontalAlignment="Left" Margin="347,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5"/>
-        <TextBox Name="PasswordTextBox" Text="{Binding BindingItem.Password}" HorizontalAlignment="Left" Height="23" Margin="502,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Hasło" HorizontalAlignment="Left" Margin="439,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
+        <TextBlock TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="340" Margin="161,5,192.6,-5" Grid.Column="2"><Run Text="Dane pracownika"/><LineBreak/><Run/></TextBlock>
+        <TextBox Name="NameTextBox" Text="{Binding BindingItem.Name}" HorizontalAlignment="Left" Height="23" Margin="85,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
+        <Label Content="Imię" HorizontalAlignment="Left" Margin="65,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
+        <TextBox Name="SurnameTextBox" Text="{Binding BindingItem.Surname}" HorizontalAlignment="Left" Height="23" Margin="85,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
+        <Label Content="Nazwisko" HorizontalAlignment="Left" Margin="65,109,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
+        <TextBox Name="EmailTextBox" Text="{Binding BindingItem.Email}" HorizontalAlignment="Left" Height="23" Margin="85,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="65,139,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
+        <TextBlock Text="{Binding EmailTaken}" HorizontalAlignment="Left" Margin="247,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5" Grid.Column="2"/>
+        <TextBox Name="PasswordTextBox" Text="{Binding BindingItem.Password}" HorizontalAlignment="Left" Height="23" Margin="402,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
+        <Label Content="Hasło" HorizontalAlignment="Left" Margin="339,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
 
-        <ComboBox  IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" SelectedIndex="{Binding PositionIndex}" HorizontalAlignment="Left" Height="23" Margin="185,164,0,0"  VerticalAlignment="Top" Width="200">
+        <ComboBox  IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" SelectedIndex="{Binding PositionIndex}" HorizontalAlignment="Left" Height="23" Margin="85,164,0,0"  VerticalAlignment="Top" Width="200" Grid.Column="2">
             <ComboBoxItem>Kierownik</ComboBoxItem>
             <ComboBoxItem>Księgowy</ComboBoxItem>
             <ComboBoxItem>Serwisant</ComboBoxItem>
             <ComboBoxItem>Sprzedawca</ComboBoxItem>
         </ComboBox>
-        
-        <Label Content="Stanowisko" HorizontalAlignment="Left" Margin="65,167,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBlock  TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="129" RenderTransformOrigin="0.637,0.381" Margin="347,189,317.6,-5"><Run Text="Adres"/><LineBreak/><Run/></TextBlock>
-        <TextBox Name="CityTextBox" Text="{Binding BindingItem.Adress.City}" HorizontalAlignment="Left" Height="23" Margin="106,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Miasto" HorizontalAlignment="Left" Margin="23,254,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="DistrictTextBox" Text="{Binding BindingItem.Adress.District}" HorizontalAlignment="Left" Height="23" Margin="328,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Powiat" HorizontalAlignment="Left" Margin="261,254,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="VoivodeshipTextBox" Text="{Binding BindingItem.Adress.Voivodeship}" HorizontalAlignment="Left" Height="23" Margin="617,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Województwo" HorizontalAlignment="Left" Margin="486,248,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="PostCodeTextBox" Text="{Binding BindingItem.Adress.PostCode}" HorizontalAlignment="Left" Height="23" Margin="153,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.5,1.13"/>
-        <Label Content="Kod pocztowy" HorizontalAlignment="Left" Margin="23,277,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="StreetTextBox" Text="{Binding BindingItem.Adress.Street}" HorizontalAlignment="Left" Height="23" Margin="328,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="Ulica" HorizontalAlignment="Left" Margin="261,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="BuildingTextBox" Text="{Binding BindingItem.Adress.BuildingNumber}" HorizontalAlignment="Left" Height="23" Margin="606,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609"/>
-        <Label Content="Budynek" HorizontalAlignment="Left" Margin="503,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="AppartamentTextBox" Text="{Binding BindingItem.Adress.AppartamentNumber}" HorizontalAlignment="Left" Height="23" Margin="737,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609"/>
-        <Label Content="Mieszkanie" HorizontalAlignment="Left" Margin="635,277,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBlock  TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="162" RenderTransformOrigin="0.637,0.381" Margin="336,305,295.6,0"><Run Text="Kontakt"/><LineBreak/><Run/></TextBlock>
-        <TextBox Name="PhoneTextBox" Text="{Binding BindingItem.EmployeeContact.Phone}" HorizontalAlignment="Left" Height="23" Margin="88,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+
+        <Label Content="Stanowisko" HorizontalAlignment="Left" Margin="65,167,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
+        <TextBlock  TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="129" RenderTransformOrigin="0.637,0.381" Margin="247,189,317.6,-5" Grid.Column="2"><Run Text="Adres"/><LineBreak/><Run/></TextBlock>
+        <TextBox Name="CityTextBox" Text="{Binding BindingItem.Adress.City}" HorizontalAlignment="Left" Height="23" Margin="6,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
+        <Label Content="Miasto" HorizontalAlignment="Left" Margin="23,254,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="2"/>
+        <TextBox Name="DistrictTextBox" Text="{Binding BindingItem.Adress.District}" HorizontalAlignment="Left" Height="23" Margin="228,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
+        <Label Content="Powiat" HorizontalAlignment="Left" Margin="161,254,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <TextBox Name="VoivodeshipTextBox" Text="{Binding BindingItem.Adress.Voivodeship}" HorizontalAlignment="Left" Height="23" Margin="517,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
+        <Label Content="Województwo" HorizontalAlignment="Left" Margin="386,248,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <TextBox Name="PostCodeTextBox" Text="{Binding BindingItem.Adress.PostCode}" HorizontalAlignment="Left" Height="23" Margin="53,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" RenderTransformOrigin="0.5,1.13" Grid.Column="2"/>
+        <Label Content="Kod pocztowy" HorizontalAlignment="Left" Margin="23,277,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
+        <TextBox Name="StreetTextBox" Text="{Binding BindingItem.Adress.Street}" HorizontalAlignment="Left" Height="23" Margin="228,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
+        <Label Content="Ulica" HorizontalAlignment="Left" Margin="161,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <TextBox Name="BuildingTextBox" Text="{Binding BindingItem.Adress.BuildingNumber}" HorizontalAlignment="Left" Height="23" Margin="506,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609" Grid.Column="2"/>
+        <Label Content="Budynek" HorizontalAlignment="Left" Margin="403,279,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <TextBox Name="AppartamentTextBox" Text="{Binding BindingItem.Adress.AppartamentNumber}" HorizontalAlignment="Left" Height="23" Margin="637,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609" Grid.Column="2"/>
+        <Label Content="Mieszkanie" HorizontalAlignment="Left" Margin="535,277,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <TextBlock  TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="162" RenderTransformOrigin="0.637,0.381" Margin="236,305,295.6,0" Grid.Column="2"><Run Text="Kontakt"/><LineBreak/><Run/></TextBlock>
+        <TextBox Name="PhoneTextBox" Text="{Binding BindingItem.EmployeeContact.Phone}" HorizontalAlignment="Left" Height="23" Margin="88,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="3"/>
         <Label Content="telefon" HorizontalAlignment="Left" Margin="13,358,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="FaxTextBox" Text="{Binding BindingItem.EmployeeContact.Fax}" HorizontalAlignment="Left" Height="23" Margin="328,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="fax" HorizontalAlignment="Left" Margin="286,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.536,1.182" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <TextBox Name="WwwTextBox" Text="{Binding BindingItem.EmployeeContact.Www}" HorizontalAlignment="Left" Height="23" Margin="617,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
-        <Label Content="www" HorizontalAlignment="Left" Margin="560,350,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.444,0.923" FontWeight="Bold" FontSize="18" Foreground="White"/>
-        <Button Name="OKButton" Content="Zapisz" HorizontalAlignment="Left" Margin="0,0,0,0.226" VerticalAlignment="Bottom" Width="75" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=EmployeesAddUpdate}"/>
-        <Button Name="CancelButton" Content="Powrót" HorizontalAlignment="Right" Margin="118,392,0,0" VerticalAlignment="Bottom" Width="75" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=EmployeesAddUpdate}"/>
+        <TextBox Name="FaxTextBox" Text="{Binding BindingItem.EmployeeContact.Fax}" HorizontalAlignment="Left" Height="23" Margin="228,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
+        <Label Content="fax" HorizontalAlignment="Left" Margin="186,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.536,1.182" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <TextBox Name="WwwTextBox" Text="{Binding BindingItem.EmployeeContact.Www}" HorizontalAlignment="Left" Height="23" Margin="517,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
+        <Label Content="www" HorizontalAlignment="Left" Margin="460,350,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.444,0.923" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
+        <Button Name="OKButton" Content="Zapisz" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=EmployeesAddUpdate}"/>
+        <Button Name="CancelButton" Content="Powrót" HorizontalAlignment="Right" Margin="0,0,-0.4,0" VerticalAlignment="Bottom" Width="75" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=EmployeesAddUpdate}" Grid.Column="2"/>
 
     </Grid>
 </Window>

@@ -28,18 +28,6 @@ namespace GeosEnterprise.Views
             this.DataContext = new EmployeesListViewModel();
 
         }
-
-        private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox SearchBar = (TextBox)sender;
-            SearchBar.Text = string.Empty;
-            SearchBar.GotFocus -= SearchBar_GotFocus;
-        }
-
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
-            AllEmployeesList.ItemsSource = EmployeeRepository.GetAll(SearchBar.Text, TimeFrom.Value, TimeTo.Value);
-        }
     }
 }
 

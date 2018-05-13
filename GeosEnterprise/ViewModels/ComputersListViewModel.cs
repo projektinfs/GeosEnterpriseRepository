@@ -1,46 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.ComponentModel;
-using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
-using GeosEnterprise.Repositories;
 using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
+using System.Windows.Data;
+using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.ViewModel;
+using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ComputersListViewModel : INotifyPropertyChanged
+    public class ComputersListViewModel : NotificationObject,INotifyPropertyChanged
     {
+        public ComputersListViewModel()
+        {
+            AddButtonCommand = new RelayCommand<object>(Add);
+            EditButtonCommand = new RelayCommand<object>(Edit);
+            DeleteButtonCommand = new RelayCommand<object>(Delete);
+            InfoButtonCommand = new RelayCommand<object>(Info);
+            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
+            ResetButtonCommand = new RelayCommand<object>(Reset);
+            SearchButtonCommand = new DelegateCommand(OnSearch);
+            _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+
+        }
+
         public ICommand AddButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand InfoButtonCommand { get; set; }
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
+        public ICommand SearchButtonCommand { get; private set; }
+
+        public ObservableCollection<RepairDTO> _myDataSource = new ObservableCollection<RepairDTO>();
 
         public object SelectedItem { get; set; }
-
-        public ObservableCollection<RepairDTO> Items
-        {
-            get
-            {
-                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
-            }
-            
-        }
-
-        //public void RefreshItemsForListView()
-        //{
-        //    Items = null;
-        //    Items = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
-        //}
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -54,15 +53,13 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged("Items");
+                    OnPropertyChanged("TimeToBindingItem");
                 }
             }
+            
         }
 
         private DateTime? timeFromBindingItem;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public DateTime? TimeFromBindingItem
         {
             get
@@ -74,22 +71,23 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged("Items");
+                    OnPropertyChanged("TimeFromBindingItem");
                 }
             }
         }
 
-        public ComputersListViewModel()
+        private string _searchString;
+        public string SearchString
         {
-            AddButtonCommand = new RelayCommand<object>(Add);
-            EditButtonCommand = new RelayCommand<object>(Edit);
-            DeleteButtonCommand = new RelayCommand<object>(Delete);
-            InfoButtonCommand = new RelayCommand<object>(Info);
-            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
-            ResetButtonCommand = new RelayCommand<object>(Reset);
+            get { return _searchString; }
+            set { _searchString = value; RaisePropertyChanged(() => SearchButtonCommand); }
         }
 
-        
+        private ICollectionView _items;
+        public ICollectionView Items
+        {
+            get { return CollectionViewSource.GetDefaultView(_myDataSource); }
+        }
 
         public void Add(object obj)
         {
@@ -103,6 +101,7 @@ namespace GeosEnterprise.ViewModels
         public void Edit(object obj)
         {
             var repairDTO = SelectedItem as RepairDTO;
+
             if (repairDTO != null)
             {
                 Window editRepairWindow = new ComputersAdd(repairDTO.ID);
@@ -133,9 +132,9 @@ namespace GeosEnterprise.ViewModels
             {
                 Config.MsgBoxNothingSelectedMessage();
             }
-}
+        }
 
-        
+
         public void Info(object obj)
         {
             var repairDTO = SelectedItem as RepairDTO;
@@ -148,7 +147,7 @@ namespace GeosEnterprise.ViewModels
             {
                 Config.MsgBoxNothingSelectedMessage();
             }
-}
+        }
 
         public void Now(object obj)
         {
@@ -161,10 +160,55 @@ namespace GeosEnterprise.ViewModels
             TimeFromBindingItem = null;
         }
 
-        protected virtual void OnPropertyChanged(string propertyName)
+        private void OnSearch()
+        {
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                {
+                    Items.Filter = (item) => {
+                        return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
+                            || (item as RepairDTO).Computer.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Name.Contains(SearchString)
+                            || (item as RepairDTO).OrderNumber.Contains(SearchString));
+                    };
+                }
+                else
+                {
+                    Items.Filter = (item) => {
+
+                        return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
+                            || (item as RepairDTO).Computer.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Name.Contains(SearchString)
+                            || (item as RepairDTO).OrderNumber.Contains(SearchString)) 
+                            && ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
+                            && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value); 
+                    };
+                }     
+            }
+            else
+            {
+                if( TimeFromBindingItem == null || TimeToBindingItem == null )
+                {
+                    Items.Filter = (item) => {
+                        return (item as RepairDTO).RealizationDate == null;
+                    };
+                }
+                else
+                {
+                    Items.Filter = (item) => {
+                        return ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
+                        && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
+                    };
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }

@@ -26,23 +26,8 @@ namespace GeosEnterprise.Views
     {
         public ComputersList()
         {
-            
             InitializeComponent();
-            this.DataContext = new ComputersListViewModel();
+            DataContext = new ComputersListViewModel();
         }
-
-
-        private void SearchButton_Click(object sender, RoutedEventArgs e)
-        {
-             RepairsList.ItemsSource = RepairsRepository.GetAll(SearchBar.Text, TimeFrom.Value, TimeTo.Value);
-        }
-
-        private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox SearchBar = (TextBox)sender;
-            SearchBar.Text = string.Empty;
-            SearchBar.GotFocus -= SearchBar_GotFocus;
-        }
-
     }
 }

@@ -85,6 +85,7 @@ namespace GeosEnterprise.Views
          }
          */
 
+         /*
         private void SearchBar_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox SearchBar = (TextBox)sender;
@@ -96,6 +97,8 @@ namespace GeosEnterprise.Views
         {
             AllClientsList.ItemsSource = ClientRepository.GetAll(SearchBar.Text, TimeFrom.Value, TimeTo.Value);
         }
+        */
+
     }
 }
 

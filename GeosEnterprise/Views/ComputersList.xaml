@@ -59,27 +59,83 @@
         <Border Margin="700,70,10,0" Padding="3" Background="LightGray" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40">
             <StackPanel >
-                <TextBox x:Name="SearchBar" Text="Wpisz tekst..." HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" GotFocus="SearchBar_GotFocus" FontStyle="Italic" Margin="0,0,48.6,0"/>
-                <Button Name="SearchButton" Content="Szukaj..."   HorizontalAlignment="Right"  Margin="185,-22,0.6,0" Height="22" Click="SearchButton_Click" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
+                <TextBox Text="{Binding SearchString}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" FontStyle="Italic" Margin="0,0,48.6,0"/>
+                <Button Content="Szukaj..." Command="{Binding SearchButtonCommand}" HorizontalAlignment="Right"  Margin="185,-22,0.6,0" Height="22" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="10,115,10,71.6" Padding="3" Background="White" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4">
-            <StackPanel >
-                <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" Margin="0,0,-1,36.6" Grid.ColumnSpan="2" VerticalContentAlignment="Top" UseLayoutRounding="False">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Numer zgłoszenia" DisplayMemberBinding="{Binding OrderNumber}" Width="100"/>
-                            <GridViewColumn Header="Data zgłoszenia" DisplayMemberBinding="{Binding CreatedDate}" Width="120"/>
-                            <GridViewColumn Header="Klient" DisplayMemberBinding="{Binding Client.Name}" Width="200"/>
-                            <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Computer.Name}" Width="200"/>
-                            <GridViewColumn Header="Numer seryjny" DisplayMemberBinding="{Binding Computer.SerialNumber}" Width="150"/>
-                            <GridViewColumn Header="Opis" DisplayMemberBinding="{Binding Description}" Width="150"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </StackPanel>
+        <Border BorderBrush="Black" BorderThickness="0" CornerRadius="3" Margin="10,120,10,0" VerticalAlignment="Top" Background="White" Height="33">
+            <Grid Background="White" Margin="0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+                    <TextBlock Text="Numer zgłoszenia" Foreground="#33B6EF" FontSize="15" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+                    <TextBlock Text="Data zgłoszenia" Foreground="#33B6EF" FontSize="15" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+                    <TextBlock Text="Klient" Foreground="#33B6EF" FontSize="15" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                    <TextBlock Text="Nazwa" Foreground="#33B6EF" FontSize="15" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
+                    <TextBlock Text="Numer seryjny" Foreground="#33B6EF" FontSize="15" />
+                </StackPanel>
+            </Grid>
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" />
+            </Border.Effect>
         </Border>
+
+
+        <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" BorderThickness="0" Margin="4,155,4,71.6" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="0" CornerRadius="3" Margin="0,2,0,0" VerticalAlignment="Top" Background="White" Height="30">
+                        <Grid Background="White" Margin="0,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
+                                <TextBlock Text="{Binding OrderNumber}" FontSize="14"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
+                                <TextBlock Text="{Binding CreatedDate}" FontSize="14" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+                                <TextBlock Text="{Binding Client.Name}" FontSize="14" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                                <TextBlock Text="{Binding Computer.Name}" FontSize="14" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
+                                <TextBlock Text="{Binding Computer.SerialNumber}" FontSize="14" />
+                            </StackPanel>
+                        </Grid>
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="5" ShadowDepth="5" />
+                        </Border.Effect>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </Grid>
 </UserControl>

@@ -1,35 +1,45 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.ComponentModel;
-using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
 using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
+using Microsoft.Practices.Prism.ViewModel;
+using Microsoft.Practices.Prism.Commands;
+using System.Runtime.CompilerServices;
+using System.Windows.Data;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class EmployeesListViewModel : PropertyChangedBase
+    public class EmployeesListViewModel : NotificationObject, INotifyPropertyChanged
     {
+        public EmployeesListViewModel()
+        {
+            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
+            ResetButtonCommand = new RelayCommand<object>(Reset);
+            AddButtonCommand = new RelayCommand<object>(Add);
+            DeleteButtonCommand = new RelayCommand<object>(Delete);
+            EditButtonCommand = new RelayCommand<object>(Edit);
+            InfoButtonCommand = new RelayCommand<object>(Info);
+            SearchButtonCommand = new DelegateCommand(OnSearch);
+            _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
+        }
+
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
         public ICommand AddButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
         public ICommand InfoButtonCommand { get; set; }
+        public ICommand SearchButtonCommand { get; private set; }
 
-
+        public ObservableCollection<EmployeeDTO> _myDataSource = new ObservableCollection<EmployeeDTO>();
 
         public object SelectedItem { get; set; }
-
-
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -43,7 +53,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("TimeToBindingItem");
                 }
             }
         }
@@ -60,30 +70,22 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("TimeFromBindingItem");
                 }
             }
         }
 
-        public EmployeesListViewModel()
+        private string _searchString;
+        public string SearchString
         {
-            DateTimeNowButtonCommand = new RelayCommand<object>(Now);
-            ResetButtonCommand = new RelayCommand<object>(Reset);
-            AddButtonCommand = new RelayCommand<object>(Add);
-            DeleteButtonCommand = new RelayCommand<object>(Delete);
-            EditButtonCommand = new RelayCommand<object>(Edit);
-            InfoButtonCommand = new RelayCommand<object>(Info);
-
-
+            get { return _searchString; }
+            set { _searchString = value; RaisePropertyChanged(() => SearchButtonCommand); }
         }
 
-
-        public ObservableCollection<EmployeeDTO> Items
+        private ICollectionView _items;
+        public ICollectionView Items
         {
-            get
-            {
-                return new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => DTO.EmployeeDTO.ToDTO(p)));
-            }
+            get { return CollectionViewSource.GetDefaultView(_myDataSource); }
         }
 
         public void Now(object obj)
@@ -120,11 +122,10 @@ namespace GeosEnterprise.ViewModels
                 }
                               
             }
-          
-             else
-             {
-                    Config.MsgBoxNothingSelectedMessage();
-             }
+           else
+            {
+                   Config.MsgBoxNothingSelectedMessage();
+            }
             
 
         }
@@ -159,6 +160,59 @@ namespace GeosEnterprise.ViewModels
             {
                 Config.MsgBoxNothingSelectedMessage();
             }
+        }
+
+        private void OnSearch()
+        {
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                {
+                    Items.Filter = (item) => {
+                        return ((item as EmployeeDTO).Name.Contains(SearchString)
+                            || (item as EmployeeDTO).Surname.Contains(SearchString)
+                            || (item as EmployeeDTO).Email.Contains(SearchString)
+                            || (item as EmployeeDTO).EmployeeContact.Phone.Contains(SearchString)
+                            || (item as EmployeeDTO).Position.Contains(SearchString));
+                    };
+                }
+                else
+                {
+                    Items.Filter = (item) => {
+
+                        return ((item as EmployeeDTO).Name.Contains(SearchString)
+                            || (item as EmployeeDTO).Surname.Contains(SearchString)
+                            || (item as EmployeeDTO).Email.Contains(SearchString)
+                            || (item as EmployeeDTO).EmployeeContact.Phone.Contains(SearchString)
+                            || (item as EmployeeDTO).Position.Contains(SearchString))
+                            && ((item as EmployeeDTO).CreatedDate >= timeFromBindingItem.Value)
+                            && ((item as EmployeeDTO).CreatedDate <= timeToBindingItem.Value);
+                    };
+                }
+            }
+            else
+            {
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                {
+                    Items.Filter = (item) => {
+                        return (item as EmployeeDTO).DeletedDate == null;
+                    };
+                }
+                else
+                {
+                    Items.Filter = (item) => {
+                        return ((item as EmployeeDTO).CreatedDate >= timeFromBindingItem.Value)
+                        && ((item as EmployeeDTO).CreatedDate <= timeToBindingItem.Value);
+                    };
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

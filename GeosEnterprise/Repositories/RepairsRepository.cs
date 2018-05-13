@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
 
+
 namespace GeosEnterprise.Repositories
 {
     public class RepairsRepository : BaseRepository<Repair, RepairDTO>
@@ -22,57 +23,6 @@ namespace GeosEnterprise.Repositories
         public new static IList<Repair> GetAllCurrent()
         {
             return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
-        }
-
-        public static IList<Repair> GetByTime(DateTime? timeFrom, DateTime? timeTo)
-        {
-            return ExecuteQuery(() =>
-            {
-                return Where(p => p.Computer.CreatedDate >= timeFrom && p.Computer.CreatedDate <= timeTo).ToList();
-            });
-        }
-
-        public static IList<Repair> GetByDescription(string filter)
-        {
-            return ExecuteQuery(() =>
-            {
-                return Where(p => p.Description.Contains(filter)
-            || p.Computer.SerialNumber.Contains(filter) 
-            || p.Computer.Name.Contains(filter) 
-            || p.Client.Name.Contains(filter)).ToList();
-
-            });
-        }
-
-        public static IList<Repair> GetByTimeAndDescription(string filter, DateTime? timeFrom, DateTime? timeTo)
-        {
-            return ExecuteQuery(() =>
-            {
-                IList<Repair> Repairs = Where(p => p.Computer.CreatedDate >= timeFrom
-                    && p.Computer.CreatedDate <= timeTo).ToList();
-
-                return Repairs.Where(p => p.Description.Contains(filter)
-            || p.Computer.SerialNumber.Contains(filter) || p.Computer.Name.Contains(filter) || p.Client.Name.Contains(filter)).ToList();
-            });
-        }
-
-
-        public static IList<Repair> GetAll(string filter, DateTime? TimeFrom, DateTime? TimeTo)
-        {
-            if (filter == "Wpisz tekst...")
-            {
-                if (TimeFrom.HasValue == false || TimeTo.HasValue == false)
-                    return GetAllCurrent();
-                else
-                    return GetByTime(TimeFrom, TimeTo);
-            }
-            else
-            {
-                if (TimeFrom.HasValue == false || TimeTo.HasValue == false)
-                    return GetByDescription(filter);
-                else
-                    return GetByTimeAndDescription(filter, TimeFrom, TimeTo);
-            }
         }
 
         public static Repair Add(Repair repair)

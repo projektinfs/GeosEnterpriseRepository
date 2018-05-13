@@ -7,7 +7,7 @@
         xmlns:viewmodels="clr-namespace:GeosEnterprise.ViewModels"
 
         mc:Ignorable="d"
-        Title="ClientsAdd" Height="515" Width="875">
+        Title="Dodaj/edytuj klienta" Height="515" Width="875">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="191*"/>

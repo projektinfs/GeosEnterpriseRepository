@@ -12,7 +12,7 @@ using GeosEnterprise.Commands;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class StartPanelViewModel : PropertyChangedBase
+    public class StartPanelViewModel
     {
         public ICommand ChangePreferences { get; set; }
 
