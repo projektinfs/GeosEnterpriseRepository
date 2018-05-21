@@ -119,7 +119,7 @@ namespace GeosEnterprise.ViewModels
             var employeeDTO = SelectedItem as EmployeeDTO;
             if (employeeDTO != null)
             {
-                if (MessageBox.Show($"Czy na pewno chcesz usunąć pracownika\r\n{employeeDTO.Name} {employeeDTO.Surname}",
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć pracownika?\r\n{employeeDTO.Name} {employeeDTO.Surname}",
                     "Usunięcie pracownika", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.EmployeeRepository.Delete(employeeDTO.ID);
