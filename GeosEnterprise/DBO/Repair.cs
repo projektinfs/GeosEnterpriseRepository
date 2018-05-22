@@ -8,12 +8,18 @@ namespace GeosEnterprise.DBO
 {
     public class Repair : DBObject<int>
     {
+        public Repair()
+        {
+            Status = RepairStatus.Reported;
+        }
+
         public int ClientID { get; set; }
         public virtual Client Client { get; set; }
         public virtual Computer Computer { get; set; }
         public int ComputerID { get; set; }
         public string Description { get; set; }
         public DateTime? RealizationDate { get; set; }
+        public RepairStatus Status { get; set; }
 
         public string OrderNumber
         {

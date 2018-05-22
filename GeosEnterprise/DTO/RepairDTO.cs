@@ -42,6 +42,9 @@ namespace GeosEnterprise.DTO
             }
         }
 
+        [Description("Status naprawy")]
+        RepairStatus Status { get; set; }
+
         public static RepairDTO ToDTO(DBO.Repair entity)
         {
             return new RepairDTO
@@ -54,6 +57,7 @@ namespace GeosEnterprise.DTO
                 Description = entity.Description,
                 ID = entity.ID,
                 RealizationDate = entity.RealizationDate,
+                Status = entity.Status
             };
         }
 
@@ -68,7 +72,8 @@ namespace GeosEnterprise.DTO
                 Description = entity.Description,
                 ID = entity.ID,
                 CreatedDate = entity.CreatedDate,
-                RealizationDate = entity.RealizationDate
+                RealizationDate = entity.RealizationDate,
+                Status = entity.Status
             };
         }
     }

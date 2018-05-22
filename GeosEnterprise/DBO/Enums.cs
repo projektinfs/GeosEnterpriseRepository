@@ -25,11 +25,15 @@ namespace GeosEnterprise.DBO
         Unknown = 50
     }
 
-    public enum Actors
+    public enum RepairStatus
     {
-        Serviceman = 1,
-        Salesman = 2,
-        Manager = 3,
-        Accountant = 4
+        [Description("Usterka zgłoszona")]
+        Reported = 1,
+        [Description("W trakcie naprawy")]
+        InProcess = 2,
+        [Description("Naprawa zakończona")]
+        Completed = 3,
+        [Description("Odebrana przez klienta")]
+        AcceptedByClient = 4
     }
 }
