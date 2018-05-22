@@ -22,5 +22,42 @@ namespace GeosEnterprise.DBO
                 return $"{ID}/{CreatedDate.Value.Year}/{CreatedDate.Value.Month}";
             }
         }
+
+        public static IList<Repair> ForSeedToDatabase()
+        {
+            return new List<Repair>
+            {
+                new Repair
+                {
+                    ClientID = 1,
+                    Computer = new Computer
+                    {
+                        Name = "Lenovo",
+                        SerialNumber = "123-000-F2X"
+                    },
+                    Description = "Opis",
+                },
+                new Repair
+                {
+                    ClientID = 2,
+                    Computer = new Computer
+                    {
+                        Name = "IBM",
+                        SerialNumber = "047-8P9-F2X"
+                    },
+                    Description = "Opis",
+                },
+                new Repair
+                {
+                    ClientID = 2,
+                    Computer = new Computer
+                    {
+                        Name = "DELL",
+                        SerialNumber = "123-F2X-047"
+                    },
+                    Description = "Opis",
+                },
+            };
+        }
     }
 }

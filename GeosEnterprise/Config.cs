@@ -18,6 +18,11 @@ namespace GeosEnterprise
         /// </summary>
         public static bool IgnoreAuthentication = true;
 
+        /// <summary>
+        /// True - jeżeli chcemy, by przy każdej zmianie modelu baza generowała się od nowa (UWAGA NA PRODUKCJI!)
+        /// </summary>
+        public static bool DropAndCreateWhenModelChanges = true;
+
         public static void MsgBoxValidationMessage(string errors)
         {
             MessageBox.Show($"Nie wszystkie dane zostały uzupełnione.\r\n" +

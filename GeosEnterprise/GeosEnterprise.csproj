@@ -133,6 +133,7 @@
     <Compile Include="Repositories\EmployeeContactsRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Validators\ComputerValidator.cs" />
     <Compile Include="Validators\ClientValidator.cs" />
     <Compile Include="Validators\EmployeeValidator.cs" />

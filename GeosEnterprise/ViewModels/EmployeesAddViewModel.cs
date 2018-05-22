@@ -94,7 +94,7 @@ namespace GeosEnterprise.ViewModels
                             Password = HasedPassword,
                             Name = BindingItem.Name,
                             Surname = BindingItem.Surname,
-                            Position = BindingItem.Position,
+                            //Position = BindingItem.Position,
                             UserRole = PositionToUserRole(BindingItem.Position.ToString()),
                             Adress = new Adress
                             {
@@ -139,7 +139,7 @@ namespace GeosEnterprise.ViewModels
                         Password = HasedPassword,
                         Name = BindingItem.Name,
                         Surname = BindingItem.Surname,
-                        Position = BindingItem.Position,
+                        //Position = BindingItem.Position,
                         UserRole = PositionToUserRole(BindingItem.Position.ToString()),
                         Adress = new Adress
                         {

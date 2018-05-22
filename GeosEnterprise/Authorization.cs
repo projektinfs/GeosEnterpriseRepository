@@ -17,7 +17,7 @@ namespace GeosEnterprise
             Password = { },
             Name = "NaN",
             Surname = "NaN",
-            Position = "NaN",
+            //Position = "NaN",
             Adress = new Adress
             {
                 City = "NoCity",

@@ -9,6 +9,8 @@ namespace GeosEnterprise.DBO
 {
     public enum UserRole
     {
+        [Description("Administrator")] // do wywalenia
+        Admin = 0,
         [Description("Administrator")]
         Administrator = 1,
         [Description("Kierownik")]

@@ -28,20 +28,45 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
-            InitializeDatabase(true);
+            InitializeDatabase();
         }
 
-        private void InitializeDatabase(bool dropAndCreateWhenModelChanges)
+        private void InitializeDatabase()
         {
-            if (!App.DB.Database.CompatibleWithModel(false) && dropAndCreateWhenModelChanges)
+            if (!App.DB.Database.Exists())
+            {
+                App.DB.Database.Create();
+                SeedDatabase();
+            }
+            else if (!App.DB.Database.CompatibleWithModel(false) && Config.DropAndCreateWhenModelChanges)
             {
                 App.DB.Database.Delete();
                 App.DB.Database.Create();
+                SeedDatabase();
             }
             App.DB.Computers.Any();
 
             DataContext = new AuthenticationViewModel();
         }
+
+        private void SeedDatabase()
+        {
+            foreach (var client in DBO.Client.ForSeedToDatabase())
+            {
+                Repositories.ClientRepository.Add(client);
+            }
+
+            foreach (var employee in DBO.Employee.ForSeedToDatabase())
+            {
+                Repositories.EmployeeRepository.Add(employee);
+            }
+
+            foreach (var repair in DBO.Repair.ForSeedToDatabase())
+            {
+                Repositories.RepairsRepository.Add(repair);
+            }
+        }
+
 
         private void StartPanelButton_Click(object sender, RoutedEventArgs e)
         {

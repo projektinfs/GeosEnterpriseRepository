@@ -120,7 +120,7 @@
                                 <TextBlock Text="{Binding CreatedDate}" FontSize="14" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
-                                <TextBlock Text="{Binding Client.Name}" FontSize="14" />
+                                <TextBlock Text="{Binding Client.FullName}" FontSize="14" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
                                 <TextBlock Text="{Binding Computer.Name}" FontSize="14" />

@@ -69,7 +69,7 @@ namespace GeosEnterprise.ViewModels
                 {
                     Email = "admin@admin.pl",
                     Password = HasedPassword,
-                    Position = "Administrator",
+                    //Position = "Administrator",
                     Adress = new Adress
                     {
                         PostCode = "00:000",

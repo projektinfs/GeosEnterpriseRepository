@@ -54,7 +54,7 @@ namespace GeosEnterprise.Repositories
                 toEdit.Password = employee.Password;
                 toEdit.Name = employee.Name;
                 toEdit.Surname = employee.Surname;
-                toEdit.Position = employee.Position;
+                //toEdit.Position = employee.Position;
                 toEdit.UserRole = employee.UserRole;
                 toEdit.Adress.City = employee.Adress.City;
                 toEdit.Adress.Voivodeship = employee.Adress.Voivodeship;
