@@ -31,7 +31,7 @@
         </TextBlock>
         <TextBlock x:Name="Position" HorizontalAlignment="Left" Margin="72,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="Stanowisko: "/>
-            <Run Text="{Binding currentEmployee.Position}"/>
+            <Run Text="{Binding currentEmployee.Position, Mode=OneWay}"/>
         </TextBlock>
         <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="72,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="Adres email: "/>

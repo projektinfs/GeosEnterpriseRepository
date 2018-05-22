@@ -21,7 +21,7 @@ namespace GeosEnterprise.DTO
         {
             get
             {
-                return $"{Name} {Surname} ({ClientAdress?.City})";
+                return $"{Name} {Surname}\r\n({ClientContact?.Email})";
             }
         }
 

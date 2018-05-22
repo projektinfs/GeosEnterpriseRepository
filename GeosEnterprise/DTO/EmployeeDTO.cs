@@ -14,7 +14,6 @@ namespace GeosEnterprise.DTO
         public Byte[] Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Position { get; set; }
         public AdressDTO Adress { get; set; }
         public EmployeeContactDTO EmployeeContact { get; set; }
         public UserRole UserRole { get; set;}
@@ -24,6 +23,14 @@ namespace GeosEnterprise.DTO
 
         [Description("Data skasowania")]
         public DateTime? DeletedDate { get; set; }
+
+        public string Position
+        {
+            get
+            {
+                return Util.GetEnumDescription(UserRole);
+            }
+        }
 
         public static EmployeeDTO ToDTO(DBO.Employee entity)
         {
@@ -55,7 +62,6 @@ namespace GeosEnterprise.DTO
                Password = entity.Password,
                Name  = entity.Name,
                Surname = entity.Surname,
-               Position = entity.Position,
                UserRole = entity.UserRole,
                CreatedDate = entity.CreatedDate,
                DeletedDate = entity.DeletedDate
