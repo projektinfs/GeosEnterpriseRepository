@@ -231,14 +231,16 @@ namespace GeosEnterprise.ViewModels
         {
             var validationErrors1 = ValidatorTools.DoValidation(BindingItem, new EmployeeValidator());
            
-            if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(Password))
+         //   if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(validationErrors1) && (Password.Length >= 6))
+
             {
-                return String.Empty;
+                    return String.Empty;
             }
             else
             {
-                if (Password.Length >= 6)
-                    return String.Empty;
+                //if (Password.Length >= 6)
+                //    return String.Empty;
 
                 string returnString = $"{validationErrors1}\r\n";
                 if (Password.Length < 6)
