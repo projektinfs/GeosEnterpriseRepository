@@ -22,8 +22,8 @@
           VerticalAlignment="Center" HorizontalAlignment="Center" Height="105" Width="580">
             <StackPanel >
                 <Label Content="Klient*" Margin="0,-4,420.2,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black" Height="32"/>
-                <Button x:Name="NewClientButton" IsEnabled="False"  Command="{Binding NewClientButtonCommand}" Content="Nowy klient" Margin="0,-28,1.2,0" VerticalAlignment="Top" MinWidth="150" MinHeight="20" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White" Height="30"/>
-                <ComboBox Margin="86,-27,160.77,0" ItemsSource="{Binding Clients}" DisplayMemberPath="FullName" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" SelectedIndex="{Binding SelectedClientIndex}" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="27" BorderBrush="White">
+                <Button x:Name="NewClientButton"  Command="{Binding NewClientButtonCommand}" Content="Nowy klient" Margin="0,-28,1.2,0" VerticalAlignment="Top" MinWidth="150" MinHeight="20" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White" Height="30"/>
+                <ComboBox Margin="86,-27,160.77,0" ItemsSource="{Binding Clients}" DisplayMemberPath="FullName" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" SelectedIndex="{Binding SelectedClientIndex}" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="23" BorderBrush="White">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF0F0F0" Offset="0"/>

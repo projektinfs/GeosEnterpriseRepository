@@ -14,7 +14,7 @@ using FluentValidation.Results;
 
 namespace GeosEnterprise.ViewModels
 {
-    public class ComputersAddViewModel
+    public class ComputersAddViewModel : PropertyChangedBase
     {
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
@@ -81,7 +81,12 @@ namespace GeosEnterprise.ViewModels
         public void NewClient(Window window)
         {
             var newClientAdd = new Views.ClientsAdd();
-            newClientAdd.Show();
+            if (newClientAdd.ShowDialog() == true)
+            {
+                OnPropertyChanged("Clients");
+                var clientsID = Clients.Last()?.ID;
+                SelectedClientIndex = Clients.ToList().FindIndex(p => p.ID == clientsID);
+            }
         }
 
         private string DoValidation()
