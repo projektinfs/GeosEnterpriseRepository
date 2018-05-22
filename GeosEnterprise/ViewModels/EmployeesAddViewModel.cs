@@ -19,7 +19,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand CancelButtonCommand { get; set; }
         public EmployeeDTO BindingItem { get; set; }
         public bool IsAdminMode { get; set; }
-        public int PositionIndex {get; set; }
+        public int PositionIndex { get; set; }
         public string Password { get; set; }
 
         public EmployeesAddViewModel(int? employeeID)
@@ -27,6 +27,7 @@ namespace GeosEnterprise.ViewModels
             if (employeeID != null)
             {
                 BindingItem = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)employeeID));
+                Password = "";
                 PositionIndex = Position(BindingItem.Position);
             }
             else
@@ -124,7 +125,7 @@ namespace GeosEnterprise.ViewModels
                     Byte[] HasedPassword;
                     if (string.IsNullOrEmpty(Password))
                     {
-                        HasedPassword = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)BindingItem.ID)).Password;
+                        HasedPassword = BindingItem.Password;
                     }
                     else
                     {
@@ -181,7 +182,7 @@ namespace GeosEnterprise.ViewModels
         public void Cancel(Window window)
         {
             window?.Close();
-            
+
         }
 
         private UserRole PositionToUserRole(string position)
@@ -230,28 +231,48 @@ namespace GeosEnterprise.ViewModels
         private string DoValidation()
         {
             var validationErrors1 = ValidatorTools.DoValidation(BindingItem, new EmployeeValidator());
-           
-         //   if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(Password))
-            if (string.IsNullOrEmpty(validationErrors1) && (Password.Length >= 6))
-
+            if (BindingItem.ID <= 0)
             {
+                if (string.IsNullOrEmpty(validationErrors1) && (Password.Length >= 6))
+
+                {
                     return String.Empty;
+                }
+                else
+                {
+                    string returnString = $"{validationErrors1}\r\n";
+                    if (Password.Length < 6)
+                    {
+                        returnString += $"Haslo powinno posiadać co najmniej 6 znaków !";
+                    }
+
+                    returnString += "\r\n".Trim();
+
+                    return returnString;
+                }
             }
             else
             {
-                //if (Password.Length >= 6)
-                //    return String.Empty;
+                if (string.IsNullOrEmpty(validationErrors1) && ((Password.Length >= 6 || string.IsNullOrEmpty(Password))))
 
-                string returnString = $"{validationErrors1}\r\n";
-                if (Password.Length < 6)
                 {
-                    returnString += $"Haslo powinno posiadać co najmniej 6 znaków !";
+                    return String.Empty;
                 }
+                else
+                {
+                    string returnString = $"{validationErrors1}\r\n";
+                    if (!string.IsNullOrEmpty(Password) && Password.Length < 6)
+                    {
+                        returnString += $"Haslo powinno posiadać co najmniej 6 znaków !";
+                    }
 
-                returnString += "\r\n".Trim();
+                    returnString += "\r\n".Trim();
 
-                return returnString;
+                    return returnString;
+                }
             }
+
+
         }
 
         #region INotifyPropertyChanged Members
