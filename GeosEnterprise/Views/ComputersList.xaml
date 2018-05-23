@@ -26,6 +26,7 @@
                 <Button x:Name="DeleteButton" Content="Usuń" Margin="153,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="EditButton" Content="Edytuj" Margin="306,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="InfoButton" Content="Info" Margin="459,-45,0,-0.4" HorizontalAlignment="Left" Command="{Binding InfoButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="TakeButton" Content="Podejmij" Margin="612,-45,0,-0.4" HorizontalAlignment="Left" Command="{Binding TakeButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
 

@@ -67,5 +67,37 @@ namespace GeosEnterprise.DTO
                DeletedDate = entity.DeletedDate
             };
         }
+
+        public static Employee FromDTO(DTO.EmployeeDTO entity)
+        {
+            return new Employee
+            {
+                Adress = new Adress
+                {
+                    City = entity.Adress.City,
+                    Voivodeship = entity.Adress.Voivodeship,
+                    AppartamentNumber = entity.Adress.AppartamentNumber,
+                    BuildingNumber = entity.Adress.BuildingNumber,
+                    District = entity.Adress.District,
+                    PostCode = entity.Adress.PostCode,
+                    Street = entity.Adress.Street
+                },
+                EmployeeContact = new EmployeeContact
+                {
+                    Www = entity.EmployeeContact.Www,
+                    Phone = entity.EmployeeContact.Phone,
+                    Fax = entity.EmployeeContact.Fax
+                },
+
+                ID = entity.ID,
+                Email = entity.Email,
+                Password = entity.Password,
+                Name = entity.Name,
+                Surname = entity.Surname,
+                UserRole = entity.UserRole,
+                CreatedDate = entity.CreatedDate,
+                DeletedDate = entity.DeletedDate
+            };
+        }
     }
 }

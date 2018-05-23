@@ -19,10 +19,11 @@ namespace GeosEnterprise.ViewModels
             EditButtonCommand = new RelayCommand<object>(Edit);
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             InfoButtonCommand = new RelayCommand<object>(Info);
+            TakeButtonCommand = new RelayCommand<object>(Take);
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
-            _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+            _myDataSource = DataSourceHelper;
 
         }
 
@@ -30,6 +31,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand EditButtonCommand { get; private set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand InfoButtonCommand { get; set; }
+        public ICommand TakeButtonCommand { get; set; }
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
         public ICommand SearchButtonCommand { get; private set; }
@@ -37,6 +39,17 @@ namespace GeosEnterprise.ViewModels
         public ObservableCollection<RepairDTO> _myDataSource = new ObservableCollection<RepairDTO>();
 
         public object SelectedItem { get; set; }
+
+        private ObservableCollection<RepairDTO> DataSourceHelper
+        {
+            get
+            {
+                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
+                .GetAllCurrent()
+                .Where(p => p.Status == DBO.RepairStatus.Reported)
+                .Select(p => DTO.RepairDTO.ToDTO(p)));
+            }
+        }
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -91,8 +104,29 @@ namespace GeosEnterprise.ViewModels
             Window addNewRepairWindow = new ComputersAdd();
             if (addNewRepairWindow.ShowDialog() == true)
             {
-                _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+                _myDataSource = DataSourceHelper;
                 OnPropertyChanged("Items");
+            }
+        }
+
+        public void Take(object obj)
+        {
+            var repairDTO = SelectedItem as RepairDTO;
+
+            if (repairDTO != null)
+            {
+                // to trzeba będzie przenieść, żeby dopiero po wpisaniu w grafik się aktualizowało
+                repairDTO.Serviceman = EmployeeDTO.ToDTO(Authorization.AcctualEmployee);
+                repairDTO.ServicemanID = repairDTO.Serviceman.ID;
+                repairDTO.Status = DBO.RepairStatus.InProcess;
+
+                Repositories.RepairsRepository.Edit(repairDTO);
+                _myDataSource = DataSourceHelper;
+                OnPropertyChanged("Items");
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
             }
         }
 
@@ -105,7 +139,7 @@ namespace GeosEnterprise.ViewModels
                 Window editRepairWindow = new ComputersAdd(repairDTO.ID);
                 if (editRepairWindow.ShowDialog() == true)
                 {
-                    _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+                    _myDataSource = DataSourceHelper;
                     OnPropertyChanged("Items");
                 }
             }
@@ -124,7 +158,7 @@ namespace GeosEnterprise.ViewModels
                     "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.RepairsRepository.Delete(repairDTO.ID);
-                    _myDataSource = new ObservableCollection<RepairDTO>(Repositories.RepairsRepository.GetAllCurrent().Select(p => DTO.RepairDTO.ToDTO(p)));
+                    _myDataSource = DataSourceHelper;
                     OnPropertyChanged("Items");
                 }
             }

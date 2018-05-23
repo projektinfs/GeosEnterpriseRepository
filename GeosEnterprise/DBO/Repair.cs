@@ -16,6 +16,8 @@ namespace GeosEnterprise.DBO
         public int ClientID { get; set; }
         public virtual Client Client { get; set; }
         public virtual Computer Computer { get; set; }
+        public virtual Employee Serviceman { get; set; }
+        public int? ServicemanID { get; set; }
         public int ComputerID { get; set; }
         public string Description { get; set; }
         public DateTime? RealizationDate { get; set; }
@@ -42,6 +44,7 @@ namespace GeosEnterprise.DBO
                         SerialNumber = "123-000-F2X"
                     },
                     Description = "Opis",
+                    Status = RepairStatus.Reported,
                 },
                 new Repair
                 {
@@ -52,6 +55,7 @@ namespace GeosEnterprise.DBO
                         SerialNumber = "047-8P9-F2X"
                     },
                     Description = "Opis",
+                    Status = RepairStatus.Reported
                 },
                 new Repair
                 {
@@ -62,6 +66,7 @@ namespace GeosEnterprise.DBO
                         SerialNumber = "123-F2X-047"
                     },
                     Description = "Opis",
+                    Status = RepairStatus.Reported
                 },
             };
         }

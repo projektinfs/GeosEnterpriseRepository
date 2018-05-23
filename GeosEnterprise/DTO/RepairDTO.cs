@@ -17,6 +17,9 @@ namespace GeosEnterprise.DTO
         public ComputerDTO Computer { get; set; }
         public int ComputerID { get; set; }
 
+        public EmployeeDTO Serviceman { get; set; }
+        public int? ServicemanID { get; set; }
+
         [Description("Opis")]
         public string Description { get; set; }
 
@@ -43,10 +46,16 @@ namespace GeosEnterprise.DTO
         }
 
         [Description("Status naprawy")]
-        RepairStatus Status { get; set; }
+        public RepairStatus Status { get; set; }
 
         public static RepairDTO ToDTO(DBO.Repair entity)
         {
+            EmployeeDTO serviceman = null;
+            if (entity.Serviceman != null)
+            {
+                serviceman = DTO.EmployeeDTO.ToDTO(entity.Serviceman);
+            }
+
             return new RepairDTO
             {
                 Computer = DTO.ComputerDTO.ToDTO(entity.Computer),
@@ -57,7 +66,9 @@ namespace GeosEnterprise.DTO
                 Description = entity.Description,
                 ID = entity.ID,
                 RealizationDate = entity.RealizationDate,
-                Status = entity.Status
+                Status = entity.Status,
+                Serviceman = serviceman,
+                ServicemanID = entity.ServicemanID
             };
         }
 
@@ -73,7 +84,9 @@ namespace GeosEnterprise.DTO
                 ID = entity.ID,
                 CreatedDate = entity.CreatedDate,
                 RealizationDate = entity.RealizationDate,
-                Status = entity.Status
+                Status = entity.Status,
+                Serviceman = EmployeeDTO.FromDTO(entity.Serviceman),
+                ServicemanID = entity.ServicemanID
             };
         }
     }
