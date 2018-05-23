@@ -1,0 +1,15 @@
+﻿Ten dokument jest potwierdzeniem przyjęcia zlecenia naprawy usterki o numerze {{numer_zlecenia}}.
+
+Nazwa komputera: {{nazwa}}
+Numer seryjny komputera: {{nr_seryjny}}
+
+Zamówienie dla klienta: {{klient}}
+
+Wstępna wycena: {{koszt}} PLN
+
+Zlecenie przyjęte przez {{pracownik}} dnia {{data}}.
+
+
+
+Dziekujemy za zaufanie!
+-Geos Enterprise ©-

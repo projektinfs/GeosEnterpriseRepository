@@ -8,6 +8,9 @@ using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
 using System.Windows.Data;
 using System.Collections.ObjectModel;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 namespace GeosEnterprise.ViewModels
 {
@@ -20,6 +23,7 @@ namespace GeosEnterprise.ViewModels
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             InfoButtonCommand = new RelayCommand<object>(Info);
             TakeButtonCommand = new RelayCommand<object>(Take);
+            ReportButtonCommand = new RelayCommand<object>(GenerateReport);
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
@@ -32,6 +36,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand InfoButtonCommand { get; set; }
         public ICommand TakeButtonCommand { get; set; }
+        public ICommand ReportButtonCommand { get; set; }
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
         public ICommand SearchButtonCommand { get; private set; }
@@ -176,6 +181,31 @@ namespace GeosEnterprise.ViewModels
             {
                 Window infoRepairWindow = new ComputersInfo(repairDTO.ID);
                 infoRepairWindow.Show();
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
+        }
+
+        public void GenerateReport(object obj)
+        {
+            var repairDTO = SelectedItem as RepairDTO;
+            if (repairDTO != null)
+            {
+                string pdfPath = $"{repairDTO.OrderNumber.Replace("/", "-")}.pdf";
+
+                var text = Properties.Resources.OrderConfirmation
+                    .Replace("{{numer_zlecenia}}", repairDTO.OrderNumber)
+                    .Replace("{{nazwa}}", repairDTO.Computer.Name)
+                    .Replace("{{nr_seryjny}}", repairDTO.Computer.SerialNumber)
+                    .Replace("{{klient}}", $"\r\n{repairDTO.Client.FullName}")
+                    .Replace("{{koszt}}", "100") // przykładowo, bo nie mamy jeszcze pola
+                    .Replace("{{pracownik}}", "Anna Kowalska") // to samo co wyżej
+                    .Replace("{{data}}", repairDTO.CreatedDate.Value.Date.ToShortDateString());
+
+                Util.CreatePDF(text, pdfPath);
+                System.Diagnostics.Process.Start(pdfPath);
             }
             else
             {

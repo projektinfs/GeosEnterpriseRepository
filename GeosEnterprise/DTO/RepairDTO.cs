@@ -66,7 +66,7 @@ namespace GeosEnterprise.DTO
                 Description = entity.Description,
                 ID = entity.ID,
                 RealizationDate = entity.RealizationDate,
-                Status = entity.Status,
+                Status = entity.Status > 0 ? entity.Status : RepairStatus.Reported,
                 Serviceman = serviceman,
                 ServicemanID = entity.ServicemanID
             };
@@ -74,6 +74,12 @@ namespace GeosEnterprise.DTO
 
         public static Repair FromDTO(DTO.RepairDTO entity)
         {
+            Employee serviceman = null;
+            if (entity.Serviceman != null)
+            {
+                serviceman = DTO.EmployeeDTO.FromDTO(entity.Serviceman);
+            }
+
             return new Repair
             {
                 Client = ClientDTO.FromDTO(entity.Client),
@@ -84,8 +90,8 @@ namespace GeosEnterprise.DTO
                 ID = entity.ID,
                 CreatedDate = entity.CreatedDate,
                 RealizationDate = entity.RealizationDate,
-                Status = entity.Status,
-                Serviceman = EmployeeDTO.FromDTO(entity.Serviceman),
+                Status = entity.Status > 0 ? entity.Status : RepairStatus.Reported,
+                Serviceman = serviceman,
                 ServicemanID = entity.ServicemanID
             };
         }
