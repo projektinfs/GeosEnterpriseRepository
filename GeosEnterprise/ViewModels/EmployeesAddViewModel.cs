@@ -126,8 +126,8 @@ namespace GeosEnterprise.ViewModels
                             Adress = new Adress
                             {
                                 City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
-                                Voivodeship = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Voivodeship.ToLower()),
-                                District = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.District.ToLower()),
+                                Voivodeship = ConvertIfNotEmpty(BindingItem.Adress.Voivodeship),
+                                District = ConvertIfNotEmpty(BindingItem.Adress.District),
                                 PostCode = BindingItem.Adress.PostCode,
                                 Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
                                 BuildingNumber = BindingItem.Adress.BuildingNumber,
@@ -172,8 +172,8 @@ namespace GeosEnterprise.ViewModels
                         {
                             ID = (int)BindingItem.Adress.ID,
                             City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
-                            Voivodeship = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Voivodeship.ToLower()),
-                            District = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.District.ToLower()),
+                            Voivodeship = ConvertIfNotEmpty(BindingItem.Adress.Voivodeship),
+                            District = ConvertIfNotEmpty(BindingItem.Adress.District),
                             PostCode = BindingItem.Adress.PostCode,
                             Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
                             BuildingNumber = BindingItem.Adress.BuildingNumber,
@@ -299,6 +299,16 @@ namespace GeosEnterprise.ViewModels
             }
 
 
+        }
+
+        private String ConvertIfNotEmpty(String name)
+        {
+            if (string.IsNullOrEmpty(name)) return name;
+            else
+            {
+                return System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(name.ToLower());
+            }
+            
         }
 
         #region INotifyPropertyChanged Members
