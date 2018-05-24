@@ -32,13 +32,7 @@ namespace GeosEnterprise.DTO
             }
         }
 
-        public string Position
-        {
-            get
-            {
-                return Util.GetEnumDescription(UserRole);
-            }
-        }
+        public string Position { get; set; }
 
         public static EmployeeDTO ToDTO(DBO.Employee entity)
         {
@@ -72,7 +66,8 @@ namespace GeosEnterprise.DTO
                Surname = entity.Surname,
                UserRole = entity.UserRole,
                CreatedDate = entity.CreatedDate,
-               DeletedDate = entity.DeletedDate
+               DeletedDate = entity.DeletedDate,
+               Position = entity.Position
             };
         }
 
@@ -104,7 +99,8 @@ namespace GeosEnterprise.DTO
                 Surname = entity.Surname,
                 UserRole = entity.UserRole,
                 CreatedDate = entity.CreatedDate,
-                DeletedDate = entity.DeletedDate
+                DeletedDate = entity.DeletedDate,
+                Position = entity.Position
             };
         }
     }
