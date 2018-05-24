@@ -17,13 +17,7 @@ namespace GeosEnterprise.DBO
         public virtual EmployeeContact EmployeeContact { get; set; }
         public UserRole UserRole { get; set; }
 
-        public string Position
-        {
-            get
-            {
-                return Util.GetEnumDescription(UserRole);
-            }
-        }
+        public string Position { get; set; }
 
         public static IList<Employee> ForSeedToDatabase()
         {
@@ -48,7 +42,8 @@ namespace GeosEnterprise.DBO
                     {
                         Phone = "503948392",
                     },
-                    UserRole = UserRole.Dealer
+                    UserRole = UserRole.Dealer,
+                    Position = Util.GetEnumDescription(UserRole.Dealer)
                 },
                 new Employee
                 {
@@ -67,7 +62,8 @@ namespace GeosEnterprise.DBO
                     {
                         Phone = "586985458",
                     },
-                    UserRole = UserRole.Serviceman
+                    UserRole = UserRole.Serviceman,
+                    Position = Util.GetEnumDescription(UserRole.Serviceman)
                 }
             };
         }

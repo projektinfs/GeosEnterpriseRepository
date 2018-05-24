@@ -121,8 +121,8 @@ namespace GeosEnterprise.ViewModels
                             Password = HasedPassword,
                             Name = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Name.ToLower()),
                             Surname = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Surname.ToLower()),
-                            //Position = BindingItem.Position,
-                            UserRole = PositionToUserRole(BindingItem.Position.ToString()),
+                            Position = BindingItem.Position,
+                            UserRole = PositionToUserRole(BindingItem.Position),
                             Adress = new Adress
                             {
                                 City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
@@ -166,8 +166,8 @@ namespace GeosEnterprise.ViewModels
                         Password = HasedPassword,
                         Name = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Name.ToLower()),
                         Surname = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Surname.ToLower()),
-                        //Position = BindingItem.Position,
-                        UserRole = PositionToUserRole(BindingItem.Position.ToString()),
+                        Position = BindingItem.Position,
+                        UserRole = PositionToUserRole(BindingItem.Position),
                         Adress = new Adress
                         {
                             ID = (int)BindingItem.Adress.ID,

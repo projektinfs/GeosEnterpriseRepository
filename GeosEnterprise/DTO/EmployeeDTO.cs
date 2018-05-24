@@ -32,13 +32,7 @@ namespace GeosEnterprise.DTO
             }
         }
 
-        public string Position
-        {
-            get
-            {
-                return Util.GetEnumDescription(UserRole);
-            }
-        }
+        public string Position { get; set; }
 
         public static EmployeeDTO ToDTO(DBO.Employee entity)
         {
