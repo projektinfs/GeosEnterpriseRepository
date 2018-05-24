@@ -19,6 +19,8 @@ namespace GeosEnterprise.ViewModels
     {
 
         public ICommand SignInCommand { get; private set; }
+        public Employee currentEmployee { get; set; }
+
 
         private bool _IsAuthenticated;
         public bool IsAuthenticated
@@ -39,6 +41,17 @@ namespace GeosEnterprise.ViewModels
             {
                 _MessageForUser = value;
                 NotifyPropertyChanged("MessageForUser");
+            }
+        }
+
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                _Name = value;
+                NotifyPropertyChanged("Name");
             }
         }
 
@@ -86,6 +99,8 @@ namespace GeosEnterprise.ViewModels
             }
 
             IsVisible = "Visible";
+            Name = "";
+
             IsAuthenticated = false;
             SignInCommand = new SignInCommand(
                 SignIn,
@@ -105,6 +120,8 @@ namespace GeosEnterprise.ViewModels
                 Authorization.AcctualUser = "admin@admin.pl";
                 IsAuthenticated = true;
                 IsVisible = "Hidden";
+                passwordBox.Clear();
+                currentEmployee = Authorization.AcctualEmployee;
                 return;
             }
 
@@ -115,6 +132,10 @@ namespace GeosEnterprise.ViewModels
                 IsAuthenticated = true;
                 MessageForUser = "";
                 IsVisible = "Hidden";
+                Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+                passwordBox.Clear();
+                currentEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+
             }
             else
             {

@@ -65,6 +65,8 @@
                     <Button x:Name="ComputersListButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" Click="ComputersListButton_Click" FontWeight="Bold"/>
                     <Button x:Name="EmployeesListButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Pracownicy" FontSize="20" BorderThickness="3" Click="EmployeesListButton_Click" FontWeight="Bold"/>
                     <Button x:Name="ClientsListButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Klienci" FontSize="20" BorderThickness="3" Click="ClientsListButton_Click" FontWeight="Bold"/>
+                    <Label x:Name="UserName" Margin="0,0,0,3"  Content="{Binding Name}" FontSize="20" BorderThickness="3" FontWeight="Bold" />
+                    <Button x:Name="LogoutButton" Margin="0,0,0,3" Background="LightGray" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" Click="LogoutButton_Click" FontWeight="Bold"/>
 
                 </StackPanel>
             </Border>
