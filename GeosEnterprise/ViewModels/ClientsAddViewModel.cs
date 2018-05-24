@@ -23,9 +23,12 @@ namespace GeosEnterprise.ViewModels
         public ClientDTO BindingItem { get; set; }
         public bool IsAdminMode { get; set; }
         public int PositionIndex {get; set; }
+        public Employee currentEmployee { get; set; }
 
         public ClientsAddViewModel(int? clientID)
         {
+            currentEmployee = Authorization.AcctualEmployee;
+
             if (clientID != null)
             {
                 BindingItem = ClientDTO.ToDTO(Repositories.ClientRepository.GetById((int)clientID));

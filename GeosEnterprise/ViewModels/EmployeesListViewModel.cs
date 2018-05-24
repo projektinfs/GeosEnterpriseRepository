@@ -10,11 +10,17 @@ using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
+using GeosEnterprise.DBO;
 
 namespace GeosEnterprise.ViewModels
 {
     public class EmployeesListViewModel : INotifyPropertyChanged
     {
+
+        public String Name { get; set; }
+
+
+
         public EmployeesListViewModel()
         {
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
@@ -25,6 +31,8 @@ namespace GeosEnterprise.ViewModels
             InfoButtonCommand = new RelayCommand<object>(Info);
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
+            Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+
         }
 
         public ICommand DateTimeNowButtonCommand { get; set; }

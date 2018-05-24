@@ -23,6 +23,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand AddButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
+        public String Name { get; set; }
 
         public object SelectedItem { get; set; }
 
@@ -68,6 +69,8 @@ namespace GeosEnterprise.ViewModels
             AddButtonCommand = new RelayCommand<object>(Add);
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             EditButtonCommand = new RelayCommand<object>(Edit);
+            Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+
         }
 
         public ObservableCollection<ClientDTO> Items

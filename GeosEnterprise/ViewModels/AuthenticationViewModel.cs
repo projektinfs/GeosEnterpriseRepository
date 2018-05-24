@@ -20,6 +20,7 @@ namespace GeosEnterprise.ViewModels
 
         public ICommand SignInCommand { get; private set; }
         public Employee currentEmployee { get; set; }
+        public String currentName { get; set; }
 
 
         private bool _IsAuthenticated;
@@ -100,6 +101,7 @@ namespace GeosEnterprise.ViewModels
 
             IsVisible = "Visible";
             Name = "";
+           
 
             IsAuthenticated = false;
             SignInCommand = new SignInCommand(
@@ -123,6 +125,7 @@ namespace GeosEnterprise.ViewModels
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 passwordBox.Clear();
                 currentEmployee = Authorization.AcctualEmployee;
+                currentName = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 return;
             }
 

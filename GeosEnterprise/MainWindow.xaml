@@ -11,6 +11,8 @@
         Title="GeosEnterprise" Height="720" Width="1280">
     <Window.Resources>
         <viewmodels:AuthenticationViewModel x:Key="auth"/>
+        <viewmodels:MainWindowViewModel x:Key="main"/>
+
 
         <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodels:ComputersListViewModel}">
             <views:ComputersList DataContext="{Binding}"></views:ComputersList>

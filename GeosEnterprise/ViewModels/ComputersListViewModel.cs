@@ -11,11 +11,15 @@ using System.Collections.ObjectModel;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using GeosEnterprise.DBO;
 
 namespace GeosEnterprise.ViewModels
 {
     public class ComputersListViewModel : INotifyPropertyChanged
     {
+        public String Name { get; set; }
+
+
         public ComputersListViewModel()
         {
             AddButtonCommand = new RelayCommand<object>(Add);
@@ -28,6 +32,9 @@ namespace GeosEnterprise.ViewModels
             ResetButtonCommand = new RelayCommand<object>(Reset);
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = DataSourceHelper;
+            Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+
+
 
         }
 

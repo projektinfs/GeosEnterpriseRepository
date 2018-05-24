@@ -19,10 +19,14 @@ namespace GeosEnterprise.ViewModels
         public ICommand ChangePreferences { get; set; }
 
         public Employee currentEmployee { get; set; }
+        public String Name { get; set; }
+
+
 
         public StartPanelViewModel()
         {
             currentEmployee = Authorization.AcctualEmployee;
+            Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
             ChangePreferences = new RelayCommand<object>(Change);
         }
 

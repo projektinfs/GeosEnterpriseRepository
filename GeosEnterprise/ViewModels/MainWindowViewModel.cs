@@ -13,7 +13,6 @@ namespace GeosEnterprise.ViewModels
         public ICommand StartPanelCommand { get; private set; }
         public ICommand ComputerListCommand { get; private set; }
 
-
-
+     
     }
 }
