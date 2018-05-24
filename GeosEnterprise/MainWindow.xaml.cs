@@ -88,5 +88,9 @@ namespace GeosEnterprise
             DataContext = new ClientsListViewModel();
         }
 
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AuthenticationViewModel();
+        }
     }
 }

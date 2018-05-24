@@ -29,6 +29,8 @@ namespace GeosEnterprise.ViewModels
                 BindingItem = EmployeeDTO.ToDTO(Repositories.EmployeeRepository.GetById((int)employeeID));
                 Password = "";
                 PositionIndex = Position(BindingItem.Position);
+                PasswordMessage = "Visible";
+                PasswordLabel = "Hasło";
             }
             else
             {
@@ -37,6 +39,8 @@ namespace GeosEnterprise.ViewModels
                 BindingItem.Adress = new AdressDTO();
                 BindingItem.EmployeeContact = new EmployeeContactDTO();
                 PositionIndex = -1;
+                PasswordMessage = "Hidden";
+                PasswordLabel = "Hasło*";
             }
             OKButtonCommand = new RelayCommand<Window>(Save);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
@@ -59,6 +63,28 @@ namespace GeosEnterprise.ViewModels
             {
                 _EmailTaken = value;
                 NotifyPropertyChanged("EmailTaken");
+            }
+        }
+
+        private string _PasswordMessage;
+        public string PasswordMessage
+        {
+            get { return _PasswordMessage; }
+            set
+            {
+                _PasswordMessage = value;
+                NotifyPropertyChanged("PasswordMessage");
+            }
+        }
+
+        private string _PasswordLabel;
+        public string PasswordLabel
+        {
+            get { return _PasswordLabel; }
+            set
+            {
+                _PasswordLabel = value;
+                NotifyPropertyChanged("PasswordLabel");
             }
         }
 
@@ -91,19 +117,19 @@ namespace GeosEnterprise.ViewModels
 
                         Repositories.EmployeeRepository.Add(new Employee
                         {
-                            Email = BindingItem.Email,
+                            Email = BindingItem.Email.ToLower(),
                             Password = HasedPassword,
-                            Name = BindingItem.Name,
-                            Surname = BindingItem.Surname,
+                            Name = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Name.ToLower()),
+                            Surname = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Surname.ToLower()),
                             //Position = BindingItem.Position,
                             UserRole = PositionToUserRole(BindingItem.Position.ToString()),
                             Adress = new Adress
                             {
-                                City = BindingItem.Adress.City,
-                                Voivodeship = BindingItem.Adress.Voivodeship,
-                                District = BindingItem.Adress.District,
+                                City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
+                                Voivodeship = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Voivodeship.ToLower()),
+                                District = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.District.ToLower()),
                                 PostCode = BindingItem.Adress.PostCode,
-                                Street = BindingItem.Adress.Street,
+                                Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
                                 BuildingNumber = BindingItem.Adress.BuildingNumber,
                                 AppartamentNumber = BindingItem.Adress.AppartamentNumber
                             },
@@ -136,20 +162,20 @@ namespace GeosEnterprise.ViewModels
                     Employee updatedEmployee = new Employee
                     {
                         ID = (int)BindingItem.ID,
-                        Email = BindingItem.Email,
+                        Email = BindingItem.Email.ToLower(),
                         Password = HasedPassword,
-                        Name = BindingItem.Name,
-                        Surname = BindingItem.Surname,
+                        Name = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Name.ToLower()),
+                        Surname = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Surname.ToLower()),
                         //Position = BindingItem.Position,
                         UserRole = PositionToUserRole(BindingItem.Position.ToString()),
                         Adress = new Adress
                         {
                             ID = (int)BindingItem.Adress.ID,
-                            City = BindingItem.Adress.City,
-                            Voivodeship = BindingItem.Adress.Voivodeship,
-                            District = BindingItem.Adress.District,
+                            City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
+                            Voivodeship = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Voivodeship.ToLower()),
+                            District = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.District.ToLower()),
                             PostCode = BindingItem.Adress.PostCode,
-                            Street = BindingItem.Adress.Street,
+                            Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
                             BuildingNumber = BindingItem.Adress.BuildingNumber,
                             AppartamentNumber = BindingItem.Adress.AppartamentNumber
                         },
