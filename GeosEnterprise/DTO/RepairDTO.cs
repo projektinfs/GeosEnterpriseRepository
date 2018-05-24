@@ -43,7 +43,9 @@ namespace GeosEnterprise.DTO
         {
             get
             {
-                return RepairCosts + ReplacementsCosts ?? 0;
+                var returnVal = RepairCosts;
+                returnVal += ReplacementsCosts ?? 0;
+                return returnVal;
             }
         }
 
