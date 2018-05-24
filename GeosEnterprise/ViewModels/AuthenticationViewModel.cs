@@ -120,6 +120,7 @@ namespace GeosEnterprise.ViewModels
                 Authorization.AcctualUser = "admin@admin.pl";
                 IsAuthenticated = true;
                 IsVisible = "Hidden";
+                Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 passwordBox.Clear();
                 currentEmployee = Authorization.AcctualEmployee;
                 return;
@@ -132,9 +133,10 @@ namespace GeosEnterprise.ViewModels
                 IsAuthenticated = true;
                 MessageForUser = "";
                 IsVisible = "Hidden";
-                Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 passwordBox.Clear();
                 currentEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+                Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+
 
             }
             else
