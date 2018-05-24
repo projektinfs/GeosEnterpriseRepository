@@ -25,9 +25,9 @@
                 <Button x:Name="AddButton" Content="Dodaj" Margin="0,0,0,0.6" Command="{Binding AddButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="DeleteButton" Content="Usuń" Margin="154,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="EditButton" Content="Edytuj" Margin="308,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="InfoButton" Content="Info" Margin="463,-45,0,-0.4" HorizontalAlignment="Left" Command="{Binding InfoButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="TakeButton" Content="Podejmij" Margin="618,-45,0,-0.4" HorizontalAlignment="Left" Command="{Binding TakeButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="ReportButton" Content="Generuj raport" Margin="773,-45,0,-0.4" HorizontalAlignment="Left" Command="{Binding ReportButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="InfoButton" Content="Info" Margin="155,-45,0,-0.4" HorizontalAlignment="Stretch" Command="{Binding InfoButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="TakeButton" Content="Podejmij" Margin="465,-45,0,-0.4" HorizontalAlignment="Stretch" Command="{Binding TakeButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="ReportButton" Content="Generuj raport" Margin="773,-45,0,-0.4" HorizontalAlignment="Stretch" Command="{Binding ReportButtonCommand}" Height="43"   Width="150" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
 

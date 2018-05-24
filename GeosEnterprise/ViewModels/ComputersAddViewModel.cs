@@ -21,6 +21,7 @@ namespace GeosEnterprise.ViewModels
         public ICommand NewClientButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
         public int SelectedClientIndex { get; set; }
+        public string RepairCosts { get; set; }
 
         public IList<ClientDTO> Clients
         {
@@ -36,6 +37,7 @@ namespace GeosEnterprise.ViewModels
             {
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
                 SelectedClientIndex = Clients.ToList().FindIndex(p => p.ID == BindingItem.Client.ID);
+                RepairCosts = BindingItem.RepairCosts.ToString();
             }
             else
             {
@@ -53,6 +55,12 @@ namespace GeosEnterprise.ViewModels
             string errors = DoValidation();
             if (string.IsNullOrEmpty(errors))
             {
+                BindingItem.Description = BindingItem.Description?.Trim();
+                BindingItem.Computer.SerialNumber = BindingItem.Computer.SerialNumber.ToUpper();
+                BindingItem.RepairCosts = decimal.Parse(RepairCosts?.Replace(".", ","));
+                BindingItem.Dealer = EmployeeDTO.ToDTO(Authorization.AcctualEmployee);
+                BindingItem.DealerID = Authorization.AcctualEmployee.ID;
+
                 if (BindingItem.ID > 0)
                 {
                     Repositories.RepairsRepository.Edit(BindingItem);
@@ -91,6 +99,13 @@ namespace GeosEnterprise.ViewModels
 
         private string DoValidation()
         {
+            decimal repairCosts = 0;
+            string validationErrors3 = String.Empty;
+            if (!decimal.TryParse(RepairCosts?.Replace(".", ","), out repairCosts))
+            {
+                validationErrors3 = "Niepoprawny format kosztu naprawy.";
+            }
+
             var validationErrors1 = ValidatorTools.DoValidation(BindingItem.Computer, new ComputerValidator());
             string validationErrors2 = String.Empty;
 
@@ -99,15 +114,16 @@ namespace GeosEnterprise.ViewModels
                 validationErrors2 = "Nie wybrano klienta.";
             }
 
-            if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(validationErrors2))
+            if (string.IsNullOrEmpty(validationErrors1) && string.IsNullOrEmpty(validationErrors2) && string.IsNullOrEmpty(validationErrors3))
             {
                 return String.Empty;
             }
             else
             {
-                string returnString = $"{validationErrors1}\r\n{validationErrors2}".Trim();
+                string returnString = $"{validationErrors1}\r\n{validationErrors2}\r\n{validationErrors3}".Trim();
                 return returnString;
             }
         }
+
     }
 }

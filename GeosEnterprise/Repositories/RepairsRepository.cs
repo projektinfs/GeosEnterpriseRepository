@@ -15,8 +15,7 @@ namespace GeosEnterprise.Repositories
         {
             repair.ClientID = repair.Client.ID;
             repair.ComputerID = repair.Computer.ID;
-            repair.ServicemanID = repair.Serviceman.ID;
-            BaseRepository<Client, ClientDTO>.Update(repair.Client);
+            repair.DealerID = repair.Dealer.ID;
             BaseRepository<Computer, ComputerDTO>.Update(repair.Computer);
             BaseRepository<Repair, RepairDTO>.Update(repair);
         }
@@ -31,6 +30,7 @@ namespace GeosEnterprise.Repositories
             return ExecuteQuery(() =>
             {
                 repair.Client = null;
+                repair.Dealer = null;
                 return Insert(repair);
             });
         }

@@ -200,9 +200,10 @@ namespace GeosEnterprise.ViewModels
                     .Replace("{{nazwa}}", repairDTO.Computer.Name)
                     .Replace("{{nr_seryjny}}", repairDTO.Computer.SerialNumber)
                     .Replace("{{klient}}", $"\r\n{repairDTO.Client.FullName}")
-                    .Replace("{{koszt}}", "100") // przykładowo, bo nie mamy jeszcze pola
-                    .Replace("{{pracownik}}", "Anna Kowalska") // to samo co wyżej
-                    .Replace("{{data}}", repairDTO.CreatedDate.Value.Date.ToShortDateString());
+                    .Replace("{{koszt}}", repairDTO.FinalCosts.ToString())
+                    .Replace("{{pracownik}}", repairDTO.Dealer.FullName)
+                    .Replace("{{data}}", repairDTO.CreatedDate.Value.Date.ToShortDateString())
+                    .Replace("{{opis}}", repairDTO.Description);
 
                 Util.CreatePDF(text, pdfPath);
                 System.Diagnostics.Process.Start(pdfPath);

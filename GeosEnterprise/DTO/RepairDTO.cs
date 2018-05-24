@@ -17,6 +17,7 @@ namespace GeosEnterprise.DTO
         public ComputerDTO Computer { get; set; }
         public int ComputerID { get; set; }
 
+        [Description("Serwisant")]
         public EmployeeDTO Serviceman { get; set; }
         public int? ServicemanID { get; set; }
 
@@ -26,8 +27,25 @@ namespace GeosEnterprise.DTO
         [Description("Data utworzenia zlecenia")]
         public DateTime? CreatedDate { get; set; }
 
+        [Description("Osoba przyjmująca")]
+        public EmployeeDTO Dealer { get; set; }
+
+        public int DealerID { get; set; }
+
         [Description("Data zamknięcia zlecenia")]
         public DateTime? RealizationDate { get; set; }
+
+        public decimal? ReplacementsCosts { get; set; }
+
+        public decimal RepairCosts { get; set; }
+
+        public decimal FinalCosts
+        {
+            get
+            {
+                return RepairCosts + ReplacementsCosts ?? 0;
+            }
+        }
 
         [Description("Numer zamówienia")]
         public string OrderNumber
@@ -68,7 +86,11 @@ namespace GeosEnterprise.DTO
                 RealizationDate = entity.RealizationDate,
                 Status = entity.Status > 0 ? entity.Status : RepairStatus.Reported,
                 Serviceman = serviceman,
-                ServicemanID = entity.ServicemanID
+                ServicemanID = entity.ServicemanID,
+                Dealer = DTO.EmployeeDTO.ToDTO(entity.Dealer),
+                DealerID = entity.DealerID,
+                RepairCosts = entity.RepairCosts,
+                ReplacementsCosts = entity.ReplacementsCosts
             };
         }
 
@@ -92,7 +114,11 @@ namespace GeosEnterprise.DTO
                 RealizationDate = entity.RealizationDate,
                 Status = entity.Status > 0 ? entity.Status : RepairStatus.Reported,
                 Serviceman = serviceman,
-                ServicemanID = entity.ServicemanID
+                ServicemanID = entity.ServicemanID,
+                Dealer = DTO.EmployeeDTO.FromDTO(entity.Dealer),
+                DealerID = entity.DealerID,
+                RepairCosts = entity.RepairCosts,
+                ReplacementsCosts = entity.ReplacementsCosts
             };
         }
     }

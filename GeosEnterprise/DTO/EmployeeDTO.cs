@@ -24,6 +24,14 @@ namespace GeosEnterprise.DTO
         [Description("Data skasowania")]
         public DateTime? DeletedDate { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return $"{Name} {Surname}";
+            }
+        }
+
         public string Position
         {
             get

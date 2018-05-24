@@ -7,8 +7,10 @@ Zamówienie dla klienta: {{klient}}
 
 Wstępna wycena: {{koszt}} PLN
 
-Zlecenie przyjęte przez {{pracownik}} dnia {{data}}.
+Opis:
+{{opis}}
 
+Zlecenie przyjęte przez {{pracownik}} dnia {{data}}.
 
 
 Dziekujemy za zaufanie!
