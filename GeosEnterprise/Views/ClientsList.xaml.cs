@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeosEnterprise.DBO;
 using GeosEnterprise.DTO;
-using GeosEnterprise.ViewModels;
+using GeosEnterprise.ViewModel;
 using GeosEnterprise.Repositories;
 
 namespace GeosEnterprise.Views
