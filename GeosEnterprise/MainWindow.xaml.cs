@@ -92,5 +92,10 @@ namespace GeosEnterprise
         {
             DataContext = new AuthenticationViewModel();
         }
+
+        private void AccountantPanelButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AccountantPanelViewModel();
+        }
     }
 }

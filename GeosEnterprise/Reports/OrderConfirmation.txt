@@ -13,5 +13,5 @@ Opis:
 Zlecenie przyjęte przez {{pracownik}} dnia {{data}}.
 
 
-Dziekujemy za zaufanie!
+Dziękujemy za zaufanie!
 -Geos Enterprise ©-

@@ -9,21 +9,28 @@
         Title="Zlecenie naprawy" Height="500" Width="680">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF0D5074" Offset="0.861"/>
-                <GradientStop Color="#FF0C3659" Offset="0.491"/>
-                <GradientStop Color="#FD081826" Offset="0.136"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
+        
         <TextBlock Margin="155,20,135.6,382.4" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="383"><Run Text="Zlecenie naprawy"/><LineBreak/><Run/></TextBlock>
 
-        <Border Margin="43,107,49,208" Padding="3" Background="LightGray" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+        <Border Margin="44,93,49.6,223.4" Padding="3" 
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12"
           VerticalAlignment="Center" HorizontalAlignment="Center" Height="154" Width="580">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+            </Border.Background>
             <StackPanel >
-                <Label Content="Klient*" Margin="0,-4,420.2,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black" Height="32"/>
-                <Button x:Name="NewClientButton"  Command="{Binding NewClientButtonCommand}" Content="Nowy klient" Margin="0,-28,1.2,0" VerticalAlignment="Top" MinWidth="150" MinHeight="20" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White" Height="30"/>
-                <ComboBox Margin="86,-27,160.77,0" ItemsSource="{Binding Clients}" DisplayMemberPath="FullName" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" SelectedIndex="{Binding SelectedClientIndex}" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="23" BorderBrush="White">
+                <Label Content="Klient*" Margin="0,-4,420.2,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="32"/>
+                <Button x:Name="NewClientButton"  Command="{Binding NewClientButtonCommand}" Content="Nowy klient" Margin="0,-28,1.2,0" VerticalAlignment="Top" MinWidth="150" MinHeight="18" HorizontalAlignment="Right" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Foreground="White" Height="28">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF4E5B94"/>
+                            <GradientStop Color="#FF2F3682" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <ComboBox Margin="86,-27,160.77,0" ItemsSource="{Binding Clients}" DisplayMemberPath="FullName" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" SelectedIndex="{Binding SelectedClientIndex}" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="27" BorderBrush="White" FontSize="13">
                     <ComboBox.Background>
                         <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                             <GradientStop Color="#FFF0F0F0" Offset="0"/>
@@ -31,33 +38,34 @@
                         </LinearGradientBrush>
                     </ComboBox.Background>
                 </ComboBox>
-                <Label Content="Nazwa*" Margin="0,-5,413.2,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black" Height="29"/>
+                <Label Content="Nazwa*" Margin="0,-5,413,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="31"/>
                 <TextBox Text="{Binding BindingItem.Computer.Name}" Margin="86,-20,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23" Height="25"/>
-                <Label Content="Numer seryjny*" Margin="-1,0,350.2,0" VerticalAlignment="Top" MinHeight="23" FontWeight="Bold" FontSize="18" Foreground="Black" Height="40"/>
-                <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="142,-35,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
-                <Label Content="Szacowany koszt*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontWeight="Bold" FontSize="18" Foreground="Black" Height="38" HorizontalAlignment="Left" Width="265"/>
+                <Label Content="Numer seryjny*" Margin="-1,0,350.2,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="40"/>
+                <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="160,-33,1,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
+                <Label Content="Szacowany koszt*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
                 <TextBox x:Name="CostTextBox" Text="{Binding RepairCosts}" Margin="160,-35,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="43,266,49,72" Padding="3" Background="LightGray" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+        <Border Margin="44,267,49.6,72.4" Padding="3"
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12"
           VerticalAlignment="Center" HorizontalAlignment="Center" Height="131" Width="580">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+            </Border.Background>
             <StackPanel >
-                <Label Content="Opis usterki :" Margin="170,-10,142.2,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="Black" Height="39" Width="171"/>
-                <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}" Margin="0,-10,1,-34" TextWrapping="Wrap" MinWidth="295" MinHeight="85" VerticalAlignment="Top" Height="95"/>
+                <Label Content="Opis usterki" Margin="210,-10,250,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="39" Width="104"/>
+                <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}" Margin="10,-5,10,-34" TextWrapping="Wrap" MinWidth="295" MinHeight="85" VerticalAlignment="Top" Height="79" FontWeight="Bold"/>
             </StackPanel>
         </Border>
 
         <Border Margin="169,402,187,7" Padding="3" Background="#FF002D51" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center">
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel >
-                <Button x:Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0,0,0,0.151" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}"  Margin="150,-43,0,0.151" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0,2,0,0" HorizontalAlignment="Left" Width="140" Height="40"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="CancelButton" Content="Powrót" Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}"  Margin="140,-40,0,0.151" HorizontalAlignment="Left" Width="140" Height="40"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
-
-
 
     </Grid>
 </Window>

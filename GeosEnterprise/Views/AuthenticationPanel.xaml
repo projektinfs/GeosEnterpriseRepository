@@ -8,30 +8,32 @@
              d:DesignHeight="450" d:DesignWidth="960">
 
     <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF002D45" Offset="0.854"/>
-                <GradientStop Color="#FF1060A3" Offset="0.491"/>
-                <GradientStop Color="#FF002545" Offset="0.136"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        <Grid Visibility="{Binding IsVisible}" Margin="0,0,0,-0.4">
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+            </Grid.Background>
 
-        <Grid Visibility="{Binding IsVisible}">
-
-
-            <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="402,166,393,258.6" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <PasswordBox x:Name="txtPassword"  Margin="402,217,393,207.6" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            <Label Content="Adres email" Margin="444,140,442,283.6" Foreground="#FFFFFBFB"  Width="74" Height="26" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Label Content="Hasło" Margin="463,191,457,232.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
-
-            <Border Margin="402,265,393,145.6" Padding="2" Background="LightGray" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="39" Width="165" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="374" Margin="112,32,140,44" Width="708">
                 <StackPanel>
-                    <Button x:Name="pbSingIn" Content="Zaloguj" Margin="0,0,0.4,5" Command="{Binding SignInCommand}" BorderBrush="White" CommandParameter="{Binding ElementName=txtPassword}" Height="27"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Background="White"/>
+                    <TextBlock Margin="-400,30,0,0" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"><Run Text="Zaloguj się..."/><LineBreak/><Run/></TextBlock>
+                    <Label Content="Adres email" Margin="108,0,496,0" Foreground="#FFFFFBFB"  Width="104" Height="33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
+                    <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="-400,0,0,242" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <Label Content="Hasło" Margin="130,-450,530,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="34" FontSize="15"/>
+                    <PasswordBox x:Name="txtPassword"  Margin="-400,-400,0,0" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding MessageForUser}" Margin="-400,-200,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                    <Border Margin="-400,-300,0,0" Padding="2"
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel>
+                            <Button x:Name="pbSingIn" Content="Login" Margin="0,0,0,3" Command="{Binding SignInCommand}" BorderBrush="White" CommandParameter="{Binding ElementName=txtPassword}" Height="31"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="..\Icons\text-background.png"/>
+                                </Button.Background>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Image Margin="0,-1000,29.6,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
                 </StackPanel>
             </Border>
-            <TextBlock Text="{Binding MessageForUser}" Margin="10,240,10,9.6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
-            <TextBlock Margin="352,72,346,309.6" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"><Run Text="Zaloguj się..."/><LineBreak/><Run/></TextBlock>
         </Grid>
     </Grid>
 </UserControl>

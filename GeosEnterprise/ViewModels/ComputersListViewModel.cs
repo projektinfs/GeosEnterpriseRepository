@@ -8,17 +8,12 @@ using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
 using System.Windows.Data;
 using System.Collections.ObjectModel;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.IO;
-using GeosEnterprise.DBO;
 
 namespace GeosEnterprise.ViewModels
 {
     public class ComputersListViewModel : INotifyPropertyChanged
     {
         public String Name { get; set; }
-
 
         public ComputersListViewModel()
         {
@@ -33,8 +28,6 @@ namespace GeosEnterprise.ViewModels
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = DataSourceHelper;
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
-
-
 
         }
 
@@ -241,7 +234,10 @@ namespace GeosEnterprise.ViewModels
                     Items.Filter = (item) => {
                         return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
+                            || (item as RepairDTO).Computer.Name.Contains(SearchString)
                             || (item as RepairDTO).Client.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Surname.Contains(SearchString)
+                            || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
                             || (item as RepairDTO).OrderNumber.Contains(SearchString));
                     };
                 }
@@ -252,6 +248,8 @@ namespace GeosEnterprise.ViewModels
                         return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
                             || (item as RepairDTO).Client.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Surname.Contains(SearchString)
+                            || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
                             || (item as RepairDTO).OrderNumber.Contains(SearchString)) 
                             && ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
                             && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value); 

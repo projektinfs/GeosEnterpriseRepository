@@ -16,12 +16,9 @@
             <ColumnDefinition Width="694*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF0D5074" Offset="0.861"/>
-                <GradientStop Color="#FF0C3659" Offset="0.491"/>
-                <GradientStop Color="#FD081826" Offset="0.136"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
+
         <TextBlock TextWrapping="Wrap" FontSize="40" Foreground="White" HorizontalAlignment="Center" Width="340" Margin="161,5,192.6,-5" Grid.Column="2"><Run Text="Dane pracownika"/><LineBreak/><Run/></TextBlock>
         <TextBox Name="NameTextBox" Text="{Binding BindingItem.Name}" HorizontalAlignment="Left" Height="23" Margin="85,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
         <Label Content="Imię*" HorizontalAlignment="Left" Margin="65,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.ColumnSpan="3"/>
