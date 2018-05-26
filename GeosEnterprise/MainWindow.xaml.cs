@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GeosEnterprise.ViewModels;
+using GeosEnterprise.ViewModel;
 using GeosEnterprise.DBO;
 using System.Security.Principal;
 using System.Threading;
@@ -45,8 +45,6 @@ namespace GeosEnterprise
                 SeedDatabase();
             }
             App.DB.Computers.Any();
-
-            DataContext = new AuthenticationViewModel();
         }
 
         private void SeedDatabase()
@@ -65,32 +63,6 @@ namespace GeosEnterprise
             {
                 Repositories.RepairsRepository.Add(repair);
             }
-        }
-
-
-        private void StartPanelButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new StartPanelViewModel();
-        }
-
-        private void ComputersListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ComputersListViewModel();
-        }
-
-        private void EmployeesListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new EmployeesListViewModel();
-        }
-
-        private void ClientsListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ClientsListViewModel();
-        }
-
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AuthenticationViewModel();
         }
     }
 }
