@@ -32,7 +32,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _MessageForUser = value;
-                NotifyPropertyChanged("MessageForUser");
+                RaisePropertyChanged("MessageForUser");
             }
         }
 
@@ -43,7 +43,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _Name = value;
-                NotifyPropertyChanged("Name");
+                RaisePropertyChanged("Name");
             }
         }
 
@@ -54,7 +54,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _IsVisible = value;
-                NotifyPropertyChanged("IsVisible");
+                RaisePropertyChanged("IsVisible");
             }
         }
 
@@ -136,16 +136,5 @@ namespace GeosEnterprise.ViewModel
                 MessageForUser = "Błędny login lub hasło !";
             }
         }
-
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

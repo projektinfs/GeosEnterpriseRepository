@@ -61,6 +61,41 @@ namespace GeosEnterprise.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Faktura VAT
+        ///Oryginał
+        ///
+        ///Data wystawienia: {{data}}
+        ///Termin płatności: {{termin}}
+        ///
+        ///Sprzedawca:
+        ///Geos Enterprise
+        ///ul. Adama Mickiewicza 30
+        ///30-059 Kraków
+        ///NIP: 796-18-10-732
+        ///Bank: AMBER GOLD S.A Centrum Rozliczeniowe nr 3
+        ///Numer: 0000322228
+        ///
+        ///Nabywca:
+        ///{{klient}}
+        ///
+        ///Nazwa towaru/usługi:
+        ///Naprawa urządzenia elektronicznego
+        ///Kwota netto:
+        ///{{netto}} zł
+        ///Podatek VAT 23%:
+        ///{{vat}} zł
+        ///Kwota brutto:
+        ///{{brutto}} zł
+        ///
+        ///Fakturę wystawił {{pracownik}} dyrektor Działu Księgowości Geos Enterprise..
+        /// </summary>
+        internal static string AccountantReport {
+            get {
+                return ResourceManager.GetString("AccountantReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ten dokument jest potwierdzeniem przyjęcia zlecenia naprawy usterki o numerze {{numer_zlecenia}}.
         ///
         ///Nazwa komputera: {{nazwa}}
@@ -68,12 +103,16 @@ namespace GeosEnterprise.Properties {
         ///
         ///Zamówienie dla klienta: {{klient}}
         ///
-        ///Wstępna wycena: {{koszt}} zł
+        ///Wstępna wycena: {{koszt}} PLN
         ///
-        ///Zlecenie przyjęte przez: {{pracownik}}
+        ///Opis:
+        ///{{opis}}
+        ///
+        ///Zlecenie przyjęte przez {{pracownik}} dnia {{data}}.
+        ///
         ///
         ///Dziękujemy za zaufanie!
-        ///-Geos Enterprise-.
+        ///-Geos Enterprise ©-.
         /// </summary>
         internal static string OrderConfirmation {
             get {

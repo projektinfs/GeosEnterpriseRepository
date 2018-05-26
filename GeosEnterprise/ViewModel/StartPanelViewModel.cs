@@ -42,17 +42,7 @@ namespace GeosEnterprise.ViewModel
         private void AddNewEmployeeWindowClosed(object sender, EventArgs e)
         {
             currentEmployee = Authorization.AcctualEmployee;
-            NotifyPropertyChanged("currentEmployee");
+            RaisePropertyChanged("currentEmployee");
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

@@ -16,7 +16,7 @@ using System.ComponentModel;
 
 namespace GeosEnterprise.ViewModel
 {
-    public class ComputersAddViewModel : ViewModelBase, INotifyPropertyChanged
+    public class ComputersAddViewModel : ViewModelBase
     {
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
@@ -93,7 +93,7 @@ namespace GeosEnterprise.ViewModel
             var newClientAdd = new Views.ClientsAdd();
             if (newClientAdd.ShowDialog() == true)
             {
-                NotifyPropertyChanged("Clients");
+                RaisePropertyChanged("Clients");
                 var clientsID = Clients.Last()?.ID;
                 SelectedClientIndex = Clients.ToList().FindIndex(p => p.ID == clientsID);
             }
@@ -126,16 +126,5 @@ namespace GeosEnterprise.ViewModel
                 return returnString;
             }
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-
     }
 }

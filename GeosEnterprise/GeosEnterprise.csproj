@@ -165,9 +165,12 @@
     <Compile Include="ViewModel\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModel\EmployeesListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\PropertyChangedBase.cs" />
     <Compile Include="ViewModel\StartPanelViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\AccountantPanelViewModel.cs" />
+    <Compile Include="Views\AccountantPanel.xaml.cs">
+      <DependentUpon>AccountantPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AuthenticationPanel.xaml.cs">
       <DependentUpon>AuthenticationPanel.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AccountantPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AuthenticationPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -285,6 +292,18 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Reports\AccountantReport.txt" />
+    <Resource Include="Icons\big-background.jpg" />
+    <Resource Include="Icons\blue-gradient.png" />
+    <Resource Include="Icons\Computers.png" />
+    <Resource Include="Icons\lajtgrejłolpejper.jpg" />
+    <Resource Include="Icons\Logo.png" />
+    <Resource Include="Icons\menu-background.jpg" />
+    <Resource Include="Icons\newwallpaper.jpg" />
+    <Resource Include="Icons\pandoktur.png" />
+    <Resource Include="Icons\pikselart.jpg" />
+    <Resource Include="Icons\small-background.jpg" />
+    <Resource Include="Icons\text-background.png" />
     <Content Include="Reports\OrderConfirmation.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

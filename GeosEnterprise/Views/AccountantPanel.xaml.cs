@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeosEnterprise.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,22 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GeosEnterprise.ViewModel;
-using GeosEnterprise.DBO;
-using System.Security.Principal;
-using System.Threading;
-using System.Security;
 
-namespace GeosEnterprise
+namespace GeosEnterprise.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AccountantPanel.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AccountantPanel : UserControl
     {
-        public MainWindow()
+        public AccountantPanel()
         {
             InitializeComponent();
+            DataContext = new AccountantPanelViewModel();
         }
     }
 }

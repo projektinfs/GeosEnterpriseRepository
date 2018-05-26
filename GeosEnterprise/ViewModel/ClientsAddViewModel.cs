@@ -16,7 +16,7 @@ using GalaSoft.MvvmLight;
 
 namespace GeosEnterprise.ViewModel
 {
-    public class ClientsAddViewModel :  ViewModelBase, INotifyPropertyChanged
+    public class ClientsAddViewModel :  ViewModelBase
     {
 
         public ICommand OKButtonCommand { get; set; }
@@ -60,7 +60,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _EmailTaken = value;
-                NotifyPropertyChanged("EmailTaken");
+                RaisePropertyChanged("EmailTaken");
             }
         }
 
@@ -161,14 +161,5 @@ namespace GeosEnterprise.ViewModel
                 return returnString;
             }
         }
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

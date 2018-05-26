@@ -13,7 +13,7 @@ using GalaSoft.MvvmLight;
 
 namespace GeosEnterprise.ViewModel
 {
-    public class EmployeesAddViewModel :  ViewModelBase, INotifyPropertyChanged
+    public class EmployeesAddViewModel :  ViewModelBase
     {
 
         public ICommand OKButtonCommand { get; set; }
@@ -63,7 +63,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _EmailTaken = value;
-                NotifyPropertyChanged("EmailTaken");
+                RaisePropertyChanged("EmailTaken");
             }
         }
 
@@ -74,7 +74,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _PasswordMessage = value;
-                NotifyPropertyChanged("PasswordMessage");
+                RaisePropertyChanged("PasswordMessage");
             }
         }
 
@@ -85,7 +85,7 @@ namespace GeosEnterprise.ViewModel
             set
             {
                 _PasswordLabel = value;
-                NotifyPropertyChanged("PasswordLabel");
+                RaisePropertyChanged("PasswordLabel");
             }
         }
 
@@ -310,15 +310,5 @@ namespace GeosEnterprise.ViewModel
             }
             
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

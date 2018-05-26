@@ -21,6 +21,9 @@
                 <DataTemplate x:Name="clientsListTemplate" DataType="{x:Type viewmodel:ClientsListViewModel}">
                     <views:ClientsList />
                 </DataTemplate>
+                <DataTemplate x:Name="accountantPanelTemplate" DataType="{x:Type viewmodel:AccountantPanelViewModel}">
+                    <views:AccountantPanel />
+                </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

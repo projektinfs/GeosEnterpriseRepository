@@ -10,12 +10,9 @@
 
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF002D45" Offset="0.854"/>
-                <GradientStop Color="#FF1060A3" Offset="0.491"/>
-                <GradientStop Color="#FF002545" Offset="0.136"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
+
 
         <Label Content="Klienci" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
 
@@ -118,8 +115,11 @@
             </StackPanel>
         </Border>-->
 
-        <Border Margin="10,0,10,6.6" Padding="3" Background="#FF002D51" 
+        <Border Margin="10,0,10,6.6" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\small-background.jpg"/>
+            </Border.Background>
             <StackPanel >
                 <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  Command="{Binding AddButtonCommand}"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White" />
                 <Button Name="DeleteButton" Content="Usuń" Margin="153,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White"/>
@@ -127,35 +127,47 @@
             </StackPanel>
         </Border>
 
-        <Border Margin="10,70,0,0" Padding="3" Background="LightGray" 
+        <Border Margin="10,70,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="267">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+            </Border.Background>
             <StackPanel >
-                <Label Content="Od:" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" FontWeight="Bold" Margin="0,0,211.4,0"/>
+                <Label Content="Od" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" FontWeight="Bold" Margin="0,0,211.4,0" Foreground="White"/>
                 <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" Margin="30,-25,0,0"  Height="22" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="282,70,0,0" Padding="3" Background="LightGray" 
+        <Border Margin="282,70,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="333">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+            </Border.Background>
             <StackPanel >
-                <Label Content="Do:" FontFamily="Microsoft Sans Serif" Margin="-65,0,219.4,0" Width="32" RenderTransformOrigin="2.036,0.523" Height="23" FontSize="14" FontWeight="Bold"/>
+                <Label Content="Do" FontFamily="Microsoft Sans Serif" Margin="-65,0,219.4,0" Width="32" RenderTransformOrigin="2.036,0.523" Height="23" FontSize="14" FontWeight="Bold" Foreground="White"/>
                 <xctk:DateTimePicker x:Name="TimeTo" Value="{Binding TimeToBindingItem, Mode=TwoWay}" Margin="30,-22,67.6,0" Height="22" FontFamily="DejaVu Sans Condensed" FontSize="10" RenderTransformOrigin="-0.596,-0.175"/>
                 <Button x:Name="DateTimeNowButton" Content="Akt. czas" Command="{Binding DateTimeNowButtonCommand}" Margin="250,-22,0,0"  Width="56" Height="22" RenderTransformOrigin="8.891,-2.3" Background="White" FontWeight="Bold"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="620,70,0,0" Padding="3" Background="LightGray" 
+        <Border Margin="620,70,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="75">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+            </Border.Background>
             <StackPanel >
                 <Button Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}"  Margin="0,0,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24" Background="White" FontWeight="Bold" FontSize="11"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="700,70,10,0" Padding="3" Background="LightGray" 
+        <Border Margin="700,70,10,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40">
+            <Border.Background>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+            </Border.Background>
             <StackPanel >
                 <TextBox Text="{Binding SearchString}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" FontStyle="Italic" Margin="0,0,46.6,0"/>
                 <Button Content="Szukaj..." Command="{Binding SearchButtonCommand}"  HorizontalAlignment="Right" Margin="186,-22,0.4,0" Height="22" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>

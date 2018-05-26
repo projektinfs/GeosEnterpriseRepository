@@ -14,12 +14,12 @@ using System.IO;
 using GeosEnterprise.DBO;
 using GalaSoft.MvvmLight;
 
+
 namespace GeosEnterprise.ViewModel
 {
-    public class ComputersListViewModel : ViewModelBase, INotifyPropertyChanged
+    public class ComputersListViewModel : ViewModelBase
     {
         public String Name { get; set; }
-
 
         public ComputersListViewModel()
         {
@@ -34,8 +34,6 @@ namespace GeosEnterprise.ViewModel
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
             _myDataSource = DataSourceHelper;
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
-
-
 
         }
 
@@ -76,7 +74,7 @@ namespace GeosEnterprise.ViewModel
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    NotifyPropertyChanged("TimeToBindingItem");
+                    RaisePropertyChanged("TimeToBindingItem");
                 }
             }
             
@@ -94,7 +92,7 @@ namespace GeosEnterprise.ViewModel
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    NotifyPropertyChanged("TimeFromBindingItem");
+                    RaisePropertyChanged("TimeFromBindingItem");
                 }
             }
         }
@@ -103,7 +101,7 @@ namespace GeosEnterprise.ViewModel
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; NotifyPropertyChanged("SearchString"); }
+            set { _searchString = value; RaisePropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -118,7 +116,7 @@ namespace GeosEnterprise.ViewModel
             if (addNewRepairWindow.ShowDialog() == true)
             {
                 _myDataSource = DataSourceHelper;
-                NotifyPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
         }
 
@@ -135,7 +133,7 @@ namespace GeosEnterprise.ViewModel
 
                 Repositories.RepairsRepository.Edit(repairDTO);
                 _myDataSource = DataSourceHelper;
-                NotifyPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
             else
             {
@@ -153,7 +151,7 @@ namespace GeosEnterprise.ViewModel
                 if (editRepairWindow.ShowDialog() == true)
                 {
                     _myDataSource = DataSourceHelper;
-                    NotifyPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -172,7 +170,7 @@ namespace GeosEnterprise.ViewModel
                 {
                     Repositories.RepairsRepository.Delete(repairDTO.ID);
                     _myDataSource = DataSourceHelper;
-                    NotifyPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -239,52 +237,51 @@ namespace GeosEnterprise.ViewModel
             {
                 if (TimeFromBindingItem == null || TimeToBindingItem == null)
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
+                            || (item as RepairDTO).Computer.Name.Contains(SearchString)
                             || (item as RepairDTO).Client.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Surname.Contains(SearchString)
+                            || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
                             || (item as RepairDTO).OrderNumber.Contains(SearchString));
                     };
                 }
                 else
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
 
                         return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
                             || (item as RepairDTO).Client.Name.Contains(SearchString)
-                            || (item as RepairDTO).OrderNumber.Contains(SearchString)) 
+                            || (item as RepairDTO).Client.Surname.Contains(SearchString)
+                            || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
+                            || (item as RepairDTO).OrderNumber.Contains(SearchString))
                             && ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
-                            && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value); 
+                            && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
-                }     
+                }
             }
             else
             {
-                if( TimeFromBindingItem == null || TimeToBindingItem == null )
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return (item as RepairDTO).RealizationDate == null;
                     };
                 }
                 else
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
                         && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
             }
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

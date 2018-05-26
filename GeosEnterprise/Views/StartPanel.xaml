@@ -15,46 +15,54 @@
 
     <Grid DataContext="{Binding Source={StaticResource data}}">
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF002D45" Offset="0.854"/>
-                <GradientStop Color="#FF1060A3" Offset="0.491"/>
-                <GradientStop Color="#FF002545" Offset="0.136"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
+     
         <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="197,30,0,0" TextWrapping="Wrap" Text="{Binding currentEmployee.Name}" VerticalAlignment="Top" Height="69" Width="593" FontSize="48" Foreground="#FFFFFEFE"/>
         <TextBlock HorizontalAlignment="Left" Margin="72,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="125" FontSize="48" Foreground="White"><Run Text="Witaj"/><LineBreak/><Run/></TextBlock>
-        <Label Content="Twoje dane:" HorizontalAlignment="Left" Margin="72,104,0,0" VerticalAlignment="Top" Height="43" Width="142" FontSize="24" Foreground="#FFFFFBFB"/>
-        <TextBlock x:Name="NameAndSurname" HorizontalAlignment="Left" Margin="72,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <Label Content="Twoje dane:" HorizontalAlignment="Left" Margin="72,103,0,0" VerticalAlignment="Top" Height="43" Width="142" FontSize="24" Foreground="#FFFFFBFB"/>
+        <TextBlock x:Name="NameAndSurname" HorizontalAlignment="Left" Margin="78,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
                 <Run Text="{Binding currentEmployee.Name}"/>
                 <Run Text=" "/>
                 <Run Text="{Binding currentEmployee.Surname}"/>
         </TextBlock>
-        <TextBlock x:Name="Position" HorizontalAlignment="Left" Margin="72,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <TextBlock x:Name="Position" HorizontalAlignment="Left" Margin="78,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="Stanowisko: "/>
             <Run Text="{Binding currentEmployee.Position, Mode=OneWay}"/>
         </TextBlock>
-        <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="72,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <TextBlock x:Name="Email" HorizontalAlignment="Left" Margin="78,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="Adres email: "/>
             <Run Text="{Binding currentEmployee.Email, Mode=TwoWay}"/>
         </TextBlock>
-        <TextBlock x:Name="PhoneAndFax" HorizontalAlignment="Left" Margin="72,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <TextBlock x:Name="PhoneAndFax" HorizontalAlignment="Left" Margin="78,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
                 <Run Text="Numer telefonu: "/>
                 <Run Text="{Binding currentEmployee.EmployeeContact.Phone}"/>
         </TextBlock>
-        <TextBlock x:Name="AdressHeader" HorizontalAlignment="Left" Margin="72,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <TextBlock x:Name="AdressHeader" HorizontalAlignment="Left" Margin="78,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="Adres: "/>
         </TextBlock>
-        <TextBlock x:Name="Adress" HorizontalAlignment="Left" Margin="72,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <TextBlock x:Name="Adress" HorizontalAlignment="Left" Margin="78,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="{Binding currentEmployee.Adress.City}"/>
             <Run Text=", "/>
             <Run Text="{Binding currentEmployee.Adress.PostCode}"/>
         </TextBlock>
-        <TextBlock x:Name="AdressStreet" HorizontalAlignment="Left" Margin="72,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
+        <TextBlock x:Name="AdressStreet" HorizontalAlignment="Left" Margin="78,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
             <Run Text="{Binding currentEmployee.Adress.Street}"/>
             <Run Text=" "/>
             <Run Text="{Binding currentEmployee.Adress.AppartamentNumber}"/>
         </TextBlock>
-        <Button x:Name="ChangePreferences" DataContext="{Binding Source={StaticResource data}}" Command="{Binding ChangePreferences}" Content="Zmień dane" HorizontalAlignment="Left" Margin="72,345,0,0" VerticalAlignment="Top" Width="191" Height="36"/>
+
+        <Border Margin="115,362,569,47.6" Padding="2"
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <Button x:Name="ChangePreferences" DataContext="{Binding Source={StaticResource data}}" Command="{Binding ChangePreferences}" Content="Zmień dane"  Height="31"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Margin="0,0,-0.4,0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Icons\text-background.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Border>
+
     </Grid>
 
 </UserControl>

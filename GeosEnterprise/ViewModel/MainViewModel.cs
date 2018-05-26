@@ -14,7 +14,19 @@ namespace GeosEnterprise.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-        public ViewModelBase ViewModel { get; set; }
+        public ViewModelBase _ViewModel;
+        public ViewModelBase ViewModel
+        {
+            get
+            {
+                return _ViewModel;
+            }
+            set
+            {
+                _ViewModel = value;
+                RaisePropertyChanged("ViewModel");
+            }
+        }
         private String _IsAuthenticated;
         public String IsAuthenticated
         {
@@ -31,62 +43,96 @@ namespace GeosEnterprise.ViewModel
         public ICommand EmployeesList { get; set; }
         public ICommand ClientsList { get; set; }
         public ICommand Logout { get; set; }
+        public ICommand AccountantPanel { get; set; }
         public int GlobalPropertyChanged { get; }
 
         public MainViewModel()
         {
+            InitializeDatabase();
             IsAuthenticated = "Hidden";
-
             StartPanel = new RelayCommand<object>(StartPanelVM);
             ComputersList = new RelayCommand<object>(ComputersListVM);
             EmployeesList = new RelayCommand<object>(EmployeesListVM);
             ClientsList = new RelayCommand<object>(ClientsListVM);
+            AccountantPanel = new RelayCommand<object>(AccountantPanelVM);
             Logout = new RelayCommand<object>(LogoutVM);
             Messenger.Default.Register<ViewModelBase>(this, MessageHandler);
             Messenger.Default.Register<String>(this, AuthenticationValid);
             ViewModel = new AuthenticationViewModel();
         }
 
+        private void AccountantPanelVM(object obj)
+        {
+            ViewModel = new AccountantPanelViewModel();
+        }
+
         private void AuthenticationValid(string obj)
         {
             IsAuthenticated = obj;
-            RaisePropertyChanged("IsAuthenticated");
         }
 
         private void MessageHandler(ViewModelBase obj)
         {
             ViewModel = obj;
-            RaisePropertyChanged("ViewModel");
         }
 
         private void StartPanelVM(object obj)
         {
             ViewModel = new StartPanelViewModel();
-            RaisePropertyChanged("ViewModel");
         }
 
         private void ComputersListVM(object obj)
         {
             ViewModel = new ComputersListViewModel();
-            RaisePropertyChanged("ViewModel");
         }
 
         private void EmployeesListVM(object obj)
         {
             ViewModel = new EmployeesListViewModel();
-            RaisePropertyChanged("ViewModel");
         }
 
         private void ClientsListVM(object obj)
         {
             ViewModel = new ClientsListViewModel();
-            RaisePropertyChanged("ViewModel");
         }
 
         private void LogoutVM(object obj)
         {
             ViewModel = new AuthenticationViewModel();
-            RaisePropertyChanged("ViewModel");
+        }
+
+        private void InitializeDatabase()
+        {
+            if (!App.DB.Database.Exists())
+            {
+                App.DB.Database.Create();
+                SeedDatabase();
+            }
+            else if (!App.DB.Database.CompatibleWithModel(false) && Config.DropAndCreateWhenModelChanges)
+            {
+                App.DB.Database.Delete();
+                App.DB.Database.Create();
+                SeedDatabase();
+            }
+            App.DB.Computers.Any();
+        }
+
+        private void SeedDatabase()
+        {
+            foreach (var client in DBO.Client.ForSeedToDatabase())
+            {
+                Repositories.ClientRepository.Add(client);
+            }
+
+            foreach (var employee in DBO.Employee.ForSeedToDatabase())
+            {
+                Repositories.EmployeeRepository.Add(employee);
+            }
+
+            foreach (var repair in DBO.Repair.ForSeedToDatabase())
+            {
+                Repositories.RepairsRepository.Add(repair);
+            }
         }
 
     }

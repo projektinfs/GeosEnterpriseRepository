@@ -17,7 +17,7 @@ using GalaSoft.MvvmLight;
 
 namespace GeosEnterprise.ViewModel
 {
-    public class ClientsListViewModel : ViewModelBase, INotifyPropertyChanged
+    public class ClientsListViewModel : ViewModelBase
     {
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
@@ -98,7 +98,7 @@ namespace GeosEnterprise.ViewModel
             Window addNewClientWindow = new ClientsAdd();
             if (addNewClientWindow.ShowDialog() == true)
             {
-                NotifyPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
         }
 
@@ -111,7 +111,7 @@ namespace GeosEnterprise.ViewModel
                     "Usunięcie klienta", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.ClientRepository.Delete(clientDTO.ID);
-                    NotifyPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -128,7 +128,7 @@ namespace GeosEnterprise.ViewModel
                 Window addNewClientWindow = new ClientsAdd(clientDTO.ID);
                 if (addNewClientWindow.ShowDialog() == true)
                 {
-                    NotifyPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -136,16 +136,5 @@ namespace GeosEnterprise.ViewModel
                 Config.MsgBoxNothingSelectedMessage();
             }
         }
-
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

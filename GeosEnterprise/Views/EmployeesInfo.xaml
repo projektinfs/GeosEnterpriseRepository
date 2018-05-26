@@ -11,12 +11,9 @@
         Title="Informacje o pracowniku" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FF0D5074" Offset="0.861"/>
-                <GradientStop Color="#FF0C3659" Offset="0.491"/>
-                <GradientStop Color="#FD081826" Offset="0.136"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
+        
         <Label Content="DANE PRACOWNIKA" Margin="292,10,297.6,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White"/>
         <TextBox IsEnabled="False" Name="NameTextBox" Text="{Binding BindingItem.Name}" HorizontalAlignment="Left" Height="23" Margin="118,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <Label Content="Imię" HorizontalAlignment="Left" Margin="32,74,0,0" VerticalAlignment="Top" Foreground="White"/>

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GeosEnterprise.Views.ComputersList"
+﻿<UserControl x:Class="GeosEnterprise.Views.AccountantPanel"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +15,7 @@
 
 
 
-        <Label Content="Komputery" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
+        <Label Content="Transakcje" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
 
         <Border Margin="10,0,10,6.6" Padding="3" 
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
@@ -23,12 +23,7 @@
                 <ImageBrush ImageSource="..\Icons\small-background.jpg"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="AddButton" Content="Dodaj" Margin="0,0,0,0.6" Command="{Binding AddButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="DeleteButton" Content="Usuń" Margin="154,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="EditButton" Content="Edytuj" Margin="308,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="InfoButton" Content="Info"  Margin="461,-44,0,0.6" Command="{Binding InfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="TakeButton" Content="Podejmij"  Margin="615,-44,0,0.6" Command="{Binding TakeButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="ReportButton" Content="Generuj raport" Margin="769,-44,0,0.6" Command="{Binding ReportButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="ReportButton" Content="Generuj raport" Margin="0,-0,0,0.6" Command="{Binding ReportButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
 
@@ -92,19 +87,19 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0">
-                    <TextBlock Text="Numer zgłoszenia" Foreground="#33B6EF" FontSize="15" />
+                    <TextBlock Text="Numer usługi" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
-                    <TextBlock Text="Data zgłoszenia" Foreground="#33B6EF" FontSize="15" />
+                    <TextBlock Text="Data usługi" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
                     <TextBlock Text="Klient" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
-                    <TextBlock Text="Nazwa" Foreground="#33B6EF" FontSize="15" />
+                    <TextBlock Text="Cena części" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
-                    <TextBlock Text="Numer seryjny" Foreground="#33B6EF" FontSize="15" />
+                    <TextBlock Text="Sumaryczna cena" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
             </Grid>
             <Border.Effect>
@@ -138,10 +133,10 @@
                                 <TextBlock Text="{Binding Client.FullName}" FontSize="14" TextAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
-                                <TextBlock Text="{Binding Computer.Name}" FontSize="14" />
+                                <TextBlock Text="{Binding ReplacementsCosts}" FontSize="14" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
-                                <TextBlock Text="{Binding Computer.SerialNumber}" FontSize="14" />
+                                <TextBlock Text="{Binding FinalCosts}" FontSize="14" />
                             </StackPanel>
                         </Grid>
                         <Border.Effect>

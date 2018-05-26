@@ -44,7 +44,7 @@ namespace GeosEnterprise.ViewModel
             SimpleIoc.Default.Register<AuthenticationViewModel>();
             SimpleIoc.Default.Register<ComputersListViewModel>();
             SimpleIoc.Default.Register<ClientsListViewModel>();
-
+            SimpleIoc.Default.Register<AccountantPanelViewModel>();
         }
     }
 }
