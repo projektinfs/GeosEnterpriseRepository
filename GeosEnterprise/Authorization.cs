@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeosEnterprise.ViewModel;
+using System.ComponentModel;
+using GalaSoft.MvvmLight;
 
 namespace GeosEnterprise
 {
     public class Authorization
     {
+
+        public static ViewModelBase AcctualViewModel { get; set; }
 
         public static string _AcctualUser = "NaN";
         public static Employee _AcctualEmployee = new Employee
@@ -79,3 +84,4 @@ namespace GeosEnterprise
 
     }
 }
+
