@@ -115,6 +115,7 @@ namespace GeosEnterprise.ViewModel
                 passwordBox.Clear();
                 currentEmployee = Authorization.AcctualEmployee;
                 currentName = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+                Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
                 return;
             }
