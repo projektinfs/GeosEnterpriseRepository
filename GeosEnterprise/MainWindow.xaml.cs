@@ -29,10 +29,5 @@ namespace GeosEnterprise
         {
             InitializeComponent();
         }
-
-        private void SchedulerButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new SchedulerViewModel();
-        }
     }
 }

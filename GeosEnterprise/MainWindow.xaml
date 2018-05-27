@@ -14,7 +14,7 @@
     <Window.Resources>
         <viewmodel:MainViewModel x:Key="main"></viewmodel:MainViewModel>
         <viewmodel:ViewModelLocator x:Key="Locator"></viewmodel:ViewModelLocator>
-        </Window.Resources>
+    </Window.Resources>
     <Grid x:Name="MainGrid" Margin="0,0,3.113,1.755" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,14 +29,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DockPanel DataContext="{Binding Source={StaticResource main}}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-                <DockPanel.Background>
-                    <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
-                </DockPanel.Background>
-                <Border Visibility="{Binding IsAuthenticated}" Margin="6,6,6,9.8" Padding="10" 
+            <DockPanel.Background>
+                <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
+            </DockPanel.Background>
+            <Border Visibility="{Binding IsAuthenticated}" Margin="6,6,6,9.8" Padding="10" 
                 BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" >
-                        <Border.Background>
-                            <ImageBrush ImageSource=".\Icons\newwallpaper.jpg"/>
-                        </Border.Background>
+                <Border.Background>
+                    <ImageBrush ImageSource=".\Icons\newwallpaper.jpg"/>
+                </Border.Background>
                 <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
 
                     <Button x:Name="StartPanelButton" Command="{Binding StartPanel}" Margin="0,0,0,6" BorderBrush="White" Content="Panel startowy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
@@ -69,31 +69,23 @@
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="SchedulerButton" Margin="0,0,0,0" BorderBrush="White" Content="Harmonogram" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White" Click="SchedulerButton_Click">
+                    <Label x:Name="UserName" Margin="0,0,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}" Foreground="White" FontSize="20" BorderThickness="3" FontWeight="Bold" Height="42"/>
+                    <Button x:Name="LogoutButton"  Command="{Binding Logout}"  Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
-
-                    <Label x:Name="UserName" Margin="0,0,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}" Foreground="White" FontSize="20" BorderThickness="3" FontWeight="Bold" Height="42"/>
-                                <Button x:Name="LogoutButton"  Command="{Binding Logout}"  Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource=".\Icons\text-background.png"/>
-                                    </Button.Background>
-                                </Button>
-
-                    
 
                 </StackPanel>
 
             </Border>
         </DockPanel>
         <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" DataContext="{Binding Source={StaticResource main}}" Content="{Binding ViewModel}">
-                <ContentControl.Background>
-                    <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
-                </ContentControl.Background>
+            <ContentControl.Background>
+                <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
+            </ContentControl.Background>
         </ContentControl>
-        
+
         <!--<local:MenuControl HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="190"/>-->
     </Grid>
 </Window>
