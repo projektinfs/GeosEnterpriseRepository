@@ -17,8 +17,8 @@ namespace GeosEnterprise.Validators
             RuleFor(client => client.Surname).NotEmpty().WithMessage("Pole Nazwisko nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowe nazwisko");
             RuleFor(client => client.ClientContact.Email).NotEmpty().WithMessage("Pole Email nie może być puste").EmailAddress().WithMessage("Nieprawidłowy adres email!");
             RuleFor(client => client.ClientAdress.City).NotEmpty().WithMessage("Pole Miasto nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowe miasto");
-            RuleFor(client => client.ClientAdress.District).Must(OnlyLetters).WithMessage("Nieprawidłowy powiat");
-            RuleFor(client => client.ClientAdress.Voivodeship).Must(OnlyLetters).WithMessage("Nieprawidłowe województwo");
+            RuleFor(client => client.ClientAdress.Voivodeship).NotEmpty().WithMessage("Pole Województwo nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowe wojewodztwo");
+            RuleFor(client => client.ClientAdress.District).NotEmpty().WithMessage("Pole Powiat nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowy powiat");
             RuleFor(client => client.ClientAdress.PostCode).NotEmpty().WithMessage("Pole Kod pocztowy nie może być puste").Must(GoodPostCode).WithMessage("Nieprawidłowy kod pocztowy!");
             RuleFor(client => client.ClientAdress.Street).NotEmpty().WithMessage("Pole Ulica nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowa ulica");
             RuleFor(client => client.ClientAdress.BuildingNumber).NotEmpty().WithMessage("Pole Budynek nie może być puste").Must(GoodNumber).WithMessage("Nieprawidłowa numer budynku");
