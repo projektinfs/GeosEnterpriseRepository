@@ -81,15 +81,15 @@ namespace GeosEnterprise.ViewModel
                     {
                         Repositories.ClientRepository.Add(new Client
                         {
-                            Name = BindingItem.Name,
-                            Surname = BindingItem.Surname,
+                            Name = Capitalize(BindingItem.Name) ,
+                            Surname = Capitalize(BindingItem.Surname),
                             ClientAdress = new ClientAdress
                             {
-                                City = BindingItem.ClientAdress.City,
-                                Voivodeship = BindingItem.ClientAdress.Voivodeship,
-                                District = BindingItem.ClientAdress.District,
+                                City = Capitalize(BindingItem.ClientAdress.City),
+                                Voivodeship = Capitalize(BindingItem.ClientAdress.Voivodeship),
+                                District = Capitalize(BindingItem.ClientAdress.District),
                                 PostCode = BindingItem.ClientAdress.PostCode,
-                                Street = BindingItem.ClientAdress.Street,
+                                Street = Capitalize(BindingItem.ClientAdress.Street),
                                 BuildingNumber = BindingItem.ClientAdress.BuildingNumber,
                                 AppartamentNumber = BindingItem.ClientAdress.AppartamentNumber
                             },
@@ -108,16 +108,16 @@ namespace GeosEnterprise.ViewModel
                     Client updatedClient = new Client
                     {
                         ID = (int)BindingItem.ID,
-                        Name = BindingItem.Name,
-                        Surname = BindingItem.Surname,
+                        Name = Capitalize(BindingItem.Name),
+                        Surname = Capitalize(BindingItem.Surname),
                         ClientAdress = new ClientAdress
                         {
                             ID = (int)BindingItem.ClientAdress.ID,
-                            City = BindingItem.ClientAdress.City,
-                            Voivodeship = BindingItem.ClientAdress.Voivodeship,
-                            District = BindingItem.ClientAdress.District,
+                            City = Capitalize(BindingItem.ClientAdress.City),
+                            Voivodeship = Capitalize(BindingItem.ClientAdress.Voivodeship),
+                            District = Capitalize(BindingItem.ClientAdress.District),
                             PostCode = BindingItem.ClientAdress.PostCode,
-                            Street = BindingItem.ClientAdress.Street,
+                            Street = Capitalize(BindingItem.ClientAdress.Street),
                             BuildingNumber = BindingItem.ClientAdress.BuildingNumber,
                             AppartamentNumber = BindingItem.ClientAdress.AppartamentNumber
                         },
@@ -145,6 +145,10 @@ namespace GeosEnterprise.ViewModel
         public void Cancel(Window window)
         {
             window?.Close();
+        }
+        private string Capitalize(string input)
+        {
+            return input.First().ToString().ToUpper() + input.Substring(1);
         }
 
         private string DoValidation()
