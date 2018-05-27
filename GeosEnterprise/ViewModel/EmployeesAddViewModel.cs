@@ -9,10 +9,11 @@ using GeosEnterprise.Commands;
 using GeosEnterprise.Validators;
 using System.Security.Cryptography;
 using System.Text;
+using GalaSoft.MvvmLight;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class EmployeesAddViewModel : INotifyPropertyChanged
+    public class EmployeesAddViewModel :  ViewModelBase
     {
 
         public ICommand OKButtonCommand { get; set; }
@@ -62,7 +63,7 @@ namespace GeosEnterprise.ViewModels
             set
             {
                 _EmailTaken = value;
-                NotifyPropertyChanged("EmailTaken");
+                RaisePropertyChanged("EmailTaken");
             }
         }
 
@@ -73,7 +74,7 @@ namespace GeosEnterprise.ViewModels
             set
             {
                 _PasswordMessage = value;
-                NotifyPropertyChanged("PasswordMessage");
+                RaisePropertyChanged("PasswordMessage");
             }
         }
 
@@ -84,7 +85,7 @@ namespace GeosEnterprise.ViewModels
             set
             {
                 _PasswordLabel = value;
-                NotifyPropertyChanged("PasswordLabel");
+                RaisePropertyChanged("PasswordLabel");
             }
         }
 
@@ -279,8 +280,7 @@ namespace GeosEnterprise.ViewModels
             }
             else
             {
-                if (string.IsNullOrEmpty(validationErrors1) && ((Password.Length >= 6 || string.IsNullOrEmpty(Password))))
-
+                if (string.IsNullOrEmpty(validationErrors1) && ((string.IsNullOrEmpty(Password) || Password.Length >= 6)))
                 {
                     return String.Empty;
                 }
@@ -310,15 +310,5 @@ namespace GeosEnterprise.ViewModels
             }
             
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

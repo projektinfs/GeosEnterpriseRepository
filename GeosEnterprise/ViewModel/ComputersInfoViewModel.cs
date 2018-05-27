@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using GeosEnterprise.Commands;
+using GalaSoft.MvvmLight;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class ComputersInfoViewModel
+    public class ComputersInfoViewModel : ViewModelBase
     {
         public ICommand CancelButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }

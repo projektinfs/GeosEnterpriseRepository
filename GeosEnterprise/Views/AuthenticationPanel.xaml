@@ -4,36 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
+             xmlns:viewmodel="clr-namespace:GeosEnterprise.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="960">
 
-    <Grid>
-        <Grid Visibility="{Binding IsVisible}" Margin="0,0,0,-0.4">
-            <Grid.Background>
-                <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
-            </Grid.Background>
+    <UserControl.Resources>
+        <viewmodel:AuthenticationViewModel x:Key="auth"></viewmodel:AuthenticationViewModel>
+    </UserControl.Resources>
+    <Grid Visibility="{Binding IsVisible}" Margin="0,0,0,-0.4">
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+        </Grid.Background>
 
-            <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="385" Margin="84,32,90,33" Width="786">
-                <StackPanel>
-                    <TextBlock Margin="-400,30,0,0" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"><Run Text="Zaloguj się..."/><LineBreak/><Run/></TextBlock>
-                    <Label Content="Adres email" Margin="108,0,496,0" Foreground="#FFFFFBFB"  Width="104" Height="33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
-                    <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="-400,0,0,242" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <Label Content="Hasło" Margin="130,-450,530,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="34" FontSize="15"/>
-                    <PasswordBox x:Name="txtPassword"  Margin="-400,-400,0,0" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding MessageForUser}" Margin="-400,-200,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
-                    <Border Margin="-400,-300,0,0" Padding="2"
-          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <StackPanel>
-                            <Button x:Name="pbSingIn" Content="Login" Margin="0,0,0,3" Command="{Binding SignInCommand}" BorderBrush="White" CommandParameter="{Binding ElementName=txtPassword}" Height="31"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Icons\text-background.png"/>
-                                </Button.Background>
-                            </Button>
-                        </StackPanel>
-                    </Border>
-                    <Image Margin="0,-1000,29.6,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
-                </StackPanel>
-            </Border>
-        </Grid>
+        <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="374" Margin="112,32,140,44" Width="708">
+            <StackPanel>
+                <TextBlock Margin="-400,30,0,0" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"><Run Text="Zaloguj się..."/><LineBreak/><Run/></TextBlock>
+                <Label Content="Adres email" Margin="108,0,496,0" Foreground="#FFFFFBFB"  Width="104" Height="33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
+                <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="-400,0,0,242" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Label Content="Hasło" Margin="130,-450,530,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Height="34" FontSize="15"/>
+                <PasswordBox x:Name="txtPassword"  Margin="-400,-400,0,0" Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Text="{Binding MessageForUser}" Margin="-400,-200,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                <Border Margin="-400,-300,0,0" Padding="2"
+        BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel>
+                        <Button x:Name="pbSingIn" Content="Login" Margin="0,0,0,3" Command="{Binding SignInCommand}" BorderBrush="White" CommandParameter="{Binding ElementName=txtPassword}" Height="31"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White">
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Icons\text-background.png"/>
+                            </Button.Background>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Image Margin="0,-1000,29.6,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </UserControl>

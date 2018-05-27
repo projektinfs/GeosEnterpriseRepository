@@ -11,10 +11,11 @@ using GeosEnterprise.Commands;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
 using GeosEnterprise.DBO;
+using GalaSoft.MvvmLight;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class EmployeesListViewModel : INotifyPropertyChanged
+    public class EmployeesListViewModel : ViewModelBase
     {
 
         public String Name { get; set; }
@@ -59,7 +60,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    NotifyPropertyChanged("TimeToBindingItem");
+                    RaisePropertyChanged("TimeToBindingItem");
                 }
             }
         }
@@ -76,7 +77,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    NotifyPropertyChanged("TimeFromBindingItem");
+                    RaisePropertyChanged("TimeFromBindingItem");
                 }
             }
         }
@@ -85,7 +86,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; NotifyPropertyChanged("SearchString"); }
+            set { _searchString = value; RaisePropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -111,7 +112,7 @@ namespace GeosEnterprise.ViewModels
             addNewEmployeeWindow.Closed += AddNewEmployeeWindowClosed;
             if (addNewEmployeeWindow.ShowDialog() == true)
             {
-                NotifyPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
 
         }
@@ -119,7 +120,7 @@ namespace GeosEnterprise.ViewModels
         private void AddNewEmployeeWindowClosed(object sender, EventArgs e)
         {
             _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
-            NotifyPropertyChanged("Items");
+            RaisePropertyChanged("Items");
         }
 
         private void Delete(object obj)
@@ -132,7 +133,7 @@ namespace GeosEnterprise.ViewModels
                 {
                     Repositories.EmployeeRepository.Delete(employeeDTO.ID);
                     _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
-                    NotifyPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
                               
             }
@@ -151,7 +152,7 @@ namespace GeosEnterprise.ViewModels
                 addNewEmployeeWindow.Closed += EditEmployeeWindowClosed;
                 if (addNewEmployeeWindow.ShowDialog() == true)
                 {
-                    NotifyPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
 
             }
@@ -164,7 +165,7 @@ namespace GeosEnterprise.ViewModels
         private void EditEmployeeWindowClosed(object sender, EventArgs e)
         {
             _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
-            NotifyPropertyChanged("Items");
+            RaisePropertyChanged("Items");
         }
 
         private void Info(object obj)
@@ -226,23 +227,6 @@ namespace GeosEnterprise.ViewModels
                 }
             }
         }
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }
 

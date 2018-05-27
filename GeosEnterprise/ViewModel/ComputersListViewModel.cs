@@ -8,10 +8,16 @@ using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
 using System.Windows.Data;
 using System.Collections.ObjectModel;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using GeosEnterprise.DBO;
+using GalaSoft.MvvmLight;
 
-namespace GeosEnterprise.ViewModels
+
+namespace GeosEnterprise.ViewModel
 {
-    public class ComputersListViewModel : INotifyPropertyChanged
+    public class ComputersListViewModel : ViewModelBase
     {
         public String Name { get; set; }
 
@@ -68,7 +74,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged("TimeToBindingItem");
+                    RaisePropertyChanged("TimeToBindingItem");
                 }
             }
             
@@ -86,7 +92,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged("TimeFromBindingItem");
+                    RaisePropertyChanged("TimeFromBindingItem");
                 }
             }
         }
@@ -95,7 +101,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; OnPropertyChanged("SearchString"); }
+            set { _searchString = value; RaisePropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -110,7 +116,7 @@ namespace GeosEnterprise.ViewModels
             if (addNewRepairWindow.ShowDialog() == true)
             {
                 _myDataSource = DataSourceHelper;
-                OnPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
         }
 
@@ -127,7 +133,7 @@ namespace GeosEnterprise.ViewModels
 
                 Repositories.RepairsRepository.Edit(repairDTO);
                 _myDataSource = DataSourceHelper;
-                OnPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
             else
             {
@@ -145,7 +151,7 @@ namespace GeosEnterprise.ViewModels
                 if (editRepairWindow.ShowDialog() == true)
                 {
                     _myDataSource = DataSourceHelper;
-                    OnPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -164,7 +170,7 @@ namespace GeosEnterprise.ViewModels
                 {
                     Repositories.RepairsRepository.Delete(repairDTO.ID);
                     _myDataSource = DataSourceHelper;
-                    OnPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -231,7 +237,8 @@ namespace GeosEnterprise.ViewModels
             {
                 if (TimeFromBindingItem == null || TimeToBindingItem == null)
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
@@ -243,42 +250,38 @@ namespace GeosEnterprise.ViewModels
                 }
                 else
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
 
                         return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
                             || (item as RepairDTO).Computer.Name.Contains(SearchString)
                             || (item as RepairDTO).Client.Name.Contains(SearchString)
                             || (item as RepairDTO).Client.Surname.Contains(SearchString)
                             || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
-                            || (item as RepairDTO).OrderNumber.Contains(SearchString)) 
+                            || (item as RepairDTO).OrderNumber.Contains(SearchString))
                             && ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
-                            && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value); 
+                            && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
-                }     
+                }
             }
             else
             {
-                if( TimeFromBindingItem == null || TimeToBindingItem == null )
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return (item as RepairDTO).RealizationDate == null;
                     };
                 }
                 else
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
                         && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

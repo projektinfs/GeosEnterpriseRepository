@@ -3,43 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewmodels="clr-namespace:GeosEnterprise.ViewModels"
         xmlns:views="clr-namespace:GeosEnterprise.Views"
         xmlns:local="clr-namespace:GeosEnterprise"
-        
+        xmlns:viewmodel="clr-namespace:GeosEnterprise.ViewModel"        
+ 
         mc:Ignorable="d"
-        Title="GeosEnterprise" Height="720" Width="1280">
+        Title="GeosEnterprise" Height="720" Width="1280"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Authentication}">
+
     <Window.Resources>
-        <viewmodels:AuthenticationViewModel x:Key="auth"/>
-        <viewmodels:MainWindowViewModel x:Key="main"/>
-
-
-        <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodels:ComputersListViewModel}">
-            <views:ComputersList DataContext="{Binding}"></views:ComputersList>
-        </DataTemplate>
-        <DataTemplate x:Name="startPanelTemplate" DataType="{x:Type viewmodels:StartPanelViewModel}">
-            <views:StartPanel DataContext="{Binding}"></views:StartPanel>
-        </DataTemplate>
-        <DataTemplate x:Name="authenticationPanelTemplate" DataType="{x:Type viewmodels:AuthenticationViewModel}">
-            <views:AuthenticationPanel DataContext="{Binding}"></views:AuthenticationPanel>
-        </DataTemplate>
-        <DataTemplate x:Name="employeesListTemplate" DataType="{x:Type viewmodels:EmployeesListViewModel}">
-            <views:EmployeesList DataContext="{Binding}"></views:EmployeesList>
-        </DataTemplate>
-        <DataTemplate x:Name="clientsListTemplate" DataType="{x:Type viewmodels:ClientsListViewModel}">
-            <views:ClientsList DataContext="{Binding}"></views:ClientsList>
-        </DataTemplate>
-        
-        <DataTemplate x:Name="accountantPanelTemplate" DataType="{x:Type viewmodels:AccountantPanelViewModel}">
-            <views:AccountantPanel DataContext="{Binding}"></views:AccountantPanel>
-        </DataTemplate>
-        
-        <DataTemplate x:Name="SchedulerTemplate" DataType="{x:Type viewmodels:SchedulerViewModel}">
-            <views:Scheduler DataContext="{Binding}"></views:Scheduler>
-        </DataTemplate>
-        
-    </Window.Resources>
-    <Grid x:Name="MainGrid" Margin="0,0,3.113,1.755">
+        <viewmodel:MainViewModel x:Key="main"></viewmodel:MainViewModel>
+        <viewmodel:ViewModelLocator x:Key="Locator"></viewmodel:ViewModelLocator>
+        </Window.Resources>
+    <Grid x:Name="MainGrid" Margin="0,0,3.113,1.755" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -52,43 +28,42 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
-            <DockPanel.Background>
-                <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
-            </DockPanel.Background>
-
-            <Border Margin="6,6,6,9.8" Padding="10" 
+        <DockPanel DataContext="{Binding Source={StaticResource main}}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
+                <DockPanel.Background>
+                    <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
+                </DockPanel.Background>
+                <Border Visibility="{Binding IsAuthenticated}" Margin="6,6,6,9.8" Padding="10" 
                 BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" >
-                <Border.Background>
-                    <ImageBrush ImageSource=".\Icons\newwallpaper.jpg"/>
-                </Border.Background>
+                        <Border.Background>
+                            <ImageBrush ImageSource=".\Icons\newwallpaper.jpg"/>
+                        </Border.Background>
                 <StackPanel x:Name="MenuPanel" IsEnabled="{Binding IsAuthenticated}">
-                    
-                    <Button x:Name="StartPanelButton" Margin="0,0,0,6" BorderBrush="White" Content="Panel startowy" FontSize="20" BorderThickness="3"  Click="StartPanelButton_Click" FontWeight="Bold" Foreground="White">
+
+                    <Button x:Name="StartPanelButton" Command="{Binding StartPanel}" Margin="0,0,0,6" BorderBrush="White" Content="Panel startowy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="ComputersListButton" Margin="0,0,0,6" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" Click="ComputersListButton_Click" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="ComputersListButton" Command="{Binding ComputersList}" Margin="0,0,0,6" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="EmployeesListButton" Margin="0,0,0,6" BorderBrush="White" Content="Pracownicy" FontSize="20" BorderThickness="3" Click="EmployeesListButton_Click" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="EmployeesListButton" Command="{Binding EmployeesList}" Margin="0,0,0,6" BorderBrush="White" Content="Pracownicy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="ClientsListButton" Margin="0,0,0,6" BorderBrush="White" Content="Klienci" FontSize="20" BorderThickness="3" Click="ClientsListButton_Click" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="ClientsListButton" Command="{Binding ClientsList}" Margin="0,0,0,6" BorderBrush="White" Content="Klienci" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="AccountantPanelButton" Margin="0,0,0,6" BorderBrush="White" Content="Transakcje" FontSize="20" BorderThickness="3" FontWeight="Bold" Click="AccountantPanelButton_Click" Foreground="White">
+                    <Button x:Name="AccountantPanelButton" Command="{Binding AccountantPanel}" Margin="0,0,0,6" BorderBrush="White" Content="Transakcje" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
@@ -101,11 +76,11 @@
                     </Button>
 
                     <Label x:Name="UserName" Margin="0,0,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}" Foreground="White" FontSize="20" BorderThickness="3" FontWeight="Bold" Height="42"/>
-                    <Button x:Name="LogoutButton" Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" Click="LogoutButton_Click" FontWeight="Bold" Foreground="White">
-                        <Button.Background>
-                            <ImageBrush ImageSource=".\Icons\text-background.png"/>
-                        </Button.Background>
-                    </Button>
+                                <Button x:Name="LogoutButton"  Command="{Binding Logout}"  Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource=".\Icons\text-background.png"/>
+                                    </Button.Background>
+                                </Button>
 
                     
 
@@ -113,10 +88,10 @@
 
             </Border>
         </DockPanel>
-        <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" Content="{Binding}">
-            <ContentControl.Background>
-                <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
-            </ContentControl.Background>
+        <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" DataContext="{Binding Source={StaticResource main}}" Content="{Binding ViewModel}">
+                <ContentControl.Background>
+                    <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
+                </ContentControl.Background>
         </ContentControl>
         
         <!--<local:MenuControl HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="190"/>-->

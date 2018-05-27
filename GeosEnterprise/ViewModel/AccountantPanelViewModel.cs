@@ -1,4 +1,5 @@
-﻿using GeosEnterprise.Commands;
+﻿using GalaSoft.MvvmLight;
+using GeosEnterprise.Commands;
 using GeosEnterprise.DTO;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class AccountantPanelViewModel : INotifyPropertyChanged
+    public class AccountantPanelViewModel : ViewModelBase
     {
         public String Name { get; set; }
 
@@ -58,7 +59,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged("TimeToBindingItem");
+                    RaisePropertyChanged("TimeToBindingItem");
                 }
             }
 
@@ -76,7 +77,7 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged("TimeFromBindingItem");
+                    RaisePropertyChanged("TimeFromBindingItem");
                 }
             }
         }
@@ -85,7 +86,7 @@ namespace GeosEnterprise.ViewModels
         public string SearchString
         {
             get { return _searchString; }
-            set { _searchString = value; OnPropertyChanged("SearchString"); }
+            set { _searchString = value; RaisePropertyChanged("SearchString"); }
         }
 
         private ICollectionView _items;
@@ -178,14 +179,5 @@ namespace GeosEnterprise.ViewModels
                 }
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-
     }
 }

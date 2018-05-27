@@ -13,10 +13,11 @@ using GeosEnterprise.DTO;
 using GeosEnterprise.Repositories;
 using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
+using GalaSoft.MvvmLight;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class ClientsListViewModel : PropertyChangedBase
+    public class ClientsListViewModel : ViewModelBase
     {
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
@@ -40,7 +41,6 @@ namespace GeosEnterprise.ViewModels
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
-                    OnPropertyChanged();
                 }
             }
         }
@@ -57,7 +57,6 @@ namespace GeosEnterprise.ViewModels
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
-                    OnPropertyChanged();
                 }
             }
         }
@@ -99,7 +98,7 @@ namespace GeosEnterprise.ViewModels
             Window addNewClientWindow = new ClientsAdd();
             if (addNewClientWindow.ShowDialog() == true)
             {
-                OnPropertyChanged("Items");
+                RaisePropertyChanged("Items");
             }
         }
 
@@ -112,7 +111,7 @@ namespace GeosEnterprise.ViewModels
                     "Usunięcie klienta", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.ClientRepository.Delete(clientDTO.ID);
-                    OnPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -129,7 +128,7 @@ namespace GeosEnterprise.ViewModels
                 Window addNewClientWindow = new ClientsAdd(clientDTO.ID);
                 if (addNewClientWindow.ShowDialog() == true)
                 {
-                    OnPropertyChanged("Items");
+                    RaisePropertyChanged("Items");
                 }
             }
             else
@@ -137,6 +136,5 @@ namespace GeosEnterprise.ViewModels
                 Config.MsgBoxNothingSelectedMessage();
             }
         }
-
     }
 }

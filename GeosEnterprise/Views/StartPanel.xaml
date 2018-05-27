@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              xmlns:config="clr-namespace:GeosEnterprise"
-             xmlns:data="clr-namespace:GeosEnterprise.ViewModels"
+             xmlns:data="clr-namespace:GeosEnterprise.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 

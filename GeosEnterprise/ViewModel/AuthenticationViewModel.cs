@@ -12,27 +12,18 @@ using GeosEnterprise.Commands;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Security.Cryptography;
+using System.Runtime.Remoting.Messaging;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class AuthenticationViewModel : INotifyPropertyChanged
+    public class AuthenticationViewModel : ViewModelBase, INotifyPropertyChanged
     {
 
         public ICommand SignInCommand { get; private set; }
         public Employee currentEmployee { get; set; }
         public String currentName { get; set; }
-
-
-        private bool _IsAuthenticated;
-        public bool IsAuthenticated
-        {
-            get { return _IsAuthenticated; }
-            set
-            {
-                _IsAuthenticated = value;
-                NotifyPropertyChanged("IsAuthenticated");
-            }
-        }
 
         private string _MessageForUser;
         public string MessageForUser
@@ -41,7 +32,7 @@ namespace GeosEnterprise.ViewModels
             set
             {
                 _MessageForUser = value;
-                NotifyPropertyChanged("MessageForUser");
+                RaisePropertyChanged("MessageForUser");
             }
         }
 
@@ -52,7 +43,7 @@ namespace GeosEnterprise.ViewModels
             set
             {
                 _Name = value;
-                NotifyPropertyChanged("Name");
+                RaisePropertyChanged("Name");
             }
         }
 
@@ -63,7 +54,7 @@ namespace GeosEnterprise.ViewModels
             set
             {
                 _IsVisible = value;
-                NotifyPropertyChanged("IsVisible");
+                RaisePropertyChanged("IsVisible");
             }
         }
 
@@ -101,9 +92,8 @@ namespace GeosEnterprise.ViewModels
 
             IsVisible = "Visible";
             Name = "";
-           
+            Messenger.Default.Send("Hidden");
 
-            IsAuthenticated = false;
             SignInCommand = new SignInCommand(
                 SignIn,
                 (object parameters) => true
@@ -120,12 +110,13 @@ namespace GeosEnterprise.ViewModels
             {
                 Authorization.AcctualEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
                 Authorization.AcctualUser = "admin@admin.pl";
-                IsAuthenticated = true;
                 IsVisible = "Hidden";
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 passwordBox.Clear();
                 currentEmployee = Authorization.AcctualEmployee;
                 currentName = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+                Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
+                Messenger.Default.Send("Visible");
                 return;
             }
 
@@ -133,30 +124,18 @@ namespace GeosEnterprise.ViewModels
             {
                 Authorization.AcctualUser = Email;
                 Authorization.AcctualEmployee = EmployeeRepository.GetByEmail(Email);
-                IsAuthenticated = true;
                 MessageForUser = "";
                 IsVisible = "Hidden";
                 passwordBox.Clear();
                 currentEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
-
-
+                Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
+                Messenger.Default.Send("Visible");
             }
             else
             {
                 MessageForUser = "Błędny login lub hasło !";
             }
         }
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
-
     }
 }

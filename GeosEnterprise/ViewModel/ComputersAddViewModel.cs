@@ -11,10 +11,12 @@ using GeosEnterprise.Commands;
 using GeosEnterprise.Validators;
 using FluentValidation;
 using FluentValidation.Results;
+using GalaSoft.MvvmLight;
+using System.ComponentModel;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class ComputersAddViewModel : PropertyChangedBase
+    public class ComputersAddViewModel : ViewModelBase
     {
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
@@ -91,7 +93,7 @@ namespace GeosEnterprise.ViewModels
             var newClientAdd = new Views.ClientsAdd();
             if (newClientAdd.ShowDialog() == true)
             {
-                OnPropertyChanged("Clients");
+                RaisePropertyChanged("Clients");
                 var clientsID = Clients.Last()?.ID;
                 SelectedClientIndex = Clients.ToList().FindIndex(p => p.ID == clientsID);
             }
@@ -124,6 +126,5 @@ namespace GeosEnterprise.ViewModels
                 return returnString;
             }
         }
-
     }
 }

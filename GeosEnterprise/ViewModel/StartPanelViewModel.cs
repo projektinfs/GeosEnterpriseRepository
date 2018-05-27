@@ -11,10 +11,11 @@ using System.Windows.Controls;
 using GeosEnterprise.Commands;
 using GeosEnterprise.DBO;
 using System.ComponentModel;
+using GalaSoft.MvvmLight;
 
-namespace GeosEnterprise.ViewModels
+namespace GeosEnterprise.ViewModel
 {
-    public class StartPanelViewModel : INotifyPropertyChanged
+    public class StartPanelViewModel : ViewModelBase, INotifyPropertyChanged
     {
         public ICommand ChangePreferences { get; set; }
 
@@ -41,18 +42,7 @@ namespace GeosEnterprise.ViewModels
         private void AddNewEmployeeWindowClosed(object sender, EventArgs e)
         {
             currentEmployee = Authorization.AcctualEmployee;
-            NotifyPropertyChanged("currentEmployee");
+            RaisePropertyChanged("currentEmployee");
         }
-
-
-        #region INotifyPropertyChanged Members
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        }
-        #endregion
     }
 }

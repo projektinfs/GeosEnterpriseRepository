@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using GeosEnterprise.ViewModels;
+using GeosEnterprise.ViewModel;
 using GeosEnterprise.DBO;
 using System.Security.Principal;
 using System.Threading;
@@ -28,74 +28,6 @@ namespace GeosEnterprise
         public MainWindow()
         {
             InitializeComponent();
-            InitializeDatabase();
-        }
-
-        private void InitializeDatabase()
-        {
-            if (!App.DB.Database.Exists())
-            {
-                App.DB.Database.Create();
-                SeedDatabase();
-            }
-            else if (!App.DB.Database.CompatibleWithModel(false) && Config.DropAndCreateWhenModelChanges)
-            {
-                App.DB.Database.Delete();
-                App.DB.Database.Create();
-                SeedDatabase();
-            }
-            App.DB.Computers.Any();
-
-            DataContext = new AuthenticationViewModel();
-        }
-
-        private void SeedDatabase()
-        {
-            foreach (var client in DBO.Client.ForSeedToDatabase())
-            {
-                Repositories.ClientRepository.Add(client);
-            }
-
-            foreach (var employee in DBO.Employee.ForSeedToDatabase())
-            {
-                Repositories.EmployeeRepository.Add(employee);
-            }
-
-            foreach (var repair in DBO.Repair.ForSeedToDatabase())
-            {
-                Repositories.RepairsRepository.Add(repair);
-            }
-        }
-
-
-        private void StartPanelButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new StartPanelViewModel();
-        }
-
-        private void ComputersListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ComputersListViewModel();
-        }
-
-        private void EmployeesListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new EmployeesListViewModel();
-        }
-
-        private void ClientsListButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new ClientsListViewModel();
-        }
-
-        private void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AuthenticationViewModel();
-        }
-
-        private void AccountantPanelButton_Click(object sender, RoutedEventArgs e)
-        {
-            DataContext = new AccountantPanelViewModel();
         }
 
         private void SchedulerButton_Click(object sender, RoutedEventArgs e)
