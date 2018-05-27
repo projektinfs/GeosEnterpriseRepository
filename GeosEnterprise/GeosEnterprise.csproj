@@ -34,6 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.WpfEditors, Version=7.9.0.62, Culture=neutral, PublicKeyToken=cbba4a1563683cdb, processorArchitecture=MSIL" />
+    <Reference Include="devcomponents.wpfschedule, Version=7.9.0.62, Culture=neutral, PublicKeyToken=7c218705742a0d96, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -52,6 +54,7 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
+    <Reference Include="Mindscape.WpfElements, Version=7.0.34.23280, Culture=neutral, PublicKeyToken=0a92c4b7d9c14aa4, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
@@ -78,6 +81,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfScheduler">
+      <HintPath>..\packages\WpfScheduler.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -112,6 +118,7 @@
     <Compile Include="DBO\Computer.cs" />
     <Compile Include="DBO\DBObject.cs" />
     <Compile Include="DBO\Employee.cs" />
+    <Compile Include="DBO\EmployeeActivity.cs" />
     <Compile Include="DBO\EmployeeContact.cs" />
     <Compile Include="DBO\Employee_mh.cs" />
     <Compile Include="DBO\EntitiesContext.cs" />
@@ -124,6 +131,7 @@
     <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
     <Compile Include="DTO\DTOObject.cs" />
+    <Compile Include="DTO\EmployeeActivityDTO.cs" />
     <Compile Include="DTO\EmployeeContactDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />
@@ -155,6 +163,7 @@
     <Compile Include="ViewModels\EmployeesListViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
+    <Compile Include="ViewModels\SchedulerViewModel.cs" />
     <Compile Include="ViewModels\StartPanelViewModel.cs" />
     <Compile Include="Views\AccountantPanel.xaml.cs">
       <DependentUpon>AccountantPanel.xaml</DependentUpon>
@@ -182,6 +191,9 @@
     </Compile>
     <Compile Include="Views\EmployeesList.xaml.cs">
       <DependentUpon>EmployeesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Scheduler.xaml.cs">
+      <DependentUpon>Scheduler.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
@@ -238,6 +250,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Scheduler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StartPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -261,6 +277,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

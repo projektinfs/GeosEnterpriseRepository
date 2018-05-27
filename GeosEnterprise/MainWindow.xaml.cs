@@ -97,5 +97,10 @@ namespace GeosEnterprise
         {
             DataContext = new AccountantPanelViewModel();
         }
+
+        private void SchedulerButton_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new SchedulerViewModel();
+        }
     }
 }

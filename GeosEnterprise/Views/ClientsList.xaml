@@ -134,7 +134,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Label Content="Od" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" FontWeight="Bold" Margin="0,0,211.4,0" Foreground="White"/>
+                <Label Content="Od" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,0,211.4,0" Foreground="White"/>
                 <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" Margin="30,-25,0,0"  Height="22" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
             </StackPanel>
         </Border>
@@ -146,7 +146,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Label Content="Do" FontFamily="Microsoft Sans Serif" Margin="-65,0,219.4,0" Width="32" RenderTransformOrigin="2.036,0.523" Height="23" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                <Label Content="Do" FontFamily="Microsoft Sans Serif" Margin="-65,0,219.4,0" Width="32" RenderTransformOrigin="2.036,0.523" Height="23" FontSize="14" Foreground="White"/>
                 <xctk:DateTimePicker x:Name="TimeTo" Value="{Binding TimeToBindingItem, Mode=TwoWay}" Margin="30,-22,67.6,0" Height="22" FontFamily="DejaVu Sans Condensed" FontSize="10" RenderTransformOrigin="-0.596,-0.175"/>
                 <Button x:Name="DateTimeNowButton" Content="Akt. czas" Command="{Binding DateTimeNowButtonCommand}" Margin="250,-22,0,0"  Width="56" Height="22" RenderTransformOrigin="8.891,-2.3" Background="White" FontWeight="Bold"/>
             </StackPanel>

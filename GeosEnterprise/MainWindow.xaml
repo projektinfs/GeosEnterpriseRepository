@@ -29,9 +29,15 @@
         <DataTemplate x:Name="clientsListTemplate" DataType="{x:Type viewmodels:ClientsListViewModel}">
             <views:ClientsList DataContext="{Binding}"></views:ClientsList>
         </DataTemplate>
+        
         <DataTemplate x:Name="accountantPanelTemplate" DataType="{x:Type viewmodels:AccountantPanelViewModel}">
             <views:AccountantPanel DataContext="{Binding}"></views:AccountantPanel>
         </DataTemplate>
+        
+        <DataTemplate x:Name="SchedulerTemplate" DataType="{x:Type viewmodels:SchedulerViewModel}">
+            <views:Scheduler DataContext="{Binding}"></views:Scheduler>
+        </DataTemplate>
+        
     </Window.Resources>
     <Grid x:Name="MainGrid" Margin="0,0,3.113,1.755">
         <Grid.ColumnDefinitions>
@@ -88,12 +94,20 @@
                         </Button.Background>
                     </Button>
 
+                    <Button x:Name="SchedulerButton" Margin="0,0,0,0" BorderBrush="White" Content="Harmonogram" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White" Click="SchedulerButton_Click">
+                        <Button.Background>
+                            <ImageBrush ImageSource=".\Icons\text-background.png"/>
+                        </Button.Background>
+                    </Button>
+
                     <Label x:Name="UserName" Margin="0,0,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}" Foreground="White" FontSize="20" BorderThickness="3" FontWeight="Bold" Height="42"/>
                     <Button x:Name="LogoutButton" Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" Click="LogoutButton_Click" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
+
+                    
 
                 </StackPanel>
 

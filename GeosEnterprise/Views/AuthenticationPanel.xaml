@@ -13,7 +13,7 @@
                 <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
             </Grid.Background>
 
-            <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="374" Margin="112,32,140,44" Width="708">
+            <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="385" Margin="84,32,90,33" Width="786">
                 <StackPanel>
                     <TextBlock Margin="-400,30,0,0" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"><Run Text="Zaloguj się..."/><LineBreak/><Run/></TextBlock>
                     <Label Content="Adres email" Margin="108,0,496,0" Foreground="#FFFFFBFB"  Width="104" Height="33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
