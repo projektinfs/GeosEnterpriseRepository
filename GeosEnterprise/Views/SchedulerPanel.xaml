@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:my="clr-namespace:WpfScheduler;assembly=WpfScheduler"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="960">
     <Grid>
@@ -12,62 +13,75 @@
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
 
-        <Label Content="Harmonogram" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
-
-        <Border Margin="10,70,0,0" Padding="3"
+        <Border Margin="20,15,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
-          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="267">
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="122">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Label Content="Od" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,0,211.4,0" Foreground="White"/>
-                <xctk:DateTimePicker x:Name="TimeFrom" Value="{Binding TimeFromBindingItem, Mode=TwoWay}" Margin="30,-25,0,0"  Height="22" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
+                <Button x:Name="prevBtn" Margin="0,0,0.4,0" HorizontalAlignment="Right" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="282,70,0,0" Padding="3"
+        <Border Margin="147,15,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
-          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="333">
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Label Content="Do" FontFamily="Microsoft Sans Serif" Margin="1,0,284.6,0" Width="32" RenderTransformOrigin="2.036,0.523" Height="23" FontSize="14" Foreground="White"/>
-                <xctk:DateTimePicker x:Name="TimeTo" Value="{Binding TimeToBindingItem, Mode=TwoWay}" Margin="30,-22,67.6,0" Height="22" FontFamily="DejaVu Sans Condensed" FontSize="10" RenderTransformOrigin="-0.596,-0.175"/>
-                <Button x:Name="DateTimeNowButton" Content="Akt. czas" Command="{Binding DateTimeNowButtonCommand}" Margin="250,-22,0,0"  Width="56" Height="22" RenderTransformOrigin="8.891,-2.3" Background="White" FontWeight="Bold"/>
+                <Button x:Name="nextBtn" Margin="0 0  0 0" HorizontalAlignment="Left" DockPanel.Dock="Left" Content="Przewiń do przodu"  VerticalAlignment="Center" Click="nextBtn_Click"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="620,70,0,0" Padding="3"
+        <Border Margin="520,15,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
-          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="75">
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}"  Margin="0,0,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24" Background="White" FontWeight="Bold" FontSize="11"/>
+                <Button Name="modeDayBtn" Margin="0,0,0,0" Content="Dzień"  VerticalAlignment="Center" Click="modeDayBtn_Click"></Button>
             </StackPanel>
         </Border>
 
-        <Border Margin="700,70,10,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40">
+        <Border Margin="665,15,0,0" Padding="3"
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <TextBox Text="{Binding SearchString}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" FontStyle="Italic" Margin="0,0,48.6,0"/>
-                <Button Content="Szukaj..." Command="{Binding SearchButtonCommand}" HorizontalAlignment="Right"  Margin="185,-22,0.6,0" Height="22" FontWeight="Bold" RenderTransformOrigin="0.505,0.513" Background="White"/>
+                <Button Name="modeWeekBtn" Margin="0,0,0,0" Content="Tydzień"  VerticalAlignment="Center" Click="modeWeekBtn_Click"></Button>
             </StackPanel>
         </Border>
-        
-        <Border Margin="10,0,10,6.6" Padding="3" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
+
+        <Border Margin="810,15,0,0" Padding="3"
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
+          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
             <Border.Background>
-                <ImageBrush ImageSource="..\Icons\small-background.jpg"/>
+                <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
-            <StackPanel />
+            <StackPanel >
+                <Button Name="modeMonthBtn" Margin="0 0 0 0" Content="Miesiąc"  VerticalAlignment="Center" Click="modeMonthBtn_Click"></Button>
+            </StackPanel>
         </Border>
+
+        <my:Scheduler
+            HorizontalAlignment="Stretch" Name="scheduler1" VerticalAlignment="Stretch" Loaded="scheduler1_Loaded"
+            SelectedDate="2013-05-27"
+            StartJourney="9:00"
+            EndJourney="19:00"
+            OnEventDoubleClick="scheduler1_OnEventDoubleClick"
+            OnScheduleDoubleClick="scheduler1_OnScheduleDoubleClick"
+            Mode="Week" Margin="0,75,10,9.6" Background="White">
+
+            <my:Scheduler.Events>
+                <my:Event Subject="Internet line installation" Start="2018-05-29 10:00:00" End="2018-05-29 14:00:00" Color="Yellow"></my:Event>
+            </my:Scheduler.Events>
+        </my:Scheduler>
+
 
 
     </Grid>

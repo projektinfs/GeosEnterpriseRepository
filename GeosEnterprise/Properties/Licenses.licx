@@ -1,1 +1,4 @@
 Mindscape.WpfElements.Scheduler, Mindscape.WpfElements, Version=7.0.34.23280, Culture=neutral, PublicKeyToken=0a92c4b7d9c14aa4
+Mindscape.WpfElements.DateTimePicker, Mindscape.WpfElements, Version=7.0.34.23280, Culture=neutral, PublicKeyToken=0a92c4b7d9c14aa4
+DevExpress.Xpf.PdfViewer.PdfViewerControl, DevExpress.Xpf.PdfViewer.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a
+DevExpress.Xpf.Scheduling.SchedulerControl, DevExpress.Xpf.Scheduling.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a

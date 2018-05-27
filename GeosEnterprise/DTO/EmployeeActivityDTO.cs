@@ -12,6 +12,7 @@ namespace GeosEnterprise.DTO
         public DateTime TimeFrom { get; set; }
         public DateTime TimeTo { get; set; }
         public int? RepairID { get; set; }
+        public string Description { get; set; }
 
         public string Duration
         {
@@ -25,6 +26,7 @@ namespace GeosEnterprise.DTO
         {
             return new EmployeeActivityDTO
             {
+                Description = entity.Description,
                 TimeFrom = entity.TimeFrom,
                 TimeTo = entity.TimeTo,
                 RepairID = entity.RepairID,
@@ -35,6 +37,7 @@ namespace GeosEnterprise.DTO
         {
             return new EmployeeActivity
             {
+                Description = entity.Description,
                 TimeFrom = entity.TimeFrom,
                 TimeTo = entity.TimeTo,
                 RepairID = entity.RepairID,
