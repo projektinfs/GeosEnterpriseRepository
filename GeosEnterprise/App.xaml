@@ -2,28 +2,29 @@
              xmlns:views="clr-namespace:GeosEnterprise.Views"
              xmlns:viewmodel="clr-namespace:GeosEnterprise.ViewModel">
     <Application.Resources>
-            <ResourceDictionary>
-                <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:GeosEnterprise.ViewModel" />
-            
-
-                <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodel:ComputersListViewModel}">
-                    <views:ComputersList />
-                </DataTemplate>
-                <DataTemplate x:Name="startPanelTemplate" DataType="{x:Type viewmodel:StartPanelViewModel}">
-                    <views:StartPanel />
-                </DataTemplate>
-                <DataTemplate x:Name="authenticationPanelTemplate" DataType="{x:Type viewmodel:AuthenticationViewModel}">
-                    <views:AuthenticationPanel />
-                </DataTemplate>
-                <DataTemplate x:Name="employeesListTemplate" DataType="{x:Type viewmodel:EmployeesListViewModel}">
-                    <views:EmployeesList />
-                </DataTemplate>
-                <DataTemplate x:Name="clientsListTemplate" DataType="{x:Type viewmodel:ClientsListViewModel}">
-                    <views:ClientsList />
-                </DataTemplate>
-                <DataTemplate x:Name="accountantPanelTemplate" DataType="{x:Type viewmodel:AccountantPanelViewModel}">
-                    <views:AccountantPanel />
-                </DataTemplate>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:GeosEnterprise.ViewModel" />
+            <DataTemplate x:Name="computersListTemplate" DataType="{x:Type viewmodel:ComputersListViewModel}">
+                <views:ComputersList />
+            </DataTemplate>
+            <DataTemplate x:Name="startPanelTemplate" DataType="{x:Type viewmodel:StartPanelViewModel}">
+                <views:StartPanel />
+            </DataTemplate>
+            <DataTemplate x:Name="authenticationPanelTemplate" DataType="{x:Type viewmodel:AuthenticationViewModel}">
+                <views:AuthenticationPanel />
+            </DataTemplate>
+            <DataTemplate x:Name="employeesListTemplate" DataType="{x:Type viewmodel:EmployeesListViewModel}">
+                <views:EmployeesList />
+            </DataTemplate>
+            <DataTemplate x:Name="clientsListTemplate" DataType="{x:Type viewmodel:ClientsListViewModel}">
+                <views:ClientsList />
+            </DataTemplate>
+            <DataTemplate x:Name="accountantPanelTemplate" DataType="{x:Type viewmodel:AccountantPanelViewModel}">
+                <views:AccountantPanel />
+            </DataTemplate>
+            <DataTemplate x:Name="schedulerTemplate" DataType="{x:Type viewmodel:SchedulerPanelViewModel}">
+                <views:SchedulerPanel />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

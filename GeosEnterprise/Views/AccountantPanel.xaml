@@ -13,8 +13,6 @@
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
 
-
-
         <Label Content="Transakcje" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
 
         <Border Margin="10,0,10,6.6" Padding="3" 
@@ -59,7 +57,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}"  Margin="0,0,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24" Background="White" FontWeight="Bold" FontSize="11"/>
+                <Button x:Name="ResetButton" Content="Reset daty" Command="{Binding ResetButtonCommand}"  Margin="0,0,0,0"  RenderTransformOrigin="0.99,0.108" Width="58" Height="24" Background="White" FontWeight="Bold" FontSize="11"/>
             </StackPanel>
         </Border>
 
@@ -75,6 +73,9 @@
         </Border>
 
         <Border BorderBrush="Black" BorderThickness="0" CornerRadius="3" Margin="10,120,10,0" VerticalAlignment="Top" Background="White" Height="33">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="5" />
+            </Border.Effect>
             <Grid Background="White" Margin="0,1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -102,9 +103,6 @@
                     <TextBlock Text="Sumaryczna cena" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
             </Grid>
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="5" ShadowDepth="5" />
-            </Border.Effect>
         </Border>
 
 
@@ -136,7 +134,7 @@
                                 <TextBlock Text="{Binding ReplacementsCosts}" FontSize="14" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
-                                <TextBlock Text="{Binding FinalCosts}" FontSize="14" />
+                                <TextBlock Text="{Binding RepairCosts}" FontSize="14" />
                             </StackPanel>
                         </Grid>
                         <Border.Effect>
@@ -146,6 +144,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
 </UserControl>

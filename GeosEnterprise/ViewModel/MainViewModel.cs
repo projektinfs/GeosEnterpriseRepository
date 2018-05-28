@@ -44,6 +44,8 @@ namespace GeosEnterprise.ViewModel
         public ICommand ClientsList { get; set; }
         public ICommand Logout { get; set; }
         public ICommand AccountantPanel { get; set; }
+        public ICommand SchedulerPanel { get; set; }
+
         public int GlobalPropertyChanged { get; }
 
         public MainViewModel()
@@ -56,14 +58,10 @@ namespace GeosEnterprise.ViewModel
             ClientsList = new RelayCommand<object>(ClientsListVM);
             AccountantPanel = new RelayCommand<object>(AccountantPanelVM);
             Logout = new RelayCommand<object>(LogoutVM);
+            SchedulerPanel = new RelayCommand<object>(SchedulerPanelVM);
             Messenger.Default.Register<ViewModelBase>(this, MessageHandler);
             Messenger.Default.Register<String>(this, AuthenticationValid);
             ViewModel = new AuthenticationViewModel();
-        }
-
-        private void AccountantPanelVM(object obj)
-        {
-            ViewModel = new AccountantPanelViewModel();
         }
 
         private void AuthenticationValid(string obj)
@@ -94,6 +92,16 @@ namespace GeosEnterprise.ViewModel
         private void ClientsListVM(object obj)
         {
             ViewModel = new ClientsListViewModel();
+        }
+
+        private void AccountantPanelVM(object obj)
+        {
+            ViewModel = new AccountantPanelViewModel();
+        }
+
+        private void SchedulerPanelVM(object obj)
+        {
+            ViewModel = new SchedulerPanelViewModel();
         }
 
         private void LogoutVM(object obj)
