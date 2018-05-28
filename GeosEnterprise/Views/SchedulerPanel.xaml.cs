@@ -40,14 +40,6 @@ namespace GeosEnterprise.Views
                 scheduler1.OnEventDoubleClick += scheduler1_OnEventDoubleClick;
                 scheduler1.OnScheduleDoubleClick += scheduler1_OnScheduleDoubleClick;
                 scheduler1.Loaded += scheduler1_Loaded;
-
-                scheduler1.AddEvent(new Event() { Subject = "Dev meeting", Color = Brushes.LightGreen, Start = new DateTime(2013, 05, 29, 15, 30, 00), End = new DateTime(2013, 05, 29, 15, 45, 00) });
-                scheduler1.AddEvent(new Event() { Subject = "F1 Monaco", Color = Brushes.LightGreen, Start = new DateTime(2013, 05, 30, 14, 00, 00), End = new DateTime(2013, 05, 30, 15, 45, 00) });
-                scheduler1.AddEvent(new Event() { Subject = "Dinner with Paquito", Color = Brushes.LightGreen, Start = new DateTime(2013, 06, 1, 8, 00, 00), End = new DateTime(2013, 06, 1, 17, 00, 00) });
-                scheduler1.AddEvent(new Event() { Subject = "Call RRHH", Color = Brushes.LightBlue, Start = new DateTime(2013, 06, 1, 13, 00, 00), End = new DateTime(2013, 06, 1, 19, 00, 00) });
-                scheduler1.AddEvent(new Event() { Subject = "Oscar Holidays", Color = Brushes.Yellow, Start = new DateTime(2013, 5, 30, 08, 00, 00), End = new DateTime(2013, 06, 2, 19, 00, 00) });
-                scheduler1.AddEvent(new Event() { Subject = "Patri Holidays", Color = Brushes.Green, Start = new DateTime(2013, 5, 16, 08, 00, 00), End = new DateTime(2013, 06, 1, 19, 00, 00) });
-
             }
             catch (Exception ex)
             {

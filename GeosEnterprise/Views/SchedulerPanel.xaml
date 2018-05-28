@@ -20,7 +20,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="prevBtn" Margin="0,0,0.4,0" HorizontalAlignment="Right" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click"/>
+                <Button x:Name="prevBtn" Margin="0,0,0.4,0" HorizontalAlignment="Right" Background="White" FontWeight="Bold" FontSize="11" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click" Height="24" Width="106"/>
             </StackPanel>
         </Border>
 
@@ -31,56 +31,49 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="nextBtn" Margin="0 0  0 0" HorizontalAlignment="Left" DockPanel.Dock="Left" Content="Przewiń do przodu"  VerticalAlignment="Center" Click="nextBtn_Click"/>
+                <Button x:Name="nextBtn" Margin="0 0 0 0" Background="White" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" DockPanel.Dock="Left" Content="Przewiń do przodu"  VerticalAlignment="Center" Click="nextBtn_Click" Height="24" Width="124"/>
             </StackPanel>
         </Border>
 
         <Border Margin="520,15,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
-          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="140">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button Name="modeDayBtn" Margin="0,0,0,0" Content="Dzień"  VerticalAlignment="Center" Click="modeDayBtn_Click"></Button>
+                <Button Name="modeDayBtn" Margin="0,0,0,0"  Background="White" FontWeight="Bold" FontSize="11" Content="Dzień"  VerticalAlignment="Center" Click="modeDayBtn_Click" Height="23"></Button>
             </StackPanel>
         </Border>
 
         <Border Margin="665,15,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
-          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="140">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button Name="modeWeekBtn" Margin="0,0,0,0" Content="Tydzień"  VerticalAlignment="Center" Click="modeWeekBtn_Click"></Button>
+                <Button Name="modeWeekBtn" Margin="0,0,0,0" Background="White" FontWeight="Bold" FontSize="11" Content="Tydzień"  VerticalAlignment="Center" Click="modeWeekBtn_Click" Height="24"></Button>
             </StackPanel>
         </Border>
 
         <Border Margin="810,15,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
-          HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="140">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button Name="modeMonthBtn" Margin="0 0 0 0" Content="Miesiąc"  VerticalAlignment="Center" Click="modeMonthBtn_Click"></Button>
+                <Button Name="modeMonthBtn" Margin="0 0 0 0" Background="White" FontWeight="Bold" FontSize="11" Content="Miesiąc"  VerticalAlignment="Center" Click="modeMonthBtn_Click" Height="24"></Button>
             </StackPanel>
         </Border>
 
         <my:Scheduler
             HorizontalAlignment="Stretch" Name="scheduler1" VerticalAlignment="Stretch" Loaded="scheduler1_Loaded"
-            SelectedDate="2013-05-27"
-            StartJourney="9:00"
-            EndJourney="19:00"
+            SelectedDate="2018-05-27"
+            StartJourney="8:00"
+            EndJourney="18:00"
             OnEventDoubleClick="scheduler1_OnEventDoubleClick"
             OnScheduleDoubleClick="scheduler1_OnScheduleDoubleClick"
-            Mode="Week" Margin="0,75,10,9.6" Background="White">
+            Mode="Week" Margin="10,60,10,9.6" Background="White"/>
 
-            <my:Scheduler.Events>
-                <my:Event Subject="Internet line installation" Start="2018-05-29 10:00:00" End="2018-05-29 14:00:00" Color="Yellow"></my:Event>
-            </my:Scheduler.Events>
-        </my:Scheduler>
 
 
 
