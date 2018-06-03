@@ -29,7 +29,7 @@
         <TextBlock Text="{Binding EmailTaken}" HorizontalAlignment="Left" Margin="247,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5" Grid.Column="2"/>
         <TextBox Name="PasswordTextBox" Text="{Binding Password}" HorizontalAlignment="Left" Height="23" Margin="410,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Grid.Column="2"/>
         <Label Content="{Binding PasswordLabel}" HorizontalAlignment="Left" Margin="339,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" Foreground="White" Grid.Column="2"/>
-        <TextBlock Text="*Aby zachować dotychczasowe hasło pozostaw pole puste" Visibility="{Binding PasswordMessage}" HorizontalAlignment="Left"  Margin="339,150,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5" Grid.Column="2"/>
+        <TextBlock Text="*Aby zachować dotychczasowe hasło pozostaw pole puste" Visibility="{Binding PasswordMessage}" HorizontalAlignment="Left"  Margin="339,150,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.613,-1.5" Grid.Column="2" Foreground="White"  />
 
         <ComboBox  IsEnabled="{Binding IsAdminMode}" Name="PositionTextBox" Text="{Binding BindingItem.Position}" SelectedIndex="{Binding PositionIndex}" HorizontalAlignment="Left" Height="23" Margin="85,164,0,0"  VerticalAlignment="Top" Width="200" Grid.Column="2">
             <ComboBoxItem>Kierownik</ComboBoxItem>

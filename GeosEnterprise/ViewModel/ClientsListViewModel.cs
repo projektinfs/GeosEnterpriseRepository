@@ -14,6 +14,7 @@ using GeosEnterprise.Repositories;
 using GeosEnterprise.Views;
 using GeosEnterprise.Commands;
 using GalaSoft.MvvmLight;
+using System.Windows.Data;
 
 namespace GeosEnterprise.ViewModel
 {
@@ -24,12 +25,11 @@ namespace GeosEnterprise.ViewModel
         public ICommand AddButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
-        //public ICommand SearchButtonCommand { get; private set; }
+        public ICommand SearchButtonCommand { get; private set; }
 
         public String Name { get; set; }
 
         public object SelectedItem { get; set; }
-
 
         private DateTime? timeToBindingItem;
         public DateTime? TimeToBindingItem
@@ -43,8 +43,10 @@ namespace GeosEnterprise.ViewModel
                 if (timeToBindingItem != value)
                 {
                     timeToBindingItem = value;
+                    RaisePropertyChanged("TimeToBindingItem");
                 }
             }
+
         }
 
         private DateTime? timeFromBindingItem;
@@ -59,28 +61,38 @@ namespace GeosEnterprise.ViewModel
                 if (timeFromBindingItem != value)
                 {
                     timeFromBindingItem = value;
+                    RaisePropertyChanged("TimeFromBindingItem");
                 }
             }
+        }
+
+        private string _searchString;
+        public string SearchString
+        {
+            get { return _searchString; }
+            set { _searchString = value; RaisePropertyChanged("SearchString"); }
+        }
+
+        private ICollectionView _items;
+        public ICollectionView Items
+        {
+            get { return CollectionViewSource.GetDefaultView(_myDataSource); }
         }
 
         public ClientsListViewModel()
         {
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
+            SearchButtonCommand = new RelayCommand<object>(OnSearch);
             AddButtonCommand = new RelayCommand<object>(Add);
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             EditButtonCommand = new RelayCommand<object>(Edit);
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+            _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => ClientDTO.ToDTO(p)));
 
         }
 
-        public ObservableCollection<ClientDTO> Items
-        {
-            get
-            {
-                return new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => DTO.ClientDTO.ToDTO(p)));
-            }
-        }
+        public ObservableCollection<ClientDTO> _myDataSource = new ObservableCollection<ClientDTO>();
 
         public void Now(object obj)
         {
@@ -92,8 +104,6 @@ namespace GeosEnterprise.ViewModel
             TimeToBindingItem = null;
             TimeFromBindingItem = null;
         }
-
-        //from ClientsList
 
         private void Add(object obj)
         {
@@ -136,6 +146,50 @@ namespace GeosEnterprise.ViewModel
             else
             {
                 Config.MsgBoxNothingSelectedMessage();
+            }
+        }
+
+        private void OnSearch(object obj)
+        {
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                {
+                    Items.Filter = (item) => {
+                        return ((item as ClientDTO).Name.Contains(SearchString)
+                            || (item as ClientDTO).Surname.Contains(SearchString)
+                            || (item as ClientDTO).ClientContact.Email.Contains(SearchString)
+                            || (item as ClientDTO).ClientContact.Phone.Contains(SearchString));
+                    };
+                }
+                else
+                {
+                    Items.Filter = (item) => {
+
+                        return ((item as ClientDTO).Name.Contains(SearchString)
+                            || (item as ClientDTO).Surname.Contains(SearchString)
+                            || (item as ClientDTO).ClientContact.Email.Contains(SearchString)
+                            || (item as ClientDTO).ClientContact.Phone.Contains(SearchString))
+                            && ((item as ClientDTO).CreatedDate >= timeFromBindingItem.Value)
+                            && ((item as ClientDTO).CreatedDate <= timeToBindingItem.Value);
+                    };
+                }
+            }
+            else
+            {
+                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                {
+                    Items.Filter = (item) => {
+                        return (item as ClientDTO).DeletedDate == null;
+                    };
+                }
+                else
+                {
+                    Items.Filter = (item) => {
+                        return ((item as ClientDTO).CreatedDate >= timeFromBindingItem.Value)
+                        && ((item as ClientDTO).CreatedDate <= timeToBindingItem.Value);
+                    };
+                }
             }
         }
 
