@@ -34,7 +34,7 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <Image Margin="0,-1000,29.6,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
+                <Image Margin="0,-1000,30,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="404" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
             </StackPanel>
         </Border>
     </Grid>

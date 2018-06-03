@@ -20,9 +20,9 @@
                     <ColumnDefinition Width="136"/>
                     <ColumnDefinition Width="136"/>
                     <ColumnDefinition Width="136"/>
+                    <ColumnDefinition Width="136*"/>
                     <ColumnDefinition Width="136"/>
-                    <ColumnDefinition Width="136"/>
-                    <ColumnDefinition Width="136"/>
+                    <ColumnDefinition Width="136*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
@@ -65,9 +65,9 @@
                                 <ColumnDefinition Width="136"/>
                                 <ColumnDefinition Width="136"/>
                                 <ColumnDefinition Width="136"/>
+                                <ColumnDefinition Width="136*"/>
                                 <ColumnDefinition Width="136"/>
-                                <ColumnDefinition Width="136"/>
-                                <ColumnDefinition Width="136"/>
+                                <ColumnDefinition Width="136*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="30"/>

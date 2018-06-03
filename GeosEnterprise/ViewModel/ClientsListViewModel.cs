@@ -24,6 +24,8 @@ namespace GeosEnterprise.ViewModel
         public ICommand AddButtonCommand { get; set; }
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
+        //public ICommand SearchButtonCommand { get; private set; }
+
         public String Name { get; set; }
 
         public object SelectedItem { get; set; }
@@ -136,5 +138,6 @@ namespace GeosEnterprise.ViewModel
                 Config.MsgBoxNothingSelectedMessage();
             }
         }
+
     }
 }

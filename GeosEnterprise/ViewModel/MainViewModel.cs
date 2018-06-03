@@ -38,6 +38,17 @@ namespace GeosEnterprise.ViewModel
             }
         }
 
+        private String _Name;
+        public String Name
+        {
+            get { return _IsAuthenticated; }
+            set
+            {
+                _IsAuthenticated = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
         public ICommand StartPanel { get; set; }
         public ICommand ComputersList { get; set; }
         public ICommand EmployeesList { get; set; }
@@ -61,7 +72,14 @@ namespace GeosEnterprise.ViewModel
             SchedulerPanel = new RelayCommand<object>(SchedulerPanelVM);
             Messenger.Default.Register<ViewModelBase>(this, MessageHandler);
             Messenger.Default.Register<String>(this, AuthenticationValid);
+            Messenger.Default.Register<String>(this, UserName);
             ViewModel = new AuthenticationViewModel();
+            
+        }
+
+        private void UserName(string obj)
+        {
+            Name = obj;
         }
 
         private void AuthenticationValid(string obj)

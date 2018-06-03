@@ -117,6 +117,7 @@ namespace GeosEnterprise.ViewModel
                 currentName = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
+                Messenger.Default.Send(Name);
                 return;
             }
 
@@ -131,6 +132,7 @@ namespace GeosEnterprise.ViewModel
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
+                Messenger.Default.Send(Name);
             }
             else
             {
