@@ -42,14 +42,10 @@
             <Run Text="Adres: "/>
         </TextBlock>
         <TextBlock x:Name="Adress" HorizontalAlignment="Left" Margin="78,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
-            <Run Text="{Binding currentEmployee.Adress.City}"/>
-            <Run Text=", "/>
-            <Run Text="{Binding currentEmployee.Adress.PostCode}"/>
+            <Run Text="{Binding Address, Mode=TwoWay}"/>
         </TextBlock>
         <TextBlock x:Name="AdressStreet" HorizontalAlignment="Left" Margin="78,316,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="394" FontWeight="Bold" FontSize="18" Foreground="White">
-            <Run Text="{Binding currentEmployee.Adress.Street}"/>
-            <Run Text=" "/>
-            <Run Text="{Binding currentEmployee.Adress.AppartamentNumber}"/>
+            <Run Text="{Binding BuildingAndApartamentNumber, Mode=TwoWay}"/>
         </TextBlock>
 
         <Border Margin="115,362,569,47.6" Padding="2"
