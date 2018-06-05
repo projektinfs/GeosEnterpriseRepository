@@ -6,9 +6,9 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         x:Class="GeosEnterprise.Views.NewEvent"
         mc:Ignorable="d"
-        Title="Dodaj wydarzenie" Height="314" Width="400" 
-        MinHeight="324" MinWidth="410"
-        MaxHeight="324" MaxWidth="410"
+        Title="Dodaj wydarzenie" Height="344" Width="400" 
+        MinHeight="354" MinWidth="410"
+        MaxHeight="354" MaxWidth="410"
         WindowStartupLocation="CenterScreen">
 
     <Grid >
@@ -17,19 +17,22 @@
         </Grid.Background>
 
         <Border Margin="10,10,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="365">
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="105" Width="365">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Label Content="Nazwa" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,0,288.8,0" Foreground="White" Width="60"/>
+                <Label Content="Nazwa" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,2,288.8,0" Foreground="White" Width="60"/>
                 <TextBox x:Name="Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" FontStyle="Italic" Margin="60,-25,0,0" HorizontalAlignment="Left" Width="285"/>
-                <Label Content="Osoba" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,2,288.8,0" Foreground="White" Width="60"/>
-                <ComboBox x:Name="employeeComboBox" Margin="60,-27,5,0" DisplayMemberPath="FullName" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="27" BorderBrush="White" FontSize="13"/>
+                <Label Content="Pracownik" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,5,273.8,0" Foreground="White"/>
+                <ComboBox x:Name="employeeComboBox" Margin="80,-25,5,0" DisplayMemberPath="FullName" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="22" BorderBrush="White" FontSize="13"/>
+                <Label Content="Naprawa" FontFamily="Microsoft Sans Serif"  Height="28" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,5,273.8,0" Foreground="White"/>
+                <ComboBox x:Name="repairComboBox" Margin="80,-27,5,0" DisplayMemberPath="FullName" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="22" BorderBrush="White" FontSize="13"/>
+
             </StackPanel>
         </Border>
 
-        <Border Margin="11,85,0,0" Padding="3"
+        <Border Margin="11,120,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="364">
             <Border.Background>
@@ -43,14 +46,14 @@
 
 
 
-        <Border Margin="96,220,97.6,0" Padding="3" Background="#FF002D51" 
+        <Border Margin="96,255,97.6,0" Padding="3" Background="#FF002D51" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="5" Height="60" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200">
             <StackPanel >
                 <Button Content="Dodaj wydarzenie" Margin="0,0,0,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Left" Width="188" Height="46"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="11,130,0,0" Padding="3"
+        <Border Margin="11,165,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="364">
             <Border.Background>
@@ -62,7 +65,7 @@
             </StackPanel>
         </Border>
 
-        <Border Margin="101,175,0,0" Padding="3"
+        <Border Margin="101,210,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="200">
             <Border.Background>

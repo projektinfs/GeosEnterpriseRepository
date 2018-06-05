@@ -42,16 +42,26 @@ namespace GeosEnterprise.Views
 
             colorBox.SelectedIndex = 0;
 
-
             employeeComboBox.DisplayMemberPath = "Key";
             employeeComboBox.SelectedValuePath = "Value";
 
-            List<string> employees = getEmployees();
+            List<EmployeeDTO> employees = getEmployees();
 
-            foreach (string employee in employees)
+            foreach (EmployeeDTO employee in employees)
             {
-                employeeComboBox.Items.Add(new KeyValuePair<string, string>(employee, employee));
+                employeeComboBox.Items.Add(new KeyValuePair<string, string>(employee.FullName, employee.FullName));
             }
+
+            repairComboBox.DisplayMemberPath = "Key";
+            repairComboBox.SelectedValuePath = "Value";
+
+            List<RepairDTO> repairs = getRepairs();
+
+            foreach (RepairDTO repair in repairs)
+            {
+                repairComboBox.Items.Add(new KeyValuePair<string, string>(repair.Computer.Name + " " + repair.Computer.SerialNumber , repair.Computer.SerialNumber));
+            }
+
 
         }
 
@@ -70,9 +80,14 @@ namespace GeosEnterprise.Views
             this.Close();
         }
 
-        public List<string> getEmployees()
+        public List<EmployeeDTO> getEmployees()
         {
-            return Repositories.EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p).FullName).ToList();
+            return Repositories.EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)).ToList();
+        }
+
+        public List<RepairDTO> getRepairs()
+        {
+            return Repositories.RepairsRepository.GetAllCurrent().Select(p => RepairDTO.ToDTO(p)).ToList();
         }
     }
 }
