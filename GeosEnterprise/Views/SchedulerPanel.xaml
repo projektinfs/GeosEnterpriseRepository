@@ -20,7 +20,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="prevBtn" Command="{Binding PrevButtonCommand}" Margin="0,0,0,0" HorizontalAlignment="Right" Background="White" FontWeight="Bold" FontSize="11" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click" Height="24" Width="106"/>
+                <Button x:Name="prevBtn" Margin="0,0,0,0" HorizontalAlignment="Right" Background="White" FontWeight="Bold" FontSize="11" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click" Height="24" Width="106"/>
             </StackPanel>
         </Border>
 
@@ -31,7 +31,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="nextBtn" Command="{Binding NextButtonCommand}" Margin="0 0 0 0" Background="White" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" DockPanel.Dock="Left" Content="Przewiń do przodu"  VerticalAlignment="Center" Click="nextBtn_Click" Height="24" Width="124"/>
+                <Button x:Name="nextBtn" Margin="0 0 0 0" Background="White" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" DockPanel.Dock="Left" Content="Przewiń do przodu"  VerticalAlignment="Center" Click="nextBtn_Click" Height="24" Width="124"/>
             </StackPanel>
         </Border>
 

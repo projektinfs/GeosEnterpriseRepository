@@ -32,14 +32,7 @@
                         </LinearGradientBrush>
                     </Button.Background>
                 </Button>
-                <ComboBox Margin="86,-27,160.77,0" ItemsSource="{Binding Clients}" DisplayMemberPath="FullName" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" SelectedIndex="{Binding SelectedClientIndex}" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="27" BorderBrush="White" FontSize="13">
-                    <ComboBox.Background>
-                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ComboBox.Background>
-                </ComboBox>
+                <ComboBox Margin="86,-27,160.77,0" ItemsSource="{Binding Clients}" DisplayMemberPath="FullName" SelectedItem="{Binding BindingItem.Client}" SelectedValue="{Binding BindingItem.Client}" SelectedIndex="{Binding SelectedClientIndex}" VerticalAlignment="Top" MinWidth="70" MinHeight="23" Height="27" BorderBrush="White" FontSize="13"/>
                 <Label Content="Nazwa*" Margin="0,-5,413,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="31"/>
                 <TextBox Text="{Binding BindingItem.Computer.Name}" Margin="86,-20,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23" Height="25"/>
                 <Label Content="Numer seryjny*" Margin="-1,0,350.2,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="40"/>

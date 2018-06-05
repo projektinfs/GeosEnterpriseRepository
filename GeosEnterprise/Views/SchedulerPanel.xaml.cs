@@ -30,18 +30,11 @@ namespace GeosEnterprise.Views
 
         private void scheduler_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                scheduler.SelectedDate = DateTime.Now;
-                scheduler.Mode = Mode.Day;
-                scheduler.StartJourney = new TimeSpan(7, 0, 0);
-                scheduler.EndJourney = new TimeSpan(22, 0, 0);
-                scheduler.Loaded += scheduler_Loaded;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            scheduler.SelectedDate = DateTime.Now;
+            scheduler.Mode = Mode.Day;
+            scheduler.StartJourney = new TimeSpan(7, 0, 0);
+            scheduler.EndJourney = new TimeSpan(22, 0, 0);
+            scheduler.Loaded += scheduler_Loaded;
         }
 
         void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
@@ -53,12 +46,12 @@ namespace GeosEnterprise.Views
             if (window.Event != null)
                 scheduler.Events.Add(window.Event);
 
-           
+            scheduler.InvalidateVisual();
         }
 
         void scheduler_OnEventDoubleClick(object sender, Event e)
         {
-           if (e.Subject != null)
+            if (e.Subject != null)
             {
                 if (MessageBox.Show($"Czy na pewno chcesz usunąć wydarzenie: {e.Subject}",
                     "Usunięcie wydarzenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
@@ -67,9 +60,9 @@ namespace GeosEnterprise.Views
                 }
             }
             else
-            {
                 Config.MsgBoxNothingSelectedMessage();
-            }
+
+            scheduler.InvalidateVisual();
         }
 
         private void prevBtn_Click(object sender, RoutedEventArgs e)

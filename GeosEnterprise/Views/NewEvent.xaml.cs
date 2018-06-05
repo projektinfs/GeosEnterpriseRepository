@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeosEnterprise.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace GeosEnterprise.Views
         public NewEvent()
         {
             InitializeComponent();
+            DataContext = new NewEventViewModel();
+
             colorBox.DisplayMemberPath = "Key";
             colorBox.SelectedValuePath = "Value";
 
@@ -37,14 +40,12 @@ namespace GeosEnterprise.Views
             colorBox.Items.Add(new KeyValuePair<string, SolidColorBrush>("Polska leśna zieleń", Brushes.ForestGreen));
 
             colorBox.SelectedIndex = 0;
-
         }
 
         public Event Event { get; internal set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             Event = new Event()
             {
                 Subject = Name.Text,

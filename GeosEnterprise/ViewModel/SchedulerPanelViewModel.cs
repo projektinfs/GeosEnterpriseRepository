@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using CommonServiceLocator;
+using GalaSoft.MvvmLight;
 using GeosEnterprise.Commands;
 using GeosEnterprise.DTO;
 using System;
@@ -20,17 +21,11 @@ namespace GeosEnterprise.ViewModel
         public ICommand WeekButtonCommand { get; set; }
         public ICommand MonthButtonCommand { get; set; }
 
-        public ICommand PrevButtonCommand { get; set; }
-        public ICommand NextButtonCommand { get; set; }
-
         public SchedulerPanelViewModel()
         {
             DayButtonCommand = new RelayCommand<object>(Day);
             WeekButtonCommand = new RelayCommand<object>(Week);
             MonthButtonCommand = new RelayCommand<object>(Month);
-
-            PrevButtonCommand = new RelayCommand<object>(Prev);
-            NextButtonCommand = new RelayCommand<object>(Next);
         }
 
         private Mode mode;
@@ -66,16 +61,6 @@ namespace GeosEnterprise.ViewModel
         {
             Mode = Mode.Month;
             RaisePropertyChanged("Mode");
-        }
-
-        public void Prev(object obj)
-        {
-
-        }
-
-        public void Next(object obj)
-        {
-
         }
     }
 }

@@ -172,6 +172,7 @@
     <Compile Include="ViewModel\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModel\EmployeesListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NewEventViewModel.cs" />
     <Compile Include="ViewModel\SchedulerPanelViewModel.cs" />
     <Compile Include="ViewModel\StartPanelViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

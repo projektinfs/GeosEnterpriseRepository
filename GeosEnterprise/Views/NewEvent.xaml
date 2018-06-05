@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GeosEnterprise.Views"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:ms="http://namespaces.mindscape.co.nz/wpf" x:Class="GeosEnterprise.Views.NewEvent"
+        x:Class="GeosEnterprise.Views.NewEvent"
         mc:Ignorable="d"
         Title="Dodaj wydarzenie" Height="314" Width="400" 
         MinHeight="324" MinWidth="410"
@@ -18,17 +17,18 @@
         </Grid.Background>
 
         <Border Margin="10,10,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="365">
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="365">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
                 <Label Content="Nazwa" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,0,288.8,0" Foreground="White" Width="60"/>
                 <TextBox x:Name="Name" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextWrapping="Wrap" FontSize="16" FontWeight="Bold" Background="White" Height="22" FontStyle="Italic" Margin="60,-25,0,0" HorizontalAlignment="Left" Width="285"/>
+                <!--<Label Content="Osoba" FontFamily="Microsoft Sans Serif"  Height="25" RenderTransformOrigin="2.35,-0.308" FontSize="14" Margin="0,2,288.8,0" Foreground="White" Width="60"/>-->
             </StackPanel>
         </Border>
 
-        <Border Margin="10,65,0,0" Padding="3"
+        <Border Margin="11,85,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="364">
             <Border.Background>
@@ -42,14 +42,14 @@
 
 
 
-        <Border Margin="96,214,97.6,0" Padding="3" Background="#FF002D51" 
+        <Border Margin="96,220,97.6,0" Padding="3" Background="#FF002D51" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="5" Height="60" VerticalAlignment="Top" HorizontalAlignment="Center" Width="200">
             <StackPanel >
                 <Button Content="Dodaj wydarzenie" Margin="0,0,0,0" VerticalAlignment="Top" Click="Button_Click" HorizontalAlignment="Left" Width="188" Height="46"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="10,120,0,0" Padding="3"
+        <Border Margin="11,130,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="364">
             <Border.Background>
@@ -61,7 +61,7 @@
             </StackPanel>
         </Border>
 
-        <Border Margin="96,170,0,0" Padding="3"
+        <Border Margin="101,175,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="200">
             <Border.Background>
