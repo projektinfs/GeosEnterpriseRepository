@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:GeosEnterprise.Views"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="960">
+             d:DesignHeight="450" d:DesignWidth="1500">
 
     <Grid>
         <Grid.Background>
@@ -29,6 +29,10 @@
                 <Button x:Name="InfoButton" Content="Info"  Margin="461,-44,0,0.6" Command="{Binding InfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="TakeButton" Content="Podejmij"  Margin="615,-44,0,0.6" Command="{Binding TakeButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="ReportButton" Content="Generuj raport" Margin="769,-44,0,0.6" Command="{Binding ReportButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="CurrentButton" Content="Podjęte" Margin="924,-44,0,0.6" Command="{Binding CurrentButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="ReportedButton" Content="Zgłoszone" Margin="1079,-44,0,0.6" Command="{Binding ReportedButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="RepairInfoButton" Content="Naprawa" Margin="1234,-44,0,0.6" Visibility="{Binding RepairInfoVisibility}" Command="{Binding RepairInfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+
             </StackPanel>
         </Border>
 
