@@ -70,24 +70,31 @@ namespace GeosEnterprise.ViewModel
                 Byte[] InBytePassword = Encoding.UTF8.GetBytes("admin123");
                 Byte[] HasedPassword = SHA256.ComputeHash(InBytePassword);
 
-                Employee employee = new Employee
+                EmployeeRepository.Add(new Employee
                 {
                     Email = "admin@admin.pl",
                     Password = HasedPassword,
-                    //Position = "Administrator",
+                    Name ="Admin",
+                    Surname = "Adminowski",
+                    Position = "Administrator",
+                    UserRole = UserRole.Administrator,
                     Adress = new Adress
                     {
-                        PostCode = "00:000",
-
+                        City = "Krakow",
+                        Voivodeship = "Malopolskie",
+                        District = "Krakow",
+                        PostCode = "30-031",
+                        Street = "Tokarskiego",
+                        BuildingNumber = "6",
+                        AppartamentNumber = "310"
                     },
                     EmployeeContact = new EmployeeContact
                     {
-                        Www = "www.notexist.pl",
+                        Phone = "123456789",
+                        Fax = "987654321",
+                        Www = "www.geosenterprise.com"
                     }
-                                       
-                };
-
-                EmployeeRepository.Add(employee);
+                });
             }
 
             IsVisible = "Visible";
@@ -117,6 +124,7 @@ namespace GeosEnterprise.ViewModel
                 currentName = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
+                Messenger.Default.Send(Name);
                 return;
             }
 
@@ -131,6 +139,7 @@ namespace GeosEnterprise.ViewModel
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
+                Messenger.Default.Send(Name);
             }
             else
             {

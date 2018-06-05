@@ -17,10 +17,7 @@ namespace GeosEnterprise.ViewModel
 {
     public class EmployeesListViewModel : ViewModelBase
     {
-
         public String Name { get; set; }
-
-
 
         public EmployeesListViewModel()
         {

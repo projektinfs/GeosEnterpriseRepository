@@ -42,6 +42,7 @@ namespace GeosEnterprise.DBO
                     {
                         Phone = "503948392",
                     },
+
                     UserRole = UserRole.Dealer,
                     Position = Util.GetEnumDescription(UserRole.Dealer)
                 },
@@ -62,6 +63,7 @@ namespace GeosEnterprise.DBO
                     {
                         Phone = "586985458",
                     },
+
                     UserRole = UserRole.Serviceman,
                     Position = Util.GetEnumDescription(UserRole.Serviceman)
                 }

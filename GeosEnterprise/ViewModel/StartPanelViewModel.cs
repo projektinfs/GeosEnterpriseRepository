@@ -21,12 +21,46 @@ namespace GeosEnterprise.ViewModel
 
         public Employee currentEmployee { get; set; }
         public String Name { get; set; }
+        public String _Address;
+        public String Address
+        {
+            get
+            {
+                return _Address;
+            }
 
+            set
+            {
+                _Address = currentEmployee.Adress.City + " " + currentEmployee.Adress.PostCode;
+                RaisePropertyChanged("Address");
+            }
+           
+        }
 
+        public String _BuildingAndApartamentNumber;
+        public String BuildingAndApartamentNumber
+        {
+            get
+            {
+                return _BuildingAndApartamentNumber;
+            }
+
+            set
+            {
+                _BuildingAndApartamentNumber = currentEmployee.Adress.Street + ", " + currentEmployee.Adress.BuildingNumber;
+                if (  !String.IsNullOrEmpty(currentEmployee.Adress.AppartamentNumber) )
+                {
+                    _BuildingAndApartamentNumber += "\\" + currentEmployee.Adress.AppartamentNumber;
+                }
+                RaisePropertyChanged("BuildingAndApartamentNumber");
+            }
+        }
 
         public StartPanelViewModel()
         {
             currentEmployee = Authorization.AcctualEmployee;
+            Address = "Changed";
+            BuildingAndApartamentNumber = "Changed";
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
             ChangePreferences = new RelayCommand<object>(Change);
         }
@@ -42,6 +76,8 @@ namespace GeosEnterprise.ViewModel
         private void AddNewEmployeeWindowClosed(object sender, EventArgs e)
         {
             currentEmployee = Authorization.AcctualEmployee;
+            Address = "Changed";
+            BuildingAndApartamentNumber = "Changed";
             RaisePropertyChanged("currentEmployee");
         }
     }

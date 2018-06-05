@@ -13,18 +13,18 @@
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
 
-        <Border Margin="20,15,0,0" Padding="3"
+        <Border Margin="10,10,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="122">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button x:Name="prevBtn" Margin="0,0,0.4,0" HorizontalAlignment="Right" Background="White" FontWeight="Bold" FontSize="11" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click" Height="24" Width="106"/>
+                <Button x:Name="prevBtn" Margin="0,0,0,0" HorizontalAlignment="Right" Background="White" FontWeight="Bold" FontSize="11" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click" Height="24" Width="106"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="147,15,0,0" Padding="3"
+        <Border Margin="137,10,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="140">
             <Border.Background>
@@ -35,47 +35,30 @@
             </StackPanel>
         </Border>
 
-        <Border Margin="520,15,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="140">
+        <Border Margin="0,10,10,0" Padding="3"
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Width="366">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
-                <Button Name="modeDayBtn" Margin="0,0,0,0"  Background="White" FontWeight="Bold" FontSize="11" Content="Dzień"  VerticalAlignment="Center" Click="modeDayBtn_Click" Height="23"></Button>
-            </StackPanel>
-        </Border>
-
-        <Border Margin="665,15,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="140">
-            <Border.Background>
-                <ImageBrush ImageSource="..\Icons\text-background.png"/>
-            </Border.Background>
-            <StackPanel >
-                <Button Name="modeWeekBtn" Margin="0,0,0,0" Background="White" FontWeight="Bold" FontSize="11" Content="Tydzień"  VerticalAlignment="Center" Click="modeWeekBtn_Click" Height="24"></Button>
-            </StackPanel>
-        </Border>
-
-        <Border Margin="810,15,0,0" Padding="3"
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" VerticalAlignment="Top" Height="40" HorizontalAlignment="Left" Width="140">
-            <Border.Background>
-                <ImageBrush ImageSource="..\Icons\text-background.png"/>
-            </Border.Background>
-            <StackPanel >
-                <Button Name="modeMonthBtn" Margin="0 0 0 0" Background="White" FontWeight="Bold" FontSize="11" Content="Miesiąc"  VerticalAlignment="Center" Click="modeMonthBtn_Click" Height="24"></Button>
+                <Button Margin="0,0,249.4,0" Command="{Binding DayButtonCommand}"  Background="White" FontWeight="Bold" FontSize="11" Content="Dzień"  VerticalAlignment="Center" Height="23"/>
+                <Button Margin="106,-23,125.4,0.6" Command="{Binding WeekButtonCommand}" Background="White" FontWeight="Bold" FontSize="11" Content="Tydzień"  VerticalAlignment="Center" Height="23"/>
+                <Button Margin="228 -25, 0,0" Command="{Binding MonthButtonCommand}" Background="White" FontWeight="Bold" FontSize="11" Content="Miesiąc"  VerticalAlignment="Center" Height="23"></Button>
             </StackPanel>
         </Border>
 
         <my:Scheduler
-            HorizontalAlignment="Stretch" Name="scheduler1" VerticalAlignment="Stretch" Loaded="scheduler1_Loaded"
-            SelectedDate="2018-05-27"
-            StartJourney="8:00"
-            EndJourney="18:00"
-            OnEventDoubleClick="scheduler1_OnEventDoubleClick"
-            OnScheduleDoubleClick="scheduler1_OnScheduleDoubleClick"
-            Mode="Week" Margin="10,60,10,9.6" Background="White"/>
-
-
-
+            HorizontalAlignment="Stretch"
+            Name="scheduler" 
+            VerticalAlignment="Stretch" 
+            Loaded="scheduler_Loaded"
+            StartJourney="7:00"
+            EndJourney="22:00"
+            OnEventDoubleClick="scheduler_OnEventDoubleClick"
+            OnScheduleDoubleClick="scheduler_OnScheduleDoubleClick"
+            Mode="{Binding Mode, Mode=TwoWay}" 
+            Margin="10,60,10,9.6"
+            Background="WhiteSmoke"/>
 
     </Grid>
 </UserControl>

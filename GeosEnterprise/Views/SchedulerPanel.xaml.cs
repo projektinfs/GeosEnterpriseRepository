@@ -28,63 +28,51 @@ namespace GeosEnterprise.Views
             DataContext = new SchedulerPanelViewModel();
         }
 
-
-        private void scheduler1_Loaded(object sender, RoutedEventArgs e)
+        private void scheduler_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                scheduler1.SelectedDate = DateTime.Now;
-                scheduler1.Mode = Mode.Day;
-                scheduler1.StartJourney = new TimeSpan(9, 0, 0);
-                scheduler1.EndJourney = new TimeSpan(19, 0, 0);
-                scheduler1.OnEventDoubleClick += scheduler1_OnEventDoubleClick;
-                scheduler1.OnScheduleDoubleClick += scheduler1_OnScheduleDoubleClick;
-                scheduler1.Loaded += scheduler1_Loaded;
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            scheduler.SelectedDate = DateTime.Now;
+            scheduler.Mode = Mode.Day;
+            scheduler.StartJourney = new TimeSpan(7, 0, 0);
+            scheduler.EndJourney = new TimeSpan(22, 0, 0);
+            scheduler.Loaded += scheduler_Loaded;
         }
 
-        void scheduler1_OnScheduleDoubleClick(object sender, DateTime e)
+        void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
         {
             Console.WriteLine(e.ToShortDateString() + ((FrameworkElement)sender).Name);
-            NewEvent window = new NewEvent(e);
+            NewEvent window = new NewEvent();
             window.ShowDialog();
 
             if (window.Event != null)
-                scheduler1.Events.Add(window.Event);
+                scheduler.Events.Add(window.Event);
+
+            scheduler.InvalidateVisual();
         }
 
-        void scheduler1_OnEventDoubleClick(object sender, Event e)
+        void scheduler_OnEventDoubleClick(object sender, Event e)
         {
-            Console.WriteLine(e.Subject);
+            if (e.Subject != null)
+            {
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć wydarzenie: {e.Subject}",
+                    "Usunięcie wydarzenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    scheduler.Events.Remove(e);
+                }
+            }
+            else
+                Config.MsgBoxNothingSelectedMessage();
+
+            scheduler.InvalidateVisual();
         }
 
         private void prevBtn_Click(object sender, RoutedEventArgs e)
         {
-            scheduler1.PrevPage();
+            scheduler.PrevPage();
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
         {
-            scheduler1.NextPage();
-        }
-
-        private void modeMonthBtn_Click(object sender, RoutedEventArgs e)
-        {
-            scheduler1.Mode = Mode.Month;
-        }
-
-        private void modeWeekBtn_Click(object sender, RoutedEventArgs e)
-        {
-            scheduler1.Mode = Mode.Week;
-        }
-
-        private void modeDayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            scheduler1.Mode = Mode.Day;
+            scheduler.NextPage();
         }
     }
 }
