@@ -32,6 +32,12 @@ namespace GeosEnterprise.ViewModel
             DateTimeNowButtonCommand = new RelayCommand<object>(Now);
             ResetButtonCommand = new RelayCommand<object>(Reset);
             SearchButtonCommand = new RelayCommand<object>(OnSearch);
+            CurrentButtonCommand = new RelayCommand<object>(Current);
+            ReportedButtonCommand = new RelayCommand<object>(Reported);
+            RepairInfoButtonCommand = new RelayCommand<object>(RepairInfo);
+
+            RepairInfoVisibility = "Hidden";
+
             _myDataSource = DataSourceHelper;
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
 
@@ -46,6 +52,11 @@ namespace GeosEnterprise.ViewModel
         public ICommand DateTimeNowButtonCommand { get; set; }
         public ICommand ResetButtonCommand { get; set; }
         public ICommand SearchButtonCommand { get; private set; }
+        public ICommand CurrentButtonCommand { get; set; }
+        public ICommand ReportedButtonCommand { get; set; }
+        public ICommand RepairInfoButtonCommand { get; set; }
+
+
 
         public ObservableCollection<RepairDTO> _myDataSource = new ObservableCollection<RepairDTO>();
 
@@ -102,6 +113,13 @@ namespace GeosEnterprise.ViewModel
         {
             get { return _searchString; }
             set { _searchString = value; RaisePropertyChanged("SearchString"); }
+        }
+
+        private string _repairInfoVisibility;
+        public string RepairInfoVisibility
+        {
+            get { return _repairInfoVisibility; }
+            set { _repairInfoVisibility = value; RaisePropertyChanged("RepairInfoVisibility"); }
         }
 
         private ICollectionView _items;
@@ -281,6 +299,55 @@ namespace GeosEnterprise.ViewModel
                         && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
+            }
+        }
+
+        private ObservableCollection<RepairDTO> CurrentRepairs
+        {
+            get
+            {
+                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
+                .GetAllCurrent()
+                .Where(p => p.Status == DBO.RepairStatus.InProcess)
+                .Where(p=> p.ServicemanID == Authorization.AcctualEmployee.ID)
+                .Select(p => DTO.RepairDTO.ToDTO(p)));
+            }
+        }
+
+        public void Current(object obj)
+        {  
+                _myDataSource = CurrentRepairs;
+                RaisePropertyChanged("Items");
+                _repairInfoVisibility = "Visible";
+                RaisePropertyChanged("RepairInfoVisibility");
+
+        }
+
+        public void Reported(object obj)
+        {
+            _myDataSource = DataSourceHelper;
+            RaisePropertyChanged("Items");
+            _repairInfoVisibility = "Hidden";
+            RaisePropertyChanged("RepairInfoVisibility");
+        }
+
+        public void RepairInfo(object obj)
+        {
+            var repairDTO = SelectedItem as RepairDTO;
+
+            if (repairDTO != null)
+            {
+                Window repairInfoWindow = new ComputersServiceman(repairDTO.ID);
+                if (repairInfoWindow.ShowDialog() == true)
+                {
+                    _myDataSource = DataSourceHelper;
+                    RaisePropertyChanged("Items");
+
+                }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
             }
         }
     }

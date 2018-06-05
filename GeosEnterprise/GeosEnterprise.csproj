@@ -166,6 +166,7 @@
     <Compile Include="ViewModel\ComputersInfoViewModel.cs" />
     <Compile Include="ViewModel\ComputersListViewModel.cs" />
     <Compile Include="ViewModel\ClientsAddViewModel.cs" />
+    <Compile Include="ViewModel\ComputersServicemanViewModel.cs" />
     <Compile Include="ViewModel\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModel\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModel\EmployeesListViewModel.cs" />
@@ -188,6 +189,9 @@
     </Compile>
     <Compile Include="Views\ComputersAdd.xaml.cs">
       <DependentUpon>ComputersAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ComputersServiceman.xaml.cs">
+      <DependentUpon>ComputersServiceman.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ComputersList.xaml.cs">
       <DependentUpon>ComputersList.xaml</DependentUpon>
@@ -243,6 +247,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ComputersAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ComputersServiceman.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
