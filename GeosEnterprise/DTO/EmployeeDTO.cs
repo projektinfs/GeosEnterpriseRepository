@@ -39,7 +39,6 @@ namespace GeosEnterprise.DTO
             entity.Adress = Repositories.AdressesRepository.GetById(entity.Adress.ID);
             entity.EmployeeContact = Repositories.EmployeeContactsRepository.GetById(entity.EmployeeContact.ID);
 
-
             return new EmployeeDTO
             {
                 Adress = new AdressDTO
@@ -58,6 +57,7 @@ namespace GeosEnterprise.DTO
                     Phone = entity.EmployeeContact.Phone,
                     Fax = entity.EmployeeContact.Fax,
                 },
+
 
                ID = entity.ID,
                Email = entity.Email,

@@ -52,6 +52,8 @@ namespace GeosEnterprise.Views
 
             if (window.Event != null)
                 scheduler.Events.Add(window.Event);
+
+           
         }
 
         void scheduler_OnEventDoubleClick(object sender, Event e)
@@ -59,7 +61,7 @@ namespace GeosEnterprise.Views
            if (e.Subject != null)
             {
                 if (MessageBox.Show($"Czy na pewno chcesz usunąć wydarzenie: {e.Subject}",
-                    "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                    "Usunięcie wydarzenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     scheduler.Events.Remove(e);
                 }
@@ -79,21 +81,5 @@ namespace GeosEnterprise.Views
         {
             scheduler.NextPage();
         }
-
-        private void modeMonthBtn_Click(object sender, RoutedEventArgs e)
-        {
-            scheduler.Mode = Mode.Month;
-        }
-
-        private void modeWeekBtn_Click(object sender, RoutedEventArgs e)
-        {
-            scheduler.Mode = Mode.Week;
-        }
-
-        private void modeDayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            scheduler.Mode = Mode.Day;
-        }
-
     }
 }
