@@ -1,4 +1,5 @@
-﻿using GeosEnterprise.ViewModel;
+﻿using GeosEnterprise.DTO;
+using GeosEnterprise.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,18 @@ namespace GeosEnterprise.Views
             colorBox.Items.Add(new KeyValuePair<string, SolidColorBrush>("Polska leśna zieleń", Brushes.ForestGreen));
 
             colorBox.SelectedIndex = 0;
+
+
+            employeeComboBox.DisplayMemberPath = "Key";
+            employeeComboBox.SelectedValuePath = "Value";
+
+            List<string> employees = getEmployees();
+
+            foreach (string employee in employees)
+            {
+                employeeComboBox.Items.Add(new KeyValuePair<string, string>(employee, employee));
+            }
+
         }
 
         public Event Event { get; internal set; }
@@ -48,13 +61,18 @@ namespace GeosEnterprise.Views
         {
             Event = new Event()
             {
-                Subject = Name.Text,
+                Subject = employeeComboBox.SelectedValue.ToString() + " " + Name.Text,
                 Color = (SolidColorBrush)colorBox.SelectedValue,
                 Start = (DateTime)TimeFrom.Value,
                 End = (DateTime)TimeTo.Value
             };
 
             this.Close();
+        }
+
+        public List<string> getEmployees()
+        {
+            return Repositories.EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p).FullName).ToList();
         }
     }
 }
