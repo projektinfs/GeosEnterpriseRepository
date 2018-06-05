@@ -20,6 +20,7 @@
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
             <StackPanel >
+                
                 <Button x:Name="prevBtn" Margin="0,0,0.4,0" HorizontalAlignment="Right" Background="White" FontWeight="Bold" FontSize="11" Content="Przewiń do tyłu"  VerticalAlignment="Center" Click="prevBtn_Click" Height="24" Width="106"/>
             </StackPanel>
         </Border>
@@ -43,17 +44,19 @@
             <StackPanel >
                 <Button Name="modeDayBtn" Margin="0,0,249.4,0" Background="White" FontWeight="Bold" FontSize="11" Content="Dzień"  VerticalAlignment="Center" Click="modeDayBtn_Click" Height="23"/>
                 <Button Name="modeWeekBtn" Margin="106,-23,125.4,0.6" Background="White" FontWeight="Bold" FontSize="11" Content="Tydzień"  VerticalAlignment="Center" Click="modeWeekBtn_Click" Height="23"/>
-
                 <Button Name="modeMonthBtn" Margin="228 -25, 0,0" Background="White" FontWeight="Bold" FontSize="11" Content="Miesiąc"  VerticalAlignment="Center" Click="modeMonthBtn_Click" Height="23"></Button>
             </StackPanel>
         </Border>
 
         <my:Scheduler
-            HorizontalAlignment="Stretch" Name="scheduler1" VerticalAlignment="Stretch" Loaded="scheduler1_Loaded"
+            HorizontalAlignment="Stretch" 
+            Name="scheduler" 
+            VerticalAlignment="Stretch" 
+            Loaded="scheduler_Loaded"
             StartJourney="7:00"
             EndJourney="22:00"
-            OnEventDoubleClick="scheduler1_OnEventDoubleClick"
-            OnScheduleDoubleClick="scheduler1_OnScheduleDoubleClick"
+            OnEventDoubleClick="scheduler_OnEventDoubleClick"
+            OnScheduleDoubleClick="scheduler_OnScheduleDoubleClick"
             Mode="Week" Margin="10,60,10,9.6" Background="WhiteSmoke"/>
 
     </Grid>
