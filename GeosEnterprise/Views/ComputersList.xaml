@@ -18,20 +18,20 @@
         <Label Content="Komputery" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
 
         <Border Margin="10,0,10,6.6" Padding="3" 
-          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="60" VerticalAlignment="Bottom">
+          BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4" Height="100" VerticalAlignment="Bottom">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\small-background.jpg"/>
             </Border.Background>
             <StackPanel >
                 <Button x:Name="AddButton" Content="Dodaj" Margin="0,0,0,0.6" Command="{Binding AddButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
                 <Button x:Name="DeleteButton" Content="Usuń" Margin="154,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="EditButton" Content="Edytuj" Margin="308,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="InfoButton" Content="Info"  Margin="461,-44,0,0.6" Command="{Binding InfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="TakeButton" Content="Podejmij"  Margin="615,-44,0,0.6" Command="{Binding TakeButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="ReportButton" Content="Generuj raport" Margin="769,-44,0,0.6" Command="{Binding ReportButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="CurrentButton" Content="Podjęte" Margin="924,-44,0,0.6" Command="{Binding CurrentButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="ReportedButton" Content="Zgłoszone" Margin="1079,-44,0,0.6" Command="{Binding ReportedButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
-                <Button x:Name="RepairInfoButton" Content="Naprawa" Margin="1234,-44,0,0.6" Visibility="{Binding RepairInfoVisibility}" Command="{Binding RepairInfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="EditButton" Content="Edytuj" Margin="307,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="InfoButton" Content="Info"  Margin="460,-44,0,0.6" Command="{Binding InfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="TakeButton" Content="Podejmij"  Margin="613,-44,0,0.6" Command="{Binding TakeButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="ReportButton" Content="Generuj raport" Margin="0,0,0,0.6" Command="{Binding ReportButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="CurrentButton" Content="Podjęte" Margin="154,-44,0,0.6" Command="{Binding CurrentButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="ReportedButton" Content="Zgłoszone" Margin="307,-44,0,0.6" Command="{Binding ReportedButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
+                <Button x:Name="RepairInfoButton" Content="Naprawa" Margin="460,-44,0,0.6" Visibility="{Binding RepairInfoVisibility}" Command="{Binding RepairInfoButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" VerticalAlignment="Bottom" FontSize="20" FontWeight="Bold" Background="White"/>
 
             </StackPanel>
         </Border>
@@ -117,7 +117,7 @@
         </Border>
 
 
-        <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" BorderThickness="0" Margin="4,155,4,71.6" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" >
+        <ListView x:Name="RepairsList" ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}" VerticalContentAlignment="Top" HorizontalContentAlignment="Stretch" BorderThickness="0" Margin="4,155,4,121.6" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="0" CornerRadius="3" Margin="0,2,0,0" VerticalAlignment="Top" Background="White" Height="40">
