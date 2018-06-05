@@ -25,13 +25,6 @@ namespace GeosEnterprise.Views
             InitializeComponent();
         }
 
-        DateTime _dt = DateTime.Now;
-        public NewEvent(DateTime dt) : this()
-        {
-            _dt = dt;
-
-        }
-
         public Event Event { get; internal set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -40,16 +33,11 @@ namespace GeosEnterprise.Views
             {
                 Subject = name.Text,
                 Color = Brushes.Green,
-                Start = from.SelectedDate.Value,
-                End = to.SelectedDate.Value
+                Start = (DateTime)from.Value,
+                End = (DateTime)to.Value
             };
-            this.Close();
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            from.SelectedDate = _dt;
-            to.SelectedDate = _dt;
+            this.Close();
         }
     }
 }

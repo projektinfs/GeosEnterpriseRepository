@@ -6,7 +6,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
         mc:Ignorable="d"
-        Title="Zlecenie naprawy" Height="500" Width="680">
+        Title="Zlecenie naprawy" Height="500" Width="680"
+        MinHeight="510" MinWidth="690"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>

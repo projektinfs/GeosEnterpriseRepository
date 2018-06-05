@@ -8,7 +8,8 @@
         xmlns:viewmodel="clr-namespace:GeosEnterprise.ViewModel"
 
         mc:Ignorable="d"
-        Title="Dodaj/edytuj klienta" Height="515" Width="875">
+        Title="Dodaj/edytuj klienta" Height="515" Width="875"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="191*"/>

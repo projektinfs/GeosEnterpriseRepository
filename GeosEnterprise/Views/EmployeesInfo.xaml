@@ -8,7 +8,9 @@
         xmlns:viewmodel="clr-namespace:GeosEnterprise.ViewModel"
 
         mc:Ignorable="d"
-        Title="Informacje o pracowniku" Height="500" Width="900">
+        Title="Informacje o pracowniku" Height="500" Width="900"
+        MinHeight="500" MinWidth="900"
+        WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,-0.4,-20">
         <Grid.Background>
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>

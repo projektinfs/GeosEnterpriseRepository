@@ -28,17 +28,14 @@ namespace GeosEnterprise.Views
             DataContext = new SchedulerPanelViewModel();
         }
 
-
         private void scheduler1_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 scheduler1.SelectedDate = DateTime.Now;
                 scheduler1.Mode = Mode.Day;
-                scheduler1.StartJourney = new TimeSpan(9, 0, 0);
-                scheduler1.EndJourney = new TimeSpan(19, 0, 0);
-                scheduler1.OnEventDoubleClick += scheduler1_OnEventDoubleClick;
-                scheduler1.OnScheduleDoubleClick += scheduler1_OnScheduleDoubleClick;
+                scheduler1.StartJourney = new TimeSpan(7, 0, 0);
+                scheduler1.EndJourney = new TimeSpan(22, 0, 0);
                 scheduler1.Loaded += scheduler1_Loaded;
             }
             catch (Exception ex)
@@ -50,7 +47,7 @@ namespace GeosEnterprise.Views
         void scheduler1_OnScheduleDoubleClick(object sender, DateTime e)
         {
             Console.WriteLine(e.ToShortDateString() + ((FrameworkElement)sender).Name);
-            NewEvent window = new NewEvent(e);
+            NewEvent window = new NewEvent();
             window.ShowDialog();
 
             if (window.Event != null)
@@ -59,7 +56,18 @@ namespace GeosEnterprise.Views
 
         void scheduler1_OnEventDoubleClick(object sender, Event e)
         {
-            Console.WriteLine(e.Subject);
+            if (e.Subject != null)
+            {
+                if (MessageBox.Show($"Czy na pewno chcesz usunąć wydarzenie: {e.Subject}",
+                    "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    scheduler1.Events.Remove(e);
+                }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
         }
 
         private void prevBtn_Click(object sender, RoutedEventArgs e)
