@@ -25,10 +25,12 @@ namespace GeosEnterprise.Repositories
             return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
         }
 
+        
         public new static IList<Repair> GetAllCompleted()
         {
-            return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate != null).ToList();
+            return BaseRepository<Repair>.GetAllCurrent().Where(p => p.Status == DBO.RepairStatus.Completed).ToList();
         }
+        
 
         public static Repair Add(Repair repair)
         {

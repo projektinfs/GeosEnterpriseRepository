@@ -42,7 +42,6 @@ namespace GeosEnterprise.ViewModel
             {
                 return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
                 .GetAllCompleted()
-                .Where(p => p.Status == DBO.RepairStatus.Completed)
                 .Select(p => DTO.RepairDTO.ToDTO(p)));
             }
         }

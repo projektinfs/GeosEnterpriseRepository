@@ -70,8 +70,9 @@ namespace GeosEnterprise.Views
         {
             Event = new Event()
             {
-                Subject = Name.Text.ToUpper() + Environment.NewLine + employeeComboBox.SelectedValue.ToString() + Environment.NewLine +
-                repairComboBox.SelectedValue.ToString(),
+                Subject = Name.Text.ToUpper(),
+                
+                //+ Environment.NewLine + employeeComboBox.SelectedValue.ToString() + Environment.NewLine + repairComboBox.SelectedValue.ToString(),
 
                 Color = (SolidColorBrush)colorBox.SelectedValue,
                 Start = (DateTime)TimeFrom.Value,

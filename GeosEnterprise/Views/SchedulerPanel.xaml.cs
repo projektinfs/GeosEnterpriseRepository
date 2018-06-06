@@ -40,7 +40,7 @@ namespace GeosEnterprise.Views
             scheduler.EndJourney = new TimeSpan(22, 0, 0);
             scheduler.Loaded += scheduler_Loaded;
 
-  
+            /*
             if(Authorization.AcctualEmployee.UserRole == UserRole.Serviceman || Authorization.AcctualEmployee.UserRole == UserRole.Administrator)
             {
                 List<RepairDTO> repairs = getDataSource();
@@ -52,7 +52,7 @@ namespace GeosEnterprise.Views
                         Event = new Event()
                         {
                             Subject = "NARPAWA: " + repair.Computer.Name + " " + repair.Computer.SerialNumber,
-                            Color = Brushes.Red,
+                            Color = Brushes.Orange,
                             Start = (DateTime)repair.CreatedDate,
                             End = (DateTime)repair.RealizationDate
                         };
@@ -61,7 +61,7 @@ namespace GeosEnterprise.Views
                     }
                 }
             }
-
+            */
         }
 
         void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
@@ -102,7 +102,7 @@ namespace GeosEnterprise.Views
             scheduler.NextPage();
         }
 
-        
+        /*
         private List<RepairDTO> getDataSource()
         {
 
@@ -111,6 +111,7 @@ namespace GeosEnterprise.Views
             .Where(p => p.Status == DBO.RepairStatus.Completed)
             .Select(p => DTO.RepairDTO.ToDTO(p)));
         }
+        */
         
     }
 }
