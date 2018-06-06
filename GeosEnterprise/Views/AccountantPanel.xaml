@@ -83,6 +83,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
@@ -97,10 +98,13 @@
                     <TextBlock Text="Klient" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
-                    <TextBlock Text="Cena części" Foreground="#33B6EF" FontSize="15" />
+                    <TextBlock Text="Serwisant" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
                     <TextBlock Text="Sumaryczna cena" Foreground="#33B6EF" FontSize="15" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5">
+                    <TextBlock Text="Koszt części" Foreground="#33B6EF" FontSize="15" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -112,6 +116,7 @@
                     <Border BorderBrush="Black" BorderThickness="0" CornerRadius="3" Margin="0,2,0,0" VerticalAlignment="Top" Background="White" Height="40">
                         <Grid Background="White" Margin="0,1">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                                 <ColumnDefinition />
@@ -131,9 +136,12 @@
                                 <TextBlock Text="{Binding Client.FullName}" FontSize="14" TextAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
-                                <TextBlock Text="{Binding ReplacementsCosts}" FontSize="14" />
+                                <TextBlock Text="{Binding Serviceman.FullName}" FontSize="14" TextAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
+                                <TextBlock Text="{Binding FinalCosts}" FontSize="14" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5">
                                 <TextBlock Text="{Binding RepairCosts}" FontSize="14" />
                             </StackPanel>
                         </Grid>

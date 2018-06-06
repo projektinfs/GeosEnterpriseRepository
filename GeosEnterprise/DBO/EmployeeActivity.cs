@@ -10,7 +10,7 @@ namespace GeosEnterprise.DBO
     {
         public DateTime TimeFrom { get; set; }
         public DateTime TimeTo { get; set; }
-        //public int? RepairID { get; set; }
+        public int? RepairID { get; set; }
         public string Description { get; set; }
     }
 }

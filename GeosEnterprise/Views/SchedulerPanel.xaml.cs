@@ -1,4 +1,6 @@
-﻿using GeosEnterprise.ViewModel;
+﻿using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
+using GeosEnterprise.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +30,8 @@ namespace GeosEnterprise.Views
             DataContext = new SchedulerPanelViewModel();
         }
 
+        public Event Event { get; internal set; }
+
         private void scheduler_Loaded(object sender, RoutedEventArgs e)
         {
             scheduler.SelectedDate = DateTime.Now;
@@ -35,6 +39,29 @@ namespace GeosEnterprise.Views
             scheduler.StartJourney = new TimeSpan(7, 0, 0);
             scheduler.EndJourney = new TimeSpan(22, 0, 0);
             scheduler.Loaded += scheduler_Loaded;
+
+  
+            if(Authorization.AcctualEmployee.UserRole == UserRole.Serviceman || Authorization.AcctualEmployee.UserRole == UserRole.Administrator)
+            {
+                List<RepairDTO> repairs = getDataSource();
+
+                foreach (RepairDTO repair in repairs)
+                {
+                    if (repair.RealizationDate != null && repair.CreatedDate != null && repair.Status == DBO.RepairStatus.Completed)
+                    {
+                        Event = new Event()
+                        {
+                            Subject = "NARPAWA: " + repair.Computer.Name + " " + repair.Computer.SerialNumber,
+                            Color = Brushes.Red,
+                            Start = (DateTime)repair.CreatedDate,
+                            End = (DateTime)repair.RealizationDate
+                        };
+
+                        scheduler.Events.Add(Event);
+                    }
+                }
+            }
+
         }
 
         void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
@@ -74,5 +101,16 @@ namespace GeosEnterprise.Views
         {
             scheduler.NextPage();
         }
+
+        
+        private List<RepairDTO> getDataSource()
+        {
+
+            return new List<RepairDTO>(Repositories.RepairsRepository
+            .GetAllCompleted()
+            .Where(p => p.Status == DBO.RepairStatus.Completed)
+            .Select(p => DTO.RepairDTO.ToDTO(p)));
+        }
+        
     }
 }
