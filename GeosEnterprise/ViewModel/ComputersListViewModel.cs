@@ -342,6 +342,7 @@ namespace GeosEnterprise.ViewModel
                 {
                     _myDataSource = DataSourceHelper;
                     RaisePropertyChanged("Items");
+                    Current(this);
 
                 }
             }

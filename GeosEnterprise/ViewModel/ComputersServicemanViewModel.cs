@@ -18,11 +18,14 @@ namespace GeosEnterprise.ViewModel
     {
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
+        public ICommand CompletedButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
         public string RepairCosts { get; set; }
         public string ReplacementsCosts { get; set; }
         public string RepairDescription { get; set; }
         public string ServicemanNote { get; set; }
+
+        public object SelectedItem { get; set; }
 
 
         public ComputersServicemanViewModel(int? repairID)
@@ -43,6 +46,7 @@ namespace GeosEnterprise.ViewModel
 
             OKButtonCommand = new RelayCommand<Window>(OK);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
+            CompletedButtonCommand = new RelayCommand<Window>(Completed);
         }
 
         public void OK(Window window)
@@ -73,7 +77,7 @@ namespace GeosEnterprise.ViewModel
                 return;
             }
 
-            window.DialogResult = false;
+            window.DialogResult = true;
             window?.Close();
         }
 
@@ -81,6 +85,19 @@ namespace GeosEnterprise.ViewModel
         {
             window.DialogResult = false;
             window?.Close();
+        }
+
+        //TODO: mailowe powiadomienie o zakończonej naprawie
+        public void Completed(Window window)
+        {
+            if (MessageBox.Show($"Naprawa komputera: {BindingItem.Computer.Name} została zakończona, czy powiadomić klienta?",
+                    "Naprawa zakończona", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                BindingItem.Status = DBO.RepairStatus.Completed;
+                OK(window);
+            }
+            
+
         }
 
         private string DoValidation()
