@@ -46,7 +46,7 @@
                 </StackPanel>
 
                 <Label Content="Opis naprawy" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Foreground="White" Height="34"/>
-                <TextBox x:Name="RepairDescriptionTextBox" Text=""  HorizontalAlignment="Center" VerticalAlignment="Center" Height="85" TextWrapping="Wrap" Width="603"  Margin="2,0"/>
+                <TextBox x:Name="RepairDescriptionTextBox" Text="{Binding ServicemanNote}"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="85" TextWrapping="Wrap" Width="603"  Margin="2,0"/>
             </StackPanel>
         </Border>
 

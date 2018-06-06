@@ -22,14 +22,17 @@ namespace GeosEnterprise.ViewModel
         public string RepairCosts { get; set; }
         public string ReplacementsCosts { get; set; }
         public string RepairDescription { get; set; }
+        public string ServicemanNote { get; set; }
 
-    public ComputersServicemanViewModel(int? repairID)
+
+        public ComputersServicemanViewModel(int? repairID)
         {
             if (repairID != null)
             {
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
                 RepairCosts = BindingItem.RepairCosts.ToString();
                 ReplacementsCosts = BindingItem.ReplacementsCosts.ToString();
+                ServicemanNote = BindingItem.ServicemanNote?.Trim();
 
             }
             else
@@ -51,6 +54,7 @@ namespace GeosEnterprise.ViewModel
                 BindingItem.Computer.SerialNumber = BindingItem.Computer.SerialNumber.ToUpper();
                 BindingItem.RepairCosts = decimal.Parse(RepairCosts?.Replace(".", ","));
                 BindingItem.ReplacementsCosts = decimal.Parse(ReplacementsCosts?.Replace(".", ","));
+                BindingItem.ServicemanNote = ServicemanNote?.Trim();
                 BindingItem.Dealer = EmployeeDTO.ToDTO(Authorization.AcctualEmployee);
                 BindingItem.DealerID = Authorization.AcctualEmployee.ID;
 
