@@ -26,6 +26,8 @@ namespace GeosEnterprise.ViewModel
         public ICommand DeleteButtonCommand { get; set; }
         public ICommand EditButtonCommand { get; set; }
         public ICommand SearchButtonCommand { get; private set; }
+        public ICommand InfoButtonCommand { get; private set; }
+
 
         public String Name { get; set; }
 
@@ -87,6 +89,8 @@ namespace GeosEnterprise.ViewModel
             AddButtonCommand = new RelayCommand<object>(Add);
             DeleteButtonCommand = new RelayCommand<object>(Delete);
             EditButtonCommand = new RelayCommand<object>(Edit);
+            InfoButtonCommand = new RelayCommand<object>(Info);
+
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
             _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => ClientDTO.ToDTO(p)));
 
@@ -125,6 +129,20 @@ namespace GeosEnterprise.ViewModel
                     Repositories.ClientRepository.Delete(clientDTO.ID);
                     RaisePropertyChanged("Items");
                 }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
+        }
+
+        private void Info(object obj)
+        {
+            var clientDTO = SelectedItem as ClientDTO;
+            if (clientDTO != null)
+            {
+                Window addNewClientWindow = new ClientsInfo(clientDTO.ID);
+                addNewClientWindow.ShowDialog();
             }
             else
             {

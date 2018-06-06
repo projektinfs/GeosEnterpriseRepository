@@ -124,6 +124,8 @@
                 <Button Name="AddButton" Content="Dodaj" Margin="0,0,0,0.113"  Command="{Binding AddButtonCommand}"  HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White" />
                 <Button Name="DeleteButton" Content="Usuń" Margin="153,-43,0,0.6" Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White"/>
                 <Button Name="EditButton" Content="Edytuj" Margin="306,-44,0,0.6" Command="{Binding EditButtonCommand}" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold"  Background="White"/>
+                <Button Name="InfoButton" Content="Szczegóły" Margin="458,-44,0,0.113" HorizontalAlignment="Left" Width="150" Height="43" FontSize="20" FontWeight="Bold" Command="{Binding InfoButtonCommand}" Grid.ColumnSpan="2" Background="White"/>
+
             </StackPanel>
         </Border>
 
