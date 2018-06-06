@@ -26,6 +26,7 @@ namespace GeosEnterprise.DBO
         public RepairStatus Status { get; set; }
         public decimal? ReplacementsCosts { get; set; }
         public decimal RepairCosts { get; set; }
+        public string ServicemanNote { get; set; }
 
 
         public string OrderNumber

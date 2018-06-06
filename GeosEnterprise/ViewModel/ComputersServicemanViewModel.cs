@@ -18,18 +18,24 @@ namespace GeosEnterprise.ViewModel
     {
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
+        public ICommand CompletedButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
         public string RepairCosts { get; set; }
         public string ReplacementsCosts { get; set; }
         public string RepairDescription { get; set; }
+        public string ServicemanNote { get; set; }
 
-    public ComputersServicemanViewModel(int? repairID)
+        public object SelectedItem { get; set; }
+
+
+        public ComputersServicemanViewModel(int? repairID)
         {
             if (repairID != null)
             {
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
                 RepairCosts = BindingItem.RepairCosts.ToString();
                 ReplacementsCosts = BindingItem.ReplacementsCosts.ToString();
+                ServicemanNote = BindingItem.ServicemanNote?.Trim();
 
             }
             else
@@ -40,6 +46,7 @@ namespace GeosEnterprise.ViewModel
 
             OKButtonCommand = new RelayCommand<Window>(OK);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
+            CompletedButtonCommand = new RelayCommand<Window>(Completed);
         }
 
         public void OK(Window window)
@@ -51,6 +58,7 @@ namespace GeosEnterprise.ViewModel
                 BindingItem.Computer.SerialNumber = BindingItem.Computer.SerialNumber.ToUpper();
                 BindingItem.RepairCosts = decimal.Parse(RepairCosts?.Replace(".", ","));
                 BindingItem.ReplacementsCosts = decimal.Parse(ReplacementsCosts?.Replace(".", ","));
+                BindingItem.ServicemanNote = ServicemanNote?.Trim();
                 BindingItem.Dealer = EmployeeDTO.ToDTO(Authorization.AcctualEmployee);
                 BindingItem.DealerID = Authorization.AcctualEmployee.ID;
 
@@ -69,7 +77,7 @@ namespace GeosEnterprise.ViewModel
                 return;
             }
 
-            window.DialogResult = false;
+            window.DialogResult = true;
             window?.Close();
         }
 
@@ -77,6 +85,19 @@ namespace GeosEnterprise.ViewModel
         {
             window.DialogResult = false;
             window?.Close();
+        }
+
+        //TODO: mailowe powiadomienie o zakończonej naprawie
+        public void Completed(Window window)
+        {
+            if (MessageBox.Show($"Naprawa komputera: {BindingItem.Computer.Name} została zakończona, czy powiadomić klienta?",
+                    "Naprawa zakończona", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                BindingItem.Status = DBO.RepairStatus.Completed;
+                OK(window);
+            }
+            
+
         }
 
         private string DoValidation()

@@ -39,6 +39,8 @@ namespace GeosEnterprise.DTO
 
         public decimal RepairCosts { get; set; }
 
+        public string ServicemanNote { get; set; }
+
         public decimal FinalCosts
         {
             get
@@ -92,7 +94,9 @@ namespace GeosEnterprise.DTO
                 Dealer = DTO.EmployeeDTO.ToDTO(entity.Dealer),
                 DealerID = entity.DealerID,
                 RepairCosts = entity.RepairCosts,
-                ReplacementsCosts = entity.ReplacementsCosts
+                ReplacementsCosts = entity.ReplacementsCosts,
+                ServicemanNote = entity.ServicemanNote
+
             };
         }
 
@@ -120,7 +124,8 @@ namespace GeosEnterprise.DTO
                 Dealer = DTO.EmployeeDTO.FromDTO(entity.Dealer),
                 DealerID = entity.DealerID,
                 RepairCosts = entity.RepairCosts,
-                ReplacementsCosts = entity.ReplacementsCosts
+                ReplacementsCosts = entity.ReplacementsCosts,
+                ServicemanNote = entity.ServicemanNote
             };
         }
     }
