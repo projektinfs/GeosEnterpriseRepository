@@ -34,14 +34,6 @@ namespace GeosEnterprise.Repositories
             return false;
         }
 
-        public static Employee Add(Employee employee)
-        {
-            return ExecuteQuery(() =>
-            {
-                return Insert(employee);
-            });
-        }
-
 
         public static void Edit(Employee employee)
         {
@@ -71,13 +63,6 @@ namespace GeosEnterprise.Repositories
 
         }
 
-        public static Employee Delete(int id)
-        {
-            return ExecuteQuery(() =>
-            {
-                return Delete(GetById(id));
-            });
-        }
 
         public UserRole PositionToUserRole(string position)
         {

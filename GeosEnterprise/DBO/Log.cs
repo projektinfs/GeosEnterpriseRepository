@@ -8,6 +8,11 @@ namespace GeosEnterprise.DBO
 {
     public class Log : DBO.DBObject<int>
     {
+        public Log()
+        {
+
+        }
+
         public Log(string val)
         {
             Value = val;

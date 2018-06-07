@@ -31,7 +31,7 @@ namespace GeosEnterprise.ViewModel
 
             set
             {
-                _Address = currentEmployee.Adress.City + " " + currentEmployee.Adress.PostCode;
+                _Address = currentEmployee?.Adress?.City + " " + currentEmployee?.Adress?.PostCode;
                 RaisePropertyChanged("Address");
             }
            

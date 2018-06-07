@@ -79,7 +79,7 @@ namespace GeosEnterprise.ViewModel
                     }
                     else
                     {
-                        Repositories.ClientRepository.Add(new Client
+                        Repositories.ClientRepository.Insert(new Client
                         {
                             Name = Capitalize(BindingItem.Name) ,
                             Surname = Capitalize(BindingItem.Surname),

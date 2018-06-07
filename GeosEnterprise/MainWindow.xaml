@@ -69,13 +69,19 @@
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="SchedulerButton"  Command="{Binding SchedulerPanel}"  Margin="0,0,0,0" BorderBrush="White" Content="Harmonogram" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="SchedulerButton"  Command="{Binding SchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
-                    
-                    <Label x:Name="UserName" Margin="0,0,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}" Foreground="White" FontSize="20" BorderThickness="3" FontWeight="Bold" Height="42"/>
+
+                    <Button x:Name="LogsButton"  Command="{Binding LogsList}"  Margin="0,0,0,6" BorderBrush="White" Content="Historia zmian" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                        <Button.Background>
+                            <ImageBrush ImageSource=".\Icons\text-background.png"/>
+                        </Button.Background>
+                    </Button>
+
+
                     
                     <Button x:Name="LogoutButton"  Command="{Binding Logout}"  Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
@@ -83,7 +89,7 @@
                         </Button.Background>
                     </Button>
 
-                    
+                    <Label x:Name="UserName" Margin="0,0,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Name}" Foreground="White" FontSize="20" BorderThickness="3" FontWeight="Bold" Height="42" VerticalAlignment="Bottom"/>
                 </StackPanel>
 
             </Border>

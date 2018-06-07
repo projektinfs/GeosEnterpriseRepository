@@ -128,7 +128,7 @@ namespace GeosEnterprise.ViewModel
                 if (MessageBox.Show($"Czy na pewno chcesz usunąć pracownika?\r\n{employeeDTO.Name} {employeeDTO.Surname}",
                     "Usunięcie pracownika", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    Repositories.EmployeeRepository.Delete(employeeDTO.ID);
+                    Repositories.EmployeeRepository.Delete(employeeDTO);
                     _myDataSource = new ObservableCollection<EmployeeDTO>(EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)));
                     RaisePropertyChanged("Items");
                 }

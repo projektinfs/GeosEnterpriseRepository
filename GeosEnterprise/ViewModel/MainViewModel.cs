@@ -56,6 +56,7 @@ namespace GeosEnterprise.ViewModel
         public ICommand Logout { get; set; }
         public ICommand AccountantPanel { get; set; }
         public ICommand SchedulerPanel { get; set; }
+        public ICommand LogsList { get; set; }
 
         public int GlobalPropertyChanged { get; }
 
@@ -70,6 +71,7 @@ namespace GeosEnterprise.ViewModel
             AccountantPanel = new RelayCommand<object>(AccountantPanelVM);
             Logout = new RelayCommand<object>(LogoutVM);
             SchedulerPanel = new RelayCommand<object>(SchedulerPanelVM);
+            LogsList = new RelayCommand<object>(LogsVM);
             Messenger.Default.Register<ViewModelBase>(this, MessageHandler);
             Messenger.Default.Register<String>(this, AuthenticationValid);
             Messenger.Default.Register<String>(this, UserName);
@@ -127,6 +129,11 @@ namespace GeosEnterprise.ViewModel
             ViewModel = new AuthenticationViewModel();
         }
 
+        private void LogsVM(object obj)
+        {
+            ViewModel = new LogsListViewModel();
+        }
+
         private void InitializeDatabase()
         {
             if (!App.DB.Database.Exists())
@@ -140,6 +147,10 @@ namespace GeosEnterprise.ViewModel
                 App.DB.Database.Create();
                 SeedDatabase();
             }
+            else if (!App.DB.Computers.Any())
+            {
+                SeedDatabase();
+            }
             App.DB.Computers.Any();
         }
 
@@ -147,17 +158,17 @@ namespace GeosEnterprise.ViewModel
         {
             foreach (var client in DBO.Client.ForSeedToDatabase())
             {
-                Repositories.ClientRepository.Add(client);
+                Repositories.ClientRepository.Insert(client);
             }
 
             foreach (var employee in DBO.Employee.ForSeedToDatabase())
             {
-                Repositories.EmployeeRepository.Add(employee);
+                Repositories.EmployeeRepository.Insert(employee);
             }
 
             foreach (var repair in DBO.Repair.ForSeedToDatabase())
             {
-                Repositories.RepairsRepository.Add(repair);
+                Repositories.RepairsRepository.Insert(repair);
             }
         }
 

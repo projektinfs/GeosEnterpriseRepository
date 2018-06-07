@@ -19,14 +19,6 @@ namespace GeosEnterprise.Repositories
             
         }
 
-        public static Client Add(Client client)
-        {
-            return ExecuteQuery(() =>
-            {
-                return Insert(client);
-            });
-        }
-
         public static Client Edit(Client client)
         {
             return ExecuteQuery(() =>

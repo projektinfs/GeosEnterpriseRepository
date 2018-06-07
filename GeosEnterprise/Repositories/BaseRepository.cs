@@ -42,7 +42,7 @@ namespace GeosEnterprise.Repositories
             return _dbContext.Set<TEntity>().Find(id);
         }
 
-        protected static TEntity Insert(TEntity entity)
+        public static TEntity Insert(TEntity entity)
         {
             return ExecuteQuery(() =>
             {
@@ -52,7 +52,7 @@ namespace GeosEnterprise.Repositories
             });
         }
 
-        protected static TEntity Update(TEntity entity)
+        public static TEntity Update(TEntity entity)
         {
             return ExecuteQuery(() =>
             {
@@ -87,7 +87,7 @@ namespace GeosEnterprise.Repositories
                 }
             }
             _dbContext.SaveChanges();
-            UseLogger(result.ID, func: function, error: exception);
+            UseLogger(result?.ID, func: function, error: exception);
             return result;
         }
 
@@ -109,7 +109,7 @@ namespace GeosEnterprise.Repositories
                 }
             }
             _dbContext.SaveChanges();
-            UseLogger(result.Count, function: function, error: exception);
+            UseLogger(result?.Count, function: function, error: exception);
             return result;
         }
 
@@ -133,7 +133,7 @@ namespace GeosEnterprise.Repositories
             _dbContext.SaveChanges();
         }
 
-        internal static void UseLogger(int lastParam = 0, Action action = null, Func<IList<TEntity>> function = null, Func<TEntity> func = null, string error = null)
+        internal static void UseLogger(int? lastParam = 0, Action action = null, Func<IList<TEntity>> function = null, Func<TEntity> func = null, string error = null)
         {
             string methodName = null;
             object item = null;

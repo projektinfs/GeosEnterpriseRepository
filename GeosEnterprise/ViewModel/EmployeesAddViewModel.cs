@@ -116,7 +116,7 @@ namespace GeosEnterprise.ViewModel
                             HasedPassword = SHA256.ComputeHash(InBytePassword);
                         }
 
-                        Repositories.EmployeeRepository.Add(new Employee
+                        Repositories.EmployeeRepository.Insert(new Employee
                         {
                             Email = BindingItem.Email.ToLower(),
                             Password = HasedPassword,

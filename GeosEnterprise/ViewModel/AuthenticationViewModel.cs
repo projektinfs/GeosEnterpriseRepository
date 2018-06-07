@@ -70,7 +70,7 @@ namespace GeosEnterprise.ViewModel
                 Byte[] InBytePassword = Encoding.UTF8.GetBytes("admin123");
                 Byte[] HasedPassword = SHA256.ComputeHash(InBytePassword);
 
-                EmployeeRepository.Add(new Employee
+                EmployeeRepository.Insert(new Employee
                 {
                     Email = "admin@admin.pl",
                     Password = HasedPassword,
@@ -118,10 +118,10 @@ namespace GeosEnterprise.ViewModel
                 Authorization.AcctualEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
                 Authorization.AcctualUser = "admin@admin.pl";
                 IsVisible = "Hidden";
-                Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+                Name = Authorization.AcctualEmployee?.Name + " " + Authorization.AcctualEmployee?.Surname;
                 passwordBox.Clear();
                 currentEmployee = Authorization.AcctualEmployee;
-                currentName = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
+                currentName = Authorization.AcctualEmployee?.Name + " " + Authorization.AcctualEmployee?.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
                 Messenger.Default.Send(Name);
