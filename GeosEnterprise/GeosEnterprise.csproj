@@ -169,6 +169,7 @@
     <Compile Include="ViewModel\ComputersListViewModel.cs" />
     <Compile Include="ViewModel\ClientsAddViewModel.cs" />
     <Compile Include="ViewModel\ComputersServicemanViewModel.cs" />
+    <Compile Include="ViewModel\ConfirmationEmailViewModel.cs" />
     <Compile Include="ViewModel\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModel\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModel\EmployeesListViewModel.cs" />
@@ -201,6 +202,9 @@
     </Compile>
     <Compile Include="Views\ComputersList.xaml.cs">
       <DependentUpon>ComputersList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConfirmationEmail.xaml.cs">
+      <DependentUpon>ConfirmationEmail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeesInfo.xaml.cs">
       <DependentUpon>EmployeesInfo.xaml</DependentUpon>
@@ -265,6 +269,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ComputersList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConfirmationEmail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -342,6 +350,7 @@
     <Resource Include="Icons\pikselart.jpg" />
     <Resource Include="Icons\small-background.jpg" />
     <Resource Include="Icons\text-background.png" />
+    <Resource Include="Reports\ConfirmationEmail.txt" />
     <Content Include="Reports\OrderConfirmation.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
