@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GeosEnterprise.Repositories
 {
-    public abstract class BaseRepository<TEntity> 
+    public abstract class BaseRepository<TEntity>
         where TEntity : DBO.DBObject<int>
     {
         internal static readonly DbContext _dbContext = App.DB;
@@ -67,12 +67,13 @@ namespace GeosEnterprise.Repositories
                 {
                     result = function();
                     transaction.Commit();
+                    UseLogger(func: function);
                 }
                 catch
                 {
                     transaction.Rollback();
                 }
-            } 
+            }
             _dbContext.SaveChanges();
             return result;
         }
@@ -86,6 +87,7 @@ namespace GeosEnterprise.Repositories
                 {
                     result = function();
                     transaction.Commit();
+                    UseLogger(function: function);
                 }
                 catch
                 {
@@ -104,6 +106,7 @@ namespace GeosEnterprise.Repositories
                 {
                     action();
                     transaction.Commit();
+                    UseLogger(action);
                 }
                 catch
                 {
@@ -112,10 +115,47 @@ namespace GeosEnterprise.Repositories
             }
             _dbContext.SaveChanges();
         }
+
+        internal static void UseLogger(Action action = null, Func<IList<TEntity>> function = null, Func<TEntity> func = null)
+        {
+            string methodName = null;
+            object item = null;
+            string type = null;
+
+            if (action != null)
+            {
+                methodName = action.Method.Name;
+                item = action.Target;
+                type = action.Method.ReturnType.Name;
+            }
+            else if (function != null)
+            {
+                methodName = function.Method.Name;
+                item = function.Target;
+                type = function.Method.ReturnType.Name;
+            }
+            else if (func != null)
+            {
+                methodName = func.Method.Name;
+                item = func.Target;
+                type = func.Method.ReturnType.Name;
+            }
+            methodName = methodName.Substring(methodName.IndexOf('<') + 1, methodName.IndexOf('>') - 1);
+            if (methodName == "Edit" || methodName == "Add" || methodName == "Insert")
+            {
+                return;
+            }
+            var t = item.GetType();
+            var logText = $"Method: {methodName} | Type: {type} | ID: ";
+            DBO.Log log = new DBO.Log(logText);
+            _dbContext.Set<DBO.Log>().Add(log);
+        }
+
+
     }
 
-    public abstract class BaseRepository<TEntity, DTOEntity> : BaseRepository<TEntity> 
-        where TEntity : DBO.DBObject<int> 
+    public abstract class BaseRepository<TEntity, DTOEntity> : BaseRepository<TEntity>
+        where TEntity : DBO.DBObject<int>
         where DTOEntity : DTO.DTOObject<int>
     {
         protected static void Delete(DTOEntity entity)

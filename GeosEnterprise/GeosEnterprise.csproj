@@ -133,6 +133,7 @@
     <Compile Include="DBO\Employee_mh.cs" />
     <Compile Include="DBO\EntitiesContext.cs" />
     <Compile Include="DBO\Enums.cs" />
+    <Compile Include="DBO\Log.cs" />
     <Compile Include="DBO\Photo.cs" />
     <Compile Include="DBO\Repair.cs" />
     <Compile Include="DTO\AdressDTO.cs" />
