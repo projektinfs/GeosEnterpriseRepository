@@ -11,13 +11,13 @@ namespace GeosEnterprise.Repositories
 {
     public class RepairsRepository : BaseRepository<Repair, RepairDTO>
     {
-        public new static void Update(RepairDTO repair)
+        public new static RepairDTO Update(RepairDTO repair)
         {
             repair.ClientID = repair.Client.ID;
             repair.ComputerID = repair.Computer.ID;
             repair.DealerID = repair.Dealer.ID;
             BaseRepository<Computer, ComputerDTO>.Update(repair.Computer);
-            BaseRepository<Repair, RepairDTO>.Update(repair);
+            return BaseRepository<Repair, RepairDTO>.Update(repair);
         }
 
         public new static IList<Repair> GetAllCurrent()
@@ -39,30 +39,6 @@ namespace GeosEnterprise.Repositories
                 repair.Client = null;
                 repair.Dealer = null;
                 return Insert(repair);
-            });
-        }
-
-        public static void Edit(Repair repair)
-        {
-            ExecuteQuery(() =>
-            {
-                Update(repair);
-            });
-        }
-
-        public static void Edit(RepairDTO repair)
-        {
-            ExecuteQuery(() =>
-            {
-                Update(repair);
-            });
-        }
-
-        public static void Delete(int id)
-        {
-            ExecuteQuery(() =>
-            {
-                Delete(GetById(id));
             });
         }
     }

@@ -126,7 +126,7 @@ namespace GeosEnterprise.ViewModel
                 if (MessageBox.Show($"Czy na pewno chcesz usunąć klienta\r\n{clientDTO.Name} {clientDTO.Surname}",
                     "Usunięcie klienta", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    Repositories.ClientRepository.Delete(clientDTO.ID);
+                    Repositories.ClientRepository.Delete(clientDTO);
                     RaisePropertyChanged("Items");
                 }
             }

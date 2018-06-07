@@ -71,11 +71,11 @@ namespace GeosEnterprise.Repositories
 
         }
 
-        public static void Delete(int id)
+        public static Employee Delete(int id)
         {
-            ExecuteQuery(() =>
+            return ExecuteQuery(() =>
             {
-                Delete(GetById(id));
+                return Delete(GetById(id));
             });
         }
 
