@@ -96,6 +96,28 @@ namespace GeosEnterprise.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zlecenie naprawy numer: {{numer_zlecenia}} zostało zrealizowane.
+        ///
+        ///Nazwa komputera: {{nazwa}}
+        ///Numer seryjny komputera: {{nr_seryjny}}
+        ///Całkowity koszt naprawy: {{koszt}}
+        ///
+        ///Zapraszamy po odbiór sprzętu.
+        ///
+        ///Naprawa zrealizowana przez {{pracownik}} dnia {{data}}.
+        ///
+        ///
+        ///Dziękujemy za zaufanie!
+        ///-Geos Enterprise ©-
+        ///.
+        /// </summary>
+        internal static string ConfirmationEmail {
+            get {
+                return ResourceManager.GetString("ConfirmationEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ten dokument jest potwierdzeniem przyjęcia zlecenia naprawy usterki o numerze {{numer_zlecenia}}.
         ///
         ///Nazwa komputera: {{nazwa}}

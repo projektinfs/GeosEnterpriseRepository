@@ -10,7 +10,9 @@ using System.Windows.Input;
 using GeosEnterprise.Commands;
 using GalaSoft.MvvmLight;
 using GeosEnterprise.Validators;
-
+using System.Net.Mail;
+using System.Net;
+using GeosEnterprise.Views;
 
 namespace GeosEnterprise.ViewModel
 {
@@ -24,9 +26,9 @@ namespace GeosEnterprise.ViewModel
         public string ReplacementsCosts { get; set; }
         public string RepairDescription { get; set; }
         public string ServicemanNote { get; set; }
+        private bool DataValidated;
 
         public object SelectedItem { get; set; }
-
 
         public ComputersServicemanViewModel(int? repairID)
         {
@@ -73,10 +75,11 @@ namespace GeosEnterprise.ViewModel
             }
             else
             {
+                DataValidated = false;
                 Config.MsgBoxValidationMessage(errors);
                 return;
             }
-
+            DataValidated = true;
             window.DialogResult = true;
             window?.Close();
         }
@@ -90,15 +93,18 @@ namespace GeosEnterprise.ViewModel
         //TODO: mailowe powiadomienie o zakończonej naprawie
         public void Completed(Window window)
         {
-            if (MessageBox.Show($"Naprawa komputera: {BindingItem.Computer.Name} została zakończona, czy powiadomić klienta?",
-                    "Naprawa zakończona", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
-                BindingItem.Status = DBO.RepairStatus.Completed;
-                //BindingItem.RealizationDate = DateTime.Now;
-                OK(window);
-            }
-            
 
+            OK(window);
+            if (DataValidated)
+            {
+                Window emailWindow = new ConfrmationEmail(BindingItem.ID);
+                bool? emailWindowStatus = emailWindow.ShowDialog();
+                if (emailWindowStatus == true)
+                {
+                    BindingItem.Status = DBO.RepairStatus.Completed;
+                    Repositories.RepairsRepository.Update(BindingItem);
+                }
+            }
         }
 
         private string DoValidation()

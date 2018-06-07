@@ -121,6 +121,9 @@
   <data name="AccountantReport" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\reports\accountantreport.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="ConfirmationEmail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\reports\confirmationemail.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="OrderConfirmation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Reports\OrderConfirmation.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
