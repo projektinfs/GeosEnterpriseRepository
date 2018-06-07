@@ -40,28 +40,35 @@ namespace GeosEnterprise.Views
             scheduler.EndJourney = new TimeSpan(22, 0, 0);
             scheduler.Loaded += scheduler_Loaded;
 
-            /*
-            if(Authorization.AcctualEmployee.UserRole == UserRole.Serviceman || Authorization.AcctualEmployee.UserRole == UserRole.Administrator)
+            List<EmployeeActivity> activities = getActivities();
+
+            foreach (EmployeeActivity activity in activities)
             {
-                List<RepairDTO> repairs = getDataSource();
+                string description = returnType(activity.Description);
 
-                foreach (RepairDTO repair in repairs)
+                SolidColorBrush color;
+
+                if (description == "Pracuje")
+                    color = Brushes.Green;
+                else if (description == "Wolne")
+                    color = Brushes.Red;
+                else if (description == "L4")
+                    color = Brushes.Orange;
+                else
+                    color = Brushes.Blue;
+
+                Employee employee = Repositories.EmployeeRepository.GetById(activity.EmployeeID);
+
+                Event = new Event()
                 {
-                    if (repair.RealizationDate != null && repair.CreatedDate != null && repair.Status == DBO.RepairStatus.Completed)
-                    {
-                        Event = new Event()
-                        {
-                            Subject = "NARPAWA: " + repair.Computer.Name + " " + repair.Computer.SerialNumber,
-                            Color = Brushes.Orange,
-                            Start = (DateTime)repair.CreatedDate,
-                            End = (DateTime)repair.RealizationDate
-                        };
+                        Subject = activity.Description,
+                        Color = color,
+                        Start = (DateTime)activity.TimeFrom,
+                        End = (DateTime)activity.TimeTo
+                };
 
-                        scheduler.Events.Add(Event);
-                    }
-                }
+                scheduler.Events.Add(Event);
             }
-            */
         }
 
         void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
@@ -84,6 +91,13 @@ namespace GeosEnterprise.Views
                     "Usunięcie wydarzenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     scheduler.Events.Remove(e);
+                    
+                    EmployeeActivity activity = Repositories.EmployeeActivityRepository.GetByAll(e.Start, e.End, e.Subject);
+
+                    if (activity != null)
+                    {
+                        Repositories.EmployeeActivityRepository.Delete(activity);
+                    }
                 }
             }
             else
@@ -102,16 +116,15 @@ namespace GeosEnterprise.Views
             scheduler.NextPage();
         }
 
-        /*
-        private List<RepairDTO> getDataSource()
+        private List<EmployeeActivity> getActivities()
         {
-
-            return new List<RepairDTO>(Repositories.RepairsRepository
-            .GetAllCompleted()
-            .Where(p => p.Status == DBO.RepairStatus.Completed)
-            .Select(p => DTO.RepairDTO.ToDTO(p)));
+            return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
         }
-        */
         
+        public string returnType(string Description)
+        {
+            var names = Description.Split(' ');
+            return names[2];
+        }
     }
 }

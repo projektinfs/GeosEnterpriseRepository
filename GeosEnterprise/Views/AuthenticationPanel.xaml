@@ -17,7 +17,7 @@
         </Grid.Background>
 
         <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="374" Margin="112,32,140,44" Width="708">
-            <StackPanel>
+            <StackPanel Margin="-26,-14,0,0.4">
                 <TextBlock Margin="-400,30,0,0" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"><Run Text="Zaloguj się..."/><LineBreak/><Run/></TextBlock>
                 <Label Content="Adres email" Margin="108,0,496,0" Foreground="#FFFFFBFB"  Width="104" Height="33" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15" />
                 <TextBox x:Name="txtEmail" TextWrapping="Wrap" Margin="-400,0,0,242" Text="{Binding Email}"  Width="165" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
@@ -34,7 +34,7 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <Image Margin="0,-1000,30,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="404" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
+                <Image Margin="0,-1000,30,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="399" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
             </StackPanel>
         </Border>
     </Grid>

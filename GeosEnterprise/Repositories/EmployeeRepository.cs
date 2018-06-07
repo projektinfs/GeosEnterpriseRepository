@@ -17,6 +17,18 @@ namespace GeosEnterprise.Repositories
             return Where(p => p.Email == Email).FirstOrDefault();
         }
 
+        public static Employee GetByNameAndSurname(string Name,string Surname)
+        {
+            return Where(p => p.Name == Name).FirstOrDefault();
+        }
+
+        /*
+        public static Employee GetByID(int ID)
+        {
+            return Where(p => p.ID == ID).FirstOrDefault();
+        }
+        */
+
         public static bool ValidateData(string Email, string Password)
         {
             Employee employee = GetByEmail(Email);

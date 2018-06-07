@@ -142,7 +142,6 @@
     <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\ComputerDTO.cs" />
     <Compile Include="DTO\DTOObject.cs" />
-    <Compile Include="DTO\EmployeeActivityDTO.cs" />
     <Compile Include="DTO\EmployeeContactDTO.cs" />
     <Compile Include="DTO\EmployeeDTO.cs" />
     <Compile Include="DTO\RepairDTO.cs" />
@@ -152,6 +151,7 @@
     <Compile Include="Repositories\ClientContactsRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
     <Compile Include="Repositories\ComputersRepository.cs" />
+    <Compile Include="Repositories\EmployeeActivityRepository.cs" />
     <Compile Include="Repositories\EmployeeContactsRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\LogsRepository.cs" />
