@@ -149,7 +149,7 @@ namespace GeosEnterprise.ViewModel
                 repairDTO.ServicemanID = repairDTO.Serviceman.ID;
                 repairDTO.Status = DBO.RepairStatus.InProcess;
 
-                Repositories.RepairsRepository.Edit(repairDTO);
+                Repositories.RepairsRepository.Update(repairDTO);
                 _myDataSource = DataSourceHelper;
                 RaisePropertyChanged("Items");
             }
@@ -186,7 +186,7 @@ namespace GeosEnterprise.ViewModel
                 if (MessageBox.Show($"Czy na pewno chcesz usunąć zlecenie naprawy\r\n(Nazwa komputera: {repairDTO.Computer.Name})",
                     "Usunięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
-                    Repositories.RepairsRepository.Delete(repairDTO.ID);
+                    Repositories.RepairsRepository.Delete(repairDTO);
                     _myDataSource = DataSourceHelper;
                     RaisePropertyChanged("Items");
                 }

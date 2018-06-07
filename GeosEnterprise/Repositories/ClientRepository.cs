@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GeosEnterprise.DBO;
+using GeosEnterprise.DTO;
 
 namespace GeosEnterprise.Repositories
 {
-    public class ClientRepository : BaseRepository<Client>
+    public class ClientRepository : BaseRepository<Client, ClientDTO>
     {
         public static Client GetByEmail(string Email)
         {
@@ -47,14 +48,6 @@ namespace GeosEnterprise.Repositories
                 toEdit.ClientContact.Www = client.ClientContact.Www;
                 toEdit.ClientContact.Email = client.ClientContact.Email;
                 return toEdit;
-            });
-        }
-
-        public static void Delete(int id)
-        {
-            ExecuteQuery(() =>
-            {
-                Delete(GetById(id));
             });
         }
     }
