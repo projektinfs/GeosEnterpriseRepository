@@ -21,7 +21,7 @@ namespace GeosEnterprise.Validators
             RuleFor(employee => employee.Adress.District).Must(OnlyLetters).WithMessage("Nieprawidłowy powiat");
             RuleFor(employee => employee.Adress.Voivodeship).Must(OnlyLetters).WithMessage("Nieprawidłowe województwo");
             RuleFor(employee => employee.Adress.PostCode).NotEmpty().WithMessage("Pole Kod pocztowy nie może być puste").Must(GoodPostCode).WithMessage("Nieprawidłowy kod pocztowy!");
-            RuleFor(employee => employee.Adress.Street).NotEmpty().WithMessage("Pole Ulica nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowa ulica");
+            RuleFor(employee => employee.Adress.Street).NotEmpty().WithMessage("Pole Ulica nie może być puste").Must(GoodStreet).WithMessage("Nieprawidłowa ulica");
             RuleFor(employee => employee.Adress.BuildingNumber).NotEmpty().WithMessage("Pole Budynek nie może być puste").Must(GoodNumber).WithMessage("Nieprawidłowa numer budynku");
             RuleFor(employee => employee.Adress.AppartamentNumber).Must(GoodNumber).WithMessage("Nieprawidłowa numer mieszkania");
             RuleFor(employee => employee.EmployeeContact.Phone).NotEmpty().WithMessage("Pole Telefon nie może być puste").Must(GoodPhone).WithMessage("Podany numer telefonu jest niepoprawny!");
@@ -65,9 +65,18 @@ namespace GeosEnterprise.Validators
         public bool OnlyLetters(string text)
         {
             if (string.IsNullOrEmpty(text)) return true;
-            Regex regex = new Regex(@"^([a-zA-ZąęóćłńśżźĄĘÓĆŁŃŚŻŹ\-\s]+)$");
+            Regex regex = new Regex(@"^([a-zA-ZąęóćłńśżźĄĘÓĆŁŃŚŻŹ\-\s\']+)$");
             return regex.IsMatch(text);
         }
+
+        public bool GoodStreet(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return true;
+            Regex regex = new Regex(@"^([a-zA-Z0-9ąęóćłńśżźĄĘÓĆŁŃŚŻŹ\-\s]+)$");
+            return regex.IsMatch(text);
+        }
+
+
 
 
     }

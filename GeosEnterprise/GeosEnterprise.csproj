@@ -133,6 +133,7 @@
     <Compile Include="DBO\Employee_mh.cs" />
     <Compile Include="DBO\EntitiesContext.cs" />
     <Compile Include="DBO\Enums.cs" />
+    <Compile Include="DBO\Log.cs" />
     <Compile Include="DBO\Photo.cs" />
     <Compile Include="DBO\Repair.cs" />
     <Compile Include="DTO\AdressDTO.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Repositories\ComputersRepository.cs" />
     <Compile Include="Repositories\EmployeeContactsRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\LogsRepository.cs" />
     <Compile Include="Repositories\RepairsRepository.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Validators\ComputerValidator.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="ViewModel\EmployeesAddViewModel.cs" />
     <Compile Include="ViewModel\EmployeesInfoViewModel.cs" />
     <Compile Include="ViewModel\EmployeesListViewModel.cs" />
+    <Compile Include="ViewModel\LogsListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewEventViewModel.cs" />
     <Compile Include="ViewModel\SchedulerPanelViewModel.cs" />
@@ -211,6 +214,9 @@
     </Compile>
     <Compile Include="Views\EmployeesAdd.xaml.cs">
       <DependentUpon>EmployeesAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogsList.xaml.cs">
+      <DependentUpon>LogsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EmployeesList.xaml.cs">
       <DependentUpon>EmployeesList.xaml</DependentUpon>
@@ -283,6 +289,10 @@
     <Page Include="Views\EmployeesAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogsList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\EmployeesList.xaml">
       <SubType>Designer</SubType>

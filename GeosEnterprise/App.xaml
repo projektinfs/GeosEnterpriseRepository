@@ -25,6 +25,9 @@
             <DataTemplate x:Name="schedulerTemplate" DataType="{x:Type viewmodel:SchedulerPanelViewModel}">
                 <views:SchedulerPanel />
             </DataTemplate>
+            <DataTemplate x:Name="logsListTemplate" DataType="{x:Type viewmodel:LogsListViewModel}">
+                <views:LogsList />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

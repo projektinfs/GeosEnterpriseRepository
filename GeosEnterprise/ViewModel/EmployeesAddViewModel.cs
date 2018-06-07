@@ -10,6 +10,7 @@ using GeosEnterprise.Validators;
 using System.Security.Cryptography;
 using System.Text;
 using GalaSoft.MvvmLight;
+using System.Text.RegularExpressions;
 
 namespace GeosEnterprise.ViewModel
 {
@@ -116,7 +117,7 @@ namespace GeosEnterprise.ViewModel
                             HasedPassword = SHA256.ComputeHash(InBytePassword);
                         }
 
-                        Repositories.EmployeeRepository.Add(new Employee
+                        Repositories.EmployeeRepository.Insert(new Employee
                         {
                             Email = BindingItem.Email.ToLower(),
                             Password = HasedPassword,
@@ -127,10 +128,11 @@ namespace GeosEnterprise.ViewModel
                             Adress = new Adress
                             {
                                 City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
-                                Voivodeship = ConvertIfNotEmpty(BindingItem.Adress.Voivodeship),
-                                District = ConvertIfNotEmpty(BindingItem.Adress.District),
+                                Voivodeship = BindingItem.Adress.Voivodeship?.ToLower(),
+                                District = BindingItem.Adress.District?.ToLower(),
                                 PostCode = BindingItem.Adress.PostCode,
-                                Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
+                                //Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
+                                Street = CapitalizeStreet(BindingItem.Adress.Street),
                                 BuildingNumber = BindingItem.Adress.BuildingNumber,
                                 AppartamentNumber = BindingItem.Adress.AppartamentNumber
                             },
@@ -173,10 +175,11 @@ namespace GeosEnterprise.ViewModel
                         {
                             ID = (int)BindingItem.Adress.ID,
                             City = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.City.ToLower()),
-                            Voivodeship = ConvertIfNotEmpty(BindingItem.Adress.Voivodeship),
-                            District = ConvertIfNotEmpty(BindingItem.Adress.District),
+                            Voivodeship = BindingItem.Adress.Voivodeship?.ToLower(),
+                            District = BindingItem.Adress.District?.ToLower(),
                             PostCode = BindingItem.Adress.PostCode,
-                            Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
+                            //Street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(BindingItem.Adress.Street.ToLower()),
+                            Street = CapitalizeStreet(BindingItem.Adress.Street),
                             BuildingNumber = BindingItem.Adress.BuildingNumber,
                             AppartamentNumber = BindingItem.Adress.AppartamentNumber
                         },
@@ -301,14 +304,16 @@ namespace GeosEnterprise.ViewModel
 
         }
 
-        private String ConvertIfNotEmpty(String name)
+        private String CapitalizeStreet (String _street)
         {
-            if (string.IsNullOrEmpty(name)) return name;
-            else
+            _street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(_street.ToLower());
+            foreach (Match match in Regex.Matches(_street, @"\d\-+"))
             {
-                return System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(name.ToLower());
+                StringBuilder sb = new StringBuilder(_street);
+                sb[match.Index + 2] = Char.ToLower(_street.ElementAt(match.Index + 2));
+                _street = sb.ToString();
             }
-            
+            return _street;
         }
     }
 }

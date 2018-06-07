@@ -22,7 +22,7 @@ namespace GeosEnterprise.DBO
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Adress> Adresses { get; set; }
         public DbSet<EmployeeContact> EmployeeContacts { get; set; }
-
+        public DbSet<Log> Logs { get; set; }
 
     }
 }

@@ -66,7 +66,7 @@ namespace GeosEnterprise.ViewModel
 
                 if (BindingItem.ID > 0)
                 {
-                    Repositories.RepairsRepository.Edit(BindingItem);
+                    Repositories.RepairsRepository.Update(BindingItem);
                 }
                 else
                 {
