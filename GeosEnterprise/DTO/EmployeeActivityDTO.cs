@@ -11,7 +11,7 @@ namespace GeosEnterprise.DTO
     {
         public DateTime TimeFrom { get; set; }
         public DateTime TimeTo { get; set; }
-        //public int? RepairID { get; set; }
+        public int? RepairID { get; set; }
         public string Description { get; set; }
 
         public string Duration
@@ -29,7 +29,7 @@ namespace GeosEnterprise.DTO
                 Description = entity.Description,
                 TimeFrom = entity.TimeFrom,
                 TimeTo = entity.TimeTo,
-                //RepairID = entity.RepairID,
+                RepairID = entity.RepairID,
             };
         }
 
@@ -40,7 +40,7 @@ namespace GeosEnterprise.DTO
                 Description = entity.Description,
                 TimeFrom = entity.TimeFrom,
                 TimeTo = entity.TimeTo,
-                //RepairID = entity.RepairID,
+                RepairID = entity.RepairID,
             };
         }
 

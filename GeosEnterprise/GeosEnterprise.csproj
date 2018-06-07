@@ -162,6 +162,7 @@
     <Compile Include="Validators\RepairValidator.cs" />
     <Compile Include="Validators\ValidatorTools.cs" />
     <Compile Include="ViewModel\AuthenticationViewModel.cs" />
+    <Compile Include="ViewModel\ClientsInfoViewModel.cs" />
     <Compile Include="ViewModel\ClientsListViewModel.cs" />
     <Compile Include="CommonThings\Commands\RelayCommand.cs" />
     <Compile Include="ViewModel\ComputersAddViewModel.cs" />
@@ -186,6 +187,9 @@
     </Compile>
     <Compile Include="Views\ClientsAdd.xaml.cs">
       <DependentUpon>ClientsAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClientsInfo.xaml.cs">
+      <DependentUpon>ClientsInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ClientsList.xaml.cs">
       <DependentUpon>ClientsList.xaml</DependentUpon>
@@ -242,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ClientsAdd.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ClientsInfo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

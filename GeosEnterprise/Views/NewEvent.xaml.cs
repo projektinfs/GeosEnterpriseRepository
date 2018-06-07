@@ -62,7 +62,6 @@ namespace GeosEnterprise.Views
                 repairComboBox.Items.Add(new KeyValuePair<string, string>(repair.Computer.Name + " " + repair.Computer.SerialNumber , repair.Computer.SerialNumber));
             }
 
-
         }
 
         public Event Event { get; internal set; }
@@ -71,7 +70,10 @@ namespace GeosEnterprise.Views
         {
             Event = new Event()
             {
-                Subject = employeeComboBox.SelectedValue.ToString() + " " + Name.Text,
+                Subject = Name.Text.ToUpper(),
+                
+                //+ Environment.NewLine + employeeComboBox.SelectedValue.ToString() + Environment.NewLine + repairComboBox.SelectedValue.ToString(),
+
                 Color = (SolidColorBrush)colorBox.SelectedValue,
                 Start = (DateTime)TimeFrom.Value,
                 End = (DateTime)TimeTo.Value

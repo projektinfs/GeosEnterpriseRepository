@@ -41,8 +41,7 @@ namespace GeosEnterprise.ViewModel
             get
             {
                 return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
-                .GetAllCurrent()
-                .Where(p => p.Status == DBO.RepairStatus.Reported)
+                .GetAllCompleted()
                 .Select(p => DTO.RepairDTO.ToDTO(p)));
             }
         }
@@ -118,8 +117,8 @@ namespace GeosEnterprise.ViewModel
                     .Replace("{{data}}", DateTime.Now.ToShortDateString())
                     .Replace("{{termin}}", DateTime.Now.AddDays(7).ToShortDateString())
                     .Replace("{{klient}}", $"\r\n{repairDTO.Client.FullName}")
-                    .Replace("{{netto}}", (repairDTO.FinalCosts * (decimal)0.77).ToString())
-                    .Replace("{{vat}}", (repairDTO.FinalCosts * (decimal)0.23).ToString())
+                    .Replace("{{netto}}", (repairDTO.FinalCosts * (decimal)0.77).ToString("0.00"))
+                    .Replace("{{vat}}", (repairDTO.FinalCosts * (decimal)0.23).ToString("0.00"))
                     .Replace("{{brutto}}", repairDTO.FinalCosts.ToString())
                     .Replace("{{pracownik}}", repairDTO.Dealer.FullName);
 

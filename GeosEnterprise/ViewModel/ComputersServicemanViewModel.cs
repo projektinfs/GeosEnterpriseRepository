@@ -94,6 +94,7 @@ namespace GeosEnterprise.ViewModel
                     "Naprawa zakończona", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
             {
                 BindingItem.Status = DBO.RepairStatus.Completed;
+                //BindingItem.RealizationDate = DateTime.Now;
                 OK(window);
             }
             

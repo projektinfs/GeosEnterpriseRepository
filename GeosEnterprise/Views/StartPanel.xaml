@@ -17,7 +17,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
-     
+
         <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="197,30,0,0" TextWrapping="Wrap" Text="{Binding currentEmployee.Name}" VerticalAlignment="Top" Height="69" Width="593" FontSize="48" Foreground="#FFFFFEFE"/>
         <TextBlock HorizontalAlignment="Left" Margin="72,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="125" FontSize="48" Foreground="White"><Run Text="Witaj"/><LineBreak/><Run/></TextBlock>
         <Label Content="Twoje dane:" HorizontalAlignment="Left" Margin="72,103,0,0" VerticalAlignment="Top" Height="43" Width="142" FontSize="24" Foreground="#FFFFFBFB"/>
@@ -48,8 +48,8 @@
             <Run Text="{Binding BuildingAndApartamentNumber, Mode=TwoWay}"/>
         </TextBlock>
 
-        <Border Margin="115,362,569,47.6" Padding="2"
-          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Border Margin="78,292,0,117.6" Padding="2"
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Left">
             <StackPanel>
                 <Button x:Name="ChangePreferences" DataContext="{Binding Source={StaticResource data}}" Command="{Binding ChangePreferences}" Content="Zmień dane"  Height="31"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Margin="0,0,-0.4,0">
                     <Button.Background>
