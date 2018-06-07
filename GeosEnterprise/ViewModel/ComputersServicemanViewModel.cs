@@ -102,7 +102,7 @@ namespace GeosEnterprise.ViewModel
                 if (emailWindowStatus == true)
                 {
                     BindingItem.Status = DBO.RepairStatus.Completed;
-                    Repositories.RepairsRepository.Edit(BindingItem);
+                    Repositories.RepairsRepository.Update(BindingItem);
                 }
             }
         }
