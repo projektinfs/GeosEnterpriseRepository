@@ -50,7 +50,7 @@
         <TextBox Name="BuildingTextBox" Text="{Binding BindingItem.Adress.BuildingNumber}" HorizontalAlignment="Left" Height="23" Margin="517,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609" Grid.Column="2"/>
         <Label Content="Budynek*" HorizontalAlignment="Left" Margin="416,272,0,0" VerticalAlignment="Top" Foreground="White" Grid.Column="2" RenderTransformOrigin="1.393,0.692"/>
         <TextBox Name="AppartamentTextBox" Text="{Binding BindingItem.Adress.AppartamentNumber}" HorizontalAlignment="Left" Height="23" Margin="637,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609" Grid.Column="2"/>
-        <Label Content="Mieszkanie" HorizontalAlignment="Left" Margin="563,272,0,0" VerticalAlignment="Top" Foreground="White" Grid.Column="2"/>
+        <Label Content="Lokal" HorizontalAlignment="Left" Margin="563,272,0,0" VerticalAlignment="Top" Foreground="White" Grid.Column="2"/>
         <TextBox Name="PhoneTextBox" Text="{Binding BindingItem.EmployeeContact.Phone}" HorizontalAlignment="Left" Height="23" Margin="8,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>
         <Label Content="telefon*" HorizontalAlignment="Left" Margin="38,338,0,0" VerticalAlignment="Top" Foreground="White" Grid.ColumnSpan="3" Width="86"/>
         <TextBox Name="FaxTextBox" Text="{Binding BindingItem.EmployeeContact.Fax}" HorizontalAlignment="Left" Height="23" Margin="228,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Grid.Column="2"/>

@@ -59,7 +59,7 @@
                 <TextBox IsEnabled="False" Name="VoivodeshipTextBox" Text="{Binding BindingItem.Adress.Voivodeship}" HorizontalAlignment="Left" Height="23" Margin="550,-50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
                 <Label Content="Budynek" HorizontalAlignment="Left" Margin="465,-25,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox IsEnabled="False" Name="BuildingTextBox" Text="{Binding BindingItem.Adress.BuildingNumber}" HorizontalAlignment="Left" Height="23" Margin="550,-25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609"/>
-                <Label Content="Mieszkanie" HorizontalAlignment="Left" Margin="595,-28,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label Content="Lokal" HorizontalAlignment="Left" Margin="595,-28,0,0" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox IsEnabled="False" Name="AppartamentTextBox" Text="{Binding BindingItem.Adress.AppartamentNumber}" HorizontalAlignment="Left" Height="23" Margin="670,-25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="-0.667,0.609"/>
                 <Label Content="Kontakt" Margin="0,0,0,0" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" Foreground="White"/>
                 <Label Content="telefon" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="28" Foreground="White" />

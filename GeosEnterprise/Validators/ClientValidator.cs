@@ -20,7 +20,7 @@ namespace GeosEnterprise.Validators
             RuleFor(client => client.ClientAdress.Voivodeship).NotEmpty().WithMessage("Pole Województwo nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowe wojewodztwo");
             RuleFor(client => client.ClientAdress.District).NotEmpty().WithMessage("Pole Powiat nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowy powiat");
             RuleFor(client => client.ClientAdress.PostCode).NotEmpty().WithMessage("Pole Kod pocztowy nie może być puste").Must(GoodPostCode).WithMessage("Nieprawidłowy kod pocztowy!");
-            RuleFor(client => client.ClientAdress.Street).NotEmpty().WithMessage("Pole Ulica nie może być puste").Must(OnlyLetters).WithMessage("Nieprawidłowa ulica");
+            RuleFor(client => client.ClientAdress.Street).NotEmpty().WithMessage("Pole Ulica nie może być puste").Must(GoodStreet).WithMessage("Nieprawidłowa ulica");
             RuleFor(client => client.ClientAdress.BuildingNumber).NotEmpty().WithMessage("Pole Budynek nie może być puste").Must(GoodNumber).WithMessage("Nieprawidłowa numer budynku");
             RuleFor(client => client.ClientAdress.AppartamentNumber).Must(GoodNumber).WithMessage("Nieprawidłowa numer mieszkania");
             RuleFor(client => client.ClientContact.Phone).NotEmpty().WithMessage("Pole Telefon nie może być puste").Must(GoodPhone).WithMessage("Podany numer telefonu jest niepoprawny!");
@@ -60,6 +60,13 @@ namespace GeosEnterprise.Validators
         {
             if (string.IsNullOrEmpty(text)) return true;
             Regex regex = new Regex(@"^([a-zA-ZąęóćłńśżźĄĘÓĆŁŃŚŻŹ\-\s]+)$");
+            return regex.IsMatch(text);
+        }
+
+        public bool GoodStreet(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return true;
+            Regex regex = new Regex(@"^([a-zA-Z0-9ąęóćłńśżźĄĘÓĆŁŃŚŻŹ\-\s]+)$");
             return regex.IsMatch(text);
         }
     }
