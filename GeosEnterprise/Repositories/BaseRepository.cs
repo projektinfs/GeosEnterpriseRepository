@@ -160,6 +160,7 @@ namespace GeosEnterprise.Repositories
                 type = func.Method.ReturnType.Name;
             }
             methodName = methodName.Substring(methodName.IndexOf('<') + 1, methodName.IndexOf('>') - 1);
+            type = type.Replace("DTO", "");
 
             var t = item.GetType();
             var logText = $"Method: {methodName} | Type: {type}";
@@ -267,8 +268,8 @@ namespace GeosEnterprise.Repositories
                 type = func.Method.ReturnType.Name;
             }
             methodName = methodName.Substring(methodName.IndexOf('<') + 1, methodName.IndexOf('>') - 1);
+            type = type.Replace("DTO", "");
 
-            var t = item.GetType();
             var logText = $"Method: {methodName} | Type: {type}";
 
             if (!string.IsNullOrEmpty(lastParameter))
