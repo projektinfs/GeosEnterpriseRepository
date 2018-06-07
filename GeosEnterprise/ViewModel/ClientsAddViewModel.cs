@@ -13,6 +13,7 @@ using GeosEnterprise.Validators;
 using FluentValidation;
 using FluentValidation.Results;
 using GalaSoft.MvvmLight;
+using System.Text.RegularExpressions;
 
 namespace GeosEnterprise.ViewModel
 {
@@ -86,10 +87,10 @@ namespace GeosEnterprise.ViewModel
                             ClientAdress = new ClientAdress
                             {
                                 City = Capitalize(BindingItem.ClientAdress.City),
-                                Voivodeship = Capitalize(BindingItem.ClientAdress.Voivodeship),
-                                District = Capitalize(BindingItem.ClientAdress.District),
+                                Voivodeship = BindingItem.ClientAdress.Voivodeship?.ToLower(),
+                                District = BindingItem.ClientAdress.District?.ToLower(),
                                 PostCode = BindingItem.ClientAdress.PostCode,
-                                Street = Capitalize(BindingItem.ClientAdress.Street),
+                                Street = CapitalizeStreet(BindingItem.ClientAdress.Street),
                                 BuildingNumber = BindingItem.ClientAdress.BuildingNumber,
                                 AppartamentNumber = BindingItem.ClientAdress.AppartamentNumber
                             },
@@ -114,10 +115,10 @@ namespace GeosEnterprise.ViewModel
                         {
                             ID = (int)BindingItem.ClientAdress.ID,
                             City = Capitalize(BindingItem.ClientAdress.City),
-                            Voivodeship = Capitalize(BindingItem.ClientAdress.Voivodeship),
-                            District = Capitalize(BindingItem.ClientAdress.District),
+                            Voivodeship = BindingItem.ClientAdress.Voivodeship?.ToLower(),
+                            District = BindingItem.ClientAdress.District?.ToLower(),
                             PostCode = BindingItem.ClientAdress.PostCode,
-                            Street = Capitalize(BindingItem.ClientAdress.Street),
+                            Street = CapitalizeStreet(BindingItem.ClientAdress.Street),
                             BuildingNumber = BindingItem.ClientAdress.BuildingNumber,
                             AppartamentNumber = BindingItem.ClientAdress.AppartamentNumber
                         },
@@ -164,6 +165,18 @@ namespace GeosEnterprise.ViewModel
                 string returnString = $"{validationErrors1}\r\n".Trim();
                 return returnString;
             }
+        }
+
+        private String CapitalizeStreet(String _street)
+        {
+            _street = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(_street.ToLower());
+            foreach (Match match in Regex.Matches(_street, @"\d\-+"))
+            {
+                StringBuilder sb = new StringBuilder(_street);
+                sb[match.Index + 2] = Char.ToLower(_street.ElementAt(match.Index + 2));
+                _street = sb.ToString();
+            }
+            return _street;
         }
     }
 }

@@ -7,10 +7,9 @@
         xmlns:local="clr-namespace:GeosEnterprise"
         xmlns:viewmodel="clr-namespace:GeosEnterprise.ViewModel"        
         WindowState="Maximized"
-        mc:Ignorable="d"
-        Title="GeosEnterprise" Height="720" Width="1280"
+        mc:Ignorable="d"     
+         Title="GeosEnterprise" MinHeight="720" MinWidth="1280"
         DataContext="{Binding Source={StaticResource Locator}, Path=Authentication}">
-
     <Window.Resources>
         <viewmodel:MainViewModel x:Key="main"></viewmodel:MainViewModel>
         <viewmodel:ViewModelLocator x:Key="Locator"></viewmodel:ViewModelLocator>

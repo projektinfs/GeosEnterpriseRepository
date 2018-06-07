@@ -9,6 +9,7 @@
 
         mc:Ignorable="d"
         Title="Dodaj/edytuj klienta" Height="515" Width="875"
+        MinHeight="515" MinWidth="875"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>

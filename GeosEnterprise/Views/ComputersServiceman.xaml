@@ -6,7 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
         mc:Ignorable="d"
-        Title="Szczegóły naprawy" Height="700" Width="820"
+        Title="Szczegóły naprawy" MinHeight="700" MinWidth="820"
+        Height="700" Width="820"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
@@ -54,14 +55,14 @@
 
 
 
-        <Border Margin="80,380,207,0" Padding="3" Background="#FF002D51" 
-          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12" Height="60" VerticalAlignment="Center" HorizontalAlignment="Left">
+        <Border Margin="304,500,256,111" Padding="5" Background="#FF002D51" 
+          BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel >
                 <Button x:Name="CompletedButton" Content="Naprawa zakończona" Command="{Binding CompletedButtonCommand}" CommandParameter="{Binding ElementName=ComputerServiceman}" Margin="0,2,0,0" HorizontalAlignment="Left" Width="240" Height="40"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="256,600,207,0" Padding="3" Background="#FF002D51" 
+        <Border Margin="256,550,207,0" Padding="3" Background="#FF002D51" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel >
                 <Button x:Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputerServiceman}" Margin="0,2,0,0" HorizontalAlignment="Left" Width="140" Height="40"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>
