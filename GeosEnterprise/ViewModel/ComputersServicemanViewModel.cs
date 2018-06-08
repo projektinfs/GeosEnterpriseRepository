@@ -21,6 +21,7 @@ namespace GeosEnterprise.ViewModel
         public ICommand OKButtonCommand { get; set; }
         public ICommand CancelButtonCommand { get; set; }
         public ICommand CompletedButtonCommand { get; set; }
+        public ICommand CompletedNoMailButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
         public string RepairCosts { get; set; }
         public string ReplacementsCosts { get; set; }
@@ -49,6 +50,8 @@ namespace GeosEnterprise.ViewModel
             OKButtonCommand = new RelayCommand<Window>(OK);
             CancelButtonCommand = new RelayCommand<Window>(Cancel);
             CompletedButtonCommand = new RelayCommand<Window>(Completed);
+            CompletedNoMailButtonCommand = new RelayCommand<Window>(CompletedNoMail);
+
         }
 
         public void OK(Window window)
@@ -90,7 +93,6 @@ namespace GeosEnterprise.ViewModel
             window?.Close();
         }
 
-        //TODO: mailowe powiadomienie o zakończonej naprawie
         public void Completed(Window window)
         {
 
@@ -105,6 +107,12 @@ namespace GeosEnterprise.ViewModel
                     Repositories.RepairsRepository.Update(BindingItem);
                 }
             }
+        }
+
+        public void CompletedNoMail(Window window)
+        {
+            BindingItem.Status = DBO.RepairStatus.Completed;
+            Repositories.RepairsRepository.Update(BindingItem);
         }
 
         private string DoValidation()
