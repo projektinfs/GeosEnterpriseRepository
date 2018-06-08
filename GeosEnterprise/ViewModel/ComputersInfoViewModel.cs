@@ -16,12 +16,16 @@ namespace GeosEnterprise.ViewModel
     {
         public ICommand CancelButtonCommand { get; set; }
         public RepairDTO BindingItem { get; set; }
+        public string ClientFullName { get; set; }
+        public string RepairCosts { get; set; }
 
         public ComputersInfoViewModel(int? repairID)
         {
             if (repairID != null)
             {
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
+                ClientFullName = BindingItem.Client.Name + " " + BindingItem.Client.Surname;
+                RepairCosts = BindingItem.RepairCosts.ToString();
             }
             else
             {
