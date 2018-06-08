@@ -112,10 +112,17 @@ namespace GeosEnterprise.ViewModel
         private void Add(object obj)
         {
             Window addNewClientWindow = new ClientsAdd();
+            addNewClientWindow.Closed += AddNewClientWindowClosed;
             if (addNewClientWindow.ShowDialog() == true)
             {
                 RaisePropertyChanged("Items");
             }
+        }
+
+        private void AddNewClientWindowClosed(object sender, EventArgs e)
+        {
+            _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => ClientDTO.ToDTO(p)));
+            RaisePropertyChanged("Items");
         }
 
         private void Delete(object obj)
@@ -127,6 +134,7 @@ namespace GeosEnterprise.ViewModel
                     "Usunięcie klienta", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                 {
                     Repositories.ClientRepository.Delete(clientDTO);
+                    _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => ClientDTO.ToDTO(p)));
                     RaisePropertyChanged("Items");
                 }
             }
@@ -156,6 +164,7 @@ namespace GeosEnterprise.ViewModel
             if (clientDTO != null)
             {
                 Window addNewClientWindow = new ClientsAdd(clientDTO.ID);
+                addNewClientWindow.Closed += EditClientWindowClosed;
                 if (addNewClientWindow.ShowDialog() == true)
                 {
                     RaisePropertyChanged("Items");
@@ -165,6 +174,12 @@ namespace GeosEnterprise.ViewModel
             {
                 Config.MsgBoxNothingSelectedMessage();
             }
+        }
+
+        private void EditClientWindowClosed(object sender, EventArgs e)
+        {
+            _myDataSource = new ObservableCollection<ClientDTO>(ClientRepository.GetAllCurrent().Select(p => ClientDTO.ToDTO(p)));
+            RaisePropertyChanged("Items");
         }
 
         private void OnSearch(object obj)
