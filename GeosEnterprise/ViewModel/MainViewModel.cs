@@ -170,6 +170,11 @@ namespace GeosEnterprise.ViewModel
             {
                 Repositories.RepairsRepository.Insert(repair);
             }
+
+            foreach (var activity in DBO.EmployeeActivity.ForSeedToDatabase())
+            {
+                Repositories.EmployeeActivityRepository.Insert(activity);
+            }
         }
 
     }
