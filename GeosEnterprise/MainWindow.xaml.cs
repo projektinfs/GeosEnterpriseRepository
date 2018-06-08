@@ -27,6 +27,7 @@ namespace GeosEnterprise
     {
         public MainWindow()
         {
+            App.InitializeDatabase();
             InitializeComponent();
         }
     }

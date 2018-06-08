@@ -12,14 +12,6 @@ namespace GeosEnterprise.ViewModel
 {
     public class ViewModelLocator
     {
-        public ViewModelBase Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
-
         public ViewModelBase StartPanel
         {
             get
@@ -33,6 +25,14 @@ namespace GeosEnterprise.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<AuthenticationViewModel>();
+            }
+        }
+
+        public ViewModelBase Main
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
 

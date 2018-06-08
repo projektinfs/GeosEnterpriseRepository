@@ -62,7 +62,6 @@ namespace GeosEnterprise.ViewModel
 
         public MainViewModel()
         {
-            InitializeDatabase();
             IsAuthenticated = "Hidden";
             StartPanel = new RelayCommand<object>(StartPanelVM);
             ComputersList = new RelayCommand<object>(ComputersListVM);
@@ -76,7 +75,6 @@ namespace GeosEnterprise.ViewModel
             Messenger.Default.Register<String>(this, AuthenticationValid);
             Messenger.Default.Register<String>(this, UserName);
             ViewModel = new AuthenticationViewModel();
-            
         }
 
         private void UserName(string obj)
@@ -133,49 +131,5 @@ namespace GeosEnterprise.ViewModel
         {
             ViewModel = new LogsListViewModel();
         }
-
-        private void InitializeDatabase()
-        {
-            if (!App.DB.Database.Exists())
-            {
-                App.DB.Database.Create();
-                SeedDatabase();
-            }
-            else if (!App.DB.Database.CompatibleWithModel(false) && Config.DropAndCreateWhenModelChanges)
-            {
-                App.DB.Database.Delete();
-                App.DB.Database.Create();
-                SeedDatabase();
-            }
-            else if (!App.DB.Computers.Any())
-            {
-                SeedDatabase();
-            }
-            App.DB.Computers.Any();
-        }
-
-        private void SeedDatabase()
-        {
-            foreach (var client in DBO.Client.ForSeedToDatabase())
-            {
-                Repositories.ClientRepository.Insert(client);
-            }
-
-            foreach (var employee in DBO.Employee.ForSeedToDatabase())
-            {
-                Repositories.EmployeeRepository.Insert(employee);
-            }
-
-            foreach (var repair in DBO.Repair.ForSeedToDatabase())
-            {
-                Repositories.RepairsRepository.Insert(repair);
-            }
-
-            foreach (var activity in DBO.EmployeeActivity.ForSeedToDatabase())
-            {
-                Repositories.EmployeeActivityRepository.Insert(activity);
-            }
-        }
-
     }
 }

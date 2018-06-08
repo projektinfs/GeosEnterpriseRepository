@@ -15,6 +15,49 @@ namespace GeosEnterprise
     public partial class App : Application
     {
         public static EntitiesContext DB = new EntitiesContext();
+
+        public static void InitializeDatabase()
+        {
+            if (!App.DB.Database.Exists())
+            {
+                App.DB.Database.Create();
+                SeedDatabase();
+            }
+            else if (!App.DB.Database.CompatibleWithModel(false) && Config.DropAndCreateWhenModelChanges)
+            {
+                App.DB.Database.Delete();
+                App.DB.Database.Create();
+                SeedDatabase();
+            }
+            else if (!App.DB.Computers.Any())
+            {
+                SeedDatabase();
+            }
+            App.DB.Computers.Any();
+        }
+
+        private static void SeedDatabase()
+        {
+            foreach (var client in DBO.Client.ForSeedToDatabase())
+            {
+                Repositories.ClientRepository.Insert(client);
+            }
+
+            foreach (var employee in DBO.Employee.ForSeedToDatabase())
+            {
+                Repositories.EmployeeRepository.Insert(employee);
+            }
+
+            foreach (var repair in DBO.Repair.ForSeedToDatabase())
+            {
+                Repositories.RepairsRepository.Insert(repair);
+            }
+
+            foreach (var activity in DBO.EmployeeActivity.ForSeedToDatabase())
+            {
+                Repositories.EmployeeActivityRepository.Insert(activity);
+            }
+        }
     }
 
     /// <summary>
