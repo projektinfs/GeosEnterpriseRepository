@@ -115,7 +115,14 @@ namespace GeosEnterprise.ViewModel
 
             if (System.Diagnostics.Debugger.IsAttached && Config.IgnoreAuthentication)
             {
-                Authorization.AcctualEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+                var admin = EmployeeRepository.GetByEmail("admin@admin.pl");
+                if (admin.UserRole != UserRole.Administrator)
+                {
+                    admin.UserRole = UserRole.Administrator;
+                    Repositories.EmployeeRepository.Update(admin);
+                }
+                Authorization.AcctualEmployee = admin;
+                
                 Authorization.AcctualUser = "admin@admin.pl";
                 IsVisible = "Hidden";
                 Name = Authorization.AcctualEmployee?.Name + " " + Authorization.AcctualEmployee?.Surname;

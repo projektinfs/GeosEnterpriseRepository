@@ -12,7 +12,7 @@ namespace GeosEnterprise.DBO
     {
         public DBObject()
         {
-            CreatedBy = Session.Username;
+            CreatedBy = Authorization.AcctualUser;
             CreatedDate = DateTime.Now;
         }
 
