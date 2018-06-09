@@ -180,11 +180,6 @@ namespace GeosEnterprise.ViewModel
 
         private void SetAccess(Dictionary<string, bool> obj)
         {
-            foreach(var key in obj)
-            {
-                MessageBox.Show(key.Key + " - " + key.Value);
-            }
-
             if (obj["ComputerList"])
                 ComputerListPermission = "Visible";
             else

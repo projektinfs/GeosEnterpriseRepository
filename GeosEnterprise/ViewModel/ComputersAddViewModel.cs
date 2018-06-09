@@ -109,6 +109,16 @@ namespace GeosEnterprise.ViewModel
             {
                 validationErrors3 = "Niepoprawny format kosztu naprawy.";
             }
+            else
+            {
+                int RepairCostAsInteger = (int)repairCosts;
+                int CostsToValidationInteger = (int)((repairCosts - RepairCostAsInteger) * 100);
+                decimal CostsToValidationDecimal = (repairCosts - RepairCostAsInteger) * 100;
+                if( CostsToValidationInteger - CostsToValidationDecimal != 0 )
+                {
+                    validationErrors3 = "Niepoprawny format kosztu naprawy.";
+                }
+            }
 
             var validationErrors1 = ValidatorTools.DoValidation(BindingItem.Computer, new ComputerValidator());
             string validationErrors2 = String.Empty;
