@@ -10,7 +10,7 @@
         Title="Informacje o naprawie" MinHeight="570" MinWidth="690"
         Height="570" Width="680"
         WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid IsEnabled="False">
         <Grid.Background>
             <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg"/>
         </Grid.Background>
