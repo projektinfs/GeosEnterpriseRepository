@@ -44,17 +44,19 @@ namespace GeosEnterprise.Views
                 return;
             }
                 
-            Event = new Event()
-            {
-                Subject = eventName.Text,
-                Color = (SolidColorBrush)colorBox.SelectedValue,
-                Start = (DateTime)TimeFrom.Value,
-                End = (DateTime)TimeTo.Value
-            };
+            
 
             var names = employeeComboBox.SelectedValue.ToString().Split(' ');
             string firstName = names[0];
             string lastName = names[1];
+
+            Event = new Event()
+            {
+                Subject = firstName + " " + lastName + " " + eventName.Text,
+                Color = (SolidColorBrush)colorBox.SelectedValue,
+                Start = (DateTime)TimeFrom.Value,
+                End = (DateTime)TimeTo.Value
+            };
 
             Employee employee = Repositories.EmployeeRepository.GetByNameAndSurname(firstName, lastName);
         
@@ -71,9 +73,17 @@ namespace GeosEnterprise.Views
             this.Close();
         }
 
-        public List<EmployeeDTO> getEmployees()
+        public List<EmployeeDTO> GetEmployees()
         {
-            return Repositories.EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)).ToList();
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
+            {
+                return Repositories.EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)).ToList();
+            }
+            else
+            {
+                return Repositories.EmployeeRepository.GetAllCurrent().Select(p => EmployeeDTO.ToDTO(p)).Where(p => p.ID == Authorization.AcctualEmployee.ID).ToList();
+            }
+                
         }
 
         /*
@@ -88,7 +98,7 @@ namespace GeosEnterprise.Views
             employeeComboBox.DisplayMemberPath = "Key";
             employeeComboBox.SelectedValuePath = "Value";
 
-            List<EmployeeDTO> employees = getEmployees();
+            List<EmployeeDTO> employees = GetEmployees();
 
             foreach (EmployeeDTO employee in employees)
             {

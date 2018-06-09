@@ -51,7 +51,7 @@ namespace GeosEnterprise.Views
                         Subject = repair.Serviceman.Name + " " + repair.Serviceman.Surname + " "
                     + Environment.NewLine + repair.Computer.Name + Environment.NewLine +
                     repair.Computer.SerialNumber + " " + Environment.NewLine + repair.ID,
-                        Color = Brushes.Aqua,
+                        Color = Brushes.RoyalBlue,
                         Start = (DateTime)repair.CreatedDate,
                         End = (DateTime)repair.EstimatedDate
                     };

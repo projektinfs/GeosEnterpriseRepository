@@ -55,7 +55,7 @@ namespace GeosEnterprise.Views
                 else if (description == "L4")
                     color = Brushes.Orange;
                 else
-                    color = Brushes.Blue;
+                    color = Brushes.RoyalBlue;
 
                 Employee employee = Repositories.EmployeeRepository.GetById(activity.EmployeeID);
 
@@ -118,18 +118,18 @@ namespace GeosEnterprise.Views
 
         private List<EmployeeActivity> getActivities()
         {
-            return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
+            //return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
             
-            /*
+            
             if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
             {
                 return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
             }
             else
             {
-                return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent().Where(p => p.ID == Authorization.AcctualEmployee.ID));
+                return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent().Where(p => p.EmployeeID == Authorization.AcctualEmployee.ID));
             }
-            */
+            
         }
         
         public string returnType(string Description)
