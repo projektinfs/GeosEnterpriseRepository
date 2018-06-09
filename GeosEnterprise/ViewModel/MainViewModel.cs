@@ -55,7 +55,8 @@ namespace GeosEnterprise.ViewModel
         public ICommand ClientsList { get; set; }
         public ICommand Logout { get; set; }
         public ICommand AccountantPanel { get; set; }
-        public ICommand SchedulerPanel { get; set; }
+        public ICommand EmployeeSchedulerPanel { get; set; }
+        public ICommand RepairSchedulerPanel { get; set; }
         public ICommand LogsList { get; set; }
 
         public int GlobalPropertyChanged { get; }
@@ -69,7 +70,8 @@ namespace GeosEnterprise.ViewModel
             ClientsList = new RelayCommand<object>(ClientsListVM);
             AccountantPanel = new RelayCommand<object>(AccountantPanelVM);
             Logout = new RelayCommand<object>(LogoutVM);
-            SchedulerPanel = new RelayCommand<object>(SchedulerPanelVM);
+            EmployeeSchedulerPanel = new RelayCommand<object>(EmployeeSchedulerPanelVM);
+            RepairSchedulerPanel = new RelayCommand<object>(RepairSchedulerPanelVM);
             LogsList = new RelayCommand<object>(LogsVM);
             Messenger.Default.Register<ViewModelBase>(this, MessageHandler);
             Messenger.Default.Register<String>(this, AuthenticationValid);
@@ -117,9 +119,14 @@ namespace GeosEnterprise.ViewModel
             ViewModel = new AccountantPanelViewModel();
         }
 
-        private void SchedulerPanelVM(object obj)
+        private void EmployeeSchedulerPanelVM(object obj)
         {
-            ViewModel = new SchedulerPanelViewModel();
+            ViewModel = new EmployeeSchedulerViewModel();
+        }
+
+        private void RepairSchedulerPanelVM(object obj)
+        {
+            ViewModel = new RepairSchedulerViewModel();
         }
 
         private void LogoutVM(object obj)

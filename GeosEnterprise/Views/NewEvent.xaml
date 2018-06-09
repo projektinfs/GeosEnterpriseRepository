@@ -13,7 +13,7 @@
 
     <Grid >
         <Grid.Background>
-            <ImageBrush ImageSource="..\Icons\pikselart.jpg" Stretch="None"/>
+            <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg" Stretch="None"/>
         </Grid.Background>
 
         <Border Margin="10,10,0,0" Padding="3"

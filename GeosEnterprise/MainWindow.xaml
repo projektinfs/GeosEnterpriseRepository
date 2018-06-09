@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
         <DockPanel DataContext="{Binding Source={StaticResource main}}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5">
             <DockPanel.Background>
-                <ImageBrush ImageSource=".\Icons\pikselart.jpg" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource=".\Icons\MainWallpaper.jpg" Stretch="UniformToFill"/>
             </DockPanel.Background>
             <Border Visibility="{Binding IsAuthenticated}" Margin="6,6,6,9.8" Padding="10" 
                 BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" >
@@ -68,7 +68,13 @@
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="SchedulerButton"  Command="{Binding SchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Grafik" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="EmployeeSchedulerButton"  Command="{Binding EmployeeSchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram pracy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                        <Button.Background>
+                            <ImageBrush ImageSource=".\Icons\text-background.png"/>
+                        </Button.Background>
+                    </Button>
+
+                    <Button x:Name="RepairSchedulerButton"  Command="{Binding RepairSchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram napraw" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
@@ -80,8 +86,7 @@
                         </Button.Background>
                     </Button>
 
-
-                    
+                   
                     <Button x:Name="LogoutButton"  Command="{Binding Logout}"  Margin="0,0,0,0" BorderBrush="White" Content="Wyloguj się" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
@@ -95,7 +100,7 @@
         </DockPanel>
         <ContentControl Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="5" DataContext="{Binding Source={StaticResource main}}" Content="{Binding ViewModel}">
             <ContentControl.Background>
-                <ImageBrush ImageSource=".\Icons\pikselart.jpg"/>
+                <ImageBrush ImageSource=".\Icons\MainWallpaper.jpg"/>
             </ContentControl.Background>
         </ContentControl>
 

@@ -27,7 +27,7 @@ namespace GeosEnterprise.Views
         public SchedulerPanel()
         {
             InitializeComponent();
-            DataContext = new SchedulerPanelViewModel();
+            DataContext = new EmployeeSchedulerViewModel();
         }
 
         public Event Event { get; internal set; }

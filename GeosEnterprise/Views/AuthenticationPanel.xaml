@@ -13,7 +13,7 @@
     </UserControl.Resources>
     <Grid Visibility="{Binding IsVisible}" Margin="0,0,0,-0.4">
         <Grid.Background>
-            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+            <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg"/>
         </Grid.Background>
 
         <Border BorderBrush="Black"  HorizontalAlignment="Center" VerticalAlignment="Center"  BorderThickness="0"  Height="374" Margin="112,32,140,44" Width="708">

@@ -15,7 +15,7 @@
 
     <Grid DataContext="{Binding Source={StaticResource data}}">
         <Grid.Background>
-            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+            <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg"/>
         </Grid.Background>
 
         <TextBlock x:Name="Name" HorizontalAlignment="Left" Margin="197,30,0,0" TextWrapping="Wrap" Text="{Binding currentEmployee.Name}" VerticalAlignment="Top" Height="69" Width="593" FontSize="48" Foreground="#FFFFFEFE"/>

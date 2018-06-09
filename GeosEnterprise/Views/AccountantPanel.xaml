@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+            <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg"/>
         </Grid.Background>
 
         <Label Content="Transakcje" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>

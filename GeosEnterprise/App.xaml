@@ -22,8 +22,11 @@
             <DataTemplate x:Name="accountantPanelTemplate" DataType="{x:Type viewmodel:AccountantPanelViewModel}">
                 <views:AccountantPanel />
             </DataTemplate>
-            <DataTemplate x:Name="schedulerTemplate" DataType="{x:Type viewmodel:SchedulerPanelViewModel}">
+            <DataTemplate x:Name="employeeSchedulerTemplate" DataType="{x:Type viewmodel:EmployeeSchedulerViewModel}">
                 <views:SchedulerPanel />
+            </DataTemplate>
+            <DataTemplate x:Name="repairSchedulerTemplate" DataType="{x:Type viewmodel:RepairSchedulerViewModel}">
+                <views:RepairScheduler />
             </DataTemplate>
             <DataTemplate x:Name="logsListTemplate" DataType="{x:Type viewmodel:LogsListViewModel}">
                 <views:LogsList />

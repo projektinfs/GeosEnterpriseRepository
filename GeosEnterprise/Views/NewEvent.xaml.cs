@@ -31,20 +31,6 @@ namespace GeosEnterprise.Views
             setColors();
             setEmployeesToComboBox();
 
-
-
-            /*
-            repairComboBox.DisplayMemberPath = "Key";
-            repairComboBox.SelectedValuePath = "Value";
-
-            List<RepairDTO> repairs = getRepairs();
-
-            foreach (RepairDTO repair in repairs)
-            {
-                repairComboBox.Items.Add(new KeyValuePair<string, string>(repair.Computer.Name + " " + repair.Computer.SerialNumber , repair.Computer.SerialNumber));
-            }
-            */
-
         }
 
         public Event Event { get; internal set; }

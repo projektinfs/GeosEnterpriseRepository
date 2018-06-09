@@ -15,13 +15,13 @@ using WpfScheduler;
 
 namespace GeosEnterprise.ViewModel
 {
-    public class SchedulerPanelViewModel : ViewModelBase
+    public class EmployeeSchedulerViewModel : ViewModelBase
     {
         public ICommand DayButtonCommand { get; set; }
         public ICommand WeekButtonCommand { get; set; }
         public ICommand MonthButtonCommand { get; set; }
 
-        public SchedulerPanelViewModel()
+        public EmployeeSchedulerViewModel()
         {
             DayButtonCommand = new RelayCommand<object>(Day);
             WeekButtonCommand = new RelayCommand<object>(Week);

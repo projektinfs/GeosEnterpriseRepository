@@ -178,7 +178,8 @@
     <Compile Include="ViewModel\LogsListViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NewEventViewModel.cs" />
-    <Compile Include="ViewModel\SchedulerPanelViewModel.cs" />
+    <Compile Include="ViewModel\RepairSchedulerViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeSchedulerViewModel.cs" />
     <Compile Include="ViewModel\StartPanelViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\AccountantPanelViewModel.cs" />
@@ -224,8 +225,11 @@
     <Compile Include="Views\NewEvent.xaml.cs">
       <DependentUpon>NewEvent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SchedulerPanel.xaml.cs">
-      <DependentUpon>SchedulerPanel.xaml</DependentUpon>
+    <Compile Include="Views\RepairScheduler.xaml.cs">
+      <DependentUpon>RepairScheduler.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeScheduler.xaml.cs">
+      <DependentUpon>EmployeeScheduler.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartPanel.xaml.cs">
       <DependentUpon>StartPanel.xaml</DependentUpon>
@@ -302,7 +306,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SchedulerPanel.xaml">
+    <Page Include="Views\RepairScheduler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeScheduler.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,16 +359,15 @@
     <Resource Include="Reports\AccountantReport.txt" />
     <Resource Include="Icons\big-background.jpg" />
     <Resource Include="Icons\blue-gradient.png" />
-    <Resource Include="Icons\Computers.png" />
     <Resource Include="Icons\lajtgrejłolpejper.jpg" />
     <Resource Include="Icons\Logo.png" />
     <Resource Include="Icons\menu-background.jpg" />
     <Resource Include="Icons\newwallpaper.jpg" />
     <Resource Include="Icons\pandoktur.png" />
-    <Resource Include="Icons\pikselart.jpg" />
     <Resource Include="Icons\small-background.jpg" />
     <Resource Include="Icons\text-background.png" />
     <Resource Include="Reports\ConfirmationEmail.txt" />
+    <Resource Include="Icons\MainWallpaper.jpg" />
     <Content Include="Reports\OrderConfirmation.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

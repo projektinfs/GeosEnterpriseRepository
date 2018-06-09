@@ -16,7 +16,7 @@
             <RowDefinition Height="19*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+            <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg"/>
         </Grid.Background>
         <TextBlock TextWrapping="Wrap" FontSize="48" Foreground="White" HorizontalAlignment="Center" Width="293" Margin="291,0,269.6,0"><Run Text="Dane klienta"/><LineBreak/><Run/></TextBlock>
 

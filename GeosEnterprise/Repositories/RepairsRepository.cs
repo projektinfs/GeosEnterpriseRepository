@@ -31,6 +31,10 @@ namespace GeosEnterprise.Repositories
             return BaseRepository<Repair>.GetAllCurrent().Where(p => p.Status == DBO.RepairStatus.Completed).ToList();
         }
 
+        public new static IList<Repair> GetAllWithEstimatedDate()
+        {
+            return BaseRepository<Repair>.GetAllCurrent().Where(p => p.EstimatedDate != null).Where(p => p.ServicemanID != null).ToList();
+        }
 
         public static Repair Add(Repair repair)
         {

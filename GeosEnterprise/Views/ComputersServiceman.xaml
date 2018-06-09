@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
+            <ImageBrush ImageSource="..\Icons\MainWallpaper.jpg"/>
         </Grid.Background>
 
         <TextBlock TextWrapping="Wrap" FontSize="48" Foreground="White" HorizontalAlignment="Center" Width="400" Margin="127,0,128.6,0"><Run Text="Szczegóły naprawy"/><LineBreak/><Run/></TextBlock>
