@@ -20,11 +20,11 @@ using WpfScheduler;
 namespace GeosEnterprise.Views
 {
     /// <summary>
-    /// Interaction logic for SchedulerPanel.xaml
+    /// Interaction logic for EmployeeSchedulerPanel.xaml
     /// </summary>
-    public partial class SchedulerPanel : UserControl
+    public partial class EmployeeSchedulerPanel : UserControl
     {
-        public SchedulerPanel()
+        public EmployeeSchedulerPanel()
         {
             InitializeComponent();
             DataContext = new EmployeeSchedulerViewModel();

@@ -23,7 +23,7 @@
                 <views:AccountantPanel />
             </DataTemplate>
             <DataTemplate x:Name="employeeSchedulerTemplate" DataType="{x:Type viewmodel:EmployeeSchedulerViewModel}">
-                <views:SchedulerPanel />
+                <views:EmployeeSchedulerPanel />
             </DataTemplate>
             <DataTemplate x:Name="repairSchedulerTemplate" DataType="{x:Type viewmodel:RepairSchedulerViewModel}">
                 <views:RepairScheduler />
