@@ -76,7 +76,7 @@ namespace GeosEnterprise.Views
 
             if (addRepairInfoWindow.ShowDialog() == true)
             {
-                MessageBox.Show("Edytowano zlecenie!");
+                MessageBox.Show("Informacje o zleceniu!");
             }
 
         }
@@ -93,12 +93,20 @@ namespace GeosEnterprise.Views
 
         private List<Repair> getRepairs()
         {
-            return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate());
-        }
-
-        private List<Repair> getRepairByID()
-        {
-            return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate());
+            //return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate());
+            
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator 
+                || Authorization.AcctualEmployee.UserRole == UserRole.Admin
+                || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
+            {
+                return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate());
+            }
+            else
+            {
+                return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate().Where(p => p.ServicemanID == Authorization.AcctualEmployee.ID));
+            }
+            
+            
         }
     }
 }

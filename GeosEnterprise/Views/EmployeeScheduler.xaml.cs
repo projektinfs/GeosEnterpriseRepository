@@ -119,6 +119,17 @@ namespace GeosEnterprise.Views
         private List<EmployeeActivity> getActivities()
         {
             return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
+            
+            /*
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
+            {
+                return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
+            }
+            else
+            {
+                return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent().Where(p => p.ID == Authorization.AcctualEmployee.ID));
+            }
+            */
         }
         
         public string returnType(string Description)
