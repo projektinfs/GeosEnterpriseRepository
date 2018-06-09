@@ -161,7 +161,6 @@ namespace GeosEnterprise.ViewModel
         private void Access()
         {
             Dictionary<string, bool> Permissions = new Dictionary<string, bool>();
-            MessageBox.Show("Rola - " + currentEmployee.UserRole);
 
             switch (currentEmployee.UserRole)
             {
