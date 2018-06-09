@@ -177,37 +177,37 @@ namespace GeosEnterprise.ViewModel
                     Permissions["ComputerList"] = true;
                     Permissions["EmployeeList"] = true;
                     Permissions["ClientsList"] = true;
-                    Permissions["AccountantPanel"] = false;
+                    Permissions["AccountantPanel"] = true;
                     Permissions["EmployeeScheduler"] = true;
                     Permissions["RepairScheduler"] = true;
                     Permissions["Logs"] = true;
                     break;
                 case UserRole.Dealer:
                     Permissions["ComputerList"] = true;
-                    Permissions["EmployeeList"] = true;
+                    Permissions["EmployeeList"] = false;
                     Permissions["ClientsList"] = true;
                     Permissions["AccountantPanel"] = false;
-                    Permissions["EmployeeScheduler"] = true;
+                    Permissions["EmployeeScheduler"] = false;
                     Permissions["RepairScheduler"] = true;
-                    Permissions["Logs"] = true;
+                    Permissions["Logs"] = false;
                     break;
                 case UserRole.Serviceman:
                     Permissions["ComputerList"] = true;
                     Permissions["EmployeeList"] = false;
                     Permissions["ClientsList"] = true;
                     Permissions["AccountantPanel"] = false;
-                    Permissions["EmployeeScheduler"] = true;
+                    Permissions["EmployeeScheduler"] = false;
                     Permissions["RepairScheduler"] = true;
-                    Permissions["Logs"] = true;
+                    Permissions["Logs"] = false;
                     break;
                 case UserRole.Accountant:
                     Permissions["ComputerList"] = false;
-                    Permissions["EmployeeList"] = true;
-                    Permissions["ClientsList"] = true;
+                    Permissions["EmployeeList"] = false;
+                    Permissions["ClientsList"] = false;
                     Permissions["AccountantPanel"] = true;
                     Permissions["EmployeeScheduler"] = false;
-                    Permissions["RepairScheduler"] = true;
-                    Permissions["Logs"] = true;
+                    Permissions["RepairScheduler"] = false;
+                    Permissions["Logs"] = false;
                     break;
                 default:
                     Permissions["ComputerList"] = false;
@@ -215,8 +215,8 @@ namespace GeosEnterprise.ViewModel
                     Permissions["ClientsList"] = false;
                     Permissions["AccountantPanel"] = false;
                     Permissions["EmployeeScheduler"] = false;
-                    Permissions["RepairScheduler"] = true;
-                    Permissions["Logs"] = true;
+                    Permissions["RepairScheduler"] = false;
+                    Permissions["Logs"] = false;
                     break;
             }
 
