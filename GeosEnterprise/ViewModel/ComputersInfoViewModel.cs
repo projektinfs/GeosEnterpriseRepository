@@ -18,6 +18,8 @@ namespace GeosEnterprise.ViewModel
         public RepairDTO BindingItem { get; set; }
         public string ClientFullName { get; set; }
         public string RepairCosts { get; set; }
+        public DateTime? EstimatedTime { get; set; }
+
 
         public ComputersInfoViewModel(int? repairID)
         {
@@ -26,6 +28,7 @@ namespace GeosEnterprise.ViewModel
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
                 ClientFullName = BindingItem.Client.Name + " " + BindingItem.Client.Surname;
                 RepairCosts = BindingItem.RepairCosts.ToString();
+                EstimatedTime = BindingItem.EstimatedDate;
             }
             else
             {

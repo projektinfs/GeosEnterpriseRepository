@@ -41,6 +41,8 @@ namespace GeosEnterprise.DTO
 
         public string ServicemanNote { get; set; }
 
+        public DateTime? EstimatedDate { get; set; }
+
         public decimal FinalCosts
         {
             get
@@ -95,7 +97,8 @@ namespace GeosEnterprise.DTO
                 DealerID = entity.DealerID,
                 RepairCosts = entity.RepairCosts,
                 ReplacementsCosts = entity.ReplacementsCosts,
-                ServicemanNote = entity.ServicemanNote
+                ServicemanNote = entity.ServicemanNote,
+                EstimatedDate = entity.EstimatedDate
 
             };
         }
@@ -125,7 +128,8 @@ namespace GeosEnterprise.DTO
                 DealerID = entity.DealerID,
                 RepairCosts = entity.RepairCosts,
                 ReplacementsCosts = entity.ReplacementsCosts,
-                ServicemanNote = entity.ServicemanNote
+                ServicemanNote = entity.ServicemanNote,
+                EstimatedDate = entity.EstimatedDate
             };
         }
     }

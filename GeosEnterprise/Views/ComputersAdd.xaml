@@ -5,20 +5,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Zlecenie naprawy" Height="500" Width="680"
-        MinHeight="510" MinWidth="690"
+        Title="Zlecenie naprawy" Height="570" Width="680"
+        MinHeight="570" MinWidth="690"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
         
-        <TextBlock Margin="155,20,135.6,382.4" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="383"><Run Text="Zlecenie naprawy"/><LineBreak/><Run/></TextBlock>
+        <TextBlock Margin="150,10,140,430" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="383"><Run Text="Zlecenie naprawy"/><LineBreak/><Run/></TextBlock>
 
         <Border Margin="44,93,49.6,223.4" Padding="3" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12"
-          VerticalAlignment="Center" HorizontalAlignment="Center" Height="154" Width="580">
+          VerticalAlignment="Center" HorizontalAlignment="Center" Height="200" Width="580">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
@@ -39,10 +40,12 @@
                 <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="160,-33,1,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
                 <Label Content="Szacowany koszt*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
                 <TextBox x:Name="CostTextBox" Text="{Binding RepairCosts}" Margin="160,-35,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
+               <Label Content="Przewidywant termin naprawy*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
+                <xctk:DateTimePicker x:Name="Time" Value="{Binding EstimatedTime, Mode=TwoWay}" Margin="170,-40,1,0"  Height="22" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="44,267,49.6,72.4" Padding="3"
+        <Border Margin="44,300,49.6,72.4" Padding="3"
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12"
           VerticalAlignment="Center" HorizontalAlignment="Center" Height="131" Width="580">
             <Border.Background>
@@ -54,7 +57,7 @@
             </StackPanel>
         </Border>
 
-        <Border Margin="169,402,187,7" Padding="3" Background="#FF002D51" 
+        <Border Margin="169,440,187,7" Padding="3" Background="#FF002D51" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel >
                 <Button x:Name="OKButton" Content="Zapisz" Command="{Binding OKButtonCommand}" CommandParameter="{Binding ElementName=ComputersAddUpdate}" Margin="0,2,0,0" HorizontalAlignment="Left" Width="140" Height="40"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>

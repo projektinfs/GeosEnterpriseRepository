@@ -5,20 +5,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeosEnterprise.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Informacje o naprawie" MinHeight="510" MinWidth="690"
-        Height="500" Width="680"
+        Title="Informacje o naprawie" MinHeight="570" MinWidth="690"
+        Height="570" Width="680"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="..\Icons\pikselart.jpg"/>
         </Grid.Background>
 
-        <TextBlock Margin="100,15,69,396" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="513"><Run Text="Informacje o naprawie"/><LineBreak/><Run/></TextBlock>
+        <TextBlock Margin="100,10,69,396" TextWrapping="Wrap"  Height="68" FontSize="48" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Width="513"><Run Text="Informacje o naprawie"/><LineBreak/><Run/></TextBlock>
 
-        <Border Margin="44,93,49.6,223.4" Padding="3" 
+        <Border Margin="44,110,49.6,223.4" Padding="3" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12"
-          VerticalAlignment="Center" HorizontalAlignment="Center" Height="154" Width="580">
+          VerticalAlignment="Center" HorizontalAlignment="Center" Height="180" Width="580">
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
@@ -31,10 +32,12 @@
                 <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="160,-33,1,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
                 <Label Content="Szacowany koszt" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
                 <TextBox x:Name="CostTextBox" Text="{Binding RepairCosts}" Margin="160,-35,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
+                <Label Content="Przewidywant termin naprawy*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265" RenderTransformOrigin="0.498,0.158"/>
+                <xctk:DateTimePicker x:Name="Time" Value="{Binding EstimatedTime, Mode=TwoWay}" Margin="170,-40,1,0"  Height="22" Width="220" IsReadOnly="True" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
             </StackPanel>
         </Border>
 
-        <Border Margin="44,267,49.6,72.4" Padding="3"
+        <Border Margin="44,310,49.6,72.4" Padding="3"
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="12"
           VerticalAlignment="Center" HorizontalAlignment="Center" Height="131" Width="580">
             <Border.Background>
@@ -46,7 +49,7 @@
             </StackPanel>
         </Border>
 
-        <Border Margin="169,402,187,7" Padding="3" Background="#FF002D51" 
+        <Border Margin="169,450,187,7" Padding="3" Background="#FF002D51" 
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="5" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Width="163">
             <StackPanel HorizontalAlignment="Left" Width="151" Height="48" VerticalAlignment="Bottom" >
                 <Button x:Name="CancelButton" Content="Powrót"  Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=ComputerInfo}" Height="46"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold" Background="White"/>

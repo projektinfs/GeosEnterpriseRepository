@@ -27,6 +27,7 @@ namespace GeosEnterprise.DBO
         public decimal? ReplacementsCosts { get; set; }
         public decimal RepairCosts { get; set; }
         public string ServicemanNote { get; set; }
+        public DateTime? EstimatedDate { get; set; }
 
 
         public string OrderNumber

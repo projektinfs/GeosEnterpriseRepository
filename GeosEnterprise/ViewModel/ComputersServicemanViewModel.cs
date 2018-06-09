@@ -28,6 +28,8 @@ namespace GeosEnterprise.ViewModel
         public string RepairDescription { get; set; }
         public string ServicemanNote { get; set; }
         private bool DataValidated;
+        public DateTime? EstimatedTime { get; set; }
+
 
         public object SelectedItem { get; set; }
 
@@ -39,6 +41,7 @@ namespace GeosEnterprise.ViewModel
                 RepairCosts = BindingItem.RepairCosts.ToString();
                 ReplacementsCosts = BindingItem.ReplacementsCosts.ToString();
                 ServicemanNote = BindingItem.ServicemanNote?.Trim();
+                EstimatedTime = BindingItem.EstimatedDate;
 
             }
             else
@@ -126,11 +129,16 @@ namespace GeosEnterprise.ViewModel
             {
                 validationErrors3 = "Niepoprawny format kosztu naprawy.";
             }
+            if (string.IsNullOrEmpty(ReplacementsCosts))
+            {
+                ReplacementsCosts = "0";
+            }
 
             if (!decimal.TryParse(ReplacementsCosts?.Replace(".", ","), out replacementsCost))
             {
                 validationErrors4 = "Niepoprawny format kosztu części.";
             }
+        
 
           
 

@@ -24,6 +24,7 @@ namespace GeosEnterprise.ViewModel
         public RepairDTO BindingItem { get; set; }
         public int SelectedClientIndex { get; set; }
         public string RepairCosts { get; set; }
+        public DateTime? EstimatedTime { get; set; }
 
         public IList<ClientDTO> Clients
         {
@@ -40,6 +41,7 @@ namespace GeosEnterprise.ViewModel
                 BindingItem = RepairDTO.ToDTO(Repositories.RepairsRepository.GetById((int)repairID));
                 SelectedClientIndex = Clients.ToList().FindIndex(p => p.ID == BindingItem.Client.ID);
                 RepairCosts = BindingItem.RepairCosts.ToString();
+                EstimatedTime = BindingItem.EstimatedDate;
             }
             else
             {
@@ -62,7 +64,7 @@ namespace GeosEnterprise.ViewModel
                 BindingItem.RepairCosts = decimal.Parse(RepairCosts?.Replace(".", ","));
                 BindingItem.Dealer = EmployeeDTO.ToDTO(Authorization.AcctualEmployee);
                 BindingItem.DealerID = Authorization.AcctualEmployee.ID;
-
+                BindingItem.EstimatedDate = EstimatedTime;
                 if (BindingItem.ID > 0)
                 {
                     Repositories.RepairsRepository.Update(BindingItem);
