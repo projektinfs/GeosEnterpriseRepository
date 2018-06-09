@@ -35,8 +35,12 @@ namespace GeosEnterprise.ViewModel
             CurrentButtonCommand = new RelayCommand<object>(Current);
             ReportedButtonCommand = new RelayCommand<object>(Reported);
             RepairInfoButtonCommand = new RelayCommand<object>(RepairInfo);
+            AcceptedButtonCommand = new RelayCommand<object>(Accepted);
+            CompletedButtonCommand = new RelayCommand<object>(Completed);
+
 
             RepairInfoVisibility = "Hidden";
+            AcceptedVisibility = "Hidden";
 
             _myDataSource = DataSourceHelper;
             Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
@@ -55,7 +59,8 @@ namespace GeosEnterprise.ViewModel
         public ICommand CurrentButtonCommand { get; set; }
         public ICommand ReportedButtonCommand { get; set; }
         public ICommand RepairInfoButtonCommand { get; set; }
-
+        public ICommand AcceptedButtonCommand { get; set; }
+        public ICommand CompletedButtonCommand { get; set; }
 
 
         public ObservableCollection<RepairDTO> _myDataSource = new ObservableCollection<RepairDTO>();
@@ -120,6 +125,13 @@ namespace GeosEnterprise.ViewModel
         {
             get { return _repairInfoVisibility; }
             set { _repairInfoVisibility = value; RaisePropertyChanged("RepairInfoVisibility"); }
+        }
+
+        private string _acceptedVisibility;
+        public string AcceptedVisibility
+        {
+            get { return _acceptedVisibility; }
+            set { _acceptedVisibility = value; RaisePropertyChanged("AcceptedVisibility"); }
         }
 
         private ICollectionView _items;
@@ -314,13 +326,25 @@ namespace GeosEnterprise.ViewModel
             }
         }
 
+        private ObservableCollection<RepairDTO> CompletedRepairs
+        {
+            get
+            {
+                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
+                .GetAllCurrent()
+                .Where(p => p.Status == DBO.RepairStatus.Completed)
+                .Select(p => DTO.RepairDTO.ToDTO(p)));
+            }
+        }
+
         public void Current(object obj)
         {  
                 _myDataSource = CurrentRepairs;
                 RaisePropertyChanged("Items");
                 _repairInfoVisibility = "Visible";
                 RaisePropertyChanged("RepairInfoVisibility");
-
+                _acceptedVisibility = "Hidden";
+                RaisePropertyChanged("AcceptedVisibility");
         }
 
         public void Reported(object obj)
@@ -329,7 +353,10 @@ namespace GeosEnterprise.ViewModel
             RaisePropertyChanged("Items");
             _repairInfoVisibility = "Hidden";
             RaisePropertyChanged("RepairInfoVisibility");
+            _acceptedVisibility = "Hidden";
+            RaisePropertyChanged("AcceptedVisibility");
         }
+
 
         public void RepairInfo(object obj)
         {
@@ -344,6 +371,37 @@ namespace GeosEnterprise.ViewModel
                     RaisePropertyChanged("Items");
                     Current(this);
 
+                }
+            }
+            else
+            {
+                Config.MsgBoxNothingSelectedMessage();
+            }
+        }
+
+        public void Completed(object obj)
+        {
+            _myDataSource = CompletedRepairs;
+            RaisePropertyChanged("Items");
+            _acceptedVisibility = "Visible";
+            RaisePropertyChanged("AcceptedVisibility");
+            _repairInfoVisibility = "Hidden";
+            RaisePropertyChanged("RepairInfoVisibility");
+        }
+
+        public void Accepted(object obj)
+        {
+            var repairDTO = SelectedItem as RepairDTO;
+            if (repairDTO != null)
+            {
+                if (MessageBox.Show($"Odbiór komputera: {repairDTO.Computer.Name}",
+                    "Zamknięcie zlecenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    repairDTO.Status = DBO.RepairStatus.AcceptedByClient;
+                    repairDTO.RealizationDate = DateTime.Now;
+                    Repositories.RepairsRepository.Update(repairDTO);
+                    _myDataSource = CompletedRepairs;
+                    RaisePropertyChanged("Items");
                 }
             }
             else
