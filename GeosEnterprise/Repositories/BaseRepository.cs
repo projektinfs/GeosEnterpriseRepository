@@ -160,6 +160,7 @@ namespace GeosEnterprise.Repositories
                 type = func.Method.ReturnType.Name;
             }
             methodName = methodName.Substring(methodName.IndexOf('<') + 1, methodName.IndexOf('>') - 1);
+            methodName = MapMethod(methodName);
             type = type.Replace("DTO", "");
 
             var t = item.GetType();
@@ -181,9 +182,17 @@ namespace GeosEnterprise.Repositories
             _dbContext.Set<DBO.Log>().Add(log);
         }
 
-
+        private static string MapMethod(string method)
+        {
+            if (method == "Edit")
+            {
+                return "Update";
+            }
+            return method;
+        }
     }
 
+  
     public abstract class BaseRepository<TEntity, DTOEntity> : BaseRepository<TEntity>
         where TEntity : DBO.DBObject<int>
         where DTOEntity : DTO.DTOObject<int>
