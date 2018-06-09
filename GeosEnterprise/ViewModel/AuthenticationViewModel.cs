@@ -121,6 +121,7 @@ namespace GeosEnterprise.ViewModel
                 Name = Authorization.AcctualEmployee?.Name + " " + Authorization.AcctualEmployee?.Surname;
                 passwordBox.Clear();
                 currentEmployee = Authorization.AcctualEmployee;
+                Access();
                 currentName = Authorization.AcctualEmployee?.Name + " " + Authorization.AcctualEmployee?.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
@@ -136,15 +137,83 @@ namespace GeosEnterprise.ViewModel
                 IsVisible = "Hidden";
                 passwordBox.Clear();
                 currentEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+                Access();
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
                 Messenger.Default.Send("Visible");
                 Messenger.Default.Send(Name);
+
             }
             else
             {
                 MessageForUser = "Błędny login lub hasło !";
             }
+        }
+
+        private void Access()
+        {
+            Dictionary<string, bool> Permissions = new Dictionary<string, bool>();
+            MessageBox.Show("Rola - " + currentEmployee.UserRole);
+
+            switch (currentEmployee.UserRole)
+            {
+                case UserRole.Administrator:
+                    Permissions["ComputerList"] = true;
+                    Permissions["EmployeeList"] = true;
+                    Permissions["ClientsList"] = true;
+                    Permissions["AccountantPanel"] = true;
+                    Permissions["EmployeeScheduler"] = true;
+                    Permissions["RepairScheduler"] = true;
+                    Permissions["Logs"] = true;
+                    break;
+                case UserRole.Manager:
+                    Permissions["ComputerList"] = true;
+                    Permissions["EmployeeList"] = true;
+                    Permissions["ClientsList"] = true;
+                    Permissions["AccountantPanel"] = false;
+                    Permissions["EmployeeScheduler"] = true;
+                    Permissions["RepairScheduler"] = true;
+                    Permissions["Logs"] = true;
+                    break;
+                case UserRole.Dealer:
+                    Permissions["ComputerList"] = true;
+                    Permissions["EmployeeList"] = false;
+                    Permissions["ClientsList"] = true;
+                    Permissions["AccountantPanel"] = false;
+                    Permissions["EmployeeScheduler"] = true;
+                    Permissions["RepairScheduler"] = true;
+                    Permissions["Logs"] = true;
+                    break;
+                case UserRole.Serviceman:
+                    Permissions["ComputerList"] = true;
+                    Permissions["EmployeeList"] = false;
+                    Permissions["ClientsList"] = true;
+                    Permissions["AccountantPanel"] = false;
+                    Permissions["EmployeeScheduler"] = true;
+                    Permissions["RepairScheduler"] = true;
+                    Permissions["Logs"] = true;
+                    break;
+                case UserRole.Accountant:
+                    Permissions["ComputerList"] = false;
+                    Permissions["EmployeeList"] = true;
+                    Permissions["ClientsList"] = true;
+                    Permissions["AccountantPanel"] = true;
+                    Permissions["EmployeeScheduler"] = false;
+                    Permissions["RepairScheduler"] = true;
+                    Permissions["Logs"] = true;
+                    break;
+                default:
+                    Permissions["ComputerList"] = false;
+                    Permissions["EmployeeList"] = false;
+                    Permissions["ClientsList"] = false;
+                    Permissions["AccountantPanel"] = false;
+                    Permissions["EmployeeScheduler"] = false;
+                    Permissions["RepairScheduler"] = true;
+                    Permissions["Logs"] = true;
+                    break;
+            }
+
+            Messenger.Default.Send(Permissions);
         }
     }
 }

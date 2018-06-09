@@ -48,6 +48,104 @@ namespace GeosEnterprise.ViewModel
                 RaisePropertyChanged("Name");
             }
         }
+        
+        public String _RepairSchedulerPermission;
+        public String RepairSchedulerPermission
+        {
+            get
+            {
+                return _RepairSchedulerPermission;
+            }
+            set
+            {
+                _RepairSchedulerPermission = value;
+                RaisePropertyChanged("RepairSchedulerPermission");
+            }
+        }
+
+        public String _ComputerListPermission;
+        public String ComputerListPermission
+        {
+            get
+            {
+                return _ComputerListPermission;
+            }
+            set
+            {
+                _ComputerListPermission = value;
+                RaisePropertyChanged("ComputerListPermission");
+            }
+        }
+
+        public String _EmployeeListPermission;
+        public String EmployeeListPermission
+        {
+            get
+            {
+                return _EmployeeListPermission;
+            }
+            set
+            {
+                _EmployeeListPermission = value;
+                RaisePropertyChanged("EmployeeListPermission");
+            }
+        }
+
+        public String _ClientsListPermission;
+        public String ClientsListPermission
+        {
+            get
+            {
+                return _ClientsListPermission;
+            }
+            set
+            {
+                _ClientsListPermission = value;
+                RaisePropertyChanged("ClientsListPermission");
+            }
+        }
+
+        public String _AccountantPanelPermission;
+        public String AccountantPanelPermission
+        {
+            get
+            {
+                return _AccountantPanelPermission;
+            }
+            set
+            {
+                _AccountantPanelPermission = value;
+                RaisePropertyChanged("AccountantPanelPermission");
+            }
+        }
+
+        public String _EmployeeSchedulerPermission;
+        public String EmployeeSchedulerPermission
+        {
+            get
+            {
+                return _EmployeeSchedulerPermission;
+            }
+            set
+            {
+                _EmployeeSchedulerPermission = value;
+                RaisePropertyChanged("EmployeeSchedulerPermission");
+            }
+        }
+
+        public String _LogsPermission;
+        public String LogsPermission
+        {
+            get
+            {
+                return _LogsPermission;
+            }
+            set
+            {
+                _LogsPermission = value;
+                RaisePropertyChanged("LogsPermission");
+            }
+        }
 
         public ICommand StartPanel { get; set; }
         public ICommand ComputersList { get; set; }
@@ -76,7 +174,51 @@ namespace GeosEnterprise.ViewModel
             Messenger.Default.Register<ViewModelBase>(this, MessageHandler);
             Messenger.Default.Register<String>(this, AuthenticationValid);
             Messenger.Default.Register<String>(this, UserName);
+            Messenger.Default.Register<Dictionary<string, bool>>(this, SetAccess);
             ViewModel = new AuthenticationViewModel();
+        }
+
+        private void SetAccess(Dictionary<string, bool> obj)
+        {
+            foreach(var key in obj)
+            {
+                MessageBox.Show(key.Key + " - " + key.Value);
+            }
+
+            if (obj["ComputerList"])
+                ComputerListPermission = "Visible";
+            else
+                ComputerListPermission = "Collapsed";
+
+            if (obj["EmployeeList"])
+                EmployeeListPermission = "Visible";
+            else
+                EmployeeListPermission = "Collapsed";
+
+            if (obj["ClientsList"])
+                ClientsListPermission = "Visible";
+            else
+                ClientsListPermission = "Collapsed";
+
+            if (obj["AccountantPanel"])
+                AccountantPanelPermission = "Visible";
+            else
+                AccountantPanelPermission = "Collapsed";
+
+            if (obj["EmployeeScheduler"])
+                EmployeeSchedulerPermission = "Visible";
+            else
+                EmployeeSchedulerPermission = "Collapsed";
+
+            if (obj["RepairScheduler"])
+                RepairSchedulerPermission = "Visible";
+            else
+                RepairSchedulerPermission = "Collapsed";
+
+            if (obj["Logs"])
+                LogsPermission = "Visible";
+            else
+                LogsPermission = "Collapsed";
         }
 
         private void UserName(string obj)

@@ -44,43 +44,43 @@
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="ComputersListButton" Command="{Binding ComputersList}" Margin="0,0,0,6" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="ComputersListButton" Visibility="{Binding ComputerListPermission}" Command="{Binding ComputersList}" Margin="0,0,0,6" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="EmployeesListButton" Command="{Binding EmployeesList}" Margin="0,0,0,6" BorderBrush="White" Content="Pracownicy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="EmployeesListButton" Visibility="{Binding EmployeeListPermission}" Command="{Binding EmployeesList}" Margin="0,0,0,6" BorderBrush="White" Content="Pracownicy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="ClientsListButton" Command="{Binding ClientsList}" Margin="0,0,0,6" BorderBrush="White" Content="Klienci" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="ClientsListButton" Visibility="{Binding ClientsListPermission}" Command="{Binding ClientsList}" Margin="0,0,0,6" BorderBrush="White" Content="Klienci" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="AccountantPanelButton" Command="{Binding AccountantPanel}" Margin="0,0,0,6" BorderBrush="White" Content="Transakcje" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="AccountantPanelButton" Visibility="{Binding AccountantPanelPermission}" Command="{Binding AccountantPanel}" Margin="0,0,0,6" BorderBrush="White" Content="Transakcje" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="EmployeeSchedulerButton"  Command="{Binding EmployeeSchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram pracy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="EmployeeSchedulerButton" Visibility="{Binding EmployeeSchedulerPermission}" Command="{Binding EmployeeSchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram pracy" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="RepairSchedulerButton"  Command="{Binding RepairSchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram napraw" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="RepairSchedulerButton" Visibility="{Binding RepairSchedulerPermission}" Command="{Binding RepairSchedulerPanel}"  Margin="0,0,0,6" BorderBrush="White" Content="Harmonogram napraw" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
                     </Button>
 
-                    <Button x:Name="LogsButton"  Command="{Binding LogsList}"  Margin="0,0,0,6" BorderBrush="White" Content="Historia zmian" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
+                    <Button x:Name="LogsButton" Visibility="{Binding LogsPermission}" Command="{Binding LogsList}"  Margin="0,0,0,6" BorderBrush="White" Content="Historia zmian" FontSize="20" BorderThickness="3" FontWeight="Bold" Foreground="White">
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
