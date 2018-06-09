@@ -143,7 +143,8 @@ namespace GeosEnterprise.ViewModel
                 MessageForUser = "";
                 IsVisible = "Hidden";
                 passwordBox.Clear();
-                currentEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+                //currentEmployee = EmployeeRepository.GetByEmail("admin@admin.pl");
+                currentEmployee = Authorization.AcctualEmployee;
                 Access();
                 Name = Authorization.AcctualEmployee.Name + " " + Authorization.AcctualEmployee.Surname;
                 Messenger.Default.Send<ViewModelBase>(new StartPanelViewModel());
@@ -184,7 +185,7 @@ namespace GeosEnterprise.ViewModel
                     break;
                 case UserRole.Dealer:
                     Permissions["ComputerList"] = true;
-                    Permissions["EmployeeList"] = false;
+                    Permissions["EmployeeList"] = true;
                     Permissions["ClientsList"] = true;
                     Permissions["AccountantPanel"] = false;
                     Permissions["EmployeeScheduler"] = true;
