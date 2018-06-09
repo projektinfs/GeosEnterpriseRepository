@@ -59,8 +59,7 @@
             OnEventDoubleClick="scheduler_OnEventDoubleClick"
             OnScheduleDoubleClick="scheduler_OnScheduleDoubleClick"
             Mode="{Binding Mode, Mode=TwoWay}" 
-            Margin="10,120,10,9.6"
-            Background="WhiteSmoke"/>
+            Margin="10,120,10,9.6" Foreground="Black" Background="White"/>
 
     </Grid>
 </UserControl>
