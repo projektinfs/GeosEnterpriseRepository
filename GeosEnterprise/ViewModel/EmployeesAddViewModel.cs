@@ -100,7 +100,7 @@ namespace GeosEnterprise.ViewModel
                 {
                     if (Repositories.EmployeeRepository.GetByEmail(BindingItem.Email.ToString()) != null)
                     {
-                        EmailTaken = "Podany email jest już zajęty!";
+                        Config.MsgBoxValidationMessage("Podany email jest już zajęty!");
                         return;
                     }
                     else

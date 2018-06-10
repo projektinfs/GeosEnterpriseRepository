@@ -23,7 +23,7 @@
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
-            <StackPanel MinHeight="2" >
+            <StackPanel MinHeight="2" IsEnabled="False" >
                 <Label Content="Klient" Margin="0,-4,420.2,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="32"/>
                 <TextBox Text="{Binding ClientFullName}" Margin="86,-27,1,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" MinHeight="23" Height="25"/>
                 <Label Content="Nazwa" Margin="0,-5,413,0" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="31"/>
@@ -43,7 +43,7 @@
             <Border.Background>
                 <ImageBrush ImageSource="..\Icons\text-background.png"/>
             </Border.Background>
-            <StackPanel >
+            <StackPanel IsEnabled="False" >
                 <Label Content="Opis usterki" Margin="210,-10,250,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="18" Foreground="White" Height="39" Width="104"/>
                 <TextBox x:Name="DescriptionTextBox" Text="{Binding BindingItem.Description}" Margin="10,-5,10,-34" TextWrapping="Wrap" MinWidth="295" MinHeight="85" VerticalAlignment="Top" Height="79" FontWeight="Bold"/>
             </StackPanel>
