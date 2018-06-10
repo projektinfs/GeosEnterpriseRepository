@@ -186,13 +186,23 @@ namespace GeosEnterprise.ViewModel
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) => {
                         return ((item as ClientDTO).Name.Contains(SearchString)
                             || (item as ClientDTO).Surname.Contains(SearchString)
                             || (item as ClientDTO).ClientContact.Email.Contains(SearchString)
                             || (item as ClientDTO).ClientContact.Phone.Contains(SearchString));
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) => {
+                        return ((item as ClientDTO).Name.Contains(SearchString)
+                            || (item as ClientDTO).Surname.Contains(SearchString)
+                            || (item as ClientDTO).ClientContact.Email.Contains(SearchString)
+                            || (item as ClientDTO).ClientContact.Phone.Contains(SearchString))
+                            && ((item as ClientDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
                 else
@@ -210,10 +220,17 @@ namespace GeosEnterprise.ViewModel
             }
             else
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) => {
                         return (item as ClientDTO).DeletedDate == null;
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) => {
+                        return ((item as ClientDTO).DeletedDate == null
+                        && ((item as ClientDTO).CreatedDate <= timeToBindingItem.Value));
                     };
                 }
                 else
