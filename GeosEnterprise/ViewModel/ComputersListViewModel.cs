@@ -37,6 +37,19 @@ namespace GeosEnterprise.ViewModel
             RepairInfoButtonCommand = new RelayCommand<object>(RepairInfo);
             AcceptedButtonCommand = new RelayCommand<object>(Accepted);
             CompletedButtonCommand = new RelayCommand<object>(Completed);
+            AllButtonCommand = new RelayCommand<object>(All);
+
+           
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Dealer)
+            {
+                Dealer = "False";
+            }
+            else Dealer = "True";
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Serviceman)
+            {
+                Serviceman = "False";
+            }
+            else Serviceman = "True";
 
 
             RepairInfoVisibility = "Hidden";
@@ -61,6 +74,7 @@ namespace GeosEnterprise.ViewModel
         public ICommand RepairInfoButtonCommand { get; set; }
         public ICommand AcceptedButtonCommand { get; set; }
         public ICommand CompletedButtonCommand { get; set; }
+        public ICommand AllButtonCommand { get; set; }
 
 
         public ObservableCollection<RepairDTO> _myDataSource = new ObservableCollection<RepairDTO>();
@@ -111,6 +125,20 @@ namespace GeosEnterprise.ViewModel
                     RaisePropertyChanged("TimeFromBindingItem");
                 }
             }
+        }
+
+        private string _serviceman;
+        public string Serviceman
+        {
+            get { return _serviceman; }
+            set { _serviceman = value; RaisePropertyChanged("Serviceman"); }
+        }
+
+        private string _dealer;
+        public string Dealer
+        {
+            get { return _dealer; }
+            set { _dealer = value; RaisePropertyChanged("Dealer"); }
         }
 
         private string _searchString;
@@ -337,6 +365,16 @@ namespace GeosEnterprise.ViewModel
             }
         }
 
+        private ObservableCollection<RepairDTO> AllRepairs
+        {
+            get
+            {
+                return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
+                .GetAll()
+                .Select(p => DTO.RepairDTO.ToDTO(p)));
+            }
+        }
+
         public void Current(object obj)
         {  
                 _myDataSource = CurrentRepairs;
@@ -357,6 +395,7 @@ namespace GeosEnterprise.ViewModel
             RaisePropertyChanged("AcceptedVisibility");
         }
 
+        
 
         public void RepairInfo(object obj)
         {
@@ -384,6 +423,16 @@ namespace GeosEnterprise.ViewModel
             _myDataSource = CompletedRepairs;
             RaisePropertyChanged("Items");
             _acceptedVisibility = "Visible";
+            RaisePropertyChanged("AcceptedVisibility");
+            _repairInfoVisibility = "Hidden";
+            RaisePropertyChanged("RepairInfoVisibility");
+        }
+
+        public void All(object obj)
+        {
+            _myDataSource = AllRepairs;
+            RaisePropertyChanged("Items");
+            _acceptedVisibility = "Hidden";
             RaisePropertyChanged("AcceptedVisibility");
             _repairInfoVisibility = "Hidden";
             RaisePropertyChanged("RepairInfoVisibility");

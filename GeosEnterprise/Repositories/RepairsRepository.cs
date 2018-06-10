@@ -20,6 +20,11 @@ namespace GeosEnterprise.Repositories
             return BaseRepository<Repair, RepairDTO>.Update(repair);
         }
 
+        public new static IList<Repair> GetAll()
+        {
+            return BaseRepository<Repair>.GetAllCurrent().ToList();
+        }
+
         public new static IList<Repair> GetAllCurrent()
         {
             return BaseRepository<Repair>.GetAllCurrent().Where(p => p.RealizationDate == null).ToList();
