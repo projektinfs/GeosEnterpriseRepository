@@ -39,7 +39,7 @@ namespace GeosEnterprise.ViewModel
             CompletedButtonCommand = new RelayCommand<object>(Completed);
             AllButtonCommand = new RelayCommand<object>(All);
 
-           
+
             if (Authorization.AcctualEmployee.UserRole == UserRole.Dealer)
             {
                 Dealer = "False";
@@ -107,7 +107,7 @@ namespace GeosEnterprise.ViewModel
                     RaisePropertyChanged("TimeToBindingItem");
                 }
             }
-            
+
         }
 
         private DateTime? timeFromBindingItem;
@@ -293,7 +293,7 @@ namespace GeosEnterprise.ViewModel
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) =>
                     {
@@ -304,6 +304,20 @@ namespace GeosEnterprise.ViewModel
                             || (item as RepairDTO).Client.Surname.Contains(SearchString)
                             || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
                             || (item as RepairDTO).OrderNumber.Contains(SearchString));
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) =>
+                    {
+
+                        return ((item as RepairDTO).Computer.SerialNumber.Contains(SearchString)
+                            || (item as RepairDTO).Computer.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Name.Contains(SearchString)
+                            || (item as RepairDTO).Client.Surname.Contains(SearchString)
+                            || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
+                            || (item as RepairDTO).OrderNumber.Contains(SearchString))
+                            && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
                 else
@@ -324,11 +338,18 @@ namespace GeosEnterprise.ViewModel
             }
             else
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) =>
                     {
                         return (item as RepairDTO).RealizationDate == null;
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) =>
+                    {
+                        return ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
                 else
@@ -349,7 +370,7 @@ namespace GeosEnterprise.ViewModel
                 return new ObservableCollection<RepairDTO>(Repositories.RepairsRepository
                 .GetAllCurrent()
                 .Where(p => p.Status == DBO.RepairStatus.InProcess)
-                .Where(p=> p.ServicemanID == Authorization.AcctualEmployee.ID)
+                .Where(p => p.ServicemanID == Authorization.AcctualEmployee.ID)
                 .Select(p => DTO.RepairDTO.ToDTO(p)));
             }
         }
@@ -376,13 +397,13 @@ namespace GeosEnterprise.ViewModel
         }
 
         public void Current(object obj)
-        {  
-                _myDataSource = CurrentRepairs;
-                RaisePropertyChanged("Items");
-                _repairInfoVisibility = "Visible";
-                RaisePropertyChanged("RepairInfoVisibility");
-                _acceptedVisibility = "Hidden";
-                RaisePropertyChanged("AcceptedVisibility");
+        {
+            _myDataSource = CurrentRepairs;
+            RaisePropertyChanged("Items");
+            _repairInfoVisibility = "Visible";
+            RaisePropertyChanged("RepairInfoVisibility");
+            _acceptedVisibility = "Hidden";
+            RaisePropertyChanged("AcceptedVisibility");
         }
 
         public void Reported(object obj)
@@ -395,7 +416,7 @@ namespace GeosEnterprise.ViewModel
             RaisePropertyChanged("AcceptedVisibility");
         }
 
-        
+
 
         public void RepairInfo(object obj)
         {

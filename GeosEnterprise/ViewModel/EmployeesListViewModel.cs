@@ -183,7 +183,7 @@ namespace GeosEnterprise.ViewModel
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) => {
                         return ((item as EmployeeDTO).Name.Contains(SearchString)
@@ -191,6 +191,18 @@ namespace GeosEnterprise.ViewModel
                             || (item as EmployeeDTO).Email.Contains(SearchString)
                             || (item as EmployeeDTO).EmployeeContact.Phone.Contains(SearchString)
                             || (item as EmployeeDTO).Position.Contains(SearchString));
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) => {
+
+                        return ((item as EmployeeDTO).Name.Contains(SearchString)
+                            || (item as EmployeeDTO).Surname.Contains(SearchString)
+                            || (item as EmployeeDTO).Email.Contains(SearchString)
+                            || (item as EmployeeDTO).EmployeeContact.Phone.Contains(SearchString)
+                            || (item as EmployeeDTO).Position.Contains(SearchString))
+                            && ((item as EmployeeDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
                 else
@@ -209,15 +221,24 @@ namespace GeosEnterprise.ViewModel
             }
             else
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return (item as EmployeeDTO).DeletedDate == null;
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) =>
+                    {
+                        return ((item as EmployeeDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
                 else
                 {
-                    Items.Filter = (item) => {
+                    Items.Filter = (item) =>
+                    {
                         return ((item as EmployeeDTO).CreatedDate >= timeFromBindingItem.Value)
                         && ((item as EmployeeDTO).CreatedDate <= timeToBindingItem.Value);
                     };

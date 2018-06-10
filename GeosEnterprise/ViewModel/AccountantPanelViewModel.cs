@@ -142,8 +142,10 @@ namespace GeosEnterprise.ViewModel
                             || (item as RepairDTO).Client.Surname.Contains(SearchString)
                             || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
                             || (item as RepairDTO).OrderNumber.Contains(SearchString)
+                            || (item as RepairDTO).Serviceman.Name.Contains(SearchString)
+                            || (item as RepairDTO).Serviceman.Surname.Contains(SearchString)
                             || (item as RepairDTO).FinalCosts.ToString().Contains(SearchString)
-                            || (item as RepairDTO).ReplacementsCosts.ToString().Contains(SearchString));
+                            || (item as RepairDTO).RepairCosts.ToString().Contains(SearchString));
                     };
                 }
                 else
@@ -154,8 +156,10 @@ namespace GeosEnterprise.ViewModel
                             || (item as RepairDTO).Client.Surname.Contains(SearchString)
                             || (item as RepairDTO).Client.ClientContact.Email.Contains(SearchString)
                             || (item as RepairDTO).OrderNumber.Contains(SearchString))
+                            || (item as RepairDTO).Serviceman.Name.Contains(SearchString)
+                            || (item as RepairDTO).Serviceman.Surname.Contains(SearchString)
                             || (item as RepairDTO).FinalCosts.ToString().Contains(SearchString)
-                            || (item as RepairDTO).ReplacementsCosts.ToString().Contains(SearchString)
+                            || (item as RepairDTO).RepairCosts.ToString().Contains(SearchString)
                             && ((item as RepairDTO).CreatedDate >= timeFromBindingItem.Value)
                             && ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
@@ -163,10 +167,16 @@ namespace GeosEnterprise.ViewModel
             }
             else
             {
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) => {
                         return (item as RepairDTO).RealizationDate == null;
+                    };
+                }
+                else if (TimeFromBindingItem == null && TimeToBindingItem != null)
+                {
+                    Items.Filter = (item) => {
+                        return ((item as RepairDTO).CreatedDate <= timeToBindingItem.Value);
                     };
                 }
                 else
