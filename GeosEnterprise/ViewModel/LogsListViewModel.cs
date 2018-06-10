@@ -118,7 +118,7 @@ namespace GeosEnterprise.ViewModel
                 {
                     employees = Repositories.EmployeeRepository.GetAllCurrent().Where(p => p.UserRole == position).Select(p => p.Email).ToList();
                 }
-                if (TimeFromBindingItem == null || TimeToBindingItem == null)
+                if (TimeFromBindingItem == null && TimeToBindingItem == null)
                 {
                     Items.Filter = (item) =>
                     {
@@ -129,6 +129,14 @@ namespace GeosEnterprise.ViewModel
                 }
                 else
                 {
+                    if (timeFromBindingItem == null)
+                    {
+                        timeFromBindingItem = DateTime.Now.AddYears(-10);
+                    }
+                    if (timeToBindingItem == null)
+                    {
+                        timeToBindingItem = DateTime.Now.AddYears(10);
+                    }
                     Items.Filter = (item) =>
                     {
                         return (((item as Log).Value.ToLower().Contains(searchString)
@@ -143,6 +151,14 @@ namespace GeosEnterprise.ViewModel
             {
                 if (TimeFromBindingItem != null || TimeToBindingItem != null)
                 {
+                    if (timeFromBindingItem == null)
+                    {
+                        timeFromBindingItem = DateTime.Now.AddYears(-10);
+                    }
+                    if (timeToBindingItem == null)
+                    {
+                        timeToBindingItem = DateTime.Now.AddYears(10);
+                    }
                     Items.Filter = (item) =>
                     {
                         return ((item as Log).CreatedDate >= timeFromBindingItem.Value)
