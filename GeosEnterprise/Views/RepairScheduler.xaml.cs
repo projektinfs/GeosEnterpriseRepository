@@ -37,7 +37,7 @@ namespace GeosEnterprise.Views
             scheduler.SelectedDate = DateTime.Now;
             scheduler.Mode = Mode.Day;
             scheduler.StartJourney = new TimeSpan(7, 0, 0);
-            scheduler.EndJourney = new TimeSpan(22, 0, 0);
+            scheduler.EndJourney = new TimeSpan(21, 0, 0);
             scheduler.Loaded += scheduler_Loaded;
 
             List<Repair> repairs = getRepairs();

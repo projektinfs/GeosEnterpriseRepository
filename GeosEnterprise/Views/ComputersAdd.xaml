@@ -40,7 +40,7 @@
                 <TextBox x:Name="SerialNrTextBox" Text="{Binding BindingItem.Computer.SerialNumber}" Margin="160,-33,1,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
                 <Label Content="Szacowany koszt*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
                 <TextBox x:Name="CostTextBox" Text="{Binding RepairCosts}" Margin="160,-35,1.2,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="295" Height="27"/>
-               <Label Content="Przewidywant termin naprawy*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
+               <Label Content="Przewidywany termin naprawy*" Margin="-1,0,0,0" VerticalAlignment="Top" MinHeight="23" FontSize="18" Foreground="White" Height="38" HorizontalAlignment="Left" Width="265"/>
                 <xctk:DateTimePicker x:Name="Time" Value="{Binding EstimatedTime, Mode=TwoWay}" Margin="170,-40,1,0"  Height="22" Width="220" FontFamily="DejaVu Sans Condensed" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.499,-0.533"/>
             </StackPanel>
         </Border>

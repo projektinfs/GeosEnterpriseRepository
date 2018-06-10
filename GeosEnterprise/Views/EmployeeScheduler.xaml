@@ -14,7 +14,7 @@
         </Grid.Background>
 
         <Label Content="Harmonogram pracy" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="940" FontSize="40" Foreground="#FFFFFBFB" Margin="10,5,10,0"/>
-
+        
         <Border Margin="10,70,0,0" Padding="3"
           BorderBrush="White" BorderThickness="5,5,5,5" CornerRadius="4"
           HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="122">
@@ -50,6 +50,7 @@
         </Border>
 
         <my:Scheduler
+            Margin="10,120,10,10"
             HorizontalAlignment="Stretch"
             Name="scheduler" 
             VerticalAlignment="Stretch" 
@@ -59,7 +60,10 @@
             OnEventDoubleClick="scheduler_OnEventDoubleClick"
             OnScheduleDoubleClick="scheduler_OnScheduleDoubleClick"
             Mode="{Binding Mode, Mode=TwoWay}" 
-            Margin="10,120,10,9.6" Foreground="Black" Background="White"/>
+            Foreground="Black" 
+            Background="White" 
+            FontWeight="Bold"/>
+        
 
     </Grid>
 </UserControl>
