@@ -42,6 +42,7 @@
                         <Button.Background>
                             <ImageBrush ImageSource=".\Icons\text-background.png"/>
                         </Button.Background>
+                        
                     </Button>
 
                     <Button x:Name="ComputersListButton" Visibility="{Binding ComputerListPermission}" Command="{Binding ComputersList}" Margin="0,0,0,6" BorderBrush="White" Content="Komputery" FontSize="20"  BorderThickness="3" FontWeight="Bold" Foreground="White">

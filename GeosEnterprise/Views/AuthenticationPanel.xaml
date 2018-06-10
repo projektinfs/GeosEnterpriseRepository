@@ -34,7 +34,41 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <Image Margin="0,-1000,30,0" Source="..\Icons\Logo.png" RenderTransformOrigin="0.5,0.5" Height="399" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416"/>
+
+                <Image x:Name="Image" Margin="0,-1000,30,0" Source="..\Icons\Logo.png" RenderTransformOrigin=".5,.5" Height="399" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="416">
+                    <Image.RenderTransform>
+                        <RotateTransform x:Name="AnimatedRotateTransform" Angle="0" />
+                    </Image.RenderTransform>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseLeftButtonDown">
+                            
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="AnimatedRotateTransform" 
+                                                 Storyboard.TargetProperty="Angle" 
+                                                 By="10"        
+                                                 To="-360" 
+                                                 Duration="0:0:0.8" 
+                                                 FillBehavior="Stop" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseRightButtonDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="AnimatedRotateTransform" 
+                                                 Storyboard.TargetProperty="Angle" 
+                                                 By="10"        
+                                                 To="360" 
+                                                 Duration="0:0:0.8" 
+                                                 FillBehavior="Stop" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+
             </StackPanel>
         </Border>
     </Grid>

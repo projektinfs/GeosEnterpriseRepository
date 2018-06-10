@@ -37,14 +37,14 @@ namespace GeosEnterprise.Views
             scheduler.SelectedDate = DateTime.Now;
             scheduler.Mode = Mode.Day;
             scheduler.StartJourney = new TimeSpan(7, 0, 0);
-            scheduler.EndJourney = new TimeSpan(22, 0, 0);
+            scheduler.EndJourney = new TimeSpan(21, 0, 0);
             scheduler.Loaded += scheduler_Loaded;
 
             List<Repair> repairs = getRepairs();
 
             foreach (Repair repair in repairs)
             {
-                if( repair.Serviceman != null || repair.Computer != null || repair.ServicemanID != null)
+                if (repair.Serviceman != null || repair.Computer != null || repair.ServicemanID != null)
                 {
                     Event = new Event()
                     {
@@ -64,7 +64,7 @@ namespace GeosEnterprise.Views
 
         void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
         {
-            
+
         }
 
         void scheduler_OnEventDoubleClick(object sender, Event e)
@@ -94,8 +94,8 @@ namespace GeosEnterprise.Views
         private List<Repair> getRepairs()
         {
             //return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate());
-            
-            if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator 
+
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator
                 || Authorization.AcctualEmployee.UserRole == UserRole.Admin
                 || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
             {
@@ -105,8 +105,8 @@ namespace GeosEnterprise.Views
             {
                 return new List<Repair>(Repositories.RepairsRepository.GetAllWithEstimatedDate().Where(p => p.ServicemanID == Authorization.AcctualEmployee.ID));
             }
-            
-            
+
+
         }
     }
 }

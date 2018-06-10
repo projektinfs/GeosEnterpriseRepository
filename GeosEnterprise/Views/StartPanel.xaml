@@ -48,7 +48,7 @@
             <Run Text="{Binding BuildingAndApartamentNumber, Mode=TwoWay}"/>
         </TextBlock>
 
-        <Border Margin="78,292,0,117.6" Padding="2"
+        <Border Margin="78,122,0,117.6" Padding="2"
           BorderBrush="White" BorderThickness="3,3,3,3" CornerRadius="4" Height="40" Width="116" VerticalAlignment="Center" HorizontalAlignment="Left">
             <StackPanel>
                 <Button x:Name="ChangePreferences" DataContext="{Binding Source={StaticResource data}}" Command="{Binding ChangePreferences}" Content="Zmień dane"  Height="31"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="White" Margin="0,0,-0.4,0">
