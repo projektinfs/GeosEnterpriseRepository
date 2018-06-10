@@ -120,7 +120,7 @@ namespace GeosEnterprise.ViewModel
                     .Replace("{{netto}}", (repairDTO.FinalCosts * (decimal)0.77).ToString("0.00"))
                     .Replace("{{vat}}", (repairDTO.FinalCosts * (decimal)0.23).ToString("0.00"))
                     .Replace("{{brutto}}", repairDTO.FinalCosts.ToString())
-                    .Replace("{{pracownik}}", repairDTO.Dealer.FullName);
+                    .Replace("{{pracownik}}", Authorization.AcctualEmployee.Name + " " +  Authorization.AcctualEmployee.Surname);
 
                 Util.CreatePDF(text, pdfPath);
                 System.Diagnostics.Process.Start(pdfPath);

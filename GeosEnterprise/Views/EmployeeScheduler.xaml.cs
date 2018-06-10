@@ -61,10 +61,10 @@ namespace GeosEnterprise.Views
 
                 Event = new Event()
                 {
-                        Subject = activity.Description,
-                        Color = color,
-                        Start = (DateTime)activity.TimeFrom,
-                        End = (DateTime)activity.TimeTo
+                    Subject = activity.Description,
+                    Color = color,
+                    Start = (DateTime)activity.TimeFrom,
+                    End = (DateTime)activity.TimeTo
                 };
 
                 scheduler.Events.Add(Event);
@@ -73,32 +73,41 @@ namespace GeosEnterprise.Views
 
         void scheduler_OnScheduleDoubleClick(object sender, DateTime e)
         {
-            Console.WriteLine(e.ToShortDateString() + ((FrameworkElement)sender).Name);
-            NewEvent window = new NewEvent();
-            window.ShowDialog();
+            if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
+            {
+                Console.WriteLine(e.ToShortDateString() + ((FrameworkElement)sender).Name);
+                NewEvent window = new NewEvent();
+                window.ShowDialog();
 
-            if (window.Event != null)
-                scheduler.Events.Add(window.Event);
+                if (window.Event != null)
+                    scheduler.Events.Add(window.Event);
+
+            }
 
             scheduler.InvalidateVisual();
+
         }
 
         void scheduler_OnEventDoubleClick(object sender, Event e)
         {
             if (e.Subject != null)
             {
-                if (MessageBox.Show($"Czy na pewno chcesz usunąć wydarzenie: {e.Subject}",
-                    "Usunięcie wydarzenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
                 {
-                    scheduler.Events.Remove(e);
-                    
-                    EmployeeActivity activity = Repositories.EmployeeActivityRepository.GetByAll(e.Start, e.End, e.Subject);
-
-                    if (activity != null)
+                    if (MessageBox.Show($"Czy na pewno chcesz usunąć wydarzenie: {e.Subject}",
+                    "Usunięcie wydarzenia", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                     {
-                        Repositories.EmployeeActivityRepository.Delete(activity);
+                        scheduler.Events.Remove(e);
+
+                        EmployeeActivity activity = Repositories.EmployeeActivityRepository.GetByAll(e.Start, e.End, e.Subject);
+
+                        if (activity != null)
+                        {
+                            Repositories.EmployeeActivityRepository.Delete(activity);
+                        }
                     }
                 }
+
             }
             else
                 Config.MsgBoxNothingSelectedMessage();
@@ -119,8 +128,8 @@ namespace GeosEnterprise.Views
         private List<EmployeeActivity> getActivities()
         {
             //return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
-            
-            
+
+
             if (Authorization.AcctualEmployee.UserRole == UserRole.Administrator || Authorization.AcctualEmployee.UserRole == UserRole.Manager)
             {
                 return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent());
@@ -129,9 +138,9 @@ namespace GeosEnterprise.Views
             {
                 return new List<EmployeeActivity>(Repositories.EmployeeActivityRepository.GetAllCurrent().Where(p => p.EmployeeID == Authorization.AcctualEmployee.ID));
             }
-            
+
         }
-        
+
         public string returnType(string Description)
         {
             var names = Description.Split(' ');
