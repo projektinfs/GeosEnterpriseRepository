@@ -187,7 +187,7 @@ namespace GeosEnterprise.ViewModel
                     Permissions["EmployeeList"] = false;
                     Permissions["ClientsList"] = true;
                     Permissions["AccountantPanel"] = false;
-                    Permissions["EmployeeScheduler"] = false;
+                    Permissions["EmployeeScheduler"] = true;
                     Permissions["RepairScheduler"] = true;
                     Permissions["Logs"] = false;
                     break;
@@ -196,7 +196,7 @@ namespace GeosEnterprise.ViewModel
                     Permissions["EmployeeList"] = false;
                     Permissions["ClientsList"] = true;
                     Permissions["AccountantPanel"] = false;
-                    Permissions["EmployeeScheduler"] = false;
+                    Permissions["EmployeeScheduler"] = true;
                     Permissions["RepairScheduler"] = true;
                     Permissions["Logs"] = false;
                     break;
